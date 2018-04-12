@@ -1,0 +1,146 @@
+.events {
+	padding-top: 40px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+
+	&__title {
+		border-bottom: 1px solid darken($color-5, 5%);
+		margin-bottom: 40px;
+	}
+
+	h3 {
+		font-size: 20px;
+		font-family: $fam-heading;
+		text-transform: uppercase;
+		font-weight: normal;
+		color: $color-1;
+		text-align: center;
+		position: relative;
+		margin: 0 0 40px;
+		padding: 20px 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 100px;
+			margin-left: -50px;
+			height: 2px;
+			background-color: $color-2;
+		}
+		svg {
+			position: relative;
+			width: 20px;
+			height: 20px;
+			fill: $color-1;
+			margin-right: 10px;
+			top: 2px;
+		}
+	}
+
+	h2 {
+		margin-top: 40px;
+		font-size: 20px;
+		color: $color-1;
+		text-transform: uppercase;
+		font-family: $fam-heading;
+		padding-bottom: 20px;
+		padding-left: 20px;
+	}
+
+	.slick-slide,
+	&__wrapper,
+	&__slide {
+		@include bp($min: 900px){
+			min-height: 600px;
+		}
+	}
+
+	.slick-slide {
+		position: relative;
+		margin-bottom: 40px;
+	}
+
+	&__wrapper {
+		position: relative;
+		padding: 0 40px;
+	}
+
+	.event__prev,
+	.event__next {
+    	overflow: hidden;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		width: 75px;
+		height: 75px;
+		&:after {
+			content: '';
+			position: absolute;
+			z-index: 2;
+			width: 35px;
+			height: 35px;
+    		border: 0 solid $color-2;
+			border-width: 3px 0 0 3px;
+    		transition: transform 600ms ease;
+		}
+	}
+
+	.event__prev {
+		position: absolute;
+		top: 50%;
+		margin-top: -28px;
+		left: 15px;
+		transform: rotate(-45deg);
+	}
+
+	.event__next {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		margin-top: -28px;
+		transform: rotate(135deg);
+	}
+
+	&__slide {
+		padding: 0 20px 20px 0;
+		outline: 0;
+		&:before{
+			content: '';
+			position: absolute;
+			width: 1px;
+			background: $color-2;
+			top: 0;
+			bottom: 0;
+			@include bp(899px){
+				display: none;
+			}
+		}
+	}
+
+	&__single {
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 10px;
+		width: 100%;
+		margin-left: 20px;
+
+		p {
+			position: relative;
+			margin: 0;
+			font-family: $fam-body;
+			font-weight: 600;
+			font-size: 15px;
+			svg {
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				left: -25px;
+				top: 0;
+				fill: $color-1;
+			}
+		}
+	}
+}

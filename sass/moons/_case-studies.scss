@@ -1,0 +1,70 @@
+.case-studies {
+	padding: 40px 0;
+
+	&__wrapper {
+		display: flex;
+
+		@include bp(900px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__single {
+		width: 33.33%;
+		padding: 10px 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 16px;
+
+		@include bp(770px) {
+			justify-content: left;
+			width: 100%;
+			padding: 5px 0;
+		}
+
+
+		&:hover {
+			h5 {
+				color: $color-2;
+				&:after {
+					transform: rotate(-45deg) translate(-2px, -2px);
+				}
+			}
+
+			svg {
+				fill: $color-2;
+			}
+		}
+
+		h5 {
+			position: relative;
+			padding-right: 1.3em;
+			font-size: 16px;
+			padding-left: 10px;
+			font-family: $fam-body;
+			color: $color-1;
+			transition: all 400ms ease;
+			&:after {
+				content: "";
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				top: 3px;
+				right: 0;
+				border: 0 solid $color-2;
+				border-width: 0 1px 1px 0;
+				transform: rotate(-45deg) translate(-5px, -5px);
+				transition: transform 400ms;
+			}
+		}
+
+		svg {
+			width: 50px;
+			height: 50px;
+			fill: $color-1;
+			margin-right: 5px;
+			transition: all 400ms ease;
+		}
+	}
+}

@@ -1,0 +1,108 @@
+.callout {
+	padding: 60px 0;
+
+	h3 {
+		font-size: 20px;
+		font-family: $fam-heading;
+		text-transform: uppercase;
+		font-weight: normal;
+		color: $color-1;
+		text-align: center;
+		position: relative;
+		margin: 0 0 30px;
+		padding-bottom: 20px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 100px;
+			margin-left: -50px;
+			height: 2px;
+			background-color: $color-2;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: stretch;
+		justify-content: center;
+
+		@include bp(900px) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__single {
+		width: 50%;
+		max-width: 450px;
+		border: 1px solid $black;
+		margin: 2%;
+
+		@include bp(900px) {
+			width: 100%;
+			margin: 30px 0;
+		}
+
+		h4 {
+			max-width: 315px;
+			margin: 0 auto;
+			padding: 5px 15px 20px;
+			text-align: center;
+			color: $color-1;
+			font-size: 20px;
+			text-transform: uppercase;
+		}
+	}
+
+	&.is-testimonial {
+		.callout__single {
+			h4 {
+				text-transform: none;
+				position: relative;
+
+				svg {
+					position: relative;
+					top: 4px;
+					width: 22px;
+					height: 22px;
+					fill: $color-1;
+					margin-right: 8px;
+				}
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+		font-size: 0;
+		margin: 0 0 -15px -15px;
+
+		img {
+			display: inline-block;
+    		width: 50%;
+    		vertical-align: bottom;
+    		margin: 0;
+		}
+
+		.callout__text {
+			padding: 0 15px 20px;
+			margin: 0;
+			display: inline-block;
+			font-size: 14px;
+			display: inline-block;
+			width: 70%;
+			& > p {
+				&:first-child {
+					margin-top: 0;
+				}
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+}

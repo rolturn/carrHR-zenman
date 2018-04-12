@@ -1,0 +1,131 @@
+/*------------------------------------*\
+	::Footer
+\*------------------------------------*/
+@include sticky-footer(
+	$wrap: '.wrap-all-the-things',
+	$row:  '.main-head, .main-torso, .main-foot',
+	$flex: '.main-torso'
+);
+
+.main-foot {
+	background-color: $color-1;
+	color: $white;
+	.nav__inner {
+		padding: 40px 0;
+	}
+}
+
+footer .menu {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-top: 10px;
+
+	li {
+		padding: 1px 10px;
+		border-right: 1px solid $white;
+		margin: 2px 0;
+		line-height: 1;
+
+		&:last-child {
+			border-right: 0;
+		}
+
+		&:before {
+			content: '';
+		}
+
+		&:hover {
+			a {
+				color: $color-2;
+			}
+		}
+
+		a {
+			color: $white;
+			font-family: $fam-body;
+			font-size: 14px;
+			line-height: 1.1;
+		}
+	}
+	.menu-item:nth-last-of-type(2) { // 2nd to last, terms & conditions
+		@include bp(930px){
+			border-right: none;
+		}
+	}
+	.menu-item-49 { // copyright (a link...?)
+		pointer-events: none;
+		@include bp(930px){
+			display: block;
+		}
+	}
+}
+
+
+.footer {
+	&__logo {
+		text-align: center;
+		padding-bottom: 10px;
+	}
+
+	&__social {
+		padding: 10px 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		a {
+			height: 45px;
+			width: 45px;
+			border-radius: 100%;
+			transition: all 400ms ease;
+			margin: 0 10px;
+			position:relative;
+
+			@include bp($planetary){
+				margin: 0 5px;
+			}
+
+			&:hover {
+				&:after {
+					transform: scale(1.25);
+				}
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				border-radius: 50%;
+				background: #fff;
+				backface-visibility: hidden;
+				transform: scale(0);
+				transition: transform 200ms;
+			}
+			&.flashing:after {
+				animation: flash .5s;
+			}
+		}
+
+		i {
+			font-size: 2em;
+			padding: 0 10px;
+			fill: $color-2;
+			backface-visibility: hidden;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 5;
+		}
+	}
+}
+
+@keyframes flash {
+	0% {transform: scale(0);}
+	40% {transform: scale(1.25);}
+	60% {transform: scale(1.25);}
+	100% {transform: scale(0);}
+}

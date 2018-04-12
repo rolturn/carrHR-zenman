@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    ::Variables
+    ----------------------------------*
+    ::Colors
+    ::Breakpoints
+    ::Layout
+    ::Text Styling
+\*------------------------------------*/
+
+/*------------------------------------*\
+    ::Colors
+\*------------------------------------*/
+
+$white:             #FFFFFF;
+
+//dark blue
+$color-1:           #003773;
+$color-1-transparent: rgba(0, 55, 115, 0.8);
+
+//orange
+$color-2:           #cf671a;
+
+//light gray
+$color-3:           #a1a1a1;
+
+//background light gray
+$color-4:           #F9F9F9;
+
+$color-5:           #F3F3F3;
+
+
+//alert colors
+$color-good:        #6ADE72;
+$color-bad:         #DE5D5D;
+$color-meh:         #EBE857;
+
+/*------------------------------------*\
+    ::Breakpoints
+\*------------------------------------*/
+$galaxy:        1140px;
+$solarsystem:   1024px;
+$interstellar:  800px;
+$planetary:     520px;
+
+/*------------------------------------*\
+    ::Layout
+\*------------------------------------*/
+$pad:           0.9375rem;
+$gap:           $pad;
+$gap--baby:     $pad*2;
+$gap--big:      $pad*3;
+
+/*------------------------------------*\
+    ::Text Styling
+\*------------------------------------*/
+//font families
+$fam-heading:       'montserrat', sans-serif;
+$fam-body:          'montserrat', Helvetica, Arial, sans-serif;;

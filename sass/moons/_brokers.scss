@@ -1,0 +1,164 @@
+/*------------------------------------*\
+	::Brokers Pages
+\*------------------------------------*/
+.brokers {
+	text-align: center;
+
+	&__region {
+		&:nth-of-type(even){
+			background-color: $color-4;
+		}
+	}
+
+	&__title {
+		display: inline-block;
+		margin: 35px auto;
+		background: $color-1;
+		padding: 20px 30px;
+		color: $white;
+
+		&:after {
+			display: none;
+		}
+	}
+
+	&__broker-group {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	&__broker {
+		flex: 1;
+		padding: 1.5em 3em;
+		min-width: 100%;
+		max-width: 100%;
+		text-align: left;
+		transition: opacity 300ms, transform 300ms 200ms, max-width 100ms 400ms, flex 100ms 400ms;
+
+		&.hidden {
+			opacity: 0;
+			transform: scale(0);
+			flex: 0;
+			padding: 0;
+			min-width: 0;
+			max-width: 0;
+			// transition: opacity 300ms, transform 150ms 100ms, max-width 1ms 300ms, flex 1ms 300ms;
+		}
+    @include bp($min: 500px) {
+      min-width: 50%;
+      max-width: 50%;
+    }
+	}
+}
+
+.broker {
+	&__name {
+		margin-top: .33em;
+		padding-bottom: .33em;
+		color: $color-1;
+		font-size: 2em;
+		font-weight: 400;
+		border-bottom: 1px solid #dedede;
+	}
+
+	&__image {
+		position: relative;
+		line-height: 0;
+
+		&:before {
+			content: "";
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+			border: 1px solid rgba($white, .5);
+		}
+	}
+
+	&__phone,
+	&__email,
+	&__title,
+  &__license {
+		display: block;
+		padding-top: .3em;
+		color: $color-2;
+		font-size: 16px;
+	}
+  &__license {
+    color: $color-1;
+  }
+	&__title {
+		color: $color-1;
+    font-weight: 600;
+	}
+
+	&__verticals {
+		margin-top: .4em;
+		color: $color-1;
+		font-size: 1em;
+		font-size: 16px;
+		font-weight: 600;
+	}
+}
+
+#js-broker-filter {
+	list-style-type: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 1em 3em 2em 3em;
+
+	li {
+		flex: 1 0 50%;
+		padding: 0 0 0 3em;
+		font-size: 20px;
+    line-height: 1.2;
+
+		&:before {
+			display: none;
+		}
+	}
+}
+
+.state-broker-page {
+	.one-column-content__heading {
+		background: $color-1;
+
+		h3 {
+			color: $white;
+			padding: 30px;
+			font-size: 40px;
+			font-weight: 300;
+
+			&:after {
+				display: none;
+			}
+		}
+	}
+}
+
+@media (min-width: 800px){
+	.brokers__broker {
+		padding: 1.5em 3em;
+		min-width: 33.333%;
+		max-width: 33.333%;
+	}
+
+	#js-broker-filter{
+    padding: 1em 0 2em 1em;
+    li {
+      flex: 0 0 23%;
+      padding: 0;
+    }
+  }
+}
+@media (min-width: 992px){
+	#js-broker-filter{
+    padding: 1em 0 2em 3em;
+    li {
+      flex: 0 0 20%;
+    }
+  }
+}

@@ -1,0 +1,202 @@
+.slider {
+	z-index: 1;
+
+	&__inner {
+		@include bp(900px) {
+			padding: 0;
+		}
+	}
+
+	&__text {
+		position: relative;
+		display: flex;
+		align-items: center;
+		width: 50%;
+		margin: 120px 0;
+		color: $white;
+		background-color: rgba(4,56,112,0.7);
+		box-shadow:
+			0 0 0 10px $color-1 inset,
+			0 0 0 11px #fff inset;
+
+		&.orientation-left {
+			float: left;
+		}
+
+		&.orientation-right {
+			float: right;
+		}
+
+		@include bp(900px) {
+			width: 100%;
+			border: 0;
+			padding: 0;
+			margin: 0;
+		}
+	}
+
+	&__text-content {
+		min-height: 400px;
+		padding: 30px 45px 45px;
+
+		blockquote {
+			font-style: normal;
+			margin-left: 0;
+			font-size: 24px;
+
+			&:before {
+				display: none;
+			}
+		}
+
+		h3 {
+			color: $white;
+			font-size: 30px;
+		}
+		h4 {
+			color: $white;
+			text-align: right;
+			font-size: 24px;
+		}
+
+		@include bp(900px) {
+			border: 0;
+		}
+	}
+
+	&__prev,
+	&__next {
+		&:before {
+			content: "";
+			position: absolute;
+			z-index: 0;
+			top: 0;
+			bottom: 0;
+			width: 15px;
+			background-color: $color-1;
+		}
+	}
+
+	&__prev {
+		position: absolute;
+		width: 60px;
+		cursor: pointer;
+		height: 60px;
+		left: -15px;
+		top: 45px;
+		padding: 10px;
+
+		&:before {
+			left: 0;
+		}
+
+		@include bp(900px) {
+			display: none;
+		}
+
+		.previous {
+			display: block;
+			background-color: desaturate(lighten($color-1, 10%), 25%);
+			z-index: 1;
+			position: relative;
+			height: 100%;
+			width: 100%;
+			border: 1px solid $white;
+			font-size: 25px;
+			text-align: center;
+			padding-top: 2px;
+			color: $white;
+		}
+	}
+
+	&__next {
+		position: absolute;
+		width: 60px;
+		cursor: pointer;
+		height: 60px;
+		right: -15px;
+		top: 45px;
+		padding: 10px;
+
+		&:before {
+			right: 0;
+		}
+
+		@include bp(900px) {
+			display: none;
+		}
+
+		.next {
+			display: block;
+			background-color: desaturate(lighten($color-1, 10%), 25%);
+			z-index: 1;
+			position: relative;
+			height: 100%;
+			width: 100%;
+			border: 1px solid $white;
+			font-size: 25px;
+			text-align: center;
+			padding-top: 2px;
+			color: $white;
+		}
+	}
+
+	&__wrapper-content {
+		z-index: 0;
+
+		&.active {
+			z-index: 1;
+		}
+
+		.slick-track {
+			transform: none !important;
+		}
+		.slick-list {
+			transform: none !important;
+		}
+	}
+
+	&__wrapper-nav {
+		margin-top: -60px;
+
+		.slick-track {
+			text-align: center;
+			padding: 16px 0;
+			width: 100% !important;
+			transform: none !important;
+		}
+
+		.slick-slide {
+			float: none !important;
+			display: inline-block !important;
+		}
+	}
+
+	&__slide-nav {
+		width: auto !important;
+		margin: 0 20px;
+		border: 1px solid $white;
+		box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+
+		&.slick-current,
+		&:focus {
+			transform: scale(1.2);
+			outline: none;
+		}
+
+		@include bp(900px) {
+			margin: 0 8px;
+		}
+	}
+
+
+	.image-thumnbnail {
+		height: 120px;
+		width: 120px;
+
+		@include bp(900px) {
+			height: 50px;
+			width: 50px;
+		}
+	}
+}

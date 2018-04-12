@@ -1,0 +1,16 @@
+{
+  "name": "sass-runner",
+  "version": "1.0.0",
+  "description": "This is to complile sass",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass -w -o='../' style.scss"
+    },
+  "author": "",
+  "license": "ISC"
+}

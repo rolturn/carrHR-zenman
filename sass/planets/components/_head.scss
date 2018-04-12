@@ -1,0 +1,457 @@
+/*------------------------------------*\
+    ::Header
+\*------------------------------------*/
+.main-head{
+    position: relative;
+    &--no-hero {
+        &:before { // spacer for nav
+            content: "";
+            display: block;
+            height: 130px;
+        }
+    }
+    &__nav{
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9990;
+        transition: top 400ms;
+
+
+        body:not(.is-active) &.nav--hidden {
+            top: -125px;
+        }
+    }
+}
+.head-nav__desktop {
+    background-color: rgba(white, 0.9);
+    display: block;
+    box-shadow: 0px 0px 26px -6px rgba(0,0,0,0.75);
+
+    @include bp(1000px) {
+        display: none;
+    }
+
+    .head-nav__inner {
+        align-items: center;
+        position: relative;
+    }
+
+    .head-nav__logo {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+
+        a {
+            display: block;
+            line-height: 0;
+        }
+
+        svg {
+            width: 100%;
+            height: 40px;
+            fill: $color-1;
+        }
+    }
+
+    .head-nav__utility {
+        background-color: $white;
+        position: fixed;
+        top: 0;
+        right: 33px;
+        border-bottom-right-radius: 8px;
+        border: 1px solid lightgray;
+        border-top: 0;
+        border-bottom-left-radius: 8px;
+        padding: 5px 10px 5px 1px;
+        white-space: nowrap;
+        z-index: 3;
+
+        @media (min-width: 1230px){
+            right: calc(50% - 615px + 33px);
+        }
+
+        a {
+            text-transform: uppercase;
+            color: $color-2;
+            font-weight: 600;
+            padding-left: 35px;
+            position: relative;
+
+            &:hover {
+                color: $color-1;
+            }
+
+            &:before {
+                content: '';
+                height: 18px;
+                width: 18px;
+                position: absolute;
+                left: 10px;
+                top: -2px;
+            }
+
+            &.lease {
+                &:before {
+                    background: url(images/LeaseEvaluation_Icon.svg) no-repeat center center;
+                }
+            }
+
+            &.broker {
+                &:before {
+                    background: url(images/FindaBroker_Icon.svg) no-repeat center center;
+                }
+            }
+        }
+    }
+
+    // top level nav
+    .menu {
+        & > li.menu-item { // for specificity
+            margin-top: 28px;
+            padding: 25px 10px;
+            & > a {
+                position: relative;
+                display: block;
+                padding: 0;
+                font-weight: 500;
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 2px;
+                    right: 2px;
+                    height: 2px;
+                    background-color: $color-2;
+                    transform: translateY(-16px);
+                    transition: 400ms;
+                    opacity: 0;
+                }
+
+                &:after {
+                    position: absolute;
+                    bottom: 0;
+                    left: 2px;
+                    right: 2px;
+                    height: 2px;
+                    background: $color-2;
+                    content: '';
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    transform: translateY(12px);
+                }
+            }
+
+            &:hover,
+            &.current_page_parent,
+            &.current-menu-item {
+                & > a {
+                    &:before {
+                        transform: translateY(-8px);
+                        opacity: 1;
+                    }
+
+                    &:after {
+                        opacity: 1;
+                        transform: translateY(8px);
+                    }
+                }
+            }
+        }
+    }
+
+
+    .head-nav__navigation {
+
+        ul:not(.sub-menu) {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .sub-menu {
+            position: absolute;
+            display: none;
+            flex-wrap: wrap;
+            left: 0;
+            top: 100%;
+            background-color: rgba($white, .9);
+            border: 2px solid $color-1;
+            border-top: 0;
+
+            // &, /*DEBUG*/
+            &.slide {
+                display: flex;
+                z-index: 9;
+                min-width: 250%; /* TODO: un-band-aid this IE fix */
+            }
+
+            li {
+                width: 100%;
+
+                &:hover {
+                    a {
+                        background-color: $color-5;
+                        color: $color-1;
+                    }
+                }
+            }
+
+            a {
+                width: 100%;
+                padding: 10px 15px;
+                display: block;
+                white-space: nowrap;
+                color: $color-2;
+                text-transform: capitalize;
+                font-weight: normal;
+                transition: all 400ms ease;
+
+                &:after {
+                    height: 0;
+                }
+            }
+
+        }
+
+        li {
+            display: inline-block;
+            padding: {left: 0; right: 0;}
+
+            &:before {
+                content: '';
+            }
+
+            a {
+                padding: 5px 10px 42px 10px;
+                text-transform: uppercase;
+                font-family: $fam-heading;
+                color: $color-1;
+                font-size: 15px;
+                font-weight: 600;
+                transition: color 400ms;
+            }
+        }
+    }
+}
+
+
+.head-nav__mobile {
+    display: none;
+    background-color: rgba(white, 0.9);
+    box-shadow: 0px 0px 26px -6px rgba(0,0,0,0.75);
+
+    @include bp(1000px) {
+        display: block;
+    }
+
+    .head-nav__phone {
+        position: absolute;
+        top: 20px;
+        right: 95px;
+        width: 40px;
+        height: 40px;
+        line-height: 160px;
+        overflow: hidden;
+        background-image: url("images/phone.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: transform 400ms;
+        &:hover,
+        &:active {
+            transform: scale(1.1);
+        }
+    }
+
+    .head-nav__main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    .head-nav__logo {
+        padding: 10px 0;
+        max-width: 135px;
+    }
+
+    .hamburger-helper {
+        text-align: right;
+    }
+
+    .hamburger .line {
+        width: 50px;
+        height: 8px;
+        background-color: $color-2;
+        display: block;
+        margin: 4px auto;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger:hover{
+        cursor: pointer;
+    }
+
+    /* SIX */
+
+    #hamburger-6.is-active{
+        transition: all 0.3s ease-in-out;
+        transition-delay: 0.6s;
+        transform: rotate(45deg);
+    }
+
+    #hamburger-6.is-active .line:nth-child(2){
+        width: 0px;
+    }
+
+    #hamburger-6.is-active .line:nth-child(1),
+    #hamburger-6.is-active .line:nth-child(3){
+        transition-delay: 0.3s;
+    }
+
+    #hamburger-6.is-active .line:nth-child(1){
+        transform: translateY(14px);
+    }
+
+    #hamburger-6.is-active .line:nth-child(3){
+        transform: translateY(-10px) rotate(90deg);
+    }
+
+    .mobile-dropdown {
+        backface-visibility: hidden; // prevent odd background color snapping in chrome
+        height: 0;
+        overflow-y: scroll;
+        background-color: $color-1-transparent;
+        height: 0px;
+        transition: all 500ms linear;
+        padding: 0 25px;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        box-shadow: inset 0 20px 20px -20px rgba(0,0,0,0.5);
+
+        &.is-active {
+            height: 100vh;
+            position: fixed;
+            width: 100%;
+            padding: 20px 25px 100px 25px;
+            box-sizing: border-box;
+        }
+
+        .head-nav__utility {
+            text-align: right;
+            a {
+                display: inline-block;
+                padding-right: 5px;
+                font-size: 1.6em;
+                border-bottom: 1px solid rgba($white, .5);
+                @include bp($max: 400px){
+                    min-width: 100%;
+                }
+                &:before {
+                    content: "";
+                    display: inline-block;
+                    background-image: url("images/glass.svg");
+                    width: 1em;
+                    height: 1em;
+                    margin-right: 10px;
+                    margin-bottom: -3px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                &.eval:before {
+                    background-image: url("images/LeaseEvaluation_Icon-white.svg");
+                }
+            }
+        }
+
+        ul {
+            padding-top: 20px;
+        }
+
+        li {
+            position: relative;
+            padding-right: 30px;
+            text-align: right;
+            &:hover {
+
+                &.menu-item-has-children {
+                &:after {
+                        color: $color-2;
+                    }
+                }
+
+                &.menu-item-has-children.active:after {
+                    color: $color-2;
+                }
+            }
+
+            &:before {
+                content: '';
+            }
+
+            &.menu-item-has-children {
+                &:after {
+                    content: '+';
+                    position: absolute;
+                    right: 0;
+                    top: 4px;
+                    font-size: 30px;
+                    color: $color-2;
+                    padding-left: 15px;
+                }
+
+                &.active {
+                    &:after {
+                        content: '¯';
+                        position: absolute;
+                        top: 18px;
+                        padding-left: 15px;
+                    }
+                }
+            }
+        }
+
+        .sub-menu {
+            display: none;
+            margin-top: -10px; // accounts for parent's padding (needed for spacing of siblings)
+            padding: 0;
+
+            li {
+                padding-right: 0;
+            }
+
+            a {
+                padding: 2px 0;
+                text-transform: none;
+                font-size: 1em;
+                color: rgba($white, .7);
+            }
+        }
+
+        a {
+            color: $white;
+            font-size: 25px;
+            font-family: $fam-body;
+            display: block;
+            padding: 7px 0;
+            transition: color 300ms;
+            &:hover {
+                color: $color-2;
+            }
+        }
+    }
+}
+
+#head-nav__phone {
+    text-align: center;
+
+    a {
+        margin: 2em auto;
+    }
+}

@@ -1,0 +1,233 @@
+/**
+	"Find a Broker" Page-Specific Styles
+ */
+.page-find-a-broker {
+	h1 {
+		color: $color-1;
+		font-size: 20px;
+		font-weight: 300;
+		letter-spacing: 1px;
+		margin-top: 48px;
+		padding-bottom: 24px;
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+
+		&:after {
+			background: $color-2;
+			bottom: 0;
+			content: "";
+			height: 2px;
+			left: 50%;
+			margin-left: -55px;
+			position: absolute;
+			width: 110px;
+		}
+	}
+}
+
+
+/**
+	Map Components
+ */
+.broker-dropdown {
+	text-align: center;
+	padding: 1.5em 1em !important;
+}
+
+.broker-dropdown select {
+	-webkit-appearance: none;
+	background: $color-4 url('images/dropdown-arrow.svg') center right no-repeat;
+	border-color: #9c9c9c;
+	border-radius: 0;
+	color: #4e4e4e;
+	display: inline-block;
+	height: 36px;
+	min-width: 200px;
+	font-size: 14px;
+	margin-left: 1em;
+}
+
+.broker-dropdown label {
+	font-size: 20px;
+	text-transform: uppercase;
+	color: $color-2;
+}
+
+.broker-map {
+	border: 3px solid $color-1;
+	overflow: hidden;
+	position: relative;
+	max-width: $galaxy;
+	margin: 0 auto 3em;
+	box-shadow: 0 3px 0 $color-2;
+
+	@include bp($max: $interstellar) {
+		display: none;
+	}
+
+	&__map {
+		height: 0;
+		// padding-bottom: 66.666%;
+		padding-bottom: 59.26%;
+	}
+
+	.cluster {
+		color: $color-1;
+	}
+}
+
+.broker-verticals {
+	background: $white;
+	box-shadow: 0 0 16px transparentize(black, 0.75);
+	display: none;
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	padding-bottom: 16px;
+
+	h4 {
+		font-size: 20px;
+		background-color: $color-1;
+		color: #fff;
+		padding: 16px;
+		margin: 0 0 16px;
+		text-align: center;
+	}
+}
+
+
+input[name=vertical] {
+	display: none;
+
+	&:checked + label {
+		color: $color-2;
+
+		&:after {
+			opacity: 1;
+		}
+	}
+
+	+ label {
+		position: relative;
+		display: block;
+		padding: 0 16px 0 40px;
+		margin: 8px 0;
+		line-height: 16px;
+		color: $color-1;
+		cursor: pointer;
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			line-height: 0;
+			border-radius: 50%;
+		}
+		&:before {
+			top: 0;
+			left: 16px;
+			width: 16px;
+			height: 16px;
+			border: 1px solid $color-2;
+		}
+		&:after {
+			top: 4px;
+			left: 20px;
+			width: 8px;
+			height: 8px;
+			background-color: $color-1;
+			opacity: 0;
+			transition: opacity 400ms;
+		}
+		&:hover {
+			color: $color-2;
+		}
+	}
+}
+
+
+.info-window {
+	color: $color-1;
+	font: 300 16px montserrat, sans-serif;
+	padding: 8px 16px 0;
+	min-width: 320px;
+	max-width: 420px;
+
+	&__heading {
+		position: relative;
+		display: flex;
+		align-items: center;
+		margin-bottom: 1em;
+	}
+
+	&__image {
+		border: 5px solid $color-1;
+		border-radius: 50%;
+		height: 120px;
+		width: 120px;
+		margin: 0 1em 0 0;
+		background-size: cover;
+		background-position: center;
+	}
+
+	&__link {
+		margin-top: .5em;
+	}
+
+	&__info {
+		display: block;
+
+		&--region {
+			color: $color-2;
+		}
+	}
+
+	&__list {
+		margin-top: 1em;
+
+		li:before {
+			top: -3px;
+		}
+	}
+
+	&__subtitle {
+		font-size: 16px;
+		margin-top: 16px;
+		padding-top: 16px;
+		position: relative;
+		text-align: left;
+		border-bottom: 2px solid $color-2;
+		display: inline-block;
+		padding-bottom: 8px;
+		margin-bottom: 16px;
+
+		&:after {
+			display: none;
+		}
+	}
+
+	&__title {
+		font-size: 22px;
+		margin: 0;
+		text-transform: uppercase;
+		hyphens: auto;
+	}
+
+	&__all {
+		margin: 1em 0 0;
+
+	}
+}
+
+
+#brokers-state-link {
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+	display: none;
+
+	&:hover {
+		background-color: $color-1;
+		color: $white;
+	}
+}

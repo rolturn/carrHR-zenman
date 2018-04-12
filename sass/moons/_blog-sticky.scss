@@ -1,0 +1,97 @@
+.blog-sticky{
+	float: left;
+    width: 100%;
+    padding-bottom: 3em;
+	&__wrap {
+		.blog-sticky__text {
+			min-height: 300px;
+			@include bp(689px){
+				min-height: 0;
+			}
+		}
+	}
+	&__post{
+		position: relative;
+		width: 33%;
+		float: left;
+		padding: $pad;
+		&:first-of-type{
+			padding-right: 4em;
+			.blog-sticky__text{
+				right: 4em;
+			}
+			@include bp(900px){
+				padding-right: $pad;
+				.blog-sticky__text{
+					right: $pad;
+				}
+			}
+		}
+		&:nth-of-type(2){
+			padding-right: 2em;
+			padding-left: 2em;
+			.blog-sticky__text{
+				right: 2em;
+				left: 2em;
+			}
+			@include bp(900px){
+				padding-right: $pad;
+				padding-left: $pad;
+				.blog-sticky__text{
+					right: $pad;
+					left: $pad;
+				}
+			}
+		}
+		&:last-of-type{
+			padding-left: 4em;
+			.blog-sticky__text{
+				left: 4em;
+			}
+			@include bp(900px){
+				padding-left: $pad;
+				.blog-sticky__text{
+					left: $pad;
+				}
+			}
+		}
+		@include bp(690px){
+			width: 100%;
+		}
+	}
+	&__image{
+		height: emCalc(400px);
+		background: $color-1;
+		div{
+			height: 100%;
+		}
+	}
+	&__text{
+		position: absolute;
+		bottom: 0;
+		margin: 0 $pad;
+		right: $pad;
+		left: $pad;
+		background: rgba(0, 0, 0, 0.7);
+		border: 1px solid $white;
+		padding: $pad;
+		h1{
+			font-size: emCalc(16pt);
+			padding-bottom: .5em;
+			a{
+				color: $white;
+			}
+		}
+	}
+	&__tags{
+		span:last-of-type{
+			display: none;
+		}
+	}
+	&_content{
+		padding: .75em 0;
+	}
+}
+.archive .blog-torso__content {
+  justify-content: center;
+}

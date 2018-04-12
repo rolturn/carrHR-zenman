@@ -1,0 +1,152 @@
+.hero {
+	line-height: 0;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.main-torso { // overlap
+	background-color: #fff;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-text {
+	min-height: 90vh;
+	width: 100%;
+	border-bottom: 4px solid $color-1;
+	display: flex;
+	align-items: center;
+	text-align: left;
+	position: relative;
+	overflow: hidden;
+	line-height: 1.4;
+
+	&__background {
+		position: absolute;
+		width: 100%;
+		height: 90vh;
+		top: 0;
+		left: 0;
+		transition: all 2s ease;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+
+		&.active {
+			transform: scale(1.1);
+		}
+	}
+
+	&__inner {
+		padding: 180px 20px 80px 10px;
+		flex: 1;
+	}
+
+
+	h1 {
+		text-transform: uppercase;
+		color: $white;
+		font-family: $fam-heading;
+		font-size: 39px;
+		font-weight: normal;
+		display: inline-block;
+		padding: 15px;
+		margin-bottom: 2px;
+		line-height: 1.2;
+
+		@include bp ($interstellar) {
+			font-size: 22px;
+		}
+	}
+	sub{
+		top: -0.55em;
+		font-size: 70%;
+
+	}
+}
+
+.js-from-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition-property: transform, opacity;
+    transition-duration: 2s;
+    transition-delay: 200ms;
+    @for $i from 1 to 50 {
+      &:nth-child(#{$i}) { transition-delay: $i * 150ms; }
+    }
+    &.active{
+        transform: translate(0px, 0px);
+        opacity: 1;
+    }
+}
+
+
+.hero-image {
+	width: 100%;
+	min-height: 590px;
+	height: 50vh;
+	position: relative;
+	overflow: hidden;
+	&__background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		transition: all 2s ease;
+		z-index: -1;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		&--fixed {
+			position: fixed;
+		}
+		&.active {
+			transform: scale(1.1);
+		}
+	}
+	@include bp($interstellar){
+		min-height: 350px;
+	}
+}
+#hero-cta{
+	position: absolute;
+	z-index: 10;
+	right: -1px;
+	top: 20em;
+	padding: 1.5em 1em;
+	background: $color-1;
+	border: 1px solid $white;
+	max-width: 350px;
+	line-height: 1;
+
+
+	a{
+		color: $white;
+	}
+
+	&.stick{
+		position: fixed;
+		top: 150px;
+		@include bp($planetary){
+			top: auto;
+			bottom: 0;
+			width: 100%;
+			max-width: none;
+			text-align: center;
+			opacity: .8;
+			transform: translateY(100%);
+			transition: transform 300ms;
+		}
+	}
+}
+.nav--show {
+	& + .hero {
+		#hero-cta.stick {
+			@include bp($planetary){
+				transform: translateY(0);
+			}
+		}
+	}
+}

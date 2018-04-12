@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    ::Base
+    ------------------------------------*
+    ::Normalize.css v3.0.0 | MIT License | git.io/normalize
+\*------------------------------------*/
+html {
+	font-family: $fam-body;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+body {
+	margin: 0;
+	font-size: 14px;
+    letter-spacing: .015em;
+    line-height: 1.4;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+.cf:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+
+.js-ease {
+    opacity: 0;
+    transform: translateY(25px);
+    transition-property: transform, opacity;
+    transition-duration: 2s;
+    transition-delay: 200ms;
+    @for $i from 1 to 30 {
+      &:nth-child(#{$i}) { transition-delay: $i * 150ms; }
+    }
+    &.active{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ease-me-in {
+	opacity: 0;
+	animation: easeme 2s forwards;
+	animation-delay: 150ms;
+}
+
+.bgcolor-blue {
+	background-color: $color-1;
+	color: #fff;
+
+	h3 {
+		color: #fff;
+	}
+
+	.button {
+		@extend %button--light;
+	}
+}
+
+.bgcolor-gray {
+	background-color: #ececec;
+}
+
+@keyframes easeme {
+	from {opacity: 0; transform: translateY(50%);}
+	to {opacity: 1; transform: translateY(0);}
+}
+[class*='module-'] ul {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}

@@ -1,0 +1,124 @@
+.module-testimonial-slider {
+	margin-top: 2em;
+	display: flex;
+	align-items: center;
+  @include bp($min: 576px) {
+    padding: 9em 0;
+  }
+
+	&__inner {
+    width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    @include bp(576px) {
+      background-color: rgba(0,0,0,0.7);
+      border: 10px solid #000;
+      box-shadow: 0 0 0 1px #fff inset;
+      padding-top: 3em;
+      padding-bottom: 3em;
+    }
+
+		@media (min-width: 576px){
+			width: 80%;
+		}
+		@media (min-width: 900px){
+			max-width: 800px;
+		}
+	}
+
+	&__text-content {
+		font-size: 20px;
+		color: $white;
+    @include bp($min: 576px) {
+      padding: 2em;
+      background-color: rgba(0, 0, 0, .7);
+      border: 10px solid #000;
+      box-shadow: 0 0 0 1px $white inset;
+    }
+
+		@media (min-width: 900px){
+			padding: 2em 3em;
+		}
+
+		@media (min-width: 1200px){
+			padding: 2em 4em;
+		}
+	}
+
+	&__quotes {
+		height: 10em;
+		position: relative;
+
+		div {
+			position: absolute;
+			width: 100%;
+			opacity: 0;
+			transition: opacity .5s ease-out;
+
+			&.shown {
+				opacity: 1;
+			}
+		}
+	}
+
+	blockquote{
+		font-style: normal;
+		text-align: justify;
+		margin: 0;
+		font-size: 24px;
+
+		&:before {
+			display: none;
+		}
+	}
+	cite {
+		font-size: 24px;
+		display: block;
+		font-style: normal;
+		text-align: right;
+	}
+	h3 {
+		font-size: 30px;
+		color: $white;
+		&:after {
+			position: static;
+			width: 50%;
+			display: block;
+			margin: 1em auto 0;
+			height: 3px;
+		}
+	}
+	strong{
+		color: $color-2;
+		font-weight: 600;
+	}
+
+	&__nav {
+		z-index: 2;
+		display: block;
+		font-size: 50px;
+		line-height: 1;
+		text-align: center;
+		color: $white;
+		cursor: pointer;
+		flex: 1;
+	}
+
+	&__prev {
+    display: none;
+		text-align: right;
+    @include bp($min: 768px) {
+      display: block;
+    }
+	}
+	&__next {
+    display: none;
+		text-align: left;
+    @include bp($min: 768px) {
+      display: block;
+    }
+	}
+}

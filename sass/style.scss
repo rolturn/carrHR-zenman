@@ -1,0 +1,69 @@
+// Ryan stuff here - using Codekit which can't compile the above
+
+/*!
+Theme Name: Zenman Carr Theme
+Description: WordPress Theme built for CarrHR by Zenman.
+*/
+
+/*
+NOTE: this SASS file was structured to work with Codekit, which does not support
+directory imports (e.g., @import "stars/zemplate/*")
+
+The import rules herein can be replaced by copying and pasting from your
+original master SASS file, which is backed up at sass/style.scss.bak
+ */
+@import "stars/zemplate/variables";
+@import "stars/zemplate/extends";
+@import "stars/zemplate/mixins";
+
+@import "stars/base/base";
+@import "stars/base/embedded_content";
+@import "stars/base/fonts";
+@import "stars/base/forms";
+@import "stars/base/grouping_content";
+@import "stars/base/html5_display_definitions";
+@import "stars/base/links";
+@import "stars/base/tables";
+@import "stars/base/text_level_semantics";
+
+$row-width: 1140px;
+$include-html-classes: false;
+@import "stars/foundation/scss/foundation/components/grid";
+
+@import "planets/components/foot";
+@import "planets/components/head";
+@import "planets/components/map";
+@import "planets/layouts/torso_with_sidebar";
+@import "planets/layouts/wrappers";
+@import "planets/wp/wp_defaults";
+
+@import "moons/accordion";
+@import "moons/half-half";
+@import "moons/brokers";
+@import "moons/blog-sticky";
+@import "moons/blog";
+@import "moons/bulleted-list";
+@import "moons/callout";
+@import "moons/case-studies";
+@import "moons/comparison";
+@import "moons/events";
+@import "moons/form";
+@import "moons/hero";
+@import "moons/image-gallery";
+@import "moons/link-farm";
+@import "moons/one-column-layout";
+@import "moons/resources";
+@import "moons/slider";
+@import "moons/team";
+@import "moons/testimonials";
+@import "moons/testimonials-slider";
+@import "moons/two-column-layout";
+@import "moons/popup";
+@import "moons/pwd-pro";
+
+@import "comets/cf7";
+@import "comets/fourohfour";
+@import "comets/modifications";
+@import "comets/slick";
+
+@import "debris/shame";

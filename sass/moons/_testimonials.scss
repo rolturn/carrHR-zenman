@@ -1,0 +1,272 @@
+.testimonials {
+	padding: 0 0 40px;
+	position: relative;
+
+	&__inner {
+		@include bp($planetary){
+			padding: 10px;
+		}
+	}
+	&__background {
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-attachment: fixed;
+		background-size: cover;
+		padding: 10px 0 20px;
+	}
+
+	&__navigation {
+		padding: 0 0 40px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 1230px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	button {
+		border: 2px solid $color-2;
+		background-color: transparent;
+		text-transform: uppercase;
+		font-size: 20px;
+		padding: 20px 15px;
+		color: $color-1;
+		font-weight: 600;
+		font-family: $fam-body;
+		margin: .5em;
+		transition: all 400ms ease;
+		line-height: 1;
+	    background-image: none;
+		&:hover, &.active {
+			border-color: $color-1;
+			background-color: $color-1;
+			color: $white;
+		}
+
+	}
+
+	.current {
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		transition: all 300ms ease;
+
+		.testimonials__text {
+			border-color: transparent;
+		}
+	}
+
+	&__wrapper {
+		margin: 20px auto;
+		max-width: 1078px;
+	}
+
+	&__text {
+		padding: 30px 60px;
+
+		position: relative;
+		z-index: 2;
+		min-height: emCalc(100px);
+
+		@include bp($planetary){
+			padding: 10px 30px;
+
+		}
+
+		h4,p {
+			color: $white;
+			font-size: 23px;
+
+			@include bp($planetary){
+				font-size: 18px;
+			}
+
+		}
+		h4 {
+			padding-left: 20px;
+			position: relative;
+			text-align:right;
+
+			a {
+				font-weight: bold;
+
+				&:hover {
+					color: $white;
+				}
+			}
+
+			svg {
+				position: absolute;
+				left: -5px;
+				top: 0;
+				width: 20px;
+				height: 20px;
+				fill: $white;
+			}
+
+		}
+
+		p {
+			font-family: $fam-body;
+			text-align:justify;
+			b, strong{
+				font-weight:600;
+				color:$color-2;
+			}
+
+		}
+	}
+
+	&__single {
+ 	 	padding: 10px 0;
+		margin: 20px auto;
+		background-color: rgba(0, 54, 114, 0.85);
+		box-shadow: 0 0 0 10px #003773 inset, 0 0 0 11px rgba(255, 255, 255, 0.5) inset;
+
+ 	 	@include bp(900px) {
+ 	 		min-width: 95%;
+ 	 	}
+
+		&.has-image {
+			flex: auto;
+			width: 100%;
+			display: flex;
+			align-items: stretch;
+
+			.testimonials__image {
+				width: 55vw;
+				margin:1px 11px;
+				img {
+					width: 100%;
+				}
+				@include bp($planetary){
+					width: 50%;
+					margin:0;
+				}
+			}
+			.testimonials__text {
+				margin: 20px 2.5%;
+				width: 55vw;
+				height: auto;
+				@include bp($planetary){
+					width: 50%;
+				}
+			}
+			&.right{
+				.testimonials__text {
+					margin-left: 0;
+					@include bp($planetary){
+						margin: 20px 0 20px -20px;
+					}
+				}
+			}
+			&.left{
+				.testimonials__text {
+					margin-right: 0;
+					@include bp($planetary){
+						margin: 20px -20px 20px 0;
+					}
+				}
+			}
+		}
+	}
+	&__loading{
+		height: 12em;
+	}
+	.play-button{
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+
+.loader,
+.loader:before,
+.loader:after {
+	background: $color-2;
+	-webkit-animation: load1 1s infinite ease-in-out;
+	animation: load1 1s infinite ease-in-out;
+	width: 1em;
+	height: 4em;
+}
+.loader {
+	color: $color-2;
+	text-indent: -9999em;
+	margin: 88px auto;
+	position: relative;
+	font-size: 11px;
+	-webkit-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+	position: absolute;
+	top: 0;
+	content: '';
+}
+.loader:before {
+	left: -1.5em;
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+.loader:after {
+	left: 1.5em;
+}
+@-webkit-keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+@keyframes load1 {
+	0%,
+	80%,
+	100% {
+		box-shadow: 0 0;
+		height: 4em;
+	}
+	40% {
+		box-shadow: 0 -2em;
+		height: 5em;
+	}
+}
+.testimonial__image{
+	height: 100%;
+}
+.testimonials__video{
+	position: relative;
+}
+
+.testimonials__inner {
+
+}
+
+.scrolltoTop {
+	cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: $color-2;
+    color: $white;
+    position: fixed;
+    z-index: 99999;
+    bottom: 4em;
+    right: 2em;
+	opacity: 0;
+	transition: opacity .3s ease;
+	box-shadow: 5px 5px 20px rgba(0,0,0,.2);
+}
+
+.scrolltoTop.visible {
+	opacity: 1;
+}

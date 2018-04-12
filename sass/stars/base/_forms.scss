@@ -1,0 +1,126 @@
+/*------------------------------------*\
+    ::Forms
+    ------------------------------------*
+    ::Normalize.css v3.0.0 | MIT License | git.io/normalize
+\*------------------------------------*/
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
+button {
+	overflow: visible;
+}
+button,
+select {
+	text-transform: none;
+}
+select {
+	padding: .5em 3em .5em .6em;
+	background-color: $color-4;
+	background-image: url("images/arrow-no-stem.svg");
+	background-size: 1.2em;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1em) center;
+	border: 1px solid darken($color-4, 10%);
+	color: #7b7b7b;
+	border-radius: 0;
+	-webkit-appearance: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+.button,
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	@extend %button;
+}
+.button--light {
+	@extend %button--light;
+}
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+input {
+	line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+legend {
+	border: 0;
+	padding: 0;
+}
+optgroup {
+	font-weight: bold;
+}
+
+%input-like-text {
+	width: 100%;
+	margin-bottom: .5em;
+	padding: .5em .6em;
+	background-color: $color-4;
+	border: 1px solid darken($color-4, 10%);
+	border-radius: 0;
+	&:focus {
+		outline: none;
+		border-color: darken($color-4, 25%);
+	}
+}
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"] {
+	@extend %input-like-text;
+	box-sizing: border-box;
+}
+textarea {
+	@extend %input-like-text;
+	overflow: auto;
+}

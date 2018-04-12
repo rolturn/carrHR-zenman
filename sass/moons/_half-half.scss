@@ -1,0 +1,106 @@
+/*------------------------------------*\
+    ::Half/Half Module
+\*------------------------------------*/
+.half-half {
+	overflow: hidden;
+	position: relative;
+	background-size: 0;
+	@include clearfix();
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		display: block;
+		top: 0;
+		bottom: 0;
+		height: 100%;
+	}
+	&:before { // text bg
+		background-color: $color-1;
+		z-index: 1;
+		@include bp($planetary){
+			opacity: .8;
+		}
+	}
+	&:after { // image bg
+		background-image: inherit;
+		background-position: center;
+		background-size: cover;
+		z-index: 0;
+		transition: transform 2s 150ms;
+	}
+	&--text-left {
+		&:before { // text bg
+			left: 0;
+			right: 50%;
+		}
+		&:after { // image bg
+			left: 50%;
+			right: 0;
+		}
+		&:before,
+		&:after {
+			@include bp($planetary){
+				left: 0;
+				right: 0;
+			}
+		}
+		li,a{
+			color:$white;
+		}
+	}
+	// &, /* DEBUG */
+	&--image-left {
+		&:before { // text bg
+			left: 50%;
+			right: 0;
+		}
+		&:after { // image bg
+			left: 0;
+			right: 50%;
+		}
+		&:before,
+		&:after {
+			@include bp($planetary){
+				left: 0;
+				right: 0;
+			}
+		}
+		.half-half__text {
+			float: right;
+		}
+	}
+	&.active {
+		&:after {
+			transform: scale(1.1);
+		}
+	}
+	&__inner {
+		position: relative;
+		z-index: 10;
+		overflow: hidden;
+	}
+	&__text {
+		position: relative;
+		z-index: 10;
+		width: 50%;
+		color: #fff;
+		display: flex;
+		align-items: center;
+		min-height: 444px;
+		@include bp($planetary){
+			width: 100%;
+		}
+	}
+	&__title {
+		h3 {
+			color: #fff;
+		}
+	}
+	&__frame {
+		padding: 3.5vw;
+	}
+	.button {
+		@extend %button--light;
+	}
+}

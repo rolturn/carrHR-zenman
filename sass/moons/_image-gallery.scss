@@ -1,0 +1,148 @@
+.image-gallery {
+	padding: 40px 0;
+
+	&__wrapper {
+		display: flex;
+		position: relative;
+		padding-top: 30px;
+
+		@include bp(900px) {
+			flex-wrap: wrap;
+			padding-top: 0;
+		}
+	}
+
+	h3 {
+		font-size: 20px;
+		font-family: $fam-heading;
+		text-transform: uppercase;
+		font-weight: normal;
+		color: $color-1;
+		text-align: center;
+		position: relative;
+		margin: 0 0 30px;
+		padding-bottom: 20px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 100px;
+			margin-left: -50px;
+			height: 2px;
+			background-color: $color-2;
+		}
+	}
+
+	.image__prev,
+	.image__next {
+		cursor: pointer;
+		&:after {
+			content: '';
+			cursor: pointer;
+			position: absolute;
+			width: 1em;
+			height: 1em;
+			top: 45%;
+			z-index: 2;
+			color: $white;
+			text-indent: -20px;
+			font-size: 40px;
+    		overflow: hidden;
+    		border: 0 solid #fff;
+		}
+	}
+
+	.image__prev {
+
+		&:after {
+			left: 0;
+			margin-left: 20px;
+			border-width: 3px 0 0 3px;
+			transform: rotate(-45deg);
+
+    		@include bp (900px) {
+    			top: 32vw;
+    		}
+		}
+	}
+
+	.image__next {
+		&:after {
+			right: 50%;
+			margin-right: 40px;
+			border-width: 3px 3px 0 0;
+			transform: rotate(45deg);
+
+    		@include bp (900px) {
+    			right: 0;
+    			margin-right: 20px;
+    			top: 32vw;
+    		}
+		}
+	}
+
+	&__content {
+		width: 50%;
+
+		@include bp(900px) {
+			width: 100%;
+			padding: 20px 0;
+		}
+	}
+
+	&__nav {
+		width: 50%;
+		padding-left: 10px;
+
+		@include bp(900px) {
+			width: 100%;
+			padding: 0;
+		}
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+    align-content: flex-start;
+	}
+}
+
+
+.nav {
+	&__single {
+		flex: 0 0 25%;
+		padding: 0 12px 24px;
+
+		img {
+			cursor: pointer;
+			display: block;
+			width: 100%;
+		}
+
+		&.slick-current img,
+		img:hover {
+			transform: scale(1.15);
+			box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.7);
+			border: 0;
+		}
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+.content {
+	&__single {
+		img {
+			width: 100%;
+		}
+	}
+}
+@include bp($min: 900px) {
+  .image-gallery .slick-current {
+    max-height: 416px;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,79 @@
+/*------------------------------------*\
+    ::Popout
+\*------------------------------------*/
+.play-button {
+	position: absolute;
+	top: 50%;
+	cursor: pointer;
+	width: 80px;
+	border-radius: 100%;
+
+	img {
+		border: 1px solid $white;
+		border-radius: 100%;
+	}
+}
+.popout-content {
+	.youtube-container {
+		display: none;
+	}
+}
+.youtube-popout-root {
+    background-color: #000;
+	position: fixed;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	cursor: pointer;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -100;
+    opacity: 0;
+    transition: opacity 400ms, z-index 1ms 399ms;
+
+    &.active {
+	    z-index: 9999;
+	    opacity: 1;
+	    transition: opacity 399ms 1ms, z-index 1ms;
+    }
+
+	.youtube-container {
+		display: block;
+		position: relative;
+		max-width: 100vw;
+		margin: 0 20px;
+
+		iframe {
+			max-width: 100%;
+		}
+	}
+
+	.close {
+		padding: 10px;
+	    background-color: black;
+	    border: 1px solid white;
+	    border-radius: 100%;
+	    height: 30px;
+	    width: 30px;
+	    text-align: center;
+	    line-height: 0.7;
+	    top: -15px;
+	    right: -15px;
+	    position: absolute;
+	    cursor: pointer;
+	    color: $white;
+	}
+
+	.orient-play {
+		position: absolute;
+	    width: 100%;
+	    height: 100%;
+	    width: 100%;
+	    max-width: 648px;
+	    top: 0;
+	}
+}
+
