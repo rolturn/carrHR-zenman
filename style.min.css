@@ -6,7 +6,7 @@ Description: WordPress Theme built for CarrHR by Zenman.
 .bgcolor-blue .button,.button--light,.half-half .button,.form[style*="background"] input[type="submit"],.form.column-count-two .wpcf7 input[type="submit"],.link-farm--light .button,.one-column-content--light .button{border-color:#fff;background-color:transparent;color:#fff}
 .bgcolor-blue .button:hover,.button--light:hover,.half-half .button:hover,.form[style*="background"] input:hover[type="submit"],.form.column-count-two .wpcf7 input:hover[type="submit"],.link-farm--light .button:hover,.one-column-content--light .button:hover{background-color:#fff;color:#003773}
 html{font-family:"montserrat",Helvetica,Arial,sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-img{max-width:100%;height:auto}body{margin:0;font-size:14px;letter-spacing:.015em;line-height:1.4}
+img{max-width:100%;height:auto}body{margin:0;font-size:14px;font-weight:300;letter-spacing:.015em;line-height:1.4}
 *,*:before,*:after{-webkit-box-sizing:border-box;box-sizing:border-box}.cf:after{content:'';display:block;clear:both}
 .js-ease{opacity:0;-webkit-transform:translateY(25px);transform:translateY(25px);-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;-webkit-transition-duration:2s;transition-duration:2s;-webkit-transition-delay:200ms;transition-delay:200ms}
 .js-ease:nth-child(1){-webkit-transition-delay:150ms;transition-delay:150ms}.js-ease:nth-child(2){-webkit-transition-delay:300ms;transition-delay:300ms}

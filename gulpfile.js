@@ -116,7 +116,7 @@ gulp.task('styles', function () {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-		.pipe(sourcemaps.write('./s'))
+		.pipe(sourcemaps.write('./'))
 		.pipe(plumber.stop())
 		.pipe(gulp.dest('./'))
 		.pipe(filter('**/*.css')) // Filtering stream to only css files
