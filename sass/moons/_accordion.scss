@@ -99,11 +99,11 @@
     opacity: 1;
   }
 }
-.accordion-from-left {
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: from-left 1.5s 200ms forwards;
-    @for $i from 1 to 50 {
-      &:nth-child(#{$i}) { animation-delay: $i * 150ms; }
-    }
-}
+// .accordion-from-left {
+//     opacity: 0;
+//     transform: translateX(-50px);
+//     animation: from-left 1.5s 200ms forwards;
+//     @for $i from 1 to 50 {
+//       &:nth-child(#{$i}) { animation-delay: $i * 150ms; }
+//     }
+// }

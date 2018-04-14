@@ -30,20 +30,20 @@ body {
 }
 
 
-.js-ease {
-    opacity: 0;
-    transform: translateY(25px);
-    transition-property: transform, opacity;
-    transition-duration: 2s;
-    transition-delay: 200ms;
-    @for $i from 1 to 30 {
-      &:nth-child(#{$i}) { transition-delay: $i * 150ms; }
-    }
-    &.active{
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
+// .js-ease {
+//     opacity: 0;
+//     transform: translateY(25px);
+//     transition-property: transform, opacity;
+//     transition-duration: 2s;
+//     transition-delay: 200ms;
+//     @for $i from 1 to 30 {
+//       &:nth-child(#{$i}) { transition-delay: $i * 150ms; }
+//     }
+//     &.active{
+//         transform: translateY(0);
+//         opacity: 1;
+//     }
+// }
 
 .ease-me-in {
 	opacity: 0;

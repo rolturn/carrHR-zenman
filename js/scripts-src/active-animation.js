@@ -1,4 +1,3 @@
-// .js-line-animation, .js-ease, .js-from-left, .js-scale
 var activateAnimation = function() {
 	$(".js-line-animation, .js-ease, .js-from-left, .js-scale").each(function(){
 		var $this = $(this);
@@ -42,6 +41,6 @@ jQuery(function($){
 		$(window).scroll();
 	});
 	activateAnimation();
-	// hoverStick($('.resources__all').children());
+	hoverStick($('.resources__all').children());
 	addFlash($('.footer__social'));
 });

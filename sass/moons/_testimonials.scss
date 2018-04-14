@@ -37,8 +37,10 @@
 		margin: .5em;
 		transition: all 400ms ease;
 		line-height: 1;
-	    background-image: none;
-		&:hover, &.active {
+    background-image: none;
+
+		&.active,
+		&:hover {
 			border-color: $color-1;
 			background-color: $color-1;
 			color: $white;

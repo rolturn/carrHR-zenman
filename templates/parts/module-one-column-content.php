@@ -30,21 +30,21 @@ if ($background_image){
 $heading = $text = $button = '';
 
 if (get_sub_field('heading')){
-	$heading = '<div class="one-column-content__heading js-ease"><h3>'.get_sub_field('heading').'</h3></div>';
+	$heading = '<div class="one-column-content__heading"><h3>'.get_sub_field('heading').'</h3></div>';
 }
 
 if (get_sub_field('text')){
-	$text = '<div class="one-column-content__text js-ease">'. get_sub_field('text') .'</div>';
+	$text = '<div class="one-column-content__text">'. get_sub_field('text') .'</div>';
 }
 
 if (get_sub_field('add_a_button')){
-	$button = '<div class="one-column-content__button js-ease"><a class="button" href="'.get_sub_field('button_link').'">'.get_sub_field('button_text').'</a></div>';
+	$button = '<div class="one-column-content__button"><a class="button" href="'.get_sub_field('button_link').'">'.get_sub_field('button_text').'</a></div>';
 }
 
 ?>
 <section class="<?php echo $classes; ?>">
 	<?php if($background_image) : ?>
-		<div class="one-column-content__background js-scale" style="background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;"></div>
+		<div class="one-column-content__background" style="background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;"></div>
 	<?php endif;
 
 	// if post parent is the find a broker page

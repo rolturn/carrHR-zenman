@@ -44,7 +44,7 @@ var reload = browserSync.reload
 var autoprefixer = require('gulp-autoprefixer') // Autoprefixing magic
 var minifycss = require('gulp-uglifycss')
 var filter = require('gulp-filter')
-var uglify = require('gulp-uglify')
+var uglify = require('gulp-uglify-es').default
 var imagemin = require('gulp-imagemin')
 var newer = require('gulp-newer')
 var rename = require('gulp-rename')
@@ -158,16 +158,16 @@ gulp.task('vendorsJs', function() {
 */
 
 gulp.task('scriptsJs', function() {
-	return gulp.src('./js/scripts-src/*.js')
+	return gulp.src('js/scripts-src/*.js')
 				.pipe(concat('scripts.js'))
-				.pipe(gulp.dest('./js/'))
-    		// .pipe(rename({ suffix: '.min' }))
-				.pipe(rename({
+				.pipe(gulp.dest('js'))
+  				.pipe(rename({
 					basename: "scripts",
 					suffix: '.min'
 				}))
-				.pipe(uglify())
-				.pipe(gulp.dest('./js/'))
+				// .pipe(uglify())
+				.pipe(gulp.dest('js'))
+        .pipe(reload({stream:true})) // Inject Styles when style file is created
 				.pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 

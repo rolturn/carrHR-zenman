@@ -240,10 +240,9 @@ if ( function_exists( 'fly_add_image_size' ) ) {
 }
 
 
-
-
 /*------------------------------------*\
 	::cURL request for svgs
+	@todo test to see if this can be removed replaced these icons with fontawesome
 \*------------------------------------*/
 function get_svg_data($url) {
 	$ch = curl_init();
@@ -390,7 +389,7 @@ function prefix_load_term_posts () {
 				<?php if(get_field('add_testimonial_video')) : ?>
 					<?php $video_url = get_youtube_id(get_field('video')); ?>
 					<div class="testimonials__image testimonials__video" style="background: url(https://img.youtube.com/vi/<?php echo $video_url ?>/hqdefault.jpg) no-repeat center center; background-size: 110%;">
-						<div class="testimonial__image js-scale"></div>
+						<div class="testimonial__image"></div>
 						<div class="orient-play">
 							<div class="play-button js-popout-play-button">
 								<img class="actual-play-button" src="<?php echo get_template_directory_uri(); ?>/images/play-button-video.png" alt="Play Button">
@@ -433,7 +432,7 @@ function prefix_load_term_posts () {
 				<?php if(get_field('add_testimonial_video')) : ?>
 					<?php $video_url = get_youtube_id(get_field('video')); ?>
 					<div class="testimonials__image testimonials__video" style="background: url(https://img.youtube.com/vi/<?php echo $video_url ?>/hqdefault.jpg) no-repeat center center; background-size: 110%;">
-						<div class="testimonial__image js-scale"></div>
+						<div class="testimonial__image"></div>
 						<div class="orient-play">
 							<div class="play-button js-popout-play-button">
 								<img class="actual-play-button" src="<?php echo get_template_directory_uri(); ?>/images/play-button-video.png" alt="Play Button">
@@ -503,7 +502,7 @@ function twocolumn_content_layout($lr, $lines){
 			$bg_img = ' style="background-image: url('. $background_image['url'] .');"';
 		}
 
-		echo '<div class="'. $lr .'-column-content js-ease">';
+		echo '<div class="'. $lr .'-column-content">';
 		if($bg_img){
 			echo '<div class="'. $lr .'-column-content-bg-img"'.$bg_img.'></div>';
 		}
@@ -538,8 +537,8 @@ function twocolumn_content_video($lr, $heading = ''){
 			echo '<h3>'. $heading .'</h3>';
 		}
 
-		echo '<div class="'. $lr .'-column-content__video js-ease">';
-			echo '<div class="'. $lr .'-column-content__video-background js-scale" style="background: url(https://img.youtube.com/vi/'. $video_url .'/hqdefault.jpg) no-repeat center center; background-size: cover;"></div>';
+		echo '<div class="'. $lr .'-column-content__video">';
+			echo '<div class="'. $lr .'-column-content__video-background" style="background: url(https://img.youtube.com/vi/'. $video_url .'/hqdefault.jpg) no-repeat center center; background-size: cover;"></div>';
 			echo '<div class="orient-play">';
 				echo '<div class="play-button js-popout-play-button"><img class="actual-play-button" src="'. get_template_directory_uri() .'/images/play-button-video.png" alt="Play Button"></div>';
 				echo '<div class="js-youtube-popout popout-content">';
@@ -558,7 +557,7 @@ function twocolumn_content_slider($lr, $heading = ''){
 		if ($heading){
 			echo '<h3>'. $heading .'</h3>';
 		}
-		echo '<div class="'. $lr .'-column-content__text js-ease js-two-col-slider">';
+		echo '<div class="'. $lr .'-column-content__text js-two-col-slider">';
 			while(have_rows($lr.'_text_slider')){
 				the_row();
 				echo '<div class="'. $lr .'-column-content__slide">';
@@ -570,7 +569,7 @@ function twocolumn_content_slider($lr, $heading = ''){
 		if (get_sub_field( $lr.'_add_a_button' )){
 			$link = get_sub_field( $lr.'_button_link' );
 			$text = get_sub_field( $lr.'_button_text' );
-			echo '<div class="'. $lr .'-column-content__buttons js-ease"><a href="'. $link .'" class="button">'. $text .'</a></div>';
+			echo '<div class="'. $lr .'-column-content__buttons"><a href="'. $link .'" class="button">'. $text .'</a></div>';
 		}
 	}
 }
@@ -587,12 +586,12 @@ function twocolumn_content_image($lr, $heading = ''){
 	if ($heading){
 		echo '<h3>'. $heading .'</h3>';
 	}
-	echo '<div class="'. $lr .'-column-content__image js-ease'. $taller .'">';
-	echo '<div class="'. $lr .'-column-content__image-background js-scale" style="'. $img_bg .' background-size: cover;"></div></div>';
+	echo '<div class="'. $lr .'-column-content__image'. $taller .'">';
+	echo '<div class="'. $lr .'-column-content__image-background" style="'. $img_bg .' background-size: cover;"></div></div>';
 }
 
 function twocolumn_content_text($lr, $heading = ''){
-	echo '<div class="'. $lr .'-column-content__text js-ease">';
+	echo '<div class="'. $lr .'-column-content__text">';
 		if ($heading){
 			echo '<h3>'. $heading .'</h3>';
 		}
@@ -602,7 +601,7 @@ function twocolumn_content_text($lr, $heading = ''){
 		if (get_sub_field( $lr.'_add_a_button' )){
 			$link = get_sub_field( $lr.'_button_link' );
 			$text = get_sub_field( $lr.'_button_text' );
-			echo '<div class="'. $lr .'-column-content__buttons js-ease"><a href="'. $link .'" class="button">'. $text .'</a></div>';
+			echo '<div class="'. $lr .'-column-content__buttons"><a href="'. $link .'" class="button">'. $text .'</a></div>';
 		}
 	echo '</div>';
 }
