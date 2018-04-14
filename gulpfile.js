@@ -140,7 +140,7 @@ gulp.task('styles', function () {
 gulp.task('vendorsJs', function() {
 	return 	gulp.src(['./js/vendor/*.js', project.bower+'**/*.js'])
 				.pipe(concat('vendors.js'))
-				.pipe(gulp.dest('./js'))
+				.pipe(gulp.dest('./js/'))
 				.pipe(rename( {
 					basename: "vendors",
 					suffix: '.min'
@@ -158,10 +158,11 @@ gulp.task('vendorsJs', function() {
 */
 
 gulp.task('scriptsJs', function() {
-	return 	gulp.src('./js/scripts-src/*.js')
+	return gulp.src('./js/scripts-src/*.js')
 				.pipe(concat('scripts.js'))
-				.pipe(gulp.dest('./js'))
-				.pipe(rename( {
+				.pipe(gulp.dest('./js/'))
+    		// .pipe(rename({ suffix: '.min' }))
+				.pipe(rename({
 					basename: "scripts",
 					suffix: '.min'
 				}))
@@ -273,6 +274,6 @@ gulp.task('buildImages', function() {
  gulp.task('default', ['styles', 'vendorsJs', 'scriptsJs', 'images', 'browser-sync'], function () {
  	gulp.watch('./images/raw/**/*', ['images']);
  	gulp.watch('./sass/**/*.scss', ['styles']);
- 	gulp.watch('./js/**/*.js', ['scriptsJs', browserSync.reload]);
+ 	gulp.watch('./js/**/*.js', ['scriptsJs']);
 
  });

@@ -102,7 +102,18 @@ function wp_nav_menu_shortcode($atts, $content = null) {
         'theme_location'  => $theme_location));
 }
 add_shortcode("wpnavmenu", "wp_nav_menu_shortcode");
-
+
+/*------------------------------------*\
+    //Admin Favicon
+\*------------------------------------*/
+
+function add_favicon() {
+	$favicon_url = get_stylesheet_directory_uri() . '/favicon_admin.png';
+	echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
+}
+add_action('login_head', 'add_favicon');
+add_action('admin_head', 'add_favicon');
+
 /*------------------------------------*\
     //Continue Reading Link
 \*------------------------------------*/
