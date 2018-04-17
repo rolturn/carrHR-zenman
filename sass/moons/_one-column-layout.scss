@@ -3,6 +3,80 @@
 	overflow: hidden;
 	font-size: 17px;
 
+	h1 {
+		color: $color-1;
+		letter-spacing: -.035em;
+		font-size: 2.5em;
+		font-weight: 200;
+	}
+
+	&__page-header {
+    margin-bottom: 40px;
+		padding: 40px 40px 15px;
+    font-weight: 200;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: -.035em;
+    text-align: center;
+    &:after {
+  		content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      height: 2px;
+      background-color: $color-2;
+  	}
+	}
+
+	&__heading {
+    margin-bottom: 40px;
+		padding: 40px 40px 15px;
+    font-weight: 200;
+    position: relative;
+    text-transform: uppercase;
+    text-align: center;
+    &:after {
+  		content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      height: 2px;
+      background-color: $color-2;
+  	}
+	}
+
+  h2 {
+    color: $color-1;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+	h3 {
+		font-size: 20px;
+		font-family: $fam-heading;
+		text-transform: uppercase;
+		font-weight: normal;
+		color: $color-1;
+		position: relative;
+		margin: 25px 0;
+		padding-bottom: 20px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 100px;
+			margin-left: -50px;
+			height: 2px;
+			background-color: $color-2;
+		}
+	}
+
 	&--light {
 		&,
 		h1, h2, h3, h4, h5, h6 {
@@ -14,7 +88,11 @@
 	}
 	&--dark {
 		h1, h2, h3, h4, h5, h6 {
-			color: $color-1;
+			color: #fff;
+			font-size: 3em;
+			font-weight: 200;
+			letter-spacing: -.035em;
+			padding: 20px;
 		}
 	}
 	&--orange {
@@ -49,32 +127,6 @@
 
 		&.active {
 			// transform: scale(1.1);
-		}
-	}
-
-	h2 {
-	    font-size: 23px;
-	}
-
-	h3 {
-		font-size: 20px;
-		font-family: $fam-heading;
-		text-transform: uppercase;
-		font-weight: normal;
-		color: $color-1;
-		position: relative;
-		margin: 25px 0;
-		padding-bottom: 20px;
-
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			width: 100px;
-			margin-left: -50px;
-			height: 2px;
-			background-color: $color-2;
 		}
 	}
 

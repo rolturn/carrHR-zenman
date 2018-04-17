@@ -11,7 +11,7 @@
 	<div class="resources__inner">
 
 		<div class="resources__title">
-			<h3><?php echo $title; ?></h3>
+			<h2><?php echo $title; ?></h2>
 		</div>
 
 		<div class="resources__wrapper">

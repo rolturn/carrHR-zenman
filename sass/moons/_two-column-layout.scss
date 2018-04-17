@@ -45,9 +45,56 @@
 
 	}
 
-	&__heading {
-		padding-top: 40px;
+  &__page-header {
+    margin-bottom: 40px;
+		padding: 40px 40px 15px;
+    font-weight: 200;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: -.035em;
+    &:after {
+  		content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      height: 2px;
+      background-color: $color-2;
+  	}
 	}
+
+	&__heading {
+    margin-bottom: 40px;
+		padding: 40px 40px 15px;
+    font-weight: 200;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: -.035em;
+    text-align: center;
+    &:after {
+  		content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 200px;
+      margin-left: -100px;
+      height: 2px;
+      background-color: $color-2;
+  	}
+	}
+
+  h1 {
+    color: $color-1;
+    font-size: 3em;
+    font-weight: 200;
+  }
+
+  h2 {
+    color: $color-1;
+    font-size: 2em;
+    font-weight: 500;
+  }
 
 	p {
 		font-size: 17px;

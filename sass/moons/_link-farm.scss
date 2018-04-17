@@ -2,14 +2,14 @@
 	padding: 60px 0;
 	text-align: center;
 
-	h3 {
-		font-size: 20px;
+	h2 {
+		font-size: 2em;
+		letter-spacing: -.035em;
 		font-family: $fam-heading;
 		text-transform: uppercase;
 		font-weight: normal;
 		text-align: center;
 		position: relative;
-		margin: 0 0 30px;
 		padding-bottom: 20px;
 
 		&:after {
@@ -121,7 +121,7 @@
 	.button {
 		@extend %button--light;
 	}
-	h3,
+	h2,
 	.links__single {
 		color: #fff;
 	}

@@ -2,6 +2,8 @@
 
 $title = get_sub_field('title');
 
+$is_page_header = get_sub_field('is_page_header');
+
 ?>
 
 
@@ -9,9 +11,12 @@ $title = get_sub_field('title');
 
 	<div class="accordion__inner">
 
-		<div class="accordion__title">
-			<h3 class="js-ease"><?php echo $title; ?></h3>
-		</div>
+		<?php if($is_page_header): ?>
+			<div class="accordion__title__page-header"><h1><?php echo $title; ?></h1></div>
+		<?php else: ?>
+			<div class="accordion__title"><h2><?php echo $title; ?></h2></div>
+		<?php endif; ?>
+
 		<?php if( have_rows('add_qanda') ):
 		    while ( have_rows('add_qanda') ) : the_row();
 				?>

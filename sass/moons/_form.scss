@@ -31,11 +31,35 @@
 		}
 	}
 
-	h3 {
-		font-size: 20px;
+	h1 {
+		font-size: 3em;
 		font-family: $fam-heading;
 		text-transform: uppercase;
-		font-weight: normal;
+		font-weight: 200;
+		color: $color-1;
+		letter-spacing: -.035em;
+		text-align: center;
+		position: relative;
+		margin: 0;
+		padding: 20px 0;
+
+		&:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 100px;
+			margin-left: -50px;
+			height: 2px;
+			background-color: $color-2;
+		}
+	}
+
+	h2 {
+		font-size: 2em;
+		font-family: $fam-heading;
+		text-transform: uppercase;
+		font-weight: 500;
 		color: $color-1;
 		text-align: center;
 		position: relative;

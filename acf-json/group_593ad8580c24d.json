@@ -743,6 +743,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5ad50e7e844ff",
+                            "label": "Is Page Header?",
+                            "name": "is_page_header",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_5952b909397b7",
                             "label": "Title",
                             "name": "title",
@@ -1469,6 +1488,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5ad51c83801ed",
+                            "label": "Is Page Header?",
+                            "name": "is_page_header",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_594d4f9856f1d",
                             "label": "Background Image",
                             "name": "background_image",
@@ -1903,6 +1941,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5ad4fc194e360",
+                            "label": "Is Page Header?",
+                            "name": "is_page_header",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_594d42fcaee58",
                             "label": "Title",
                             "name": "title",
@@ -2220,6 +2277,25 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5ad4de143fe16",
+                            "label": "Is Page Header?",
+                            "name": "is_page_header",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
+                        {
                             "key": "field_5a037afd49cb9",
                             "label": "Background",
                             "name": "background",
@@ -2485,6 +2561,25 @@
                     "label": "2 Column Content",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5ad4df50c1ed2",
+                            "label": "Is Page Header?",
+                            "name": "is_page_header",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": ""
+                        },
                         {
                             "key": "field_59403b8f48994",
                             "label": "Heading",
@@ -3357,5 +3452,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1518106009
+    "modified": 1523915978
 }

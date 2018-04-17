@@ -1,5 +1,7 @@
 <?php
 
+$is_page_header = get_sub_field('is_page_header');
+
 $background_image = get_sub_field('background_image');
 
 $classes = 'module-one-column-content one-column-content';
@@ -30,7 +32,11 @@ if ($background_image){
 $heading = $text = $button = '';
 
 if (get_sub_field('heading')){
-	$heading = '<div class="one-column-content__heading"><h3>'.get_sub_field('heading').'</h3></div>';
+	if ($is_page_header) {
+		$heading = '<h1 class="one-column-content__page-header">'.get_sub_field('heading').'</h1>';
+	} else {
+		$heading = '<h2 class="one-column-content__heading">'.get_sub_field('heading').'</h2>';
+	}
 }
 
 if (get_sub_field('text')){

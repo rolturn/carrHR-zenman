@@ -1,4 +1,5 @@
 <?php
+	$is_page_header = get_sub_field('is_page_header');
 	$title = get_sub_field('title');
 	$text = get_sub_field('text');
 	$add_background_image = get_sub_field('add_background_image');
@@ -6,12 +7,17 @@
 	$column_count = get_sub_field('column_count');
 	$width = get_sub_field('width');
 	$form_shortcode = get_sub_field('form_shortcode');
+
 ?>
 <section class="module-form form column-count-<?php echo $column_count; ?> <?php if ($column_count === 'one') : ?>width-<?php echo $width; ?><?php endif; ?>" style="<?php if ($add_background_image) : ?>background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;<?php endif; ?>">
 	<div class="form__inner">
 		<?php if ($title) : ?>
 			<div class="form__title">
-				<h3><?php echo $title; ?></h3>
+				<?php if ($is_page_header) : ?>
+					<h1><?php echo $title; ?></h1>
+				<?php else: ?>
+					<h2><?php echo $title; ?></h2>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 		<?php if ($text) : ?>

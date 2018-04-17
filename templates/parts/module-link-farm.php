@@ -13,7 +13,7 @@
 			<div class="link-farm__border js-ease">
 				<?php if ($title) : ?>
 					<div class="link-farm__heading">
-						<h3><?php echo $title; ?></h3>
+						<h2><?php echo $title; ?></h2>
 					</div>
 				<?php endif; ?>
 				<?php if ($text) : ?>

@@ -6,7 +6,7 @@
 	<div class="image-gallery__inner">
 
 		<div class="image-gallery__title">
-			<h3><?php echo get_sub_field('title'); ?></h3>
+			<h2><?php echo get_sub_field('title'); ?></h2>
 		</div>
 
 		<?php if( $image_gallery ): ?>

@@ -4,6 +4,8 @@
 
 $meta = get_post_meta( get_the_ID() );
 
+$is_page_header = get_sub_field('is_page_header');
+
 $heading = get_sub_field('heading');
 
 $lines = get_sub_field( 'animated_lines' );
@@ -31,7 +33,11 @@ switch (get_sub_field( 'background' )) {
 
 <section class="<?php echo $section_classes; ?>">
 	<?php if($heading) : ?>
-		<h3 class="two-column-content__heading js-ease"><?php echo $heading; ?></h3>
+		<?php if ($is_page_header) : ?>
+			<h1 class="two-column-content__page-header"><?php echo $heading; ?></h1>
+		<?php else : ?>
+			<h2 class="two-column-content__heading"><?php echo $heading; ?></h2>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php twocolumn_content_layout('left', $lines); ?>

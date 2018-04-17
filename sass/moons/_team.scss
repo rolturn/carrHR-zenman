@@ -5,6 +5,28 @@
 .brokers-team {
 	padding: 3em 0 0;
 
+	h2 {
+		font-size: 2em;
+		letter-spacing: -.035em;
+		font-weight: 300;
+    text-transform: uppercase;
+    color: $color-1;
+    text-align: center;
+    position: relative;
+    margin: 0 0 30px;
+    padding-bottom: 20px;
+		&:after {
+			content: '';
+	    position: absolute;
+	    bottom: 0;
+	    left: 50%;
+	    width: 100px;
+	    margin-left: -50px;
+	    height: 2px;
+	    background-color: #cf671a;
+		}
+	}
+
 	.brokers__broker {
 		padding: 3em;
 	}

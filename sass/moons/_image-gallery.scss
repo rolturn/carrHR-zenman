@@ -12,11 +12,12 @@
 		}
 	}
 
-	h3 {
-		font-size: 20px;
+	h2 {
+		font-size: 2em;
 		font-family: $fam-heading;
 		text-transform: uppercase;
-		font-weight: normal;
+		font-weight: 300;
+		letter-spacing: -.035em;
 		color: $color-1;
 		text-align: center;
 		position: relative;
