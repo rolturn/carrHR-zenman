@@ -1,22 +1,24 @@
 <?php
 	$is_page_header = get_sub_field('is_page_header');
 	$title = get_sub_field('title');
+	$header_size = get_sub_field('header_size') == 'none' || get_sub_field('header_size') == array() ? false : get_sub_field('header_size');
 	$text = get_sub_field('text');
 	$add_background_image = get_sub_field('add_background_image');
 	$background_image = get_sub_field('background_image');
 	$column_count = get_sub_field('column_count');
 	$width = get_sub_field('width');
 	$form_shortcode = get_sub_field('form_shortcode');
-
+	$headerClasses = $header_size ? ' class="'.$header_size.'"' : false;
 ?>
+
 <section class="module-form form column-count-<?php echo $column_count; ?> <?php if ($column_count === 'one') : ?>width-<?php echo $width; ?><?php endif; ?>" style="<?php if ($add_background_image) : ?>background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;<?php endif; ?>">
 	<div class="form__inner">
 		<?php if ($title) : ?>
 			<div class="form__title">
 				<?php if ($is_page_header) : ?>
-					<h1><?php echo $title; ?></h1>
+					<h1<?php echo $headerClasses; ?>><?php echo $title; ?></h1>
 				<?php else: ?>
-					<h2><?php echo $title; ?></h2>
+					<h2<?php echo $headerClasses; ?>><?php echo $title; ?></h2>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>

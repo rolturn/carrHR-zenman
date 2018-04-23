@@ -1,10 +1,12 @@
 <?php
 	$background_image = get_sub_field('background_image');
+	$header_size = get_sub_field('header_size') == 'none' || get_sub_field('header_size') == array() ? false : get_sub_field('header_size');
 
 	$title = get_sub_field('title');
 	$text = get_sub_field('text');
 	$cta_text = get_sub_field('cta_text');
 	$cta_link = get_sub_field('cta_link');
+	$headerClasses = $header_size ? ' class="'.$header_size.'"' : false;
 ?>
 
 <section class="module-link-farm link-farm link-farm--<?php echo get_sub_field('overlay'); ?>" style="<?php if ($background_image) : ?>background: url(<?php echo $background_image['url']; ?>)no-repeat center center; background-size: cover;<?php endif; ?>">
@@ -13,7 +15,7 @@
 			<div class="link-farm__border js-ease">
 				<?php if ($title) : ?>
 					<div class="link-farm__heading">
-						<h2><?php echo $title; ?></h2>
+						<h2<?php echo $headerClasses; ?>><?php echo $title; ?></h2>
 					</div>
 				<?php endif; ?>
 				<?php if ($text) : ?>

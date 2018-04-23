@@ -1,7 +1,7 @@
 <?php
 
 $is_page_header = get_sub_field('is_page_header');
-$header_size = get_sub_field('header_size');
+$header_size = get_sub_field('header_size') == 'none' || get_sub_field('header_size') == array() ? false : ' '.get_sub_field('header_size');
 
 $background_image = get_sub_field('background_image');
 
@@ -34,9 +34,9 @@ $heading = $text = $button = '';
 
 if (get_sub_field('heading')){
 	if ($is_page_header) {
-		$heading = '<h1 class="one-column-content__page-header '.$header_size.'">'.get_sub_field('heading').'</h1>';
+		$heading = '<h1 class="one-column-content__page-header'.$header_size.'">'.get_sub_field('heading').'</h1>';
 	} else {
-		$heading = '<h2 class="one-column-content__heading '.$header_size.'">'.get_sub_field('heading').'</h2>';
+		$heading = '<h2 class="one-column-content__heading'.$header_size.'">'.get_sub_field('heading').'</h2>';
 	}
 }
 

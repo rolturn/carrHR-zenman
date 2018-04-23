@@ -3,7 +3,9 @@
 $title = get_sub_field('title');
 
 $is_page_header = get_sub_field('is_page_header');
+$header_size = get_sub_field('header_size') == 'none' || get_sub_field('header_size') == array() ? false : get_sub_field('header_size');
 
+$headerClasses = $header_size ? ' class="'.$header_size.'"' : false;
 ?>
 
 
@@ -12,9 +14,9 @@ $is_page_header = get_sub_field('is_page_header');
 	<div class="accordion__inner">
 
 		<?php if($is_page_header): ?>
-			<div class="accordion__title__page-header"><h1><?php echo $title; ?></h1></div>
+			<div class="accordion__title__page-header"><h1<?php echo $headerClasses; ?>><?php echo $title; ?></h1></div>
 		<?php else: ?>
-			<div class="accordion__title"><h2><?php echo $title; ?></h2></div>
+			<div class="accordion__title"><h2<?php echo $headerClasses; ?>><?php echo $title; ?></h2></div>
 		<?php endif; ?>
 
 		<?php if( have_rows('add_qanda') ):

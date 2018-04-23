@@ -6,13 +6,17 @@
 	&.state-broker-page {
 		h1, h2 {
 			color: #fff;
+			font-size: 2em;
+			font-weight: 400;
+			letter-spacing: 0;
+			padding: 20px;
 		}
 	}
 
 	h1 {
     color: $color-1;
     font-size: 2em;
-    font-weight: 400;
+    font-weight: 200;
 		&.small {
 			font-size: 1.7em;
 			font-weight: 500;
@@ -23,7 +27,7 @@
 			font-weight: 300;
 		}
     &.large {
-			font-size: 2.5em;
+			font-size: 2em;
 			font-weight: 200;
 		}
   }
@@ -121,10 +125,6 @@
 	&--dark {
 		h1, h2, h3, h4, h5, h6 {
 			color: $color-1	;
-			font-size: 3em;
-			font-weight: 200;
-			letter-spacing: -.035em;
-			padding: 20px;
 		}
 	}
 	&--orange {
