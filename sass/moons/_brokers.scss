@@ -125,16 +125,17 @@
 .state-broker-page {
 	.one-column-content__heading {
 		background: $color-1;
+		font-size: 2.2em;
+		font-weight: 300;
 
-		h3 {
+		&:after {
+			display: none;
+		}
+		
+		h2 {
 			color: $white;
 			padding: 30px;
 			font-size: 40px;
-			font-weight: 300;
-
-			&:after {
-				display: none;
-			}
 		}
 	}
 }

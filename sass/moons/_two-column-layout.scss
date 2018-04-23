@@ -77,8 +77,8 @@
       position: absolute;
       bottom: 0;
       left: 50%;
-      width: 200px;
-      margin-left: -100px;
+      width: 100px;
+      margin-left: -50px;
       height: 2px;
       background-color: $color-2;
   	}
@@ -86,14 +86,41 @@
 
   h1 {
     color: $color-1;
-    font-size: 3em;
-    font-weight: 200;
+    font-size: 2em;
+    font-weight: 400;
+		&.small {
+			font-size: 1.7em;
+			font-weight: 500;
+      letter-spacing: 0;
+		}
+		&.medium {
+			font-size: 2em;
+			font-weight: 300;
+		}
+    &.large {
+			font-size: 2.5em;
+			font-weight: 200;
+		}
   }
 
   h2 {
     color: $color-1;
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 400;
+		&.small {
+			font-size: 1.5em;
+			font-weight: 400;
+      letter-spacing: 0;
+		}
+		&.medium {
+			font-size: 1.75em;
+			font-weight: 300;
+      letter-spacing: 0;
+		}
+    &.large {
+			font-size: 2.2em;
+			font-weight: 200;
+		}
   }
 
 	p {
