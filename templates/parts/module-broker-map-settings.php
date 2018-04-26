@@ -64,7 +64,7 @@ endif;
 
 	<?php
 	// add the map on the parent page, not on the subpages
-		if ( is_page( 'find-an-agent' )):
+		if ( is_page( 'commercial-real-estate-agent' )):
 	?>
 
 	<div class="broker-map">

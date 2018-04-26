@@ -56,7 +56,7 @@ var buildMarkerInfoWindowContent = function (broker) {
 
 	if (broker.brokerState) {
 		var stateSlug = slugify(broker.brokerState.label);
-		popup += '<a href="'+site.site_url + '/find-an-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
+		popup += '<a href="'+site.site_url + '/commercial-real-estate-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
 	}
 
 	popup += '</article>';
@@ -100,7 +100,7 @@ var filterMarkers = function (vertical) {
 var handleStateDropdownSelection = function () {
 	$('#broker-state-select').change(function () {
 		if (window.innerWidth <= 800 || typeof map === 'undefined') {
-			window.location.assign(site.site_url + '/find-an-agent/' + stateNameFromAbbr(this.value));
+			window.location.assign(site.site_url + '/commercial-real-estate-agent/' + stateNameFromAbbr(this.value));
 		} else {
 			zoomToState(this.value);
 		}
@@ -192,7 +192,7 @@ var zoomToState = function (stateAbbr) {
 
 	var stateName = stateNameFromAbbr(stateAbbr);
 	if (stateName){
-		$('#brokers-state-link').text('See Our ' + stateNames[stateAbbr] + ' Team').prop('href', site.site_url + '/find-an-agent/' + stateName).fadeIn();
+		$('#brokers-state-link').text('See Our ' + stateNames[stateAbbr] + ' Team').prop('href', site.site_url + '/commercial-real-estate-agent/' + stateName).fadeIn();
 	}
 };
 
