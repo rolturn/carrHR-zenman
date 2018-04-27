@@ -108,7 +108,7 @@
 	}
 }
 .single-torso{
-	&__post{
+	&__post {
 		position: relative;
 		width: 50%;
 		float: left;
@@ -159,6 +159,11 @@
 				}
 			}
 		}
+		&:hover {
+			.single-torso__text {
+				background: rgba(0, 55, 115, 0.8);
+			}
+		}
 	}
 	&__text{
 		width: 45%;
@@ -171,9 +176,8 @@
 		h1{
 			font-size: emCalc(16pt);
 			padding-bottom: .5em;
-			a{
-				color: $white;
-			}
+			color: $white;
+			text-align: left;
 		}
 		@include bp($solarsystem){
 			width: 60%;

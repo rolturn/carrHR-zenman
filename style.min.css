@@ -213,8 +213,8 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .single-torso__post.default:nth-of-type(4n+1) .single-torso__image,.single-torso__post.default:nth-of-type(4n+2) .single-torso__image,.single-torso__post.text-right .single-torso__image{right:10%}
 .single-torso__post.default:nth-of-type(4n+4) .single-torso__text,.single-torso__post.default:nth-of-type(4n+3) .single-torso__text,.single-torso__post.text-left .single-torso__text{float:left}
 .single-torso__post.default:nth-of-type(4n+4) .single-torso__image,.single-torso__post.default:nth-of-type(4n+3) .single-torso__image,.single-torso__post.text-left .single-torso__image{left:10%}
-.single-torso__text{width:45%;background:rgba(0,0,0,0.7);border:1px solid #fff;padding:.9375rem;margin:1em 0;position:relative;color:#fff}
-.single-torso__text h1{font-size:1rem;padding-bottom:.5em}.single-torso__text h1 a{color:#fff}
+.single-torso__post:hover .single-torso__text{background:rgba(0,55,115,0.8)}.single-torso__text{width:45%;background:rgba(0,0,0,0.7);border:1px solid #fff;padding:.9375rem;margin:1em 0;position:relative;color:#fff}
+.single-torso__text h1{font-size:1rem;padding-bottom:.5em;color:#fff;text-align:left}
 .single-torso__image{position:absolute;top:.9375rem;right:.9375rem;bottom:.9375rem;left:.9375rem;background:#cf671a}
 .single-torso__image div{height:100%}.single-torso_content{padding:.75em 0}.post-single__container{position:relative}
 .post-single__content{padding:40px 0;width:70%;float:left}.post-single__social ul{margin:10px 0 0;padding:0;list-style:none}
