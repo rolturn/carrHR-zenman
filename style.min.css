@@ -165,7 +165,7 @@ input[name=vertical]+label:hover{color:#cf671a}.info-window{color:#003773;font:3
 .accordion__title{text-align:center}.accordion__wrapper{cursor:pointer;border-bottom:1px solid #a1a1a1}
 .question{padding-top:10px}.question h4{color:#003773;text-transform:uppercase;font-size:18px;font-weight:normal;position:relative;padding-right:20px}
 .question h4:after{content:'';overflow:hidden;position:absolute;right:0;top:0;width:1em;height:1em;border:0 solid #cf671a;border-width:0 2px 2px 0;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transition:-webkit-transform 400ms;transition:-webkit-transform 400ms;transition:transform 400ms;transition:transform 400ms,-webkit-transform 400ms}
-.question h4:hover{color:#cf671a}.answer:before,.answer:after{content:" ";display:table}
+.question h4:hover{color:#cf671a}.answer{font-size:1.3em}.answer:before,.answer:after{content:" ";display:table}
 .answer:after{clear:both}@-webkit-keyframes from-left{from{opacity:0;-webkit-transform:translateX(-50px);transform:translateX(-50px)}
 to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}@keyframes from-left{from{opacity:0;-webkit-transform:translateX(-50px);transform:translateX(-50px)}
 to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-half{overflow:hidden;position:relative;background-size:0}
