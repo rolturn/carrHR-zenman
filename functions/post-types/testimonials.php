@@ -34,10 +34,11 @@ function create_testimonials() {
             ),
             'public' => true,
             'has_archive' => false,
-            'with_front' => true,
+            'with_front' => false,
             'menu_icon'   => 'dashicons-format-quote',
             'publicly_queryable' => true,
             'menu_position' => 20,
+            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials' ),
             'supports' => array(
                 'title',
                 'thumbnail',
@@ -55,9 +56,16 @@ function create_testimonial_tax() {
         'type',
         'testimonials',
         array(
-            'label' => __( 'Testimonial Type' ),
-            'rewrite' => array( 'slug' => 'type' ),
+            'label' => __( 'Testimonial Categories' ),
+            'with_front' => false,
+            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials/category' ),
             'hierarchical' => true,
         )
     );
+}
+
+add_action( 'init', 'rewrite_testimonal_endpoint' );
+
+function rewrite_testimonal_endpoint() {
+  add_rewrite_endpoint( 'testimonials', EP_PERMALINK | EP_PAGES | EP_CATEGORIES );
 }

@@ -14,8 +14,8 @@ get_header(); ?>
         <aside class="blog-torso__sidebar">
             <?php get_sidebar(); ?>
         </aside><!-- //cat-torso__sidebar -->
-        <h1><?php echo 'Tag Archives: ' . single_tag_title('', false); ?></h1>
-        
+        <h1><?php echo 'Topic Archives: ' . single_tag_title('', false); ?></h1>
+
         <article class="blog-torso__content">
             <?php
                 while (have_posts()) : the_post();

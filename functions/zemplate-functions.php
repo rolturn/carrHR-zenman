@@ -336,109 +336,110 @@ This plug-in was developed and tested to work correctly with WordPress versions 
 probably works with earlier versions back to 2.3.
 
 */
-
-if(!is_admin()){
-    add_action('init', 'add_cat_to_archives');
-}
-
-function add_cat_to_archives(){
-    /**
-     * Changes the WHERE clause for wp_get_archives to select only posts for the categories in the
-     * 'cat' parameter.
-     *
-     * @param String $where
-     *             a SQL WHERE clause.
-     * @param Array $args
-     *             arguments passed to the wp_get_archives() function.
-     *
-     * @return String
-     *             modified SQL WHERE clause with additional selection by category if $args contains a
-     *             parameter called cat.
-     */
-
-    function kwebble_getarchives_where_for_category($where, $args = null){
-        global $kwebble_getarchives_data, $wpdb;
-        if ($args !== null && isset($args['cat'])){
-            // Preserve the category for later use.
-            // Preserve the category for later use.
-            $kwebble_getarchives_data['cat'] = $args['cat'];
-            // Split 'cat' parameter in categories to include and exclude.
-            $allCategories = explode(',', $args['cat']);
-            // Element 0 = included, 1 = excluded.
-            $categories = array(array(), array());
-            foreach ($allCategories as $cat) {
-                if (strpos($cat, ' ') !== FALSE) {
-                    // Multi category selection.
-                }
-                $idx = $cat < 0 ? 1 : 0;
-                $categories[$idx][] = abs($cat);
-            }
-            $includedCatgories = implode(',', $categories[0]);
-            $excludedCatgories = implode(',', $categories[1]);
-            // Add SQL to perform selection.
-            if (get_bloginfo('version') < 2.3){
-                $where .= " AND $wpdb->posts.ID IN (SELECT DISTINCT ID FROM $wpdb->posts JOIN $wpdb->post2cat post2cat ON post2cat.post_id=ID";
-                if (!empty($includedCatgories)) {
-                    $where .= " AND post2cat.category_id IN ($includedCatgories)";
-                }
-                if (!empty($excludedCatgories)) {
-                    $where .= " AND post2cat.category_id NOT IN ($excludedCatgories)";
-                }
-                $where .= ')';
-            } else{
-                $where .= ' AND ' . $wpdb->prefix . 'posts.ID IN (SELECT DISTINCT ID FROM ' . $wpdb->prefix . 'posts'
-                        . ' JOIN ' . $wpdb->prefix . 'term_relationships term_relationships ON term_relationships.object_id = ' . $wpdb->prefix . 'posts.ID'
-                        . ' JOIN ' . $wpdb->prefix . 'term_taxonomy term_taxonomy ON term_taxonomy.term_taxonomy_id = term_relationships.term_taxonomy_id'
-                        . ' WHERE term_taxonomy.taxonomy = \'category\'';
-                if (!empty($includedCatgories)) {
-                    $where .= " AND term_taxonomy.term_id IN ($includedCatgories)";
-                }
-                if (!empty($excludedCatgories)) {
-                    $where .= " AND term_taxonomy.term_id NOT IN ($excludedCatgories)";
-                }
-                $where .= ')';
-            }
-        }
-        return $where;
-    }
-    /**
-     * Changes the archive link to include the categories from the 'cat' parameter.
-     *
-     * @param String
-     *             $url the generated URL for an archive.
-     *
-     * @return String
-     *             modified URL that includes the category.
-     */
-    function kwebble_archive_link_for_category($url){
-        global $kwebble_getarchives_data;
-
-        if (isset($kwebble_getarchives_data['cat'])){
-            $url .= strpos($url, '?') === false ? '?' : '&';
-            $url .= 'cat=' . $kwebble_getarchives_data['cat'];
-        }
-        return $url;
-    }
-    /*
-     * Add the filters.
-     */
-    // Prevent error if executed outside WordPress.
-    if (function_exists('add_filter')){
-        // Constants for form field and options.
-        define('KWEBBLE_OPTION_DISABLE_CANONICAL_URLS', 'kwebble_disable_canonical_urls');
-        define('KWEBBLE_GETARCHIVES_FORM_CANONICAL_URLS', 'kwebble_disable_canonical_urls');
-        define('KWEBBLE_ENABLED', '');
-        define('KWEBBLE_DISABLED', 'Y');
-        add_filter('getarchives_where', 'kwebble_getarchives_where_for_category', 10, 2);
-        add_filter('year_link', 'kwebble_archive_link_for_category');
-        add_filter('month_link', 'kwebble_archive_link_for_category');
-        add_filter('day_link', 'kwebble_archive_link_for_category');
-        // Disable canonical URLs if the option is set.
-        if (get_option(KWEBBLE_OPTION_DISABLE_CANONICAL_URLS) == KWEBBLE_DISABLED){
-            remove_filter('template_redirect', 'redirect_canonical');
-        }
-    }
-}
+// 
+// if(!is_admin()){
+//     add_action('init', 'add_cat_to_archives');
+// }
+//
+// function add_cat_to_archives(){
+//     /**
+//      * Changes the WHERE clause for wp_get_archives to select only posts for the categories in the
+//      * 'cat' parameter.
+//      *
+//      * @param String $where
+//      *             a SQL WHERE clause.
+//      * @param Array $args
+//      *             arguments passed to the wp_get_archives() function.
+//      *
+//      * @return String
+//      *             modified SQL WHERE clause with additional selection by category if $args contains a
+//      *             parameter called cat.
+//      */
+//
+//     function kwebble_getarchives_where_for_category($where, $args = null){
+//         global $kwebble_getarchives_data, $wpdb;
+//         if ($args !== null && isset($args['cat'])){
+//             // Preserve the category for later use.
+//             // Preserve the category for later use.
+//             $kwebble_getarchives_data['cat'] = $args['cat'];
+//             // Split 'cat' parameter in categories to include and exclude.
+//             $allCategories = explode(',', $args['cat']);
+//             // Element 0 = included, 1 = excluded.
+//             $categories = array(array(), array());
+//             foreach ($allCategories as $cat) {
+//                 if (strpos($cat, ' ') !== FALSE) {
+//                     // Multi category selection.
+//                 }
+//                 $idx = $cat < 0 ? 1 : 0;
+//                 $categories[$idx][] = abs($cat);
+//             }
+//             $includedCatgories = implode(',', $categories[0]);
+//             $excludedCatgories = implode(',', $categories[1]);
+//             // Add SQL to perform selection.
+//             if (get_bloginfo('version') < 2.3){
+//                 $where .= " AND $wpdb->posts.ID IN (SELECT DISTINCT ID FROM $wpdb->posts JOIN $wpdb->post2cat post2cat ON post2cat.post_id=ID";
+//                 if (!empty($includedCatgories)) {
+//                     $where .= " AND post2cat.category_id IN ($includedCatgories)";
+//                 }
+//                 if (!empty($excludedCatgories)) {
+//                     $where .= " AND post2cat.category_id NOT IN ($excludedCatgories)";
+//                 }
+//                 $where .= ')';
+//             } else{
+//                 $where .= ' AND ' . $wpdb->prefix . 'posts.ID IN (SELECT DISTINCT ID FROM ' . $wpdb->prefix . 'posts'
+//                         . ' JOIN ' . $wpdb->prefix . 'term_relationships term_relationships ON term_relationships.object_id = ' . $wpdb->prefix . 'posts.ID'
+//                         . ' JOIN ' . $wpdb->prefix . 'term_taxonomy term_taxonomy ON term_taxonomy.term_taxonomy_id = term_relationships.term_taxonomy_id'
+//                         . ' WHERE term_taxonomy.taxonomy = \'category\'';
+//                 if (!empty($includedCatgories)) {
+//                     $where .= " AND term_taxonomy.term_id IN ($includedCatgories)";
+//                 }
+//                 if (!empty($excludedCatgories)) {
+//                     $where .= " AND term_taxonomy.term_id NOT IN ($excludedCatgories)";
+//                 }
+//                 $where .= ')';
+//             }
+//         }
+//         return $where;
+//     }
+//     /**
+//      * Changes the archive link to include the categories from the 'cat' parameter.
+//      *
+//      * @param String
+//      *             $url the generated URL for an archive.
+//      *
+//      * @return String
+//      *             modified URL that includes the category.
+//      */
+//     function kwebble_archive_link_for_category($url){
+//         global $kwebble_getarchives_data;
+//
+//         if (isset($kwebble_getarchives_data['cat'])){
+//             $url .= strpos($url, '?') === false ? '?' : '&';
+//             $url .= 'cat=' . $kwebble_getarchives_data['cat'];
+//         }
+//         return $url;
+//     }
+//     /*
+//      * Add the filters.
+//      */
+//     // Prevent error if executed outside WordPress.
+//     if (function_exists('add_filter')){
+//         // Constants for form field and options.
+//         define('KWEBBLE_OPTION_DISABLE_CANONICAL_URLS', 'kwebble_disable_canonical_urls');
+//         define('KWEBBLE_GETARCHIVES_FORM_CANONICAL_URLS', 'kwebble_disable_canonical_urls');
+//         define('KWEBBLE_ENABLED', '');
+//         define('KWEBBLE_DISABLED', 'Y');
+//         add_filter('getarchives_where', 'kwebble_getarchives_where_for_category', 10, 2);
+//         add_filter('year_link', 'kwebble_archive_link_for_category');
+//         add_filter('month_link', 'kwebble_archive_link_for_category');
+//         add_filter('day_link', 'kwebble_archive_link_for_category');
+//         // Disable canonical URLs if the option is set.
+//         if (get_option(KWEBBLE_OPTION_DISABLE_CANONICAL_URLS) == KWEBBLE_DISABLED){
+//             remove_filter('template_redirect', 'redirect_canonical');
+//         }
+//     }
+// }
+
 
 /*------------------------------------*\
 	//Show Templates

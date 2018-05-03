@@ -86,13 +86,13 @@
 
 	.accordion-active {
 		h4 {
-			color:$color-2;
+			color: $color-1;
 			&:after {
 				transform: rotate(45deg);
 			}
 		}
 		&+ .answer{
-			color:$color-2;
+			color: $color-2;
 		}
 
 	}

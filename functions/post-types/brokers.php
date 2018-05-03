@@ -55,8 +55,8 @@ function create_broker_tax() {
 		'vertical',
 		'brokers',
 		array(
-			'label' => __( 'Verticals' ),
-			'rewrite' => array( 'slug' => 'vertical' ),
+			'label' => __( 'Industry Type' ),
+			'rewrite' => array( 'slug' => 'industries/type' ),
 			'hierarchical' => true,
 		)
 	);

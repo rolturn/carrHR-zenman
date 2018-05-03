@@ -14,7 +14,7 @@ get_header(); ?>
             <aside class="blog-torso__sidebar">
                 <?php get_sidebar(); ?>
             </aside><!-- //blog-torso__sidebar -->
-            
+
             <article class="blog-torso__content">
                 <?php
                     while (have_posts()) : the_post();
@@ -23,7 +23,7 @@ get_header(); ?>
                 ?>
                 <div class="pagination-block"><?php get_template_part('templates/parts/blog', 'pagination'); ?></div>
             </article><!-- //blog-torso__content -->
-			
+
         </div><!-- //blog-torso__inner -->
     </article>
 </section><!-- //blog-torso -->

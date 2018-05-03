@@ -25,7 +25,7 @@ $torso_alignment_class = $torso_text_alignment ? " ".$torso_text_alignment['valu
           </div> <!-- // post -->
 
           <div>
-              <?php if(has_tag()):?> <?php the_tags(' ');?> <?php endif;?>
+              <?php //if(has_tag()):?> <?php //the_tags(' ');?> <?php //endif;?>
           </div>
       </div>
 
