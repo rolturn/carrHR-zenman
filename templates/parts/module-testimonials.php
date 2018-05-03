@@ -8,6 +8,10 @@
 			'taxonomy' => 'type',
 			'hide_empty' => false,
 		) ); ?>
+		<?php $terms = get_terms( array(
+			'taxonomy' => 'type',
+			'hide_empty' => false,
+		) ); ?>
 
 		<div class="testimonials__navigation">
 			<button class="view-all" data-term="view-all">View All</button>
