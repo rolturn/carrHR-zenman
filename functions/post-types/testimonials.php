@@ -58,14 +58,8 @@ function create_testimonial_tax() {
         array(
             'label' => __( 'Testimonial Categories' ),
             'with_front' => true,
-            'rewrite' => array( 'slug' => 'category' ),
+            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials/category' ),
             'hierarchical' => true,
         )
     );
-}
-
-add_action( 'init', 'rewrite_testimonal_endpoint' );
-
-function rewrite_testimonal_endpoint() {
-  add_rewrite_endpoint( 'testimonials', EP_PERMALINK | EP_PAGES | EP_CATEGORIES );
 }
