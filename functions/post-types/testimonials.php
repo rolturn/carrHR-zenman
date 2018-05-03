@@ -34,7 +34,7 @@ function create_testimonials() {
             ),
             'public' => true,
             'has_archive' => false,
-            'with_front' => false,
+            'with_front' => true,
             'menu_icon'   => 'dashicons-format-quote',
             'publicly_queryable' => true,
             'menu_position' => 20,
@@ -57,8 +57,8 @@ function create_testimonial_tax() {
         'testimonials',
         array(
             'label' => __( 'Testimonial Categories' ),
-            'with_front' => false,
-            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials/category' ),
+            'with_front' => true,
+            'rewrite' => array( 'slug' => 'category' ),
             'hierarchical' => true,
         )
     );
