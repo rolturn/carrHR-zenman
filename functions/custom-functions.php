@@ -332,11 +332,13 @@ add_action( 'wp_ajax_nopriv_load-filter2', 'prefix_load_term_posts' );
 add_action( 'wp_ajax_load-filter2', 'prefix_load_term_posts' );
 function prefix_load_term_posts () {
 	$term_id = $_POST[ 'term' ];
+	$post_id = $_POST[ 'post_id' ];
+	$name = $_POST[ 'name' ];
 	$paged = esc_attr( $_POST['page'] );
 
 	$tax_query = '';
 
-	if ( $term_id != 'view-all' ) {
+	if ( !empty($term_id) && $term_id != 'view-all' ) {
 		$tax_query =  array(
 			array(
 				'taxonomy' => 'type',
@@ -351,14 +353,26 @@ function prefix_load_term_posts () {
 	$postOffset = $paged * $postsPerPage;
 
 	$args = array (
-		'term' => $term_id,
 		'posts_per_page' => $postsPerPage,
 		'order' => 'ASC',
 		'post_type' => 'testimonials',
-		'tax_query' => $tax_query,
 		'paged' => $paged,
 		'offset'  => $postOffset,
 	);
+
+	if (!empty($name)) {
+		$args['name'] = $name;
+		$args['offset'] = 1;
+	}
+
+	if (!empty($post_id)) {
+		$args['include'] = array($post_id);
+	}
+
+	if (!empty($term_id)) {
+		$args['term'] = $term_id;
+		$args['tax_query'] = $tax_query;
+	}
 
 	global $post;
 	$loop = get_posts( $args );
@@ -608,38 +622,38 @@ function twocolumn_content_text($lr, $heading = ''){
 
 
 
-// 
-//
-// add_action('init', 'ew_year_archive_rewrites');
-// function ew_year_archive_rewrites() {
-//     add_rewrite_rule('resources/([0-9]{4})/?([0-9]{1,})/?', 'index.php?post_type=news&year=$matches[1]&paged=$matches[2]', 'top');
-//     add_rewrite_rule('resource/news/([0-9]{4})/?', 'index.php?post_type=news&year=$matches[1]', 'top');
-// }
-//
-// add_filter('getarchives_where', 'ew_custom_post_type_archive_where', 10, 2);
-// function ew_custom_post_type_archive_where($where,$args){
-//     $post_type = isset($args['post_type']) ? $args['post_type'] : 'post';
-//     return "WHERE post_type = '$post_type' AND post_status = 'publish'";
-// }
-//
-// add_filter('year_link', 'ew_year_link');
-// function ew_year_link($link) {
-//     global $wp_rewrite;
-//
-//     if(true) { // however you determine what archive you want
-//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
-//     }
-//
-//     return $link;
-// }
-//
-// add_filter('month_link', 'ew_month_link');
-// function ew_month_link($link) {
-//     global $wp_rewrite;
-//
-//     if(true) { // however you determine what archive you want
-//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
-//     }
-//
-//     return $link;
-// }
+	//
+	//
+	// add_action('init', 'ew_year_archive_rewrites');
+	// function ew_year_archive_rewrites() {
+	//     add_rewrite_rule('resources/([0-9]{4})/?([0-9]{1,})/?', 'index.php?post_type=news&year=$matches[1]&paged=$matches[2]', 'top');
+	//     add_rewrite_rule('resource/news/([0-9]{4})/?', 'index.php?post_type=news&year=$matches[1]', 'top');
+	// }
+	//
+	// add_filter('getarchives_where', 'ew_custom_post_type_archive_where', 10, 2);
+	// function ew_custom_post_type_archive_where($where,$args){
+	//     $post_type = isset($args['post_type']) ? $args['post_type'] : 'post';
+	//     return "WHERE post_type = '$post_type' AND post_status = 'publish'";
+	// }
+	//
+	// add_filter('year_link', 'ew_year_link');
+	// function ew_year_link($link) {
+	//     global $wp_rewrite;
+	//
+	//     if(true) { // however you determine what archive you want
+	//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
+	//     }
+	//
+	//     return $link;
+	// }
+	//
+	// add_filter('month_link', 'ew_month_link');
+	// function ew_month_link($link) {
+	//     global $wp_rewrite;
+	//
+	//     if(true) { // however you determine what archive you want
+	//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
+	//     }
+	//
+	//     return $link;
+	// }

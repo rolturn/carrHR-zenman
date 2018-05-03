@@ -3,7 +3,10 @@
 \*------------------------------------*/
 
 // get testimonials by term
-var term_ajax_get = function(termID, page) {
+var term_ajax_get = function(options, page) {
+	var name = options.name || null;
+	var termID = options.termID || null;
+	var id = options.id || null;
 	$('.testimonials__loading').show();
 	$.ajax({
 		type: 'POST',
@@ -11,7 +14,9 @@ var term_ajax_get = function(termID, page) {
 		data: {
 			'action': 'load-filter2',
 			'term': termID,
-			'page': page
+			'page': page,
+			'post_id': id,
+			'name' : name,
 		},
 		success: function(response) {
 			if (page > 0){
@@ -38,17 +43,27 @@ var urlParams;
        urlParams[decode(match[1])] = decode(match[2]);
 })();
 
+
 // implementation
 $(document).ready(function() {
 	var $totop = $('.scrolltoTop'),
-		page,
-		current_term;
+		page = 0,
+		current_term,
+		buttonClicked;
 
-	$('#testimonials__bottom').bind('inview', function (event, visible) {
-		if (visible === true) {
-			page++;
-			term_ajax_get(current_term, page);
-		}
+	$('.testimonials__navigation').find('button').click(function() {
+		$(this).addClass('active').siblings().removeClass('active');
+		current_term = $(this).data('term');
+		page = 0;
+		$('.testimonials__wrapper').empty();
+		term_ajax_get({ 'termID': current_term }, page);
+
+		$('#testimonials__bottom').bind('inview', function (event, visible) {
+			if (visible === true) {
+				page++;
+				term_ajax_get({ 'termID': current_term }, page);
+			}
+		});
 	});
 
 	$('.testimonials__navigation').bind('inview', function (event, visible) {
@@ -63,20 +78,8 @@ $(document).ready(function() {
 		$('html, body').animate({scrollTop: 0}, 800);
 	});
 
-	$('.testimonials__navigation').find('button').click(function() {
-		$(this).addClass('active').siblings().removeClass('active');
-		current_term = $(this).data('term');
-		page = 0;
-		$('.testimonials__wrapper').empty();
-		term_ajax_get(current_term, page);
-	});
-
 	// checks to see if the URL is passing queries to filter testimonials
-	if (urlParams && categories) {
-		// establishes defaults
-		page = 0;
-		current_term = 'view-all';
-		// redefining current_term if something has been passed
+	if (urlParams.term_id || urlParams.category) {
 		if (urlParams.term_id) {
 			// if term_id is passed just uses the term id for filtering
 			current_term = isNaN(parseInt(urlParams.term_id)) ? 'view-all' : parseInt(urlParams.term_id);
@@ -84,16 +87,30 @@ $(document).ready(function() {
 			// if category name is passed searches through categories options added from module-taxonomy.php
 			current_term = (categories.find( category => category.slug === urlParams.category)).termId;
 		}
-		// uses defaults to trigger work
-		if (current_term === 'view-all') {
-			$('.view-all').trigger('click').addClass('active');
-		} else {
-			term_ajax_get(current_term, page);
-			$('.testimonials__navigation').find("[data-term='" + current_term + "']").addClass('active');
-		}
-	} else {
+		term_ajax_get({ 'termID': current_term }, page);
+		$('.testimonials__navigation').find("[data-term='" + current_term + "']").addClass('active');
+	}
+	else if (urlParams.postid) {
+		// if category name is passed searches through categories options added from module-taxonomy.php
+		var id = isNaN(parseInt(urlParams.postid)) ? 0 : parseInt(urlParams.postid);
+		term_ajax_get({ 'id': id }, page);
+	}
+	else if (urlParams.individual) {
+		term_ajax_get({ 'name': urlParams.individual }, page);
+	}
+	else {
 		// fall back if query was not set or categories didn't load
 		$('.view-all').trigger('click').addClass('active');
 	}
 
+	var getIndividual = urlParams.individual || urlParams.postid ? true : false;
+
+	if (!getIndividual) {
+		$('#testimonials__bottom').bind('inview', function (event, visible) {
+			if (visible === true) {
+				page++;
+				term_ajax_get({ 'termID': current_term }, page);
+			}
+		});
+	}
 });
