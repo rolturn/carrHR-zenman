@@ -32,7 +32,7 @@ function create_testimonials() {
                 'choose_from_most_used'      => 'Choose from the most used Testimonials', 'text_domain',
                 'not_found'                  => 'Not Found', 'text_domain',
             ),
-            'public' => false,
+            'public' => true,
             'has_archive' => false,
             'with_front' => true,
             'menu_icon'   => 'dashicons-format-quote',
