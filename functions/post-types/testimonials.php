@@ -38,7 +38,7 @@ function create_testimonials() {
             'menu_icon'   => 'dashicons-format-quote',
             'publicly_queryable' => true,
             'menu_position' => 20,
-            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials/individual' ),
+            'rewrite' => array( 'slug' => 'healthcare-real-estate-testimonials' ),
             'supports' => array(
                 'title',
                 'thumbnail',
