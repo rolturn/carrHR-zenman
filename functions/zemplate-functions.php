@@ -12,6 +12,7 @@
 //Descript: Sets up some automatic things from twenty* themes.
 
 function zemplate_setup() {
+    register_sidebar();
     // This theme styles the visual editor with editor-style.css to match the theme style.
     add_editor_style();
 
@@ -336,7 +337,7 @@ This plug-in was developed and tested to work correctly with WordPress versions 
 probably works with earlier versions back to 2.3.
 
 */
-// 
+//
 // if(!is_admin()){
 //     add_action('init', 'add_cat_to_archives');
 // }

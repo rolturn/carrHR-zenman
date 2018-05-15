@@ -71,7 +71,7 @@ jQuery(function($){
     var $allTitles = $('.js-accordion-title');
     $allTitles.on('click', function(){
         var $this = $(this);
-        if(!$this.hasClass('accordion-active')){
+          if(!$this.hasClass('accordion-active')){
             $allTitles
                 .removeClass('accordion-active')
                     .next()
@@ -88,6 +88,7 @@ jQuery(function($){
         }
     });
 });
+
 var activateAnimation = function() {
 	$(".js-line-animation, .js-ease, .js-from-left, .js-scale").each(function(){
 		var $this = $(this);
@@ -448,7 +449,7 @@ var zoomToState = function (stateAbbr) {
 		});
 	}
 
-	infoWindow.addListener('closeclick', function(){
+	infoWindow.addListener('closeClick', function(){
 		if (map.getZoom() - stateZoom > 0){
 			map.panTo(this.getPosition());
 			// map.fitBounds(stateBounds);

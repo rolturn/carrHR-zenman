@@ -2,28 +2,6 @@
 	padding: 60px 0;
 	text-align: center;
 
-	h2 {
-		font-size: 2em;
-		letter-spacing: -.035em;
-		font-family: $fam-heading;
-		text-transform: uppercase;
-		font-weight: normal;
-		text-align: center;
-		position: relative;
-		padding-bottom: 20px;
-
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			width: 100px;
-			margin-left: -50px;
-			height: 2px;
-			background-color: $color-2;
-		}
-	}
-
 	.link-farm--light & {
 		background-color: rgba(#fff, .7);
 	}
@@ -35,7 +13,7 @@
 			.link-farm__border {
         padding: 40px 0;
         @include bp($min: 500px) {
-				  padding: 40px;
+					padding: 40px 0 80px 0;
         }
 			}
 		}
@@ -57,8 +35,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding: 40px 0;
-	margin-left: 5%; // magic number
+	padding: 0 0 40px 0;
+	margin: 0 2.5% 0 5%;
 
 	@include bp(900px) {
 		margin-left:0;

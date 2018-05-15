@@ -5,7 +5,9 @@ $title = get_sub_field('title');
 $is_page_header = get_sub_field('is_page_header');
 $header_size = get_sub_field('header_size') == 'none' || get_sub_field('header_size') == array() ? false : get_sub_field('header_size');
 
-$headerClasses = $header_size ? ' class="'.$header_size.'"' : false;
+$headerClasses = ' class="section-header';
+$headerClasses .= $header_size ? ' '.$header_size : false;
+$headerClasses .= '"';
 ?>
 
 

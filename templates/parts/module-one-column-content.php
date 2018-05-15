@@ -11,9 +11,6 @@ $classes .= ' one-column-content--' . get_sub_field('text_color');
 if(get_sub_field('extra_padding')){
 	$classes .= ' one-column-content--extra-pad';
 }
-if(get_sub_field('text_size')){
-	$classes .= ' one-column-content--larger';
-}
 switch (get_sub_field('background')) {
 	case 'blue':
 		$classes .= ' bgcolor-blue';
@@ -34,14 +31,17 @@ $heading = $text = $button = '';
 
 if (get_sub_field('heading')){
 	if ($is_page_header) {
-		$heading = '<h1 class="one-column-content__page-header'.$header_size.'">'.get_sub_field('heading').'</h1>';
+		$heading = '<h1 class="section-header'.$header_size.'">'.get_sub_field('heading').'</h1>';
 	} else {
-		$heading = '<h2 class="one-column-content__heading'.$header_size.'">'.get_sub_field('heading').'</h2>';
+		$heading = '<h2 class="section-header'.$header_size.'">'.get_sub_field('heading').'</h2>';
 	}
 }
 
 if (get_sub_field('text')){
-	$text = '<div class="one-column-content__text">'. get_sub_field('text') .'</div>';
+	if(get_sub_field('text_size')){
+		$textClasses = ' one-column-content--larger';
+	}
+	$text = '<div class="one-column-content__text'. $textClasses .'">'. get_sub_field('text') .'</div>';
 }
 
 if (get_sub_field('add_a_button')){
