@@ -1,94 +1,12 @@
 .accordion {
 	background-color: $white;
-	padding: 30px 0 60px;
-
-	&__title {
-		font-family: $fam-heading;
-		text-transform: uppercase;
-		font-weight: normal;
-		color: $color-1;
-		text-align: center;
-		position: relative;
-		margin: 0 0 30px;
-		padding-bottom: 20px;
-
-		&:after {
-			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			width: 100px;
-			margin-left: -50px;
-			height: 2px;
-			background-color: $color-2;
-		}
-
-		h2 {
-			color: $color-1;
-	    font-size: 2em;
-	    font-weight: 400;
-			&.small {
-				font-size: 1.5em;
-				font-weight: 400;
-	      letter-spacing: 0;
-			}
-			&.medium {
-				font-size: 1.75em;
-				font-weight: 300;
-	      letter-spacing: 0;
-			}
-	    &.large {
-				font-size: 2.2em;
-				font-weight: 200;
-			}
-		}
-
-		&__page-header {
-			font-family: $fam-heading;
-			text-transform: uppercase;
-			color: $color-1;
-			text-align: center;
-			position: relative;
-			margin: 0 0 20px;
-			padding-bottom: 10px;
-
-			&:after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				width: 100px;
-				margin-left: -50px;
-				height: 2px;
-				background-color: $color-2;
-			}
-
-			h1 {
-				color: $color-1;
-				font-size: 2em;
-				font-weight: 400;
-				&.small {
-					font-size: 1.7em;
-					font-weight: 500;
-					letter-spacing: 0;
-				}
-				&.medium {
-					font-size: 2em;
-					font-weight: 300;
-				}
-				&.large {
-					font-size: 2.5em;
-					font-weight: 200;
-				}
-			}
-		}
-	}
+	padding: 0 0 60px;
 
 	.accordion-active {
 		h4 {
 			color: $color-1;
 			&:after {
-				transform: rotate(45deg);
+				transform: rotate(45deg) translate(-50%, -50%);
 			}
 		}
 		&+ .answer{
@@ -112,30 +30,28 @@
 
 }
 
-
 .question {
-	padding-top: 10px;
-
 	h4 {
 		color: $color-1;
+		padding: .75em 80px .5em 0;
 		text-transform: uppercase;
-		font-size: 18px;
+		font-size: 1.25em;
+		line-height: 1.25em;
 		font-weight: normal;
 		position: relative;
-		padding-right: 20px;
 
 		&:after {
 			content: '';
-    		overflow: hidden;
+  		overflow: hidden;
 			position: absolute;
 			right: 0;
-			top: 0;
-    		width: 1em;
-    		height: 1em;
-    		border: 0 solid $color-2;
-    		border-width: 0 2px 2px 0;
-    		transform: rotate(-45deg);
-    		transition: transform 400ms;
+			top: 50%;
+  		width: 18px;
+  		height: 18px;
+  		border: 0 solid $color-2;
+  		border-width: 0 2px 2px 0;
+  		transform: rotate(-45deg) translateY(-50%);
+  		transition: transform 400ms;
 		}
 		&:hover {
 			color:$color-2;

@@ -3,7 +3,7 @@
 $_brokers = '';
 
 if(get_sub_field('title')){
-	$_brokers .= '<h2>'. get_sub_field('title') .'</h2>';
+	$_brokers .= '<h2 class="section-header">'. get_sub_field('title') .'</h2>';
 }
 
 $_brokers .= '<div class="brokers__broker-group brokers__inner">';

@@ -6,7 +6,9 @@
 	$text = get_sub_field('text');
 	$cta_text = get_sub_field('cta_text');
 	$cta_link = get_sub_field('cta_link');
-	$headerClasses = $header_size ? ' class="'.$header_size.'"' : false;
+	$headerClasses = ' class="section-header';
+	$headerClasses .= $header_size ? ' '.$header_size : false;
+	$headerClasses .= '"';
 ?>
 
 <section class="module-link-farm link-farm link-farm--<?php echo get_sub_field('overlay'); ?>" style="<?php if ($background_image) : ?>background: url(<?php echo $background_image['url']; ?>)no-repeat center center; background-size: cover;<?php endif; ?>">

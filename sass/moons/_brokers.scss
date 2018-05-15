@@ -23,6 +23,7 @@
 	}
 
 	&__broker-group {
+		margin-top: -3em;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -131,7 +132,7 @@
 		&:after {
 			display: none;
 		}
-		
+
 		h2 {
 			color: $white;
 			padding: 30px;

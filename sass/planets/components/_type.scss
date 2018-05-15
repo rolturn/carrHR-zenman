@@ -1,0 +1,73 @@
+
+/*------------------------------------*\
+    ::Header
+\*------------------------------------*/
+
+h1.section-header,
+h2.section-header,
+h3.section-header {
+  color: $color-1;
+  position: relative;
+  text-transform: uppercase;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100px;
+    margin-left: -50px;
+    height: 2px;
+    background-color: $color-2;
+  }
+	// &.small {
+	// 	font-size: 1.5em;
+  //   letter-spacing: 0;
+	// }
+	// &.medium {
+	// 	font-size: 1.75em;
+  //   letter-spacing: 0;
+	// }
+  // &.large {
+	// 	font-size: 2em;
+	// }
+}
+
+h1.section-header,
+h2.section-header {
+  padding: 40px 40px 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h1 {
+	font-size: 1.9em;
+  letter-spacing: -.01em;
+	font-weight: 400;
+}
+
+h2 {
+  font-size: 1.7em;
+  font-weight: 400;
+  position: relative;
+}
+
+h3 {
+  font-size: 1.45em;
+  font-weight: normal;
+  margin: 0 0 25px 0;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.blog-torso__sidebar a {
+  color: $color-1;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  letter-spacing: -.01em;
+	font-weight: 400;
+}
+
+p {
+  padding-bottom: 0;
+}
