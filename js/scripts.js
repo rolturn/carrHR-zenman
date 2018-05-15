@@ -448,7 +448,7 @@ var zoomToState = function (stateAbbr) {
 		});
 	}
 
-	infoWindow.addListener('closeclick', function(){
+	infoWindow.addListener('closeClick', function(){
 		if (map.getZoom() - stateZoom > 0){
 			map.panTo(this.getPosition());
 			// map.fitBounds(stateBounds);

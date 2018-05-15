@@ -13,7 +13,6 @@
 get_header();
 
 // $tags = get_tags();
-// $tag_header = '<h3>Tag List</h3>';
 // $tag_html = '<nav class="post_tags">';
 // foreach ( $tags as $tag ) {
 // 	$tag_link = get_tag_link( $tag->term_id );
@@ -22,10 +21,11 @@ get_header();
 // 	$tag_html .= "{$tag->name}</a>";
 // }
 // $tag_html .= '</nav>';
-// echo $tag_header, $tag_html;
+// echo $tag_html;
 //
-//
-// $archives = wp_get_archives();
+// $category = get_category(get_query_var('cat'),false);
+// // https://stackoverflow.com/questions/38985334/year-and-month-in-wordpress-archive-list
+// wp_custom_archive($args, $category->slug);
 
 ?>
 

@@ -1,4 +1,17 @@
 <?php
+
+function debug ($data) {
+    echo "<script>\r\n//<![CDATA[\r\nif(!console){var console={log:function(){}}}";
+    $output    =    explode("\n", print_r($data, true));
+    foreach ($output as $line) {
+        if (trim($line)) {
+            $line    =    addslashes($line);
+            echo "console.log(\"{$line}\");";
+        }
+    }
+    echo "\r\n//]]>\r\n</script>";
+}
+
 /*
  * @package WordPress
  * @subpackage Zemplate
@@ -64,11 +77,11 @@ add_shortcode('button', 'btn_shortcode');
 \*------------------------------------*/
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
-		'page_title'    => 'Global Content',
-		'menu_title'    => 'Global Content',
-		'menu_slug'     => 'global-content',
-		'capability'    => 'edit_posts',
-		'redirect'      => false
+		'page_title'  => 'Global Content',
+		'menu_title'  => 'Global Content',
+		'menu_slug'   => 'global-content',
+		'capability'  => 'edit_posts',
+		'redirect'    => false
 	));
 }
 
@@ -112,11 +125,11 @@ if( function_exists('acf_add_options_page') ) {
 \*------------------------------------*/
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page(array(
-		'page_title'    => 'Custom Scripts',
-		'menu_title'    => 'Custom Scripts',
-		'menu_slug'     => 'custom-scripts',
-		'capability'    => 'edit_posts',
-		'redirect'      => false
+		'page_title'  => 'Custom Scripts',
+		'menu_title'  => 'Custom Scripts',
+		'menu_slug'   => 'custom-scripts',
+		'capability'  => 'edit_posts',
+		'redirect'    => false
 	));
 }
 if( function_exists('acf_add_local_field_group') ){
@@ -342,8 +355,8 @@ function prefix_load_term_posts () {
 		$tax_query =  array(
 			array(
 				'taxonomy' => 'type',
-				'field'    => 'id',
-				'terms'    => $term_id,
+				'field'  => 'id',
+				'terms'  => $term_id,
 				'operator' => 'IN'
 			)
 		);
@@ -621,39 +634,186 @@ function twocolumn_content_text($lr, $heading = ''){
 }
 
 
+function ew_get_month_link($year, $month) {
+    global $wp_rewrite;
+    if ( !$year )
+        $year = gmdate('Y', current_time('timestamp'));
+    if ( !$month )
+        $month = gmdate('m', current_time('timestamp'));
+    $monthlink = $wp_rewrite->get_month_permastruct();
+    if ( !empty($monthlink) ) {
+        $monthlink = str_replace('%year%', $year, $monthlink);
+        $monthlink = str_replace('%monthnum%', zeroise(intval($month), 2), $monthlink);
+				// removing full url
+        // $monthlink = home_url( user_trailingslashit( $monthlink, 'month' ) );
+    } else {
+        $monthlink = home_url( '?m=' . $year . zeroise( $month, 2 ) );
+    }
+
+    /**
+     * Filters the month archive permalink.
+     *
+     * @since 1.5.0
+     *
+     * @param string $monthlink Permalink for the month archive.
+     * @param int    $year      Year for the archive.
+     * @param int    $month     The month for the archive.
+     */
+    return apply_filters( 'month_link', $monthlink, $year, $month );
+}
+
+function ew_get_year_link( $year ) {
+    global $wp_rewrite;
+    if ( !$year )
+        $year = gmdate('Y', current_time('timestamp'));
+    $yearlink = $wp_rewrite->get_year_permastruct();
+    if ( !empty($yearlink) ) {
+        $yearlink = str_replace('%year%', $year, $yearlink);
+        // $yearlink = home_url( user_trailingslashit( $yearlink, 'year' ) );
+    } else {
+        $yearlink = home_url( '?m=' . $year );
+    }
+
+    /**
+     * Filters the year archive permalink.
+     *
+     * @since 1.5.0
+     *
+     * @param string $yearlink Permalink for the year archive.
+     * @param int    $year     Year for the archive.
+     */
+    return apply_filters( 'year_link', $yearlink, $year );
+}
+
+
 
 	//
 	//
 	// add_action('init', 'ew_year_archive_rewrites');
 	// function ew_year_archive_rewrites() {
-	//     add_rewrite_rule('resources/([0-9]{4})/?([0-9]{1,})/?', 'index.php?post_type=news&year=$matches[1]&paged=$matches[2]', 'top');
-	//     add_rewrite_rule('resource/news/([0-9]{4})/?', 'index.php?post_type=news&year=$matches[1]', 'top');
+	//   add_rewrite_rule('resources/([0-9]{4})/?([0-9]{1,})/?', 'index.php?post_type=news&year=$matches[1]&paged=$matches[2]', 'top');
+	//   add_rewrite_rule('resource/news/([0-9]{4})/?', 'index.php?post_type=news&year=$matches[1]', 'top');
 	// }
 	//
 	// add_filter('getarchives_where', 'ew_custom_post_type_archive_where', 10, 2);
 	// function ew_custom_post_type_archive_where($where,$args){
-	//     $post_type = isset($args['post_type']) ? $args['post_type'] : 'post';
-	//     return "WHERE post_type = '$post_type' AND post_status = 'publish'";
+	//   $post_type = isset($args['post_type']) ? $args['post_type'] : 'post';
+	//   return "WHERE post_type = '$post_type' AND post_status = 'publish'";
 	// }
 	//
 	// add_filter('year_link', 'ew_year_link');
 	// function ew_year_link($link) {
-	//     global $wp_rewrite;
+	//   global $wp_rewrite;
 	//
-	//     if(true) { // however you determine what archive you want
-	//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
-	//     }
+	//   if(true) { // however you determine what archive you want
+	//     $link = str_replace($wp_rewrite->front, '/resources/', $link);
+	//   }
 	//
-	//     return $link;
+	//   return $link;
 	// }
 	//
 	// add_filter('month_link', 'ew_month_link');
 	// function ew_month_link($link) {
-	//     global $wp_rewrite;
+	//   global $wp_rewrite;
 	//
-	//     if(true) { // however you determine what archive you want
-	//         $link = str_replace($wp_rewrite->front, '/resources/', $link);
-	//     }
+	//   if(true) { // however you determine what archive you want
+	//     $link = str_replace($wp_rewrite->front, '/resources/', $link);
+	//   }
 	//
-	//     return $link;
+	//   return $link;
 	// }
+
+	add_filter ('get_archives_link',
+	function ($link_html, $url, $text, $format, $before, $after) {
+			if ('archive_year' == $format) {
+					$link_html = "<button class='trigger year' href='#'>"
+										 . "$text"
+										 . '</button>';
+			}
+	    if ('archive_month' == $format) {
+	        $link_html = "<a class='link month' href='$url'>"
+	                   . "$text"
+	                   . '</a>';
+	    }
+			debug($before);
+	    return $link_html;
+	}, 10, 6);
+
+	//List archives by year, then month
+function wp_custom_archive($args = '', $category = '') {
+  global $wpdb, $wp_locale;
+	// $echo = true;
+	$category = $category ? '/'.$category : '';
+
+  $defaults = array(
+    'limit' => '',
+    'format' => 'html', 'before' => '',
+    'after' => '', 'show_post_count' => false,
+    'echo' => 1
+  );
+
+  $r = wp_parse_args( $args, $defaults );
+  extract( $r, EXTR_SKIP );
+
+  if ( '' != $limit ) {
+    $limit = absint($limit);
+    $limit = ' LIMIT '.$limit;
+  }
+
+  // over-ride general date format ? 0 = no: use the date format set in Options, 1 = yes: over-ride
+  $archive_date_format_over_ride = 0;
+
+  // options for daily archive (only if you over-ride the general date format)
+  $archive_day_date_format = 'Y/m/d';
+
+  // options for weekly archive (only if you over-ride the general date format)
+  $archive_week_start_date_format = 'Y/m/d';
+  $archive_week_end_date_format   = 'Y/m/d';
+
+  if ( !$archive_date_format_over_ride ) {
+    $archive_day_date_format = get_option('date_format');
+    $archive_week_start_date_format = get_option('date_format');
+    $archive_week_end_date_format = get_option('date_format');
+  }
+
+  //filters
+	$output = '<nav class="archive-list">';
+  $where = apply_filters('customarchives_where', "WHERE post_type = 'post' AND post_status = 'publish'", $r );
+  $join = apply_filters('customarchives_join', "", $r);
+
+    $query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC $limit";
+    $key = md5($query);
+    $cache = wp_cache_get( 'wp_custom_archive' , 'general');
+    if ( !isset( $cache[ $key ] ) ) {
+      $arcresults = $wpdb->get_results($query);
+      $cache[ $key ] = $arcresults;
+      wp_cache_set( 'wp_custom_archive', $cache, 'general' );
+    } else {
+      $arcresults = $cache[ $key ];
+    }
+    if ( $arcresults ) {
+      $afterafter = $after;
+      foreach ( (array) $arcresults as $arcresult ) {
+				debug($arcresult);
+        $url = $category . ew_get_month_link( $arcresult->year, $arcresult->month );
+        $year_url = $category . ew_get_year_link($arcresult->year);
+        /* translators: 1: month name, 2: 4-digit year */
+        $text = sprintf(__('%s'), $wp_locale->get_month($arcresult->month));
+        $year_text = sprintf('%d', $arcresult->year);
+        if ( $show_post_count )
+          $after = '&nbsp;('.$arcresult->posts.')' . $afterafter;
+        $year_output = get_archives_link($year_url, $year_text, 'archive_year', $before, $after);
+        $output .= ( $arcresult->year != $temp_year ) ? $year_output : '';
+        $output .= get_archives_link($url, $text, 'archive_month', $before, $after);
+
+        $temp_year = $arcresult->year;
+      }
+    }
+
+  $output .= '</nav>';
+
+  if ( $echo )
+    echo $output;
+  else
+    return $output;
+}
