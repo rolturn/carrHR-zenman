@@ -8,9 +8,15 @@ $background_image = get_sub_field('background_image');
 $classes = 'module-one-column-content one-column-content';
 $classes .= ' one-column-content--' . get_sub_field('align');
 $classes .= ' one-column-content--' . get_sub_field('text_color');
-if(get_sub_field('extra_padding')){
+
+if(!empty(get_sub_field('extra_padding'))){
 	$classes .= ' one-column-content--extra-pad';
 }
+echo get_sub_field('additional_padding');
+if(!empty(get_sub_field('additional_padding'))) {
+	$classes .= ' one-column-content--'.get_sub_field('additional_padding');
+}
+
 switch (get_sub_field('background')) {
 	case 'blue':
 		$classes .= ' bgcolor-blue';
