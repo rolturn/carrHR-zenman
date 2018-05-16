@@ -51,9 +51,11 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# Don't track anything I make .archive
+*.archive
+
 # Yarn Integrity file
 .yarn-integrity
 
 # dotenv environment variables file
 .env
-
