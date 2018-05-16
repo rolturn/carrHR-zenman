@@ -544,7 +544,10 @@ function equalize_height(uls){
 		lis2 = uls[1].children;
 
 	for (var i = 0; i < lis1.length; i++) {
-		var h = Math.max(lis1[i].offsetHeight, lis2[i].offsetHeight);
+			var row1Height = $(lis1[i]).outerHeight(true);
+		var row2Height = $(lis2[i]).outerHeight(true);
+
+		var h = Math.max(row1Height, row2Height);
 		lis1[i].style.height = h + 'px';
 		lis2[i].style.height = h + 'px';
 	}

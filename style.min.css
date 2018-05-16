@@ -6,7 +6,7 @@ Description: WordPress Theme built for CarrHR by Zenman.
 .bgcolor-blue .button,.button--light,.half-half .button,.form[style*="background"] input[type="submit"],.form.column-count-two .wpcf7 input[type="submit"],.link-farm--light .button,.one-column-content--light .button{border-color:#fff;background-color:transparent;color:#fff}
 .bgcolor-blue .button:hover,.button--light:hover,.half-half .button:hover,.form[style*="background"] input:hover[type="submit"],.form.column-count-two .wpcf7 input:hover[type="submit"],.link-farm--light .button:hover,.one-column-content--light .button:hover{background-color:#fff;color:#003773}
 html{font-family:"montserrat",Helvetica,Arial,sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
-img{max-width:100%;height:auto}body{margin:0;font-size:14px;font-weight:300;letter-spacing:.015em;line-height:1.4}
+img{max-width:100%;height:auto}body{margin:0;font-size:14px;font-weight:300;letter-spacing:.015em;line-height:1.6}
 *,*:before,*:after{-webkit-box-sizing:border-box;box-sizing:border-box}.cf:after{content:'';display:block;clear:both}
 .ease-me-in{opacity:0;-webkit-animation:easeme 2s forwards;animation:easeme 2s forwards;-webkit-animation-delay:150ms;animation-delay:150ms}
 .bgcolor-blue{background-color:#003773;color:#fff}.bgcolor-blue h3{color:#fff}.bgcolor-gray{background-color:#ececec}
@@ -161,7 +161,7 @@ p{padding-bottom:0;margin-top:0;margin-bottom:1em}[class*="torso--sidebar"] [cla
 .accordion .accordion-active h4{color:#003773}.accordion .accordion-active h4:after{-webkit-transform:rotate(45deg) translate(-50%,-50%);transform:rotate(45deg) translate(-50%,-50%)}
 .accordion .accordion-active+.answer{color:#cf671a}.accordion__inner{max-width:1024px}
 .accordion__title{text-align:center}.accordion__wrapper{cursor:pointer;border-bottom:1px solid #a1a1a1}
-.question h4{color:#003773;padding:.75em 70px .5em 0;text-transform:uppercase;font-size:1.25em;line-height:1.25em;font-weight:normal;position:relative}
+.question h4{color:#003773;padding:1em 70px .75em 0;text-transform:uppercase;font-size:1.25em;line-height:1.25em;font-weight:normal;position:relative;margin-top:0}
 .question h4:after{content:'';overflow:hidden;position:absolute;right:0;top:50%;width:18px;height:18px;border:0 solid #cf671a;border-width:0 2px 2px 0;-webkit-transform:rotate(-45deg) translateY(-50%);transform:rotate(-45deg) translateY(-50%);-webkit-transition:-webkit-transform 400ms;transition:-webkit-transform 400ms;transition:transform 400ms;transition:transform 400ms,-webkit-transform 400ms}
 .question h4:hover{color:#cf671a}.answer{font-size:1.3em}.answer:before,.answer:after{content:" ";display:table}
 .answer:after{clear:both}@-webkit-keyframes from-left{from{opacity:0;-webkit-transform:translateX(-50px);transform:translateX(-50px)}
@@ -259,13 +259,13 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .case-studies__single:hover svg{fill:#cf671a}.case-studies__single h5{position:relative;padding-right:1.3em;font-size:16px;padding-left:10px;font-family:"montserrat",Helvetica,Arial,sans-serif;color:#003773;-webkit-transition:all 400ms ease;transition:all 400ms ease}
 .case-studies__single h5:after{content:"";position:absolute;width:12px;height:12px;top:3px;right:0;border:0 solid #cf671a;border-width:0 1px 1px 0;-webkit-transform:rotate(-45deg) translate(-5px,-5px);transform:rotate(-45deg) translate(-5px,-5px);-webkit-transition:-webkit-transform 400ms;transition:-webkit-transform 400ms;transition:transform 400ms;transition:transform 400ms,-webkit-transform 400ms}
 .case-studies__single svg{width:50px;height:50px;fill:#003773;margin-right:5px;-webkit-transition:all 400ms ease;transition:all 400ms ease}
-.comparison{margin:60px 0;position:relative}.comparison h3{font-size:20px;font-family:"montserrat",sans-serif;text-transform:uppercase;font-weight:normal;color:#fff;text-align:center;position:relative;margin:0 0 30px;padding:20px 0}
-.comparison h3:after{content:'';position:absolute;bottom:0;left:50%;width:100px;margin-left:-50px;height:2px;background-color:#cf671a}
+.comparison{margin:60px 0;position:relative}.comparison h3{color:#fff;text-align:center;margin-top:20px}
 .comparison__inner{position:relative;z-index:10}.comparison__background{position:absolute;top:60px;left:0;right:0;bottom:60px;z-index:1}
 .comparison__wrapper{display:-webkit-box;display:-ms-flexbox;display:flex}.comparison__single{-webkit-box-flex:1;-ms-flex:1;flex:1;padding:20px;-webkit-box-shadow:0 0 16px 0 rgba(0,0,0,0.5);box-shadow:0 0 16px 0 rgba(0,0,0,0.5);background-color:rgba(0,0,0,0.7)}
 .comparison__single:first-child{margin-right:20px;cursor:e-resize}.comparison__single:last-child{margin-left:20px;cursor:w-resize}
-.comparison__single li{color:#fff;-webkit-transform-origin:0 0;transform-origin:0 0}
-.comparison__single li:before{color:#fff}.comparison__single li.flash{-webkit-animation:comparisonate .5s ease-in-out;animation:comparisonate .5s ease-in-out}
+.comparison__single li{color:#fff;-webkit-transform-origin:0 0;transform-origin:0 0;margin-bottom:1em}
+.comparison__single li p{margin:0;padding:0}.comparison__single li:before{color:#fff}
+.comparison__single li.flash{-webkit-animation:comparisonate .5s ease-in-out;animation:comparisonate .5s ease-in-out}
 @-webkit-keyframes comparisonate{0%{opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
 33%{-webkit-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.05);transform:scale(1.05)}
 67%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes comparisonate{0%{opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
