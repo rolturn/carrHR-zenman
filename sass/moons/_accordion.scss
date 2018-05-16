@@ -33,13 +33,15 @@
 .question {
 	h4 {
 		color: $color-1;
-		padding: .75em 80px .5em 0;
+		padding: .75em 70px .5em 0;
 		text-transform: uppercase;
 		font-size: 1.25em;
 		line-height: 1.25em;
 		font-weight: normal;
 		position: relative;
-
+		@include bp($max: 576px) {
+	    padding-right: 40px;
+	  }
 		&:after {
 			content: '';
   		overflow: hidden;
