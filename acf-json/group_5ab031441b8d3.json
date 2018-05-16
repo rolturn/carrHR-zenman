@@ -1,6 +1,6 @@
 {
     "key": "group_5ab031441b8d3",
-    "title": "Blog Post Configuration Options",
+    "title": "Blog Post Options",
     "fields": [
         {
             "key": "field_5ab031d69216d",
@@ -33,7 +33,7 @@
             {
                 "param": "post_category",
                 "operator": "==",
-                "value": "category:blog"
+                "value": "category:commercial-real-estate-blog"
             }
         ]
     ],
@@ -45,5 +45,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1521496792
+    "modified": 1526506578
 }
