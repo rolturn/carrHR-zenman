@@ -29,7 +29,7 @@ $title = get_sub_field('heading');
 			    		$post_id = $icon[0];
 			    		$svg_post = get_post($post_id);
 			    		$slug = $svg_post->post_name;
-			    		$icon = aqua_svg($slug, '', '', false);
+			    		$icon = the_aqua_svg($slug, '', '', false);
 			    	}
 			    	?>
 

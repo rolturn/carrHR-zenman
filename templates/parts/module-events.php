@@ -71,21 +71,21 @@
 											<?php if(get_field('link_destination') == 'int') : ?>
 												<a href="<?php echo get_field('link_int'); ?>">
 													<div class="events__single">
-														<p><?php aqua_svg($type_icon); echo $type; ?></p>
+														<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 														<p><?php echo $short_description; ?></p>
 													</div>
 												</a>
 											<?php elseif(get_field('link_destination') == 'ext') : ?>
 												<a href="<?php echo get_field('link_ext'); ?>" target="_blank" rel="nofollow">
 													<div class="events__single">
-														<p><?php aqua_svg($type_icon); echo $type; ?></p>
+														<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 														<p><?php echo $short_description; ?></p>
 													</div>
 												</a>
 											<?php endif; ?>
 										<?php else : ?>
 											<div class="events__single">
-												<p><?php aqua_svg($type_icon); echo $type; ?></p>
+												<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 												<p><?php echo $short_description; ?></p>
 											</div>
 										<?php endif; ?>
@@ -99,21 +99,21 @@
 										<?php if(get_field('link_destination') == 'int') : ?>
 											<a href="<?php echo get_field('link_int'); ?>">
 												<div class="events__single">
-													<p><?php aqua_svg($type_icon); echo $type; ?></p>
+													<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 													<p><?php echo $short_description; ?></p>
 												</div>
 											</a>
 										<?php elseif(get_field('link_destination') == 'ext') : ?>
 											<a href="<?php echo get_field('link_ext'); ?>" target="_blank" rel="nofollow">
 												<div class="events__single">
-													<p><?php aqua_svg($type_icon); echo $type; ?></p>
+													<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 													<p><?php echo $short_description; ?></p>
 												</div>
 											</a>
 										<?php endif; ?>
 									<?php else : ?>
 										<div class="events__single">
-											<p><?php aqua_svg($type_icon); echo $type; ?></p>
+											<p><?php the_aqua_svg($type_icon); echo $type; ?></p>
 											<p><?php echo $short_description; ?></p>
 										</div>
 									<?php endif; ?>

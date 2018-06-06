@@ -3,13 +3,14 @@
 $column_count = get_sub_field('column_count');
 $add_background_color = get_sub_field('add_background_color');
 $bullet_color = get_sub_field('bullet_color');
+debug($bullet_color);
 $class = '';
 if(get_sub_field('font_size')){
-	$class = 'bulleted-list__single--larger';
+	$class = ' bulleted-list__single--larger';
 }
 ?>
 
-<section class="module-bulleted-list bulleted-list <?php echo $bullet_color; ?> column-count-<?php echo $column_count; echo ($add_background_color ? ' bulleted-list--bg-light' : ''); ?>">
+<section class="module-bulleted-list bulleted-list column-count-<?php echo $column_count; echo ($add_background_color ? ' bulleted-list--bg-light' : ''); ?>">
 
 	<div class="bulleted-list__inner">
 
@@ -19,23 +20,29 @@ if(get_sub_field('font_size')){
 			    <?php while ( have_rows('add_a_list_item') ) : the_row();
 			    	$text = get_sub_field('text');
 			    	$icon = get_sub_field('icon');
-			    	if($icon){
+			    	if ($icon) {
+							// if aqua svg is removed this will not work it is half broken already
 				    	$icon_arr = get_sub_field('icon');
 				    	$icon_obj = $icon_arr[0];
 				    	$icon_name = $icon_obj->post_name;
-						$icon = aqua_svg($icon_name, '', '', false);
-			    	}
+						// $icon = the_aqua_svg($icon_name);
+						} else {
+							$icon_name = 'no-icon';
+						}
+
+
 			    ?>
-		    		<li class="bulleted-list__single bulleted-list--<?php echo ($icon ? 'icon' : 'no-icon'); ?> <?= $class; ?> js-ease">
+		    		<li class="bulleted-list__single<?php echo ' bulleted-list__icon icon-'.$icon_name; ?><?php echo ($bullet_color ? ' '.$bullet_color : ''); ?><?= $class; ?> js-ease">
 		    			<?php
-							if($icon){
-								echo $icon;
-							}
+							// if($icon){
+							// 	echo $icon;
+							// }
 							if( $column_count === 'two' ){
 								echo '<h4 class="bulleted-list__title">'. get_sub_field('title') .'</h4>';
 							}
-			    			if($text) {
-								echo $text;
+		    			if($text) {
+								echo '<span class="bulleted-list__text">'. $text .'</span>';
+								// echo $text;
 							}
 		    			?>
 		    		</li>

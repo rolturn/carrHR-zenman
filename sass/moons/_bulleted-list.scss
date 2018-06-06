@@ -21,53 +21,60 @@
 	&__single {
 		margin-bottom: 30px;
 	}
-	.bulleted-list{
-		&--icon{
-			list-style: none;
-			padding-left: 1.5em;
+	&__icon {
+		list-style: none;
+		padding-left: 1.5em;
+		&:before {
+			position: absolute;
+			left: 8px;
+			top: 3px;
+			transform: translate(0, 0);
+			font-size: 1em;
+			color: $color-1;
+		}
+		&.icon-no-icon {
 			&:before {
 				content: '';
-			}
-			svg {
-				position: absolute;
-				left: 8px;
-				top: 3px;
-				width: 16px;
 				height: 16px;
+				width: 16px;
+				border-radius: 50%;
+				border-width: 1px;
+				border-style: solid;
 			}
 		}
 	}
-	&.blue-bullet {
-		svg{
-			fill: $color-1;
+
+	.blue-bullet {
+		color: $color-1;
+		h4 {
+			color: $color-1;
 		}
-		.bulleted-list--no-icon{
-			padding-left: 1.5em;
+		&:before {
+			color: $color-1;
+		}
+		&.icon-no-icon {
 			&:before {
-				content: '●';
-				position: absolute;
-				top: 0;
-				left: 8px;
-				font-size: 30px;
-				line-height: 0.65;
-				color: $color-1;
+				border-color: $color-1;
 			}
 		}
 	}
-	&.orange-bullet{
-		svg{
-			fill: $color-2;
+	.orange-bullet {
+		color: $color-2;
+		h4 {
+			color: $color-2;
 		}
-		.bulleted-list--no-icon{
-			padding-left: 1.5em;
+		&:before {
+			color: $color-2;
+		}
+		&.icon-no-icon {
 			&:before {
-			    content: "•";
-				position: absolute;
-				color: $color-2;
-				left: 16px;
-				top: -3px;
+				border-color: $color-2;
 			}
 		}
+
+	}
+	.bulleted-list__text {
+		font-family: $fam-body;
 	}
 	&.column-count-two{
 		.bulleted-list__wrapper{
@@ -89,7 +96,6 @@
 			}
 			.bulleted-list__title {
 				font-size: 18px;
-				color: $color-1;
 				font-family: $fam-heading;
 
 				@include bp($planetary){

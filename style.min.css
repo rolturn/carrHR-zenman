@@ -13,7 +13,24 @@ img{max-width:100%;height:auto}body{margin:0;font-size:14px;font-weight:300;lett
 @-webkit-keyframes easeme{from{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%)}
 to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes easeme{from{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%)}
 to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}[class*='module-'] ul{-webkit-margin-before:1em;margin-block-start:1em;-webkit-margin-after:1em;margin-block-end:1em;-webkit-padding-start:40px;-moz-padding-start:40px;padding-inline-start:40px}
-img{border:0}svg:not(:root){overflow:hidden}@font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-black-webfont.eot");src:url("fonts/montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-black-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-black-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-black-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-black-webfont.svg#montserratblack") format("svg");font-weight:900;font-style:normal}
+img{border:0}svg:not(:root){overflow:hidden}@font-face{font-family:'carrHR';src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR-icons/fonts/carrHR.eot?fdlpjs");src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR-icons/fonts/carrHR.eot?fdlpjs#iefix") format("embedded-opentype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR-icons/fonts/carrHR.ttf?fdlpjs") format("truetype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR-icons/fonts/carrHR.woff?fdlpjs") format("woff"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR-icons/fonts/carrHR.svg?fdlpjs#carrHR") format("svg");font-weight:normal;font-style:normal}
+[class^="icon-"],[class*=" icon-"]{position:relative;font-family:'carrHR' !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+[class^="icon-"]:after,[class^="icon-"]:before,[class*=" icon-"]:after,[class*=" icon-"]:before{position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.icon-checkmark:before{content:""}.icon-arrow:before{content:""}
+.icon-book:before{content:""}.icon-briefcase:before{content:""}
+.icon-bulb:before{content:""}.icon-compass:before{content:""}
+.icon-education:before{content:""}.icon-globe:before{content:""}
+.icon-handshake:before{content:""}.icon-help:before{content:""}
+.icon-id:before{content:""}.icon-info:before{content:""}
+.icon-link:before{content:""}.icon-login:before{content:""}
+.icon-magnifing-glass:before{content:""}.icon-mail:before{content:""}
+.icon-paper:before{content:""}.icon-person:before{content:""}
+.icon-phone:before{content:""}.icon-pin:before{content:""}
+.icon-puzzle:before{content:""}.icon-quote:before{content:""}
+.icon-ribbon:before{content:""}.icon-secure:before{content:""}
+.icon-star:before{content:""}.icon-tag:before{content:""}
+.icon-target:before{content:""}.icon-wallet:before{content:""}
+@font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-black-webfont.eot");src:url("fonts/montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-black-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-black-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-black-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-black-webfont.svg#montserratblack") format("svg");font-weight:900;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-bold-webfont.eot");src:url("fonts/montserrat/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-bold-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-bold-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-bold-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-bold-webfont.svg#montserratbold") format("svg");font-weight:700;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-hairline-webfont.eot");src:url("fonts/montserrat/montserrat-hairline-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-hairline-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-hairline-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-hairline-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-hairline-webfont.svg#montserrathairline") format("svg");font-weight:100;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-light-webfont.eot");src:url("fonts/montserrat/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-light-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-light-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-light-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-light-webfont.svg#montserratlight") format("svg");font-weight:300;font-style:normal}
@@ -230,15 +247,17 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .post-single__related-title h3:after{content:'';position:absolute;bottom:0;left:50%;width:100px;margin-left:-50px;height:2px;background-color:#cf671a}
 .pagination-block{clear:both;text-align:center;width:100%;padding:2em .9375rem}.bulleted-list{padding:0 20px 60px 20px}
 .bulleted-list h4{margin:0}.bulleted-list p{color:#003773;font-weight:600}.bulleted-list__wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:-30px}
-.bulleted-list__single{margin-bottom:30px}.bulleted-list .bulleted-list--icon{list-style:none;padding-left:1.5em}
-.bulleted-list .bulleted-list--icon:before{content:''}.bulleted-list .bulleted-list--icon svg{position:absolute;left:8px;top:3px;width:16px;height:16px}
-.bulleted-list.blue-bullet svg{fill:#003773}.bulleted-list.blue-bullet .bulleted-list--no-icon{padding-left:1.5em}
-.bulleted-list.blue-bullet .bulleted-list--no-icon:before{content:'●';position:absolute;top:0;left:8px;font-size:30px;line-height:.65;color:#003773}
-.bulleted-list.orange-bullet svg{fill:#cf671a}.bulleted-list.orange-bullet .bulleted-list--no-icon{padding-left:1.5em}
-.bulleted-list.orange-bullet .bulleted-list--no-icon:before{content:"•";position:absolute;color:#cf671a;left:16px;top:-3px}
+.bulleted-list__single{margin-bottom:30px}.bulleted-list__icon{list-style:none;padding-left:1.5em}
+.bulleted-list__icon:before{position:absolute;left:8px;top:3px;-webkit-transform:translate(0,0);transform:translate(0,0);font-size:1em;color:#003773}
+.bulleted-list__icon.icon-no-icon:before{content:'';height:16px;width:16px;border-radius:50%;border-width:1px;border-style:solid}
+.bulleted-list .blue-bullet{color:#003773}.bulleted-list .blue-bullet h4{color:#003773}
+.bulleted-list .blue-bullet:before{color:#003773}.bulleted-list .blue-bullet.icon-no-icon:before{border-color:#003773}
+.bulleted-list .orange-bullet{color:#cf671a}.bulleted-list .orange-bullet h4{color:#cf671a}
+.bulleted-list .orange-bullet:before{color:#cf671a}.bulleted-list .orange-bullet.icon-no-icon:before{border-color:#cf671a}
+.bulleted-list .bulleted-list__text{font-family:"montserrat",Helvetica,Arial,sans-serif}
 .bulleted-list.column-count-two .bulleted-list__wrapper{margin:0 6%}.bulleted-list.column-count-two .bulleted-list__single{width:50%;padding:0 40px}
 .bulleted-list.column-count-two .bulleted-list__single p{color:#000;font-weight:normal;padding-left:10px}
-.bulleted-list.column-count-two .bulleted-list__single .bulleted-list__title{font-size:18px;color:#003773;font-family:"montserrat",sans-serif}
+.bulleted-list.column-count-two .bulleted-list__single .bulleted-list__title{font-size:18px;font-family:"montserrat",sans-serif}
 .bulleted-list.column-count-two .bulleted-list__single--larger h4.bulleted-list__title{font-size:120%}
 .bulleted-list.column-count-three .bulleted-list__wrapper{margin-left:8%}.bulleted-list.column-count-three .bulleted-list__single{width:33.33%;padding:0 40px;margin-bottom:10px}
 .bulleted-list.column-count-four .bulleted-list__single{width:25%;padding:0 40px;margin-bottom:10px}
