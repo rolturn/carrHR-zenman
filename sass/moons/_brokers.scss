@@ -4,6 +4,10 @@
 .brokers {
 	text-align: center;
 
+	h1, h2, h3 {
+		text-transform: uppercase;
+	}
+
 	&__region {
 		&:nth-of-type(even){
 			background-color: $color-4;
@@ -23,7 +27,6 @@
 	}
 
 	&__broker-group {
-		margin-top: -3em;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;

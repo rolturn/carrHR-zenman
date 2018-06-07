@@ -11,6 +11,7 @@
 			letter-spacing: 0;
 			padding: 20px;
 			background-color: $color-1;
+			margin-top: 0;
 		}
 	}
 
@@ -174,5 +175,11 @@
 	.button {
 		position: relative;
 		margin-top: 10px;
+	}
+}
+
+.page-id-16 {
+	.one-column-content__inner {
+		margin-bottom: 3em;
 	}
 }
