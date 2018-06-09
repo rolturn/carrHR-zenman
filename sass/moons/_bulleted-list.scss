@@ -76,18 +76,22 @@
 	.bulleted-list__text {
 		font-family: $fam-body;
 	}
-	&.column-count-two{
+	&.column-count-two {
 		.bulleted-list__wrapper{
-			margin: 0 6%;
+			margin: 0 10%;
 			@include bp (900px) {
 				margin: 0;
 			}
 		}
-		.bulleted-list__single{
-			width: 50%;
-			padding: 0 40px;
+		.bulleted-list__single {
+			width: 47.5%;
+			padding: 0 0 0 40px;
+			&:nth-child(2n-1) {
+				margin-right: 5%;
+			}
 			@include bp($planetary){
 				width: 100%;
+				margin-right: 0;
 			}
 			p {
 				color: $black;
@@ -109,32 +113,59 @@
 	}
 	&.column-count-three {
 		.bulleted-list__wrapper {
-			margin-left: 8%;
+			margin: 0 10%;
 
 			@include bp(900px) {
-				margin-left: 0;
+				margin: 0;
 			}
 		}
 		.bulleted-list__single {
-			width: 33.33%;
-			padding: 0 40px;
+			width: 30%;
+			padding: 0 0 0 40px;
 			margin-bottom: 10px;
+			&:nth-child(3n-1),
+			&:nth-child(3n-2) {
+				margin-right: 5%;
+			}
 
 			@include bp(900px) {
-				width: 50%;
+				width: 47.5%;
+				&:nth-child(3n-1),
+				&:nth-child(3n-2) {
+					margin-right: 0;
+				}
+				&:nth-child(2n-1) {
+					margin-right: 5%;
+				}
 			}
+
 			@include bp($planetary){
 				width: 100%;
+				&:nth-child(2n-1) {
+					margin-right: 0;
+				}
 			}
 		}
 	}
 	&.column-count-four {
 		.bulleted-list__single {
-			width: 25%;
-			padding: 0 40px;
+			width: 22%;
+			padding: 0 0 0 40px;
 			margin-bottom: 10px;
+			&:nth-child(4n-1),
+			&:nth-child(4n-2),
+			&:nth-child(4n-3) {
+				margin-right: 4%;
+			}
 			@include bp($solarsystem){
-				width: 50%;
+				width: 47.5%;
+				&:nth-child(3n-1),
+				&:nth-child(3n-2) {
+					margin-right: 0;
+				}
+				&:nth-child(2n-1) {
+					margin-right: 5%;
+				}
 			}
 			@include bp($planetary){
 				width: 100%;

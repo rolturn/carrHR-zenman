@@ -516,12 +516,12 @@ function comparisonator(wrapper) {
 	wrapper.each(function(i){
 		_uls = $(this).find('ul');
 
-		if (_uls.length === 2){
-			equalize_height(_uls);
+		if (_uls.length === 2) {
+			// equalize_height(_uls);
 
-			$(window).resize(function(){
-				equalize_height(_uls);
-			});
+			// $(window).resize(function(){
+			// 	equalize_height(_uls);
+			// });
 
 			_uls.each(function(i){
 				_lis = $(this).children();
@@ -539,6 +539,7 @@ function comparisonator(wrapper) {
 	});
 };
 
+// commenting this codes usage out but could be useful later
 function equalize_height(uls){
 	var lis1 = uls[0].children,
 		lis2 = uls[1].children;

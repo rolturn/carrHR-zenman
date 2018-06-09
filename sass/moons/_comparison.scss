@@ -41,7 +41,7 @@
 
 	&__single {
 		flex: 1;
-		padding: 20px;
+		padding: 20px 40px;
 		box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.50);
 		background-color: rgba(0, 0, 0, 0.7);
 
@@ -68,10 +68,18 @@
 			}
 		}
 
+		ul {
+			padding-left: 1em;
+		}
+
 		li {
 			color:$white;
 			transform-origin: 0 0;
 			margin-bottom: 1em;
+
+			&:before {
+				top: .1em;
+			}
 
 			p {
 				margin: 0;
