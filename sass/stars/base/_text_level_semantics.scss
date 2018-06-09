@@ -105,7 +105,8 @@ ul {
 		list-style: none;
 		&:before {
 			font-family: $fam-icon;
-			content: $icon-checkmark;
+			color: $color-1;
+			content: $icon-checkmark_heavy;
 			position: absolute;
 			font-size: .8em;
 			left: -1em;
