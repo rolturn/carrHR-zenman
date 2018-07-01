@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'carrHR_icons';
-  src:  url('#{$carrhr-icon-font-path}/carrHR_icons.eot?e806pt');
-  src:  url('#{$carrhr-icon-font-path}/carrHR_icons.eot?e806pt#iefix') format('embedded-opentype'),
-    url('#{$carrhr-icon-font-path}/carrHR_icons.ttf?e806pt') format('truetype'),
-    url('#{$carrhr-icon-font-path}/carrHR_icons.woff?e806pt') format('woff'),
-    url('#{$carrhr-icon-font-path}/carrHR_icons.svg?e806pt#carrHR_icons') format('svg');
+  src:  url('#{$carrhr-icon-font-path}/carrHR_icons.eot?ei547n');
+  src:  url('#{$carrhr-icon-font-path}/carrHR_icons.eot?ei547n#iefix') format('embedded-opentype'),
+    url('#{$carrhr-icon-font-path}/carrHR_icons.ttf?ei547n') format('truetype'),
+    url('#{$carrhr-icon-font-path}/carrHR_icons.woff?ei547n') format('woff'),
+    url('#{$carrhr-icon-font-path}/carrHR_icons.svg?ei547n#carrHR_icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -34,21 +34,6 @@
 .icon-checkmark_rev {
   &:before {
     content: $icon-checkmark_rev; 
-  }
-}
-.icon-circle {
-  &:before {
-    content: $icon-circle; 
-  }
-}
-.icon-dot-circle-o {
-  &:before {
-    content: $icon-dot-circle-o; 
-  }
-}
-.icon-circle-thin {
-  &:before {
-    content: $icon-circle-thin; 
   }
 }
 .icon-chevron_right {

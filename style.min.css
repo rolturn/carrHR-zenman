@@ -13,25 +13,26 @@ img{max-width:100%;height:auto}body{margin:0;font-size:14px;font-weight:300;lett
 @-webkit-keyframes easeme{from{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%)}
 to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes easeme{from{opacity:0;-webkit-transform:translateY(50%);transform:translateY(50%)}
 to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}img{border:0}
-svg:not(:root){overflow:hidden}@font-face{font-family:'carrHR_icons';src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.eot?ei547n");src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.eot?ei547n#iefix") format("embedded-opentype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.ttf?ei547n") format("truetype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.woff?ei547n") format("woff"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.svg?ei547n#carrHR_icons") format("svg");font-weight:normal;font-style:normal}
+svg:not(:root){overflow:hidden}@font-face{font-family:'carrHR_icons';src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.eot?e806pt");src:url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.eot?e806pt#iefix") format("embedded-opentype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.ttf?e806pt") format("truetype"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.woff?e806pt") format("woff"),url("/wp-content/themes/carrHR-zenman/fonts/carrHR_icons/fonts/carrHR_icons.svg?e806pt#carrHR_icons") format("svg");font-weight:normal;font-style:normal}
 [class^="icon-"],[class*=" icon-"]{font-family:'carrHR_icons' !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .icon-checkmark_heavy:before{content:""}.icon-checkmark_rev:before{content:""}
-.icon-chevron_right:before{content:""}.icon-chevron_left:before{content:""}
-.icon-checkmark:before{content:""}.icon-arrow:before{content:""}
-.icon-book:before{content:""}.icon-briefcase:before{content:""}
-.icon-bulb:before{content:""}.icon-compass:before{content:""}
-.icon-education:before{content:""}.icon-globe:before{content:""}
-.icon-handshake:before{content:""}.icon-help:before{content:""}
-.icon-id:before{content:""}.icon-info:before{content:""}
-.icon-link:before{content:""}.icon-login:before{content:""}
-.icon-magnifing-glass:before{content:""}.icon-mail:before{content:""}
-.icon-paper:before{content:""}.icon-person:before{content:""}
-.icon-phone:before{content:""}.icon-pin:before{content:""}
-.icon-puzzle:before{content:""}.icon-quote:before{content:""}
-.icon-ribbon:before{content:""}.icon-secure:before{content:""}
-.icon-star:before{content:""}.icon-tag:before{content:""}
-.icon-target:before{content:""}.icon-wallet:before{content:""}
-@font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-black-webfont.eot");src:url("fonts/montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-black-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-black-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-black-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-black-webfont.svg#montserratblack") format("svg");font-weight:900;font-style:normal}
+.icon-circle:before{content:""}.icon-dot-circle-o:before{content:""}
+.icon-circle-thin:before{content:""}.icon-chevron_right:before{content:""}
+.icon-chevron_left:before{content:""}.icon-checkmark:before{content:""}
+.icon-arrow:before{content:""}.icon-book:before{content:""}
+.icon-briefcase:before{content:""}.icon-bulb:before{content:""}
+.icon-compass:before{content:""}.icon-education:before{content:""}
+.icon-globe:before{content:""}.icon-handshake:before{content:""}
+.icon-help:before{content:""}.icon-id:before{content:""}
+.icon-info:before{content:""}.icon-link:before{content:""}
+.icon-login:before{content:""}.icon-magnifing-glass:before{content:""}
+.icon-mail:before{content:""}.icon-paper:before{content:""}
+.icon-person:before{content:""}.icon-phone:before{content:""}
+.icon-pin:before{content:""}.icon-puzzle:before{content:""}
+.icon-quote:before{content:""}.icon-ribbon:before{content:""}
+.icon-secure:before{content:""}.icon-star:before{content:""}
+.icon-tag:before{content:""}.icon-target:before{content:""}
+.icon-wallet:before{content:""}@font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-black-webfont.eot");src:url("fonts/montserrat/montserrat-black-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-black-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-black-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-black-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-black-webfont.svg#montserratblack") format("svg");font-weight:900;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-bold-webfont.eot");src:url("fonts/montserrat/montserrat-bold-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-bold-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-bold-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-bold-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-bold-webfont.svg#montserratbold") format("svg");font-weight:700;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-hairline-webfont.eot");src:url("fonts/montserrat/montserrat-hairline-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-hairline-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-hairline-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-hairline-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-hairline-webfont.svg#montserrathairline") format("svg");font-weight:100;font-style:normal}
 @font-face{font-family:'montserrat';src:url("fonts/montserrat/montserrat-light-webfont.eot");src:url("fonts/montserrat/montserrat-light-webfont.eot?#iefix") format("embedded-opentype"),url("fonts/montserrat/montserrat-light-webfont.woff2") format("woff2"),url("fonts/montserrat/montserrat-light-webfont.woff") format("woff"),url("fonts/montserrat/montserrat-light-webfont.ttf") format("truetype"),url("fonts/montserrat/montserrat-light-webfont.svg#montserratlight") format("svg");font-weight:300;font-style:normal}
@@ -66,7 +67,7 @@ h4{font-size:26px;color:#cf671a;font-weight:300}h5{font-size:12px}h6{font-size:1
 abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}
 mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
 sup{top:-0.5em}sub{bottom:-0.25em}ul{padding:0;margin:0;padding-left:2em}ul li{list-style:none}
-ul li:before{font-family:"carrHR_icons";color:#003773;content:"";position:absolute;font-size:.8em;left:-1em;top:.45em}
+ul li:before{font-family:"carrHR_icons";color:#cf671a;content:"";position:absolute;font-size:.45em;left:-1em;top:1em;line-height:1}
 li{padding:0 0 0 15px;margin:0;font-size:17px;line-height:1.5;position:relative;color:#003773}
 blockquote{position:relative;margin:0;font-weight:normal;font-style:italic}blockquote:before{content:'';background-image:url("images/quote.svg");background-size:contain;background-repeat:no-repeat;position:absolute;top:0;left:-30px;width:20px;height:20px;font-size:40px;line-height:.9;color:#fff}
 ol li{color:#000}meta.foundation-version{font-family:"/{{VERSION}}/"}
@@ -109,7 +110,7 @@ body:not(.is-active) .main-head__nav.nav--hidden{top:-125px}.head-nav__desktop{b
 .head-nav__desktop .menu>li.menu-item:hover>a:before,.head-nav__desktop .menu>li.menu-item.current_page_parent>a:before,.head-nav__desktop .menu>li.menu-item.current-menu-item>a:before{-webkit-transform:translateY(-8px);transform:translateY(-8px);opacity:1}
 .head-nav__desktop .menu>li.menu-item:hover>a:after,.head-nav__desktop .menu>li.menu-item.current_page_parent>a:after,.head-nav__desktop .menu>li.menu-item.current-menu-item>a:after{opacity:1;-webkit-transform:translateY(8px);transform:translateY(8px)}
 .head-nav__desktop .head-nav__navigation ul:not(.sub-menu){width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}
-.head-nav__desktop .head-nav__navigation .sub-menu{position:absolute;display:none;-ms-flex-wrap:wrap;flex-wrap:wrap;left:0;top:100%;background-color:rgba(255,255,255,0.9);border:2px solid #003773;border-top:0}
+.head-nav__desktop .head-nav__navigation .sub-menu{position:absolute;display:none;-ms-flex-wrap:wrap;flex-wrap:wrap;left:0;top:100%;background-color:rgba(255,255,255,0.9);border:2px solid #003773;border-top:0;padding-left:0}
 .head-nav__desktop .head-nav__navigation .sub-menu.slide{display:-webkit-box;display:-ms-flexbox;display:flex;z-index:9;min-width:250%}
 .head-nav__desktop .head-nav__navigation .sub-menu li{width:100%}.head-nav__desktop .head-nav__navigation .sub-menu li:hover a{background-color:#f3f3f3;color:#003773}
 .head-nav__desktop .head-nav__navigation .sub-menu a{width:100%;padding:10px 15px;display:block;white-space:nowrap;color:#cf671a;text-transform:capitalize;font-weight:normal;-webkit-transition:all 400ms ease;transition:all 400ms ease}
@@ -289,8 +290,8 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .comparison__wrapper{display:-webkit-box;display:-ms-flexbox;display:flex}.comparison__single{-webkit-box-flex:1;-ms-flex:1;flex:1;padding:20px 40px;-webkit-box-shadow:0 0 16px 0 rgba(0,0,0,0.5);box-shadow:0 0 16px 0 rgba(0,0,0,0.5);background-color:rgba(0,0,0,0.7)}
 .comparison__single:first-child{margin-right:20px;cursor:e-resize}.comparison__single:last-child{margin-left:20px;cursor:w-resize}
 .comparison__single ul{padding-left:1em}.comparison__single li{color:#fff;-webkit-transform-origin:0 0;transform-origin:0 0;margin-bottom:1em}
-.comparison__single li:before{top:.1em}.comparison__single li p{margin:0;padding:0}
-.comparison__single li:before{color:#fff}.comparison__single li.flash{-webkit-animation:comparisonate .5s ease-in-out;animation:comparisonate .5s ease-in-out}
+.comparison__single li p{margin:0;padding:0}.comparison__single li:before{color:#fff}
+.comparison__single li.flash{-webkit-animation:comparisonate .5s ease-in-out;animation:comparisonate .5s ease-in-out}
 @-webkit-keyframes comparisonate{0%{opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}
 33%{-webkit-transform:scale(1);transform:scale(1)}50%{-webkit-transform:scale(1.05);transform:scale(1.05)}
 67%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes comparisonate{0%{opacity:0;-webkit-transform:scale(0.9);transform:scale(0.9)}

@@ -1,0 +1,177 @@
+@import "variables";
+
+@font-face {
+  font-family: 'carrHR-icons';
+  src:  url('#{$carrhr-icon-font-path}/carrHR.eot?fdlpjs');
+  src:  url('#{$carrhr-icon-font-path}/carrHR.eot?fdlpjs#iefix') format('embedded-opentype'),
+    url('#{$carrhr-icon-font-path}/carrHR.ttf?fdlpjs') format('truetype'),
+    url('#{$carrhr-icon-font-path}/carrHR.woff?fdlpjs') format('woff'),
+    url('#{$carrhr-icon-font-path}/carrHR.svg?fdlpjs#carrHR') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  position: relative;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'carrHR-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:after,
+  &:before {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.icon-checkmark {
+  &:before {
+    content: $icon-checkmark;
+  }
+}
+.icon-arrow {
+  &:before {
+    content: $icon-arrow;
+  }
+}
+.icon-book {
+  &:before {
+    content: $icon-book;
+  }
+}
+.icon-briefcase {
+  &:before {
+    content: $icon-briefcase;
+  }
+}
+.icon-bulb {
+  &:before {
+    content: $icon-bulb;
+  }
+}
+.icon-compass {
+  &:before {
+    content: $icon-compass;
+  }
+}
+.icon-education {
+  &:before {
+    content: $icon-education;
+  }
+}
+.icon-globe {
+  &:before {
+    content: $icon-globe;
+  }
+}
+.icon-handshake {
+  &:before {
+    content: $icon-handshake;
+  }
+}
+.icon-help {
+  &:before {
+    content: $icon-help;
+  }
+}
+.icon-id {
+  &:before {
+    content: $icon-id;
+  }
+}
+.icon-info {
+  &:before {
+    content: $icon-info;
+  }
+}
+.icon-link {
+  &:before {
+    content: $icon-link;
+  }
+}
+.icon-login {
+  &:before {
+    content: $icon-login;
+  }
+}
+.icon-magnifing-glass {
+  &:before {
+    content: $icon-magnifing-glass;
+  }
+}
+.icon-mail {
+  &:before {
+    content: $icon-mail;
+  }
+}
+.icon-paper {
+  &:before {
+    content: $icon-paper;
+  }
+}
+.icon-person {
+  &:before {
+    content: $icon-person;
+  }
+}
+.icon-phone {
+  &:before {
+    content: $icon-phone;
+  }
+}
+.icon-pin {
+  &:before {
+    content: $icon-pin;
+  }
+}
+.icon-puzzle {
+  &:before {
+    content: $icon-puzzle;
+  }
+}
+.icon-quote {
+  &:before {
+    content: $icon-quote;
+  }
+}
+.icon-ribbon {
+  &:before {
+    content: $icon-ribbon;
+  }
+}
+.icon-secure {
+  &:before {
+    content: $icon-secure;
+  }
+}
+.icon-star {
+  &:before {
+    content: $icon-star;
+  }
+}
+.icon-tag {
+  &:before {
+    content: $icon-tag;
+  }
+}
+.icon-target {
+  &:before {
+    content: $icon-target;
+  }
+}
+.icon-wallet {
+  &:before {
+    content: $icon-wallet;
+  }
+}

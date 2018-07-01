@@ -105,12 +105,13 @@ ul {
 		list-style: none;
 		&:before {
 			font-family: $fam-icon;
-			color: $color-1;
-			content: $icon-checkmark_heavy;
+			color: $color-2;
+			content: $icon-circle;
 			position: absolute;
-			font-size: .8em;
+			font-size: .45em;
 			left: -1em;
-			top: .45em;
+			top: 1em;
+			line-height: 1;
 		}
 	}
 }
