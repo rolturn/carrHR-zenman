@@ -8,61 +8,60 @@ var slugify = function (text) {
 		.replace(/-+$/, '');            // Trim - from end of text
 }
 
-
-var buildMarkerInfoWindowContent = function (broker) {
-	var popup = '<article class="info-window"><div class="info-window__heading">';
-
-	if (broker.brokerPhotoURL) {
-		popup += '<div class="info-window__image" style="background-image:url(' + broker.brokerPhotoURL['src'] + ');"></div>';
-	}
-
-	popup += '<div><h2 class="info-window__title">' + broker.brokerName + '</h2>';
-
-	if (broker.brokerRegion) {
-		popup += '<span class="info-window__info info-window__info--region">' + broker.brokerRegion + '</span>';
-	}
-
-	if (broker.license) {
-		popup += '<span class="info-window__info info-window__info--region">' + broker.license + '</span>';
-	}
-
-	popup += '</div></div>';
-
-	if (broker.brokerPhone) {
-		popup += '<a class="info-window__info info-window__link" href="tel: ' + broker.brokerPhone + '">' + broker.brokerPhone + '</a>';
-	}
-
-	if (broker.brokerEmail) {
-		popup += '<a class="info-window__info info-window__link" href="mailto: ' + broker.brokerEmail + '">' + broker.brokerEmail + '</a>';
-	}
-
-	if (broker.brokerBio) {
-		popup += '<p class="info-window__info">' + broker.brokerBio + '</p>';
-	}
-
-	if (broker.brokerVerticals) {
-		popup += '<ul class="info-window__list">';
-
-		if (broker.brokerVerticals.length === verticalCount) {
-			popup += '<li>All Healthcare Industries</li>';
-		} else {
-			for (var i = 0, l = broker.brokerVerticals.length; i < l; i++) {
-				popup += '<li>' + broker.brokerVerticals[i] + '</li>';
-			}
-		}
-
-		popup += '</ul>';
-	}
-
-	if (broker.brokerState) {
-		var stateSlug = slugify(broker.brokerState.label);
-		popup += '<a href="'+site.site_url + '/commercial-real-estate-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
-	}
-
-	popup += '</article>';
-
-	return popup;
-};
+// var buildMarkerInfoWindowContent = function (broker) {
+// 	var popup = '<article class="info-window"><div class="info-window__heading">';
+//
+// 	if (broker.brokerPhotoURL) {
+// 		popup += '<div class="info-window__image" style="background-image:url(' + broker.brokerPhotoURL['src'] + ');"></div>';
+// 	}
+//
+// 	popup += '<div><h2 class="info-window__title">' + broker.brokerName + '</h2>';
+//
+// 	if (broker.brokerRegion) {
+// 		popup += '<span class="info-window__info info-window__info--region">' + broker.brokerRegion + '</span>';
+// 	}
+//
+// 	if (broker.license) {
+// 		popup += '<span class="info-window__info info-window__info--region">' + broker.license + '</span>';
+// 	}
+//
+// 	popup += '</div></div>';
+//
+// 	if (broker.brokerPhone) {
+// 		popup += '<a class="info-window__info info-window__link" href="tel: ' + broker.brokerPhone + '">' + broker.brokerPhone + '</a>';
+// 	}
+//
+// 	if (broker.brokerEmail) {
+// 		popup += '<a class="info-window__info info-window__link" href="mailto: ' + broker.brokerEmail + '">' + broker.brokerEmail + '</a>';
+// 	}
+//
+// 	if (broker.brokerBio) {
+// 		popup += '<p class="info-window__info">' + broker.brokerBio + '</p>';
+// 	}
+//
+// 	if (broker.brokerVerticals) {
+// 		popup += '<ul class="info-window__list">';
+//
+// 		if (broker.brokerVerticals.length === verticalCount) {
+// 			popup += '<li>All Healthcare Industries</li>';
+// 		} else {
+// 			for (var i = 0, l = broker.brokerVerticals.length; i < l; i++) {
+// 				popup += '<li>' + broker.brokerVerticals[i] + '</li>';
+// 			}
+// 		}
+//
+// 		popup += '</ul>';
+// 	}
+//
+// 	if (broker.brokerState) {
+// 		var stateSlug = slugify(broker.brokerState.label);
+// 		popup += '<a href="'+site.site_url + '/commercial-real-estate-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
+// 	}
+//
+// 	popup += '</article>';
+//
+// 	return popup;
+// };
 
 
 var captureActiveVerticals = function () {
@@ -73,9 +72,9 @@ var captureActiveVerticals = function () {
 
 
 var filterMarkers = function (vertical) {
-	if (vertical !== 'all' && activeInfoWindowVerticals && activeInfoWindowVerticals.indexOf(vertical) < 0){
-		infoWindow.close();
-	}
+	// if (vertical !== 'all' && activeInfoWindowVerticals && activeInfoWindowVerticals.indexOf(vertical) < 0){
+	// 	infoWindow.close();
+	// }
 
 	var totalMarkers = markers.length;
 	for (var i = 0, newmarkers = []; i < totalMarkers; i++) {
@@ -91,9 +90,6 @@ var filterMarkers = function (vertical) {
 			}
 		}
 	}
-
-	markerCluster.clearMarkers();
-	markerCluster.addMarkers(newmarkers);
 };
 
 
@@ -109,8 +105,6 @@ var handleStateDropdownSelection = function () {
 
 
 var zoomToState = function (stateAbbr) {
-	infoWindow.close();
-
 	if (!stateShapes.hasOwnProperty(stateAbbr)){return false;}
 
 	map.data.revertStyle();
@@ -138,57 +132,59 @@ var zoomToState = function (stateAbbr) {
 		$.post(postURL, { 'stateAbbr' : stateAbbr }, function(brokers) {
 			var	marker,
 				broker,
+				regions = [],
 				brokerData = $.parseJSON(brokers);
 
-			$.each(brokerData, function (i, broker) {
+			var brokerRegions = _.groupBy(brokerData, 'brokerRegion');
+
+			$.each(brokerRegions, function(i, region) {
+				var category = [];
+				var stateSlug = slugify(region[0].brokerState.label);
+				var regionSlug = slugify(i);
+				var brokerLng = _.meanBy(region, function(lng) {
+					return parseFloat(lng.brokerLng);
+				});
+				var brokerLat = _.meanBy(region, function(lat) {
+					return parseFloat(lat.brokerLat);
+				});
+				$.each(region, function(key, r) {
+					category.push(r.brokerVerticals)
+				})
+				var brokerCount = region.length > 1 ? ', '+ (region.length).toString() + ' Brokers' : '';
+				regions.push({
+					lat: brokerLat,
+					lng: brokerLng,
+					title: i + brokerCount,
+					category: _.uniq(_.flatten(category)),
+					count: brokerCount,
+					url: site.site_url + '/commercial-real-estate-agent/' + stateSlug + '?region=' + regionSlug,
+				})
+			});
+
+			$.each(regions, function (i, region) {
 				marker = new google.maps.Marker({
-					category: broker.brokerVerticals,
+					category: region.category,
 					icon: {
 						size: new google.maps.Size(48, 48),
 						scaledSize: new google.maps.Size(48, 48),
 						url: site.theme_url+'/images/FindaBroker_Icon.png'
 					},
 					// map: map,
-					position: new google.maps.LatLng(broker.brokerLat, broker.brokerLng),
-					title: broker.brokerName
+					position: new google.maps.LatLng(region.lat, region.lng),
+					title: region.title,
+					url: region.url,
+					map: map,
 				});
-
 				markers.push(marker);
-
-				// close other info windows and open one for current marker
 				marker.addListener('click', function() {
-					activeInfoWindowVerticals = broker.brokerVerticals;
-					infoWindow.close();
-					infoWindow.setContent(buildMarkerInfoWindowContent(broker));
-					map.panTo(this.getPosition());
-					infoWindow.open(map, this);
+					window.location.href = this.url
 				});
 
-			});
-
-			markerCluster = new MarkerClusterer(map, markers, {
-				styles: [{
-					height: 48,
-					width: 48,
-					url: site.theme_url+"/images/FindaBroker_Cluster.png",
-					textColor: "#003773"
-				}],
-				gridSize: 40
-				// minimumClusterSize: 2
 			});
 
 			brokersFetched.push(stateAbbr);
 		});
 	}
-
-	infoWindow.addListener('closeClick', function(){
-		if (map.getZoom() - stateZoom > 0){
-			map.panTo(this.getPosition());
-			// map.fitBounds(stateBounds);
-		} else {
-			map.panTo(stateBounds.getCenter());
-		}
-	});
 
 	var stateName = stateNameFromAbbr(stateAbbr);
 	if (stateName){
