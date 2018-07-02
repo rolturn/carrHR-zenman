@@ -1,3 +1,11 @@
+
+var $brokerRegions = $('section.brokers');
+if ($brokerRegions.length > 0 && helpers.findParam('region')) {
+	var primary = $brokerRegions.find('.' + helpers.findParam('region'))
+	primary.remove();
+	primary.clone().prependTo('section.brokers')
+}
+
 /*------------------------------------*\
     ::Broker Filter
 \*------------------------------------*/

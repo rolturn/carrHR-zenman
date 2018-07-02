@@ -159,16 +159,16 @@ gulp.task('vendorsJs', function() {
 
 gulp.task('scriptsJs', function() {
 	return gulp.src('js/scripts-src/*.js')
-				.pipe(concat('scripts.js'))
-				.pipe(gulp.dest('js'))
-  				.pipe(rename({
-					basename: "scripts",
-					suffix: '.min'
-				}))
-				// .pipe(uglify())
-				.pipe(gulp.dest('js'))
-        .pipe(reload({stream:true})) // Inject Styles when style file is created
-				.pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
+		.pipe(concat('scripts.js'))
+		.pipe(gulp.dest('js'))
+			.pipe(rename({
+			basename: "scripts",
+			suffix: '.min'
+		}))
+		// .pipe(uglify())
+		.pipe(gulp.dest('js'))
+    .pipe(reload({stream:true})) // Inject Styles when style file is created
+		.pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 
 

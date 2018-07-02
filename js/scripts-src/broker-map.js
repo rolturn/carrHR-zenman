@@ -54,7 +54,7 @@ var slugify = function (text) {
 // 	}
 //
 // 	if (broker.brokerState) {
-// 		var stateSlug = slugify(broker.brokerState.label);
+	// 		var stateSlug = slugify(broker.brokerState.label);
 // 		popup += '<a href="'+site.site_url + '/commercial-real-estate-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
 // 	}
 //
