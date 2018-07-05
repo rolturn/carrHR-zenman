@@ -418,9 +418,8 @@ var zoomToState = function (stateAbbr) {
 	$('.broker-verticals').show();
 
 	if (brokersFetched.indexOf(stateAbbr) < 0) {
-		console.log('brokersFetched',brokersFetched);
+		console.log('postURL',postURL);
 		$.post(postURL, { 'stateAbbr' : stateAbbr }, function(brokers) {
-			console.log('brokers',brokers);
 			var	marker,
 				broker,
 				regions = [],
