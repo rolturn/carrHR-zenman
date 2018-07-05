@@ -79,7 +79,7 @@ endif;
 			<?php endforeach; ?>
 		</div>
 		<a id="brokers-state-link" class="button"></a>
-		<script>
+		<script async>
 			var brokersFetched = [],
 				infoWindow,
 				activeInfoWindowVerticals,
@@ -87,7 +87,7 @@ endif;
 				map,
 				marker,
 				markers = [],
-				markerCluster,
+				// markerCluster,
 				stateZoom,
 				stateBounds = [],
 				stateShapes = [],

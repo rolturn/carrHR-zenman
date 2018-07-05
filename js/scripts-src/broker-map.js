@@ -64,34 +64,34 @@ var slugify = function (text) {
 // };
 
 
-var captureActiveVerticals = function () {
-	$('.broker-verticals').change(function (evt) {
-		filterMarkers(evt.target.value);
-	});
-};
+// var captureActiveVerticals = function () {
+// 	$('.broker-verticals').change(function (evt) {
+// 		filterMarkers(evt.target.value);
+// 	});
+// };
+//
 
-
-var filterMarkers = function (vertical) {
-	// if (vertical !== 'all' && activeInfoWindowVerticals && activeInfoWindowVerticals.indexOf(vertical) < 0){
-	// 	infoWindow.close();
-	// }
-
-	var totalMarkers = markers.length;
-	for (var i = 0, newmarkers = []; i < totalMarkers; i++) {
-		if (vertical === 'all'){
-			markers[i].setMap(map);
-			newmarkers.push(markers[i]);
-		} else {
-			if (markers[i].category.indexOf(vertical) > -1){
-				markers[i].setMap(map);
-				newmarkers.push(markers[i]);
-			} else {
-				markers[i].setMap(null);
-			}
-		}
-	}
-};
-
+// var filterMarkers = function (vertical) {
+// 	// if (vertical !== 'all' && activeInfoWindowVerticals && activeInfoWindowVerticals.indexOf(vertical) < 0){
+// 	// 	infoWindow.close();
+// 	// }
+//
+// 	var totalMarkers = markers.length;
+// 	for (var i = 0, newmarkers = []; i < totalMarkers; i++) {
+// 		if (vertical === 'all'){
+// 			markers[i].setMap(map);
+// 			newmarkers.push(markers[i]);
+// 		} else {
+// 			if (markers[i].category.indexOf(vertical) > -1){
+// 				markers[i].setMap(map);
+// 				newmarkers.push(markers[i]);
+// 			} else {
+// 				markers[i].setMap(null);
+// 			}
+// 		}
+// 	}
+// };
+//
 
 var handleStateDropdownSelection = function () {
 	$('#broker-state-select').change(function () {
@@ -126,7 +126,7 @@ var zoomToState = function (stateAbbr) {
 	}
 	stateZoom = map.getZoom();
 
-	$('.broker-verticals').show();
+	// $('.broker-verticals').show();
 
 	if (brokersFetched.indexOf(stateAbbr) < 0) {
 		$.post(postURL, { 'stateAbbr' : stateAbbr }, function(brokers) {
@@ -155,7 +155,7 @@ var zoomToState = function (stateAbbr) {
 					lat: brokerLat,
 					lng: brokerLng,
 					title: i + brokerCount,
-					category: _.uniq(_.flatten(category)),
+					// category: _.uniq(_.flatten(category)),
 					count: brokerCount,
 					url: site.site_url + '/commercial-real-estate-agent/' + stateSlug + '?region=' + regionSlug,
 				})
@@ -163,18 +163,18 @@ var zoomToState = function (stateAbbr) {
 
 			$.each(regions, function (i, region) {
 				marker = new google.maps.Marker({
-					category: region.category,
+					// category: region.category,
 					icon: {
-						size: new google.maps.Size(48, 48),
-						scaledSize: new google.maps.Size(48, 48),
-						url: site.theme_url+'/images/FindaBroker_Icon.png'
+						size: new google.maps.Size(33, 42),
+						scaledSize: new google.maps.Size(33, 42),
+						url: site.theme_url+'/images/FindaBroker_Icon_2.png'
 					},
-					// map: map,
 					position: new google.maps.LatLng(region.lat, region.lng),
 					title: region.title,
 					url: region.url,
 					map: map,
 				});
+
 				markers.push(marker);
 				marker.addListener('click', function() {
 					window.location.href = this.url
@@ -203,6 +203,6 @@ var stateNameFromAbbr = function(abbr){
 
 
 jQuery(function($) {
-	captureActiveVerticals();
+	// captureActiveVerticals();
 	handleStateDropdownSelection();
 });
