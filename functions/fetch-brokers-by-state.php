@@ -10,6 +10,10 @@ require_once '../../../../wp-load.php';
 
 if (!isset($_POST['stateAbbr'])){exit;}
 
+<script>
+	console.log('hello there')
+</script>
+
 $broker_data = array();
 $brokers_in_selected_state = new WP_Query(
 	array(
