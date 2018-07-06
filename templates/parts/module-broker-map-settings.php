@@ -131,7 +131,7 @@ endif;
 						}
 					];
 
-			function initMap() {
+			async function initMap() {
 				if (window.innerWidth < 801){return false;}
 
 				map = new google.maps.Map(document.getElementById('carr-broker-map'), {
@@ -177,7 +177,7 @@ endif;
 				 *  Docs: https://developers.google.com/maps/documentation/javascript/datalayer#load_geojson
 				 */
 				<?php foreach ($states_with_broker_coverage as $_value => $_label) : ?>
-					map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/<?php echo $_value; ?>.geo.json');
+					await map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/<?php echo $_value; ?>.geo.json');
 				<?php endforeach; ?>
 
 				map.data.setStyle({
