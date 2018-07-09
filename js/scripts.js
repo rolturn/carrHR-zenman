@@ -477,8 +477,9 @@ var zoomToState = function (stateAbbr) {
 
 	var stateName = stateNameFromAbbr(stateAbbr);
 	if (stateName){
-		$('#brokers-state-link').text('See Our ' + stateNames[stateAbbr] + ' Team ').prop('href', site.site_url + '/commercial-real-estate-agent/' + stateName).fadeIn();
+		$('#brokers-state-link').text('See Our ' + statesWithBrokerCoverage[stateAbbr] + ' Team ').prop('href', site.site_url + '/commercial-real-estate-agent/' + stateName).fadeIn();
 	} else {
+		// failsafe if clickable element loaded but there is no coverage. This should never happen.
 		$('#brokers-state-link').text('No Brokers Available').prop('href', '#').fadeIn();
 	}
 };
@@ -486,8 +487,8 @@ var zoomToState = function (stateAbbr) {
 
 var stateNameFromAbbr = function(abbr){
 	var _name = '';
-	if (stateNames.hasOwnProperty(abbr)){
-		_name = stateNames[abbr];
+	if (statesWithBrokerCoverage.hasOwnProperty(abbr)){
+		_name = statesWithBrokerCoverage[abbr];
 	}
 	return slugify(_name);
 }

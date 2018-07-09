@@ -25,6 +25,10 @@ if ( $brokers->have_posts() ) :
 endif;
 ?>
 
+<script type="text/javascript">
+	var statesWithBrokerCoverage = <?php echo json_encode($states_with_broker_coverage); ?>;
+</script>
+
 <?php if ($states_with_broker_coverage) : ?>
 	<?php
 	$map_overlay_default = $map_overlay_hover = $map_overlay_opacity = $map_stroke_color = $map_stroke_width = null;
@@ -59,7 +63,6 @@ endif;
 				?>
 			</select>
 		</label>
-		<script type="text/javascript">var stateNames = <?php echo json_encode($states_with_broker_coverage); ?>;</script>
 	</div>
 
 	<?php
@@ -170,18 +173,22 @@ endif;
 
 
 				/**
-				 *  For each state that has at least one broker, load a JSON file of state
-				 *  boundary data.
+				 *  Loads all states with in US in single loadGeoJson file then removes states without broker coverage
+				 *  modified to this because server couldn't handle loading all files before loading
 				 *
 				 *  JSON Source: https://github.com/johan/world.geo.json/tree/master/countries/USA
 				 *  Docs: https://developers.google.com/maps/documentation/javascript/datalayer#load_geojson
 				 */
+				map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json', {}, function (feature) {
+					var i = 0;
+					do {
+						if (!statesWithBrokerCoverage[feature[i].j.slice(-2)]) {
+							map.data.remove(feature[i]);
+						}
+						i++;
+					} while (feature[i]);
+				});
 
-				<?php //foreach ($states_with_broker_coverage as $_value => $_label) : ?>
-					// map.data.loadGeoJson('<?php //echo get_bloginfo('template_url'); ?>/json/<?php //echo $_value; ?>.geo.json');
-				<?php //endforeach; ?>
-
-				map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json');
 
 				map.data.setStyle({
 					fillColor: '<?php echo $map_overlay_default; ?>',
@@ -189,6 +196,7 @@ endif;
 					strokeColor: '<?php echo $map_stroke_color; ?>',
 					strokeWeight: <?php echo $map_stroke_width; ?>
 				});
+
 
 				/**
 				 *  For each state polygon on the map, determine the outer lat/lng coordinates and create
@@ -213,7 +221,6 @@ endif;
 					map.data.revertStyle();
 					map.data.overrideStyle(e.feature, { fillColor: hoverColor });
 				});
-				
 		   map.data.addListener('mouseout', function (e) {
 			   map.data.revertStyle();
 			   map.data.overrideStyle(e.feature, { fillColor: '<?php echo $map_overlay_default; ?>' });
