@@ -188,7 +188,9 @@ var zoomToState = function (stateAbbr) {
 
 	var stateName = stateNameFromAbbr(stateAbbr);
 	if (stateName){
-		$('#brokers-state-link').text('See Our ' + stateNames[stateAbbr] + ' Team').prop('href', site.site_url + '/commercial-real-estate-agent/' + stateName).fadeIn();
+		$('#brokers-state-link').text('See Our ' + stateNames[stateAbbr] + ' Team ').prop('href', site.site_url + '/commercial-real-estate-agent/' + stateName).fadeIn();
+	} else {
+		$('#brokers-state-link').text('No Brokers Available').prop('href', '#').fadeIn();
 	}
 };
 
