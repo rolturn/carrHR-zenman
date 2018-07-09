@@ -8,91 +8,6 @@ var slugify = function (text) {
 		.replace(/-+$/, '');            // Trim - from end of text
 }
 
-// var buildMarkerInfoWindowContent = function (broker) {
-// 	var popup = '<article class="info-window"><div class="info-window__heading">';
-//
-// 	if (broker.brokerPhotoURL) {
-// 		popup += '<div class="info-window__image" style="background-image:url(' + broker.brokerPhotoURL['src'] + ');"></div>';
-// 	}
-//
-// 	popup += '<div><h2 class="info-window__title">' + broker.brokerName + '</h2>';
-//
-// 	if (broker.brokerRegion) {
-// 		popup += '<span class="info-window__info info-window__info--region">' + broker.brokerRegion + '</span>';
-// 	}
-//
-// 	if (broker.license) {
-// 		popup += '<span class="info-window__info info-window__info--region">' + broker.license + '</span>';
-// 	}
-//
-// 	popup += '</div></div>';
-//
-// 	if (broker.brokerPhone) {
-// 		popup += '<a class="info-window__info info-window__link" href="tel: ' + broker.brokerPhone + '">' + broker.brokerPhone + '</a>';
-// 	}
-//
-// 	if (broker.brokerEmail) {
-// 		popup += '<a class="info-window__info info-window__link" href="mailto: ' + broker.brokerEmail + '">' + broker.brokerEmail + '</a>';
-// 	}
-//
-// 	if (broker.brokerBio) {
-// 		popup += '<p class="info-window__info">' + broker.brokerBio + '</p>';
-// 	}
-//
-// 	if (broker.brokerVerticals) {
-// 		popup += '<ul class="info-window__list">';
-//
-// 		if (broker.brokerVerticals.length === verticalCount) {
-// 			popup += '<li>All Healthcare Industries</li>';
-// 		} else {
-// 			for (var i = 0, l = broker.brokerVerticals.length; i < l; i++) {
-// 				popup += '<li>' + broker.brokerVerticals[i] + '</li>';
-// 			}
-// 		}
-//
-// 		popup += '</ul>';
-// 	}
-//
-// 	if (broker.brokerState) {
-	// 		var stateSlug = slugify(broker.brokerState.label);
-// 		popup += '<a href="'+site.site_url + '/commercial-real-estate-agent/' + stateSlug + '" class="button info-window__all">See Our '+broker.brokerState.label+' Team</a>';
-// 	}
-//
-// 	popup += '</article>';
-//
-// 	return popup;
-// };
-
-
-// var captureActiveVerticals = function () {
-// 	$('.broker-verticals').change(function (evt) {
-// 		filterMarkers(evt.target.value);
-// 	});
-// };
-//
-
-// var filterMarkers = function (vertical) {
-// 	// if (vertical !== 'all' && activeInfoWindowVerticals && activeInfoWindowVerticals.indexOf(vertical) < 0){
-// 	// 	infoWindow.close();
-// 	// }
-//
-// 	var totalMarkers = markers.length;
-// 	for (var i = 0, newmarkers = []; i < totalMarkers; i++) {
-// 		if (vertical === 'all'){
-// 			markers[i].setMap(map);
-// 			newmarkers.push(markers[i]);
-// 		} else {
-// 			if (markers[i].category.indexOf(vertical) > -1){
-// 				markers[i].setMap(map);
-// 				newmarkers.push(markers[i]);
-// 			} else {
-// 				markers[i].setMap(null);
-// 			}
-// 		}
-// 	}
-// };
-//
-
 var handleStateDropdownSelection = function () {
 	$('#broker-state-select').change(function () {
 		if (window.innerWidth <= 800 || typeof map === 'undefined') {
@@ -138,7 +53,6 @@ var zoomToState = function (stateAbbr) {
 			var brokerRegions = _.groupBy(brokerData, 'brokerRegion');
 
 			$.each(brokerRegions, function(i, region) {
-				var category = [];
 				var stateSlug = slugify(region[0].brokerState.label);
 				var regionSlug = slugify(i);
 				var brokerLng = _.meanBy(region, function(lng) {
@@ -147,15 +61,11 @@ var zoomToState = function (stateAbbr) {
 				var brokerLat = _.meanBy(region, function(lat) {
 					return parseFloat(lat.brokerLat);
 				});
-				$.each(region, function(key, r) {
-					category.push(r.brokerVerticals)
-				})
 				var brokerCount = region.length > 1 ? ', '+ (region.length).toString() + ' Brokers' : '';
 				regions.push({
 					lat: brokerLat,
 					lng: brokerLng,
 					title: i + brokerCount,
-					// category: _.uniq(_.flatten(category)),
 					count: brokerCount,
 					url: site.site_url + '/commercial-real-estate-agent/' + stateSlug + '?region=' + regionSlug,
 				})
@@ -163,7 +73,6 @@ var zoomToState = function (stateAbbr) {
 
 			$.each(regions, function (i, region) {
 				marker = new google.maps.Marker({
-					// category: region.category,
 					icon: {
 						size: new google.maps.Size(33, 42),
 						scaledSize: new google.maps.Size(33, 42),
