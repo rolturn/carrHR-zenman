@@ -66,6 +66,8 @@
 
 	blockquote{
 		font-style: normal;
+		font-weight: 300;
+		font-size: 1.5rem;
 		text-align: justify;
 		margin: 0;
 		font-size: 24px;
@@ -75,8 +77,8 @@
 		}
 	}
 	cite {
-		font-size: 24px;
 		display: block;
+		font-size: 1.5rem;
 		font-style: normal;
 		text-align: right;
 	}

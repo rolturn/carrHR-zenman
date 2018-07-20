@@ -83,6 +83,15 @@
 			@include bp (900px) {
 				margin: 0;
 			}
+			&.bulleted-list__narrow {
+				margin: 0 6% 0 14%;
+				@include bp(1100px) {
+					margin: 0 6% 0 11%;
+				}
+				@include bp(900px) {
+					margin: 0 6% 0 8%;
+				}
+			}
 		}
 		.bulleted-list__single {
 			width: 47.5%;

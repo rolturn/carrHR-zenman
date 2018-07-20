@@ -48,6 +48,7 @@
 		align-items: center;
 		flex: 0 0 33.33%;
 		padding: .75em;
+		padding-left: 1em;
 		transition: color 300ms;
 		font-family: $fam-body;
 		font-size: 18px;
@@ -76,11 +77,16 @@
 		}
 
 		span {
-			&:after {
-				display: inline-block;
-				content: '❯';
-				margin-left: .3em;
-				transition: transform 300ms linear;
+			display: inline;
+			position: relative;
+			span.icon {
+				&:after {
+					display: inline-block;
+					position: absolute;
+					right: -20px;
+					content: '❯';
+					transition: transform 300ms linear;
+				}
 			}
 		}
 

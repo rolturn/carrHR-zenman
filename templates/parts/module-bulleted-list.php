@@ -1,13 +1,14 @@
 <?php
-
 $column_count = get_sub_field('column_count');
 $add_background_color = get_sub_field('add_background_color');
 $bullet_color = get_sub_field('bullet_color');
-debug($bullet_color);
 $class = '';
 if(get_sub_field('font_size')){
 	$class = ' bulleted-list__single--larger';
 }
+// adjustment for BulletList on Start-ups page
+// if first bullet item is changed then this will no longer work.
+$special = (get_sub_field('add_a_list_item') && get_sub_field('add_a_list_item')[0]['title'] === 'Demographic research and due diligence') ? true : false;
 ?>
 
 <section class="module-bulleted-list bulleted-list column-count-<?php echo $column_count; echo ($add_background_color ? ' bulleted-list--bg-light' : ''); ?>">
@@ -16,7 +17,7 @@ if(get_sub_field('font_size')){
 
 		<?php if( have_rows('add_a_list_item') ): ?>
 
-			<ul class="bulleted-list__wrapper">
+			<ul class="bulleted-list__wrapper<?php echo ($special ? ' bulleted-list__narrow' : ''); ?>">
 			    <?php while ( have_rows('add_a_list_item') ) : the_row();
 			    	$text = get_sub_field('text');
 			    	$icon = get_sub_field('icon');

@@ -21,8 +21,11 @@ $heading = get_sub_field('slide_headline');
 						$author = get_sub_field('testimonial_author');
 					?>
 					<div>
-						<blockquote><?php echo $text; ?></blockquote>
+						<blockquote>
+							<?php echo $text; ?>
+						</blockquote>
 						<cite><?php echo $author; ?></cite>
+
 					</div>
 					<?php endwhile; ?>
 				</div>

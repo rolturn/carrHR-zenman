@@ -35,7 +35,7 @@
 
 							<a href="<?php echo get_sub_field('link'); ?>" class="links__single">
 								<img src="<?php echo fly_get_attachment_image_src( $link_icon, array(100, 100), true )['src']; ?>" alt="<?php echo $link_text; ?> icon">
-								<span><?php echo $link_text; ?></span>
+								<span><?php echo $link_text; ?><span class="icon"></span></span>
 							</a>
 
 						<?php endwhile; ?>
