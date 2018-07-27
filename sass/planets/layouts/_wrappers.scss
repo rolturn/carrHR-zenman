@@ -2,10 +2,29 @@
     ::Wrappers
 \*------------------------------------*/
 [class*="__inner"] {
-    max-width: 1230px;
-    margin: 0 auto;
-    clear: both;
-    padding: 0 20px;
+  max-width: 1230px;
+  margin: 0 auto;
+  clear: both;
+  padding: 0 20px;
 }
 
-
+.main-content {
+  &.has-aside {
+    display: grid;
+    grid-template-columns: auto 200px;
+    grid-gap: $gap--big;
+    &__right {
+      aside {
+        order: 1;
+      }
+    }
+    @include bp($interstellar) {
+      grid-template-columns: auto;
+      &__right {
+        aside {
+          order: 0;
+        }
+      }
+    }
+  }
+}

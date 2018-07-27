@@ -1,13 +1,3 @@
-var slugify = function (text) {
-	return text.toString()
-		.toLowerCase()
-		.replace(/\s+/g, '-')           // Replace spaces with -
-		.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-		.replace(/\-\-+/g, '-')         // Replace multiple - with single -
-		.replace(/^-+/, '')             // Trim - from start of text
-		.replace(/-+$/, '');            // Trim - from end of text
-}
-
 var handleStateDropdownSelection = function () {
 	$('#broker-state-select').change(function () {
 		if (window.innerWidth <= 800 || typeof map === 'undefined') {
@@ -53,8 +43,8 @@ var zoomToState = function (stateAbbr) {
 			var brokerRegions = _.groupBy(brokerData, 'brokerRegion');
 
 			$.each(brokerRegions, function(i, region) {
-				var stateSlug = slugify(region[0].brokerState.label);
-				var regionSlug = slugify(i);
+				var stateSlug = helpers.slugify(region[0].brokerState.label);
+				var regionSlug = helpers.slugify(i);
 				var brokerLng = _.meanBy(region, function(lng) {
 					return parseFloat(lng.brokerLng);
 				});
@@ -110,7 +100,7 @@ var stateNameFromAbbr = function(abbr){
 	if (statesWithBrokerCoverage.hasOwnProperty(abbr)){
 		_name = statesWithBrokerCoverage[abbr];
 	}
-	return slugify(_name);
+	return helpers.slugify(_name);
 }
 
 

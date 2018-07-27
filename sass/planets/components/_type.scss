@@ -34,6 +34,13 @@ h3.section-header {
     height: 2px;
     background-color: $color-2;
   }
+
+  &.section-header__left {
+    &:after {
+      left: 0;
+      margin-left: 0;
+    }
+  }
 	// &.small {
 	// 	font-size: 1.5em;
   //   letter-spacing: 0;
@@ -52,6 +59,11 @@ h2.section-header {
   padding: 40px 40px 20px;
   margin-bottom: 40px;
   text-align: center;
+
+  &.section-header__left {
+    text-align: left;
+    padding-left: 0;
+  }
 }
 
 h1 {

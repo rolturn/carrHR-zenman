@@ -24,7 +24,7 @@
 			<div class="testimonials__inner">
 				<div class="testimonials__wrapper js-popout-has-buttons"></div>
 
-				<div class="testimonials__loading">
+				<div class="loading">
 					<div class="loader">Loading...</div>
 				</div>
 			</div>

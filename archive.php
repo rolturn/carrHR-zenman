@@ -32,7 +32,7 @@ get_header(); ?>
                 <?php endif; ?>
             </h1>
         <?php endif; ?>
-        
+
         <article class="blog-torso__content">
             <?php if (have_posts()): ?>
                 <?php

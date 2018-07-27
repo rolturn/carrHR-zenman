@@ -173,15 +173,15 @@
 			}
 		}
 	}
-	&__loading{
-		height: 12em;
-	}
 	.play-button{
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
 }
 
+.loading{
+	height: 12rem;
+}
 
 .loader,
 .loader:before,

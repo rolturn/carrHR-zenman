@@ -2,10 +2,10 @@
 
 function debug ($data) {
     echo "<script>\r\n//<![CDATA[\r\nif(!console){var console={log:function(){}}}";
-    $output    =    explode("\n", print_r($data, true));
+    $output = explode("\n", print_r($data, true));
     foreach ($output as $line) {
         if (trim($line)) {
-            $line    =    addslashes($line);
+            $line = addslashes($line);
             echo "console.log(\"{$line}\");";
         }
     }
@@ -344,55 +344,55 @@ function hex2rgba($color, $opacity = false) {
 add_action( 'wp_ajax_nopriv_load-filter2', 'prefix_load_term_posts' );
 add_action( 'wp_ajax_load-filter2', 'prefix_load_term_posts' );
 function prefix_load_term_posts () {
-	$term_id = $_POST[ 'term' ];
-	$post_id = $_POST[ 'post_id' ];
-	$name = $_POST[ 'name' ];
-	$paged = esc_attr( $_POST['page'] );
+  	$term_id = $_POST[ 'term' ];
+  	$post_id = $_POST[ 'post_id' ];
+  	$name = $_POST[ 'name' ];
+  	$paged = esc_attr( $_POST['page'] );
 
-	$tax_query = '';
+  	$tax_query = '';
 
-	if ( !empty($term_id) && $term_id != 'view-all' ) {
-		$tax_query =  array(
-			array(
-				'taxonomy' => 'type',
-				'field'  => 'id',
-				'terms'  => $term_id,
-				'operator' => 'IN'
-			)
-		);
-	}
+  	if ( !empty($term_id) && $term_id != 'view-all' ) {
+  		$tax_query =  array(
+  			array(
+  				'taxonomy' => 'type',
+  				'field'  => 'id',
+  				'terms'  => $term_id,
+  				'operator' => 'IN'
+  			)
+  		);
+  	}
 
-	$postsPerPage = 6;
-	$postOffset = $paged * $postsPerPage;
+  	$posts_per_page = 6;
+  	$postOffset = $paged * $posts_per_page;
 
-	$args = array (
-		'posts_per_page' => $postsPerPage,
-		'order' => 'ASC',
-		'post_type' => 'testimonials',
-		'paged' => $paged,
-		'offset'  => $postOffset,
-	);
+  	$args = array (
+  		'posts_per_page' => $posts_per_page,
+  		'order' => 'ASC',
+  		'post_type' => 'testimonials',
+  		'paged' => $paged,
+  		'offset'  => $postOffset,
+  	);
 
-	if (!empty($name)) {
-		$args['name'] = $name;
-		$args['offset'] = 1;
-	}
+  	if (!empty($name)) {
+  		$args['name'] = $name;
+  		$args['offset'] = 1;
+  	}
 
-	if (!empty($post_id)) {
-		$args['include'] = array($post_id);
-	}
+  	if (!empty($post_id)) {
+  		$args['include'] = array($post_id);
+  	}
 
-	if (!empty($term_id)) {
-		$args['term'] = $term_id;
-		$args['tax_query'] = $tax_query;
-	}
+  	if (!empty($term_id)) {
+  		$args['term'] = $term_id;
+  		$args['tax_query'] = $tax_query;
+  	}
 
-	global $post;
-	$loop = get_posts( $args );
-	// $icon = get_attached_file(593); // quote svg (must be injected rather than loaded for ajax)
-	ob_start ();
+  	global $post;
+  	$loop = get_posts( $args );
+  	// $icon = get_attached_file(593); // quote svg (must be injected rather than loaded for ajax)
+  	ob_start ();
 
-	foreach( $loop as $post ) : setup_postdata($post);
+  	foreach( $loop as $post ) : setup_postdata($post);
 		$term_list = wp_get_post_terms($post->ID, 'type');
 
 		$term_classes = '';
@@ -409,6 +409,7 @@ function prefix_load_term_posts () {
 		}
 
 		?>
+
 		<div class="testimonials__single ease-me-in <?php if(get_the_post_thumbnail() || get_field('add_testimonial_video')) : ?>has-image<?php endif; ?> <?php echo get_field('text_position');?> <?php echo $term_classes; ?> " id="post-<?php the_ID(); ?>" ><?php echo get_post_meta($post->ID, 'image', $single = true); ?>
 
 			<?php if(get_field('text_position') == 'right') : ?>
@@ -486,11 +487,61 @@ function prefix_load_term_posts () {
 	<?php
 	wp_reset_postdata();
 
-	$response = ob_get_contents();
+	$response['output'] = ob_get_contents();
 	ob_end_flush();
 	ob_end_clean();
-	echo $response;
+  echo json_encode($response);
 	die(1);
+}
+
+add_action( 'wp_ajax_nopriv_load-filter3', 'ajax_load_posts' );
+add_action( 'wp_ajax_load-filter3', 'ajax_load_posts' );
+function ajax_load_posts () {
+  $term_id = $_POST[ 'term' ];
+  $tag = $_POST[ 'tag' ];
+	$post_id = $_POST[ 'post_id' ];
+  $posts_per_page = $_POST[ 'postsPerPage' ];
+	$name = $_POST[ 'name' ];
+	$paged = esc_attr( $_POST['page'] );
+
+	$tax_query =  array(
+		'taxonomy' => 'category',
+		'name'  => $term_id,
+	);
+
+	$postOffset = $paged * $posts_per_page;
+
+	$args = array (
+    'posts_per_page' => $posts_per_page,
+    'order' => 'desc',
+    'paged' => $paged,
+    'offset'  => $postOffset,
+    'tag' => $tag,
+    'post_status' => 'publish'
+	);
+
+	$args['tax_query'] = $tax_query;
+
+	global $post;
+  $wp_query = null;
+  $wp_query = new WP_Query($args);
+	$posts = $wp_query->posts;
+
+	ob_start ();
+
+	foreach( $posts as $post ) : setup_postdata($post);
+    get_template_part( 'templates/parts/blog', 'excerpt' );
+  endforeach;
+
+  wp_reset_postdata();
+
+  $response['output'] = ob_get_contents();
+  $response['total_posts'] = $wp_query->found_posts;
+  $response['total_pages'] = $response['total_posts'] / $posts_per_page;
+  ob_end_flush();
+  ob_end_clean();
+  echo json_encode($response);
+  die(1);
 }
 
 function twocolumn_content_layout($lr, $lines){
