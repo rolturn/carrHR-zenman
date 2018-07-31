@@ -174,7 +174,7 @@ jQuery(function($){
 \*------------------------------------*/
 
 // get testimonials by term
-var term_ajax_get = function(options, currentPage) {
+var term_ajax_get = function(options, currentPage, animate) {
 	var $selectedTopic = $('.selected-topic');
 	var $loader = $('.loading');
 	var $pager = $('#pagination');
@@ -213,7 +213,6 @@ var term_ajax_get = function(options, currentPage) {
 		success: function(response) {
 
 			var res = JSON.parse(response);
-			var totalPosts = res['total_posts'] ? Math.round(parseFloat(res['total_posts'])) : 0;
 			var totalPages = res['total_pages'] ? Math.round(parseFloat(res['total_pages'])) : 0;
 
 			if (currentPage > 0 && type === 'infiniteScroll'){
@@ -236,10 +235,17 @@ var term_ajax_get = function(options, currentPage) {
 				$pagerOptions.each(function() {
 					$(this).not('.current').on('click', function(e) {
 						e.preventDefault();
-						term_ajax_get(options, $(this).val());
+						term_ajax_get(options, $(this).val(), true);
 					})
 				})
 			}
+
+			if (animate) {
+				$('html, body').animate({
+					scrollTop: $('.section-header').offset().top
+				}, 500);
+			}
+
 			return false;
 		},
 		error: function(err) {
@@ -252,14 +258,17 @@ var urlParams = helpers.urlParams;
 
 // implementation
 $(document).ready(function() {
-	var $totop = $('.scrolltoTop'),
-		page = 0,
-		buttonClicked;
+	var $totop = $('.scrolltoTop');
+	var page = 0;
+	var buttonClicked;
 	var options = {};
 
 	$('.filters.dropdown').on('click', function() {
 		$(this).toggleClass('is-active');
 	})
+	// $('.filters.dropdown').hover(function() {
+	// 	$(this).toggleClass('is-active');
+	// })
 
 	if ($('.post-category').length > 0) {
 		var $catFilters = $('#category-filters');
@@ -278,7 +287,7 @@ $(document).ready(function() {
 						name: $(this).text(),
 						slug: helpers.slugify($(this).val()),
 					};
-					term_ajax_get(options, page);
+					term_ajax_get(options, page, true);
 					$buttons.each(function() {
 						$(this).removeClass('current');
 					})
