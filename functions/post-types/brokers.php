@@ -47,7 +47,6 @@ function create_brokers() {
 			),
 		)
 	);
-	flush_rewrite_rules();
 }
 
 
