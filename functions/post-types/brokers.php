@@ -34,10 +34,10 @@ function create_brokers() {
 			),
 			'public' => true,
 			'has_archive' => false,
-			'show_ui' => true,
+			'show_ui' => false,
 			'with_front' => true,
 			'menu_icon'   => 'dashicons-businessman',
-			'publicly_queryable' => false,
+			'publicly_queryable' => true,
 			'exclude_from_search' => true,
 			'menu_position' => 20,
 			'supports' => array(

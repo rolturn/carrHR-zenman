@@ -502,17 +502,18 @@ function ajax_load_posts () {
 	$post_id = $_POST[ 'post_id' ];
   $posts_per_page = $_POST[ 'postsPerPage' ];
 	$name = $_POST[ 'name' ];
+  $category_name = $_POST[ 'categoryName' ];
 	$paged = esc_attr( $_POST['page'] );
 
 	$tax_query =  array(
 		'taxonomy' => 'category',
-		'name'  => $term_id,
 	);
 
 	$postOffset = $paged * $posts_per_page;
 
 	$args = array (
     'posts_per_page' => $posts_per_page,
+    'category_name'  => $category_name,
     'order' => 'desc',
     'paged' => $paged,
     'offset'  => $postOffset,
@@ -529,9 +530,13 @@ function ajax_load_posts () {
 
 	ob_start ();
 
-	foreach( $posts as $post ) : setup_postdata($post);
-    get_template_part( 'templates/parts/blog', 'excerpt' );
-  endforeach;
+  if (!empty($posts)) {
+    foreach( $posts as $post ) : setup_postdata($post);
+      get_template_part( 'templates/parts/blog', 'excerpt' );
+    endforeach;
+  } else {
+    echo "At this time there are no posts of this type. Please check back later.";
+  }
 
   wp_reset_postdata();
 

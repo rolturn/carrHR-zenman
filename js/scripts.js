@@ -180,6 +180,7 @@ var term_ajax_get = function(options, currentPage, animate) {
 	var $pager = $('#pagination');
 	var postsPerPage = options.postsPerPage || 6;
 	var name = options.name || null;
+	var categoryName = options.categoryName || null;
 	var termID = options.termID || null;
 	var id = options.id || null;
 	var tag = {
@@ -205,6 +206,7 @@ var term_ajax_get = function(options, currentPage, animate) {
 			'action': action,
 			'term': termID,
 			'page': currentPage,
+			'categoryName': categoryName,
 			'postsPerPage': postsPerPage,
 			'tag': tag.slug,
 			'post_id': id,
@@ -275,7 +277,7 @@ $(document).ready(function() {
 		var $buttons = $catFilters.find('button');
 		options.$wrapper = $('.post-category .content');
 		options.action = 'load-filter3';
-		options.termID = $('.post-category').data('category-slug');
+		options.categoryName = $('.post-category').data('category-slug');
 
 		term_ajax_get(options, 0);
 

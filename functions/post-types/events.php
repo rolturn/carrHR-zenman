@@ -36,7 +36,7 @@ function create_events() {
             'has_archive' => false,
             'with_front' => true,
             'menu_icon'   => 'dashicons-calendar-alt',
-            'publicly_queryable' => true,
+            'publicly_queryable' => false,
             'menu_position' => 20,
             'supports' => array(
                 'title',

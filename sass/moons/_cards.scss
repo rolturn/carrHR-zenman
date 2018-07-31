@@ -58,6 +58,21 @@
         left: 15px;
         right: 15px;
       }
+      &__color-blue {
+        &:after {
+          border-color: $color-1;
+        }
+      }
+      &__color-white {
+        &:after {
+          border-color: #fff;
+        }
+      }
+      &__color-orange {
+        &:after {
+          border-color: $color-2;
+        }
+      }
     }
     &.img-bg {
       width: 100%;
@@ -78,6 +93,18 @@
     text-transform: uppercase;
     font-weight: 500;
     z-index:10;
+    &__color-blue {
+      color: #fff;
+      background-color: $color-1;
+    }
+    &__color-white {
+      color: $color-1;
+      background-color: #fff;
+    }
+    &__color-orange {
+      color: #fff;
+      background-color: $color-2;
+    }
   }
 
   &__content {

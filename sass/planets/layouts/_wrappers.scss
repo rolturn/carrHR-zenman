@@ -11,7 +11,7 @@
 .main-content {
   &.has-aside {
     display: grid;
-    grid-template-columns: auto 200px;
+    grid-template-columns: auto 250px;
     grid-gap: $gap--big;
     &__right {
       aside {
