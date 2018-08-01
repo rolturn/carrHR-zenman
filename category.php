@@ -23,7 +23,6 @@ foreach ( $tags as $tag ) {
 	$tag_html .= "<button value='{$tag->name}'>{$tag->name}</button>";
 }
 $tag_html .= '</nav>';
-debug(!empty($tags));
 
 $category = get_category(get_query_var('cat'),false);
 

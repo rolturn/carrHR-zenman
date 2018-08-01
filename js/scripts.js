@@ -199,7 +199,7 @@ var term_ajax_get = function(options, animate) {
 	var $loader = $('.loading');
 	var $pager = $('#pagination');
 	var $wrapper = $(options.wrapper) || null;
-	var postsPerPage = options.postsPerPage || 8;
+	var postsPerPage = options.postsPerPage || 3;
 	var page = options.page || 0;
 	var name = options.name || null;
 	var categoryName = options.categoryName || null;
@@ -236,7 +236,7 @@ var term_ajax_get = function(options, animate) {
 		success: function(response) {
 
 			var res = JSON.parse(response);
-			var totalPages = res['total_pages'] ? Math.round(parseFloat(res['total_pages'])) : 0;
+			var totalPages = res['total_pages'] ? Math.ceil(parseFloat(res['total_pages'])) : 0;
 
 			if (page > 0 && type === 'infiniteScroll'){
 				$wrapper.append(res['output']);
