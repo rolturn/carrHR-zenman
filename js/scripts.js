@@ -1,25 +1,23 @@
 var helpers = (function () {
 
-  var pushLocation = function (html, updatedHrefObj) {
+  var pushLocation = function (updatedObj, updatedHrefObj, callback) {
     var pathname = window.location.pathname;
-    console.log(pathname)
-    var updatedPath = '';
+    var obj = _.cloneDeep(updatedObj)
     var queryString = Object.keys(updatedHrefObj).map(function(key) {
         return key + '=' + updatedHrefObj[key]
     }).join('&');
+    var updatedPath = pathname + '?' + queryString;
+    if (obj.pushHistory != false) window.history.pushState(JSON.stringify(obj), null, updatedPath);
 
-    updatedPath = pathname + '?' + queryString;
-    window.history.pushState(html,"new title", updatedPath);
-    console.log(updatedPath)
+    window.onpopstate = function(e){
+      if(e.state){
+        var state = JSON.parse(e.state);
+        callback(state);
+      }
+    };
+
+
   }
-
-  window.onpopstate = function(e){
-    if(e.state){
-      console.log(e.state)
-        document.getElementById("content").innerHTML = e.state.html;
-        document.title = e.state.pageTitle;
-    }
-};
 
   var urlParams = {};
   if (window.location.search.length > 0) {
@@ -197,11 +195,12 @@ jQuery(function($){
 \*------------------------------------*/
 
 // get testimonials by term
-var term_ajax_get = function(options, currentPage, animate) {
-	var $selectedTopic = $('.selected-topic');
+var term_ajax_get = function(options, animate) {
 	var $loader = $('.loading');
 	var $pager = $('#pagination');
-	var postsPerPage = options.postsPerPage || 6;
+	var $wrapper = $(options.wrapper) || null;
+	var postsPerPage = options.postsPerPage || 8;
+	var page = options.page || 0;
 	var name = options.name || null;
 	var categoryName = options.categoryName || null;
 	var termID = options.termID || null;
@@ -211,7 +210,6 @@ var term_ajax_get = function(options, currentPage, animate) {
 		name: options.tag && options.tag.name ?  options.tag.name : null,
 	};
 	var action = options.action || null;
-	var $wrapper = options.$wrapper || null;
 	var type = options.type || null;
 
 	if (type !== 'infiniteScroll') {
@@ -221,7 +219,6 @@ var term_ajax_get = function(options, currentPage, animate) {
 	}
 
 	$loader.show();
-	console.log(currentPage)
 
 	$.ajax({
 		type: 'POST',
@@ -229,7 +226,7 @@ var term_ajax_get = function(options, currentPage, animate) {
 		data: {
 			'action': action,
 			'term': termID,
-			'page': currentPage,
+			'page': page,
 			'categoryName': categoryName,
 			'postsPerPage': postsPerPage,
 			'tag': tag.slug,
@@ -241,44 +238,43 @@ var term_ajax_get = function(options, currentPage, animate) {
 			var res = JSON.parse(response);
 			var totalPages = res['total_pages'] ? Math.round(parseFloat(res['total_pages'])) : 0;
 
-			if (currentPage > 0 && type === 'infiniteScroll'){
+			if (page > 0 && type === 'infiniteScroll'){
 				$wrapper.append(res['output']);
 			} else {
 				$wrapper.html(res['output']);
-			}
-			// console.log($wrapper.html());
-
-			if ($selectedTopic.length > 0) {
-				var tagName = tag.slug === null ? 'Select a Topic' : 'Filtered By ' + tag.name;
-				$selectedTopic.text(tagName);
-				$selectedTopic.show();
 			}
 
 			$loader.hide();
 
 			if (totalPages > 1) {
-				$pager.html(buildPager(currentPage, totalPages));
+				$pager.html(buildPager(page, totalPages));
 				var $pagerOptions = $pager.find('button');
 				$pagerOptions.each(function() {
 					$(this).not('.current').on('click', function(e) {
 						e.preventDefault();
-						term_ajax_get(options, $(this).val(), true);
+						options.page = $(this).val();
+						term_ajax_get(options, true);
 					})
 				})
 			}
 
-			if (type !== 'infiniteScroll') {
+			filterOptions('#category-filters', options, tag['slug'])
+
+			// if (type !== 'infiniteScroll') {
 				var urlUpdateObj = {
-					page: currentPage,
+					page: page,
 				}
 
 				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug
-				helpers.pushLocation($wrapper.html(), urlUpdateObj);
-			}
+				helpers.pushLocation(options, urlUpdateObj, function(stateUpdate) {
+					stateUpdate['pushHistory'] = false;
+					term_ajax_get(stateUpdate, true);
+				});
+			// }
 
 			if (animate) {
 				$('html, body').animate({
-					scrollTop: $('.section-header').offset().top
+					scrollTop: $('.section-header').offset().top - 100
 				}, 500);
 			}
 
@@ -295,48 +291,34 @@ var urlParams = helpers.urlParams;
 // implementation
 $(document).ready(function() {
 	var $totop = $('.scrolltoTop');
-	var page = 0;
 	var buttonClicked;
-	var options = {};
+	var options = {
+		page: 0,
+		tag: {}
+	};
+	var urlParams = {};
+	if (window.location.search.length > 0) {
+		urlParams = helpers.urlParams;
+	}
 
 	$('.filters.dropdown').on('click', function() {
 		$(this).toggleClass('is-active');
 	})
-	// $('.filters.dropdown').hover(function() {
-	// 	$(this).toggleClass('is-active');
-	// })
 
 	if ($('.post-category').length > 0) {
-		var $catFilters = $('#category-filters');
-		var $buttons = $catFilters.find('button');
-		options.$wrapper = $('.post-category .content');
+		options.wrapper = '.post-category .content';
 		options.action = 'load-filter3';
 		options.categoryName = $('.post-category').data('category-slug');
 
-		term_ajax_get(options, 0);
+		options.page = urlParams.page !== 'undefined' ? urlParams.page : 0;
+		if (urlParams.tag) options.tag['slug'] = urlParams.tag;
 
-		if ($buttons.length > 0) {
-			$buttons.each(function() {
-				$(this).not('.current').on('click', function(e) {
-					e.preventDefault();
-					options.tag = {
-						name: $(this).text(),
-						slug: helpers.slugify($(this).val()),
-					};
-					term_ajax_get(options, page, true);
-					$buttons.each(function() {
-						$(this).removeClass('current');
-					})
-					$(this).addClass('current');
-
-				})
-			})
-		}
+		term_ajax_get(options);
 	}
 
 	if ($('.testimonials__navigation').length > 0) {
 		options.action = 'load-filter2';
-		options.$wrapper = $('.testimonials__wrapper');
+		options.wrapper = '.testimonials__wrapper';
 		options.type = 'infiniteScroll';
 		getTestimonials();
 	}
@@ -345,14 +327,17 @@ $(document).ready(function() {
 		$('.testimonials__navigation').find('button').click(function() {
 			$(this).addClass('active').siblings().removeClass('active');
 			options.termID = $(this).data('term');
-			page = 0;
+			options.page = 0;
 			$('.testimonials__wrapper').empty();
-			term_ajax_get(options, page);
+			term_ajax_get(options);
+
+			console.log('hello', options.page)
 
 			$('#testimonials__bottom').bind('inview', function (event, visible) {
 				if (visible === true) {
-					page++;
-					term_ajax_get(options, page);
+					console.log(options.page)
+					options.page = options.page + 1;
+					term_ajax_get(options);
 				}
 			});
 		});
@@ -378,16 +363,18 @@ $(document).ready(function() {
 				// if category name is passed searches through categories options added from module-taxonomy.php
 				options.termID = (categories.find( category => category.slug === urlParams.category)).termId;
 			}
-			term_ajax_get(options, page);
+			term_ajax_get(options);
 			$('.testimonials__navigation').find("[data-term='" + options.termID + "']").addClass('active');
 		}
 		else if (urlParams.postid) {
 			// if category name is passed searches through categories options added from module-taxonomy.php
 			var id = isNaN(parseInt(urlParams.postid)) ? 0 : parseInt(urlParams.postid);
-			term_ajax_get({ 'id': id }, page);
+			options['id'] = id;
+			term_ajax_get(options);
 		}
 		else if (urlParams.individual) {
-			term_ajax_get({ 'name': urlParams.individual }, page);
+			options['name'] = urlParams.individual;
+			term_ajax_get(options);
 		}
 		else {
 			// fall back if query was not set or categories didn't load
@@ -399,13 +386,52 @@ $(document).ready(function() {
 		if (!getIndividual) {
 			$('#testimonials__bottom').bind('inview', function (event, visible) {
 				if (visible === true) {
-					page++;
-					term_ajax_get(options, page);
+					options.page++;
+					term_ajax_get(options);
 				}
 			});
 		}
 	}
 });
+
+function filterOptions (filterButtonContainer, options, slug) {
+	var $catFilters = $(filterButtonContainer);
+
+	if ($catFilters.length === 0) return;
+	var $buttons = $catFilters.find('button');
+	var $selectedTopic = $catFilters.find('.trigger');
+	var slug = slug || null;
+
+	if ($buttons.length > 0) {
+		$buttons.each(function() {
+			var $this = $(this);
+
+			if ($this.hasClass('current')) $this.removeClass('current');
+
+			if (slug) {
+				if (helpers.slugify($this.val()) === slug) {
+					$this.addClass('current');
+					if ($selectedTopic.length > 0) $selectedTopic.text('Filtered By ' + $this.text());
+					$this.addClass('current')
+				}
+			} else {
+				$selectedTopic.text('Select a Topic');
+			}
+
+			$this.not('.current').on('click', function(e) {
+				e.preventDefault();
+				options.page = 0;
+				options.tag = {
+					name: $this.text(),
+					slug: helpers.slugify($this.val()),
+				};
+				term_ajax_get(options, true);
+			})
+		})
+	}
+	if ($selectedTopic.is(':hidden')) $selectedTopic.show();
+}
+
 
 function buildPager (currentPage, totalPages) {
 	var currentPage = parseInt(currentPage) + 1;

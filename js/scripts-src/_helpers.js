@@ -1,25 +1,23 @@
 var helpers = (function () {
 
-  var pushLocation = function (html, updatedHrefObj) {
+  var pushLocation = function (updatedObj, updatedHrefObj, callback) {
     var pathname = window.location.pathname;
-    console.log(pathname)
-    var updatedPath = '';
+    var obj = _.cloneDeep(updatedObj)
     var queryString = Object.keys(updatedHrefObj).map(function(key) {
         return key + '=' + updatedHrefObj[key]
     }).join('&');
+    var updatedPath = pathname + '?' + queryString;
+    if (obj.pushHistory != false) window.history.pushState(JSON.stringify(obj), null, updatedPath);
 
-    updatedPath = pathname + '?' + queryString;
-    window.history.pushState(html,"new title", updatedPath);
-    console.log(updatedPath)
+    window.onpopstate = function(e){
+      if(e.state){
+        var state = JSON.parse(e.state);
+        callback(state);
+      }
+    };
+
+
   }
-
-  window.onpopstate = function(e){
-    if(e.state){
-      console.log(e.state)
-        document.getElementById("content").innerHTML = e.state.html;
-        document.title = e.state.pageTitle;
-    }
-};
 
   var urlParams = {};
   if (window.location.search.length > 0) {
