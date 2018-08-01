@@ -7,7 +7,7 @@ var term_ajax_get = function(options, animate) {
 	var $loader = $('.loading');
 	var $pager = $('#pagination');
 	var $wrapper = $(options.wrapper) || null;
-	var postsPerPage = options.postsPerPage || 3;
+	var postsPerPage = options.postsPerPage || 2;
 	var page = options.page || 0;
 	var name = options.name || null;
 	var categoryName = options.categoryName || null;
@@ -266,7 +266,8 @@ function buildPager (currentPage, totalPages) {
 		// replacing 0 index
 		var page = range[i] - 1;
 		// convert to words on first or last
-		if (range[i] === 1 && idealRange < (currentPage - idealRange)) {
+		console.log(currentPage - idealRange + 1)
+		if (range[i] === 1 && idealRange < (currentPage - (idealRange + 1))) {
 			pageTitle = 'Newer';
 		} else if (range[i] === totalPages && totalPages > (currentPage + idealRange + 1)) {
 			pageTitle = 'Older(' + range[i] + ')';
