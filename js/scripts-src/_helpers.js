@@ -1,4 +1,26 @@
 var helpers = (function () {
+
+  var pushLocation = function (html, updatedHrefObj) {
+    var pathname = window.location.pathname;
+    console.log(pathname)
+    var updatedPath = '';
+    var queryString = Object.keys(updatedHrefObj).map(function(key) {
+        return key + '=' + updatedHrefObj[key]
+    }).join('&');
+
+    updatedPath = pathname + '?' + queryString;
+    window.history.pushState(html,"new title", updatedPath);
+    console.log(updatedPath)
+  }
+
+  window.onpopstate = function(e){
+    if(e.state){
+      console.log(e.state)
+        document.getElementById("content").innerHTML = e.state.html;
+        document.title = e.state.pageTitle;
+    }
+};
+
   var urlParams = {};
   if (window.location.search.length > 0) {
     (window.onpopstate = function () {
@@ -21,12 +43,13 @@ var helpers = (function () {
   		.replace(/^-+/, '')             // Trim - from start of text
   		.replace(/-+$/, '');            // Trim - from end of text
   }
-  
+
   return {
     urlParams,
     findParam: function (search) {
       return !_.isUndefined(urlParams[search]) ? urlParams[search] : false;
     },
     slugify,
+    pushLocation,
   }
 })();

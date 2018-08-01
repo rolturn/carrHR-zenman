@@ -27,6 +27,7 @@ var term_ajax_get = function(options, currentPage, animate) {
 	}
 
 	$loader.show();
+	console.log(currentPage)
 
 	$.ajax({
 		type: 'POST',
@@ -51,10 +52,11 @@ var term_ajax_get = function(options, currentPage, animate) {
 			} else {
 				$wrapper.html(res['output']);
 			}
+			// console.log($wrapper.html());
 
 			if ($selectedTopic.length > 0) {
-				tag = tag.slug === null ? 'Select a Topic' : 'Filtered By ' + tag.name;
-				$selectedTopic.text(tag);
+				var tagName = tag.slug === null ? 'Select a Topic' : 'Filtered By ' + tag.name;
+				$selectedTopic.text(tagName);
 				$selectedTopic.show();
 			}
 
@@ -69,6 +71,15 @@ var term_ajax_get = function(options, currentPage, animate) {
 						term_ajax_get(options, $(this).val(), true);
 					})
 				})
+			}
+
+			if (type !== 'infiniteScroll') {
+				var urlUpdateObj = {
+					page: currentPage,
+				}
+
+				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug
+				helpers.pushLocation($wrapper.html(), urlUpdateObj);
 			}
 
 			if (animate) {

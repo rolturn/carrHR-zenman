@@ -1,4 +1,26 @@
 var helpers = (function () {
+
+  var pushLocation = function (html, updatedHrefObj) {
+    var pathname = window.location.pathname;
+    console.log(pathname)
+    var updatedPath = '';
+    var queryString = Object.keys(updatedHrefObj).map(function(key) {
+        return key + '=' + updatedHrefObj[key]
+    }).join('&');
+
+    updatedPath = pathname + '?' + queryString;
+    window.history.pushState(html,"new title", updatedPath);
+    console.log(updatedPath)
+  }
+
+  window.onpopstate = function(e){
+    if(e.state){
+      console.log(e.state)
+        document.getElementById("content").innerHTML = e.state.html;
+        document.title = e.state.pageTitle;
+    }
+};
+
   var urlParams = {};
   if (window.location.search.length > 0) {
     (window.onpopstate = function () {
@@ -21,13 +43,14 @@ var helpers = (function () {
   		.replace(/^-+/, '')             // Trim - from start of text
   		.replace(/-+$/, '');            // Trim - from end of text
   }
-  
+
   return {
     urlParams,
     findParam: function (search) {
       return !_.isUndefined(urlParams[search]) ? urlParams[search] : false;
     },
     slugify,
+    pushLocation,
   }
 })();
 
@@ -198,6 +221,7 @@ var term_ajax_get = function(options, currentPage, animate) {
 	}
 
 	$loader.show();
+	console.log(currentPage)
 
 	$.ajax({
 		type: 'POST',
@@ -222,10 +246,11 @@ var term_ajax_get = function(options, currentPage, animate) {
 			} else {
 				$wrapper.html(res['output']);
 			}
+			// console.log($wrapper.html());
 
 			if ($selectedTopic.length > 0) {
-				tag = tag.slug === null ? 'Select a Topic' : 'Filtered By ' + tag.name;
-				$selectedTopic.text(tag);
+				var tagName = tag.slug === null ? 'Select a Topic' : 'Filtered By ' + tag.name;
+				$selectedTopic.text(tagName);
 				$selectedTopic.show();
 			}
 
@@ -240,6 +265,15 @@ var term_ajax_get = function(options, currentPage, animate) {
 						term_ajax_get(options, $(this).val(), true);
 					})
 				})
+			}
+
+			if (type !== 'infiniteScroll') {
+				var urlUpdateObj = {
+					page: currentPage,
+				}
+
+				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug
+				helpers.pushLocation($wrapper.html(), urlUpdateObj);
 			}
 
 			if (animate) {
