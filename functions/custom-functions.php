@@ -345,7 +345,7 @@ add_action( 'wp_ajax_nopriv_load-filter2', 'prefix_load_term_posts' );
 add_action( 'wp_ajax_load-filter2', 'prefix_load_term_posts' );
 function prefix_load_term_posts () {
   	$term_id = $_POST[ 'term' ];
-  	$post_id = $_POST[ 'post_id' ];
+  	$post_id = $_POST[ 'postID' ];
   	$name = $_POST[ 'name' ];
   	$paged = esc_attr( $_POST['page'] );
 

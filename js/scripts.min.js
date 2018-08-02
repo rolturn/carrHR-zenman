@@ -199,12 +199,16 @@ var term_ajax_get = function(options, animate) {
 	var $loader = $('.loading');
 	var $pager = $('#pagination');
 	var $wrapper = $(options.wrapper) || null;
-	var postsPerPage = options.postsPerPage || 2;
+	var postsPerPage = options.postsPerPage || 8;
 	var page = options.page || 0;
 	var name = options.name || null;
 	var categoryName = options.categoryName || null;
-	var termID = options.termID || null;
-	var id = options.id || null;
+	var term = {
+		id: options.term && options.term.id ? options.term.id : null,
+		name: options.term && options.term.name ? options.term.name : null,
+		slug: options.term && options.term.slug ? options.term.slug : null,
+	};
+	var postID = options.postID || null;
 	var tag = {
 		slug: options.tag && options.tag.slug ?  options.tag.slug : null,
 		name: options.tag && options.tag.name ?  options.tag.name : null,
@@ -225,12 +229,12 @@ var term_ajax_get = function(options, animate) {
 		url: ajax_posts.ajaxurl,
 		data: {
 			'action': action,
-			'term': termID,
+			'term': term.id,
 			'page': page,
 			'categoryName': categoryName,
 			'postsPerPage': postsPerPage,
 			'tag': tag.slug,
-			'post_id': id,
+			'postID': postID,
 			'name' : name,
 		},
 		success: function(response) {
@@ -265,7 +269,12 @@ var term_ajax_get = function(options, animate) {
 					page: page,
 				}
 
-				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug
+				console.log(term)
+
+				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug;
+				if (term.slug !== null) urlUpdateObj['category'] = term.slug;
+				if (postID !== null) urlUpdateObj['postID'] = postID;
+				// if (term.id !== null) urlUpdateObj['termID'] = term.id;
 				helpers.pushLocation(options, urlUpdateObj, function(stateUpdate) {
 					stateUpdate['pushHistory'] = false;
 					term_ajax_get(stateUpdate, true);
@@ -294,7 +303,8 @@ $(document).ready(function() {
 	var buttonClicked;
 	var options = {
 		page: 0,
-		tag: {}
+		tag: {},
+		term: {},
 	};
 	var urlParams = {};
 	if (window.location.search.length > 0) {
@@ -320,27 +330,45 @@ $(document).ready(function() {
 		options.action = 'load-filter2';
 		options.wrapper = '.testimonials__wrapper';
 		options.type = 'infiniteScroll';
-		getTestimonials();
+		getTestimonials(options);
 	}
 
-	function getTestimonials () {
-		$('.testimonials__navigation').find('button').click(function() {
-			$(this).addClass('active').siblings().removeClass('active');
-			options.termID = $(this).data('term');
-			options.page = 0;
-			$('.testimonials__wrapper').empty();
+	function getTestimonials (options) {
+		var $bottom = $('#testimonials__bottom');
+
+		// $bottom.attr('data-page', options.page);
+
+		// checks to see if the URL is passing queries to filter testimonials
+		// categories options added from module-taxonomy.php
+		if (urlParams.termID || urlParams.category) {
+			options.term = urlParams.category ? (categories.find( category => category.slug === urlParams.category)) : (categories.find( category => category.id === parseInt(urlParams.termID)));
+			// add active class with located term
+			$('.testimonials__navigation').find("[data-term='" + options.term.id + "']").addClass('active');
+		}
+		if (urlParams.postID) {
+			// if category name is passed searches through categories options added from module-taxonomy.php
+			options['postID'] = isNaN(parseInt(urlParams.postID)) ? 0 : parseInt(urlParams.postID);
 			term_ajax_get(options);
+		}
+		else if (urlParams.individual) {
+			options['name'] = helper.slugify(urlParams.individual);
+		}
+		else {
+			// fall back if query was not set or categories didn't load
+			$('.view-all').trigger('click').addClass('active');
+		}
 
-			console.log('hello', options.page)
+		term_ajax_get(options);
 
-			$('#testimonials__bottom').bind('inview', function (event, visible) {
-				if (visible === true) {
-					console.log(options.page)
-					options.page = options.page + 1;
-					term_ajax_get(options);
-				}
-			});
-		});
+		var getIndividual = urlParams.individual || urlParams.postID ? true : false;
+		// if (!getIndividual) {
+		// 	$('#testimonials__bottom').bind('inview', function (event, visible) {
+		// 		if (visible === true) {
+		// 			options.page++;
+		// 			term_ajax_get(options);
+		// 		}
+		// 	});
+		// }
 
 		$('.testimonials__navigation').bind('inview', function (event, visible) {
 			if (visible === true) {
@@ -354,40 +382,24 @@ $(document).ready(function() {
 			$('html, body').animate({scrollTop: 0}, 800);
 		});
 
-		// checks to see if the URL is passing queries to filter testimonials
-		if (urlParams.term_id || urlParams.category) {
-			if (urlParams.term_id) {
-				// if term_id is passed just uses the term id for filtering
-				options.termID = isNaN(parseInt(urlParams.term_id)) ? 'view-all' : parseInt(urlParams.term_id);
-			} else if (urlParams.category) {
-				// if category name is passed searches through categories options added from module-taxonomy.php
-				options.termID = (categories.find( category => category.slug === urlParams.category)).termId;
-			}
+		$('.testimonials__navigation').find('button').click(function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			options.termID = $(this).data('term');
+			options.page = 0;
+			// $('.testimonials__wrapper').empty();
 			term_ajax_get(options);
-			$('.testimonials__navigation').find("[data-term='" + options.termID + "']").addClass('active');
-		}
-		else if (urlParams.postid) {
-			// if category name is passed searches through categories options added from module-taxonomy.php
-			var id = isNaN(parseInt(urlParams.postid)) ? 0 : parseInt(urlParams.postid);
-			options['id'] = id;
-			term_ajax_get(options);
-		}
-		else if (urlParams.individual) {
-			options['name'] = urlParams.individual;
-			term_ajax_get(options);
-		}
-		else {
-			// fall back if query was not set or categories didn't load
-			$('.view-all').trigger('click').addClass('active');
-		}
+		});
 
-		var getIndividual = urlParams.individual || urlParams.postid ? true : false;
-
-		if (!getIndividual) {
-			$('#testimonials__bottom').bind('inview', function (event, visible) {
+		var loadMore = _.isEmpty(urlParams.postID)
+		// loadMore = _.isEmpty(urlParams.name) \;
+console.log(loadMore)
+		if (loadMore) {
+			console.log('working')
+			$bottom.bind('inview', function (event, visible) {
 				if (visible === true) {
 					options.page++;
 					term_ajax_get(options);
+					event.stopPropagation();
 				}
 			});
 		}

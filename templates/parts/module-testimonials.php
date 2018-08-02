@@ -41,7 +41,7 @@
 			},
 			<?php foreach ($terms as $term) : ?>
 			{
-				termId: <?php echo $term->term_id; ?>,
+				id: <?php echo $term->term_id; ?>,
 				slug: '<?php echo $term->slug; ?>',
 				name: '<?php echo $term->name; ?>',
 			},
