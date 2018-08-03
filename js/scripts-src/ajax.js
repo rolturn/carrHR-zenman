@@ -65,29 +65,25 @@ var term_ajax_get = function(options, animate) {
 					$(this).not('.current').on('click', function(e) {
 						e.preventDefault();
 						options.page = $(this).val();
+						options.pushed = false;
 						term_ajax_get(options, true);
 					})
 				})
 			}
 
-			filterOptions('#category-filters', options, tag['slug'])
+			var urlUpdateObj = {
+				page: page,
+			}
 
-			// if (type !== 'infiniteScroll') {
-				var urlUpdateObj = {
-					page: page,
-				}
+			if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug;
+			if (term.slug !== null) urlUpdateObj['category'] = term.slug;
+			if (postID !== null) urlUpdateObj['postID'] = postID;
+			if (name !== null) urlUpdateObj['name'] = name;
 
-				console.log(term)
-
-				if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug;
-				if (term.slug !== null) urlUpdateObj['category'] = term.slug;
-				if (postID !== null) urlUpdateObj['postID'] = postID;
-				// if (term.id !== null) urlUpdateObj['termID'] = term.id;
-				helpers.pushLocation(options, urlUpdateObj, function(stateUpdate) {
-					stateUpdate['pushHistory'] = false;
-					term_ajax_get(stateUpdate, true);
-				});
-			// }
+			helpers.pushLocation(options, urlUpdateObj, function(stateUpdate) {
+				term_ajax_get(stateUpdate, true);
+				filterOptions('#category-filters', stateUpdate);
+			});
 
 			if (animate) {
 				$('html, body').animate({
@@ -98,7 +94,7 @@ var term_ajax_get = function(options, animate) {
 			return false;
 		},
 		error: function(err) {
-			console.error(err)
+				console.error(err)
 		}
 	});
 }
@@ -115,6 +111,7 @@ $(document).ready(function() {
 		term: {},
 	};
 	var urlParams = {};
+
 	if (window.location.search.length > 0) {
 		urlParams = helpers.urlParams;
 	}
@@ -132,6 +129,7 @@ $(document).ready(function() {
 		if (urlParams.tag) options.tag['slug'] = urlParams.tag;
 
 		term_ajax_get(options);
+		filterOptions('#category-filters', options, true)
 	}
 
 	if ($('.testimonials__navigation').length > 0) {
@@ -142,43 +140,30 @@ $(document).ready(function() {
 	}
 
 	function getTestimonials (options) {
-		var $bottom = $('#testimonials__bottom');
-
-		// $bottom.attr('data-page', options.page);
+		var $list = $('.testimonials__inner');
+		var $filters  = $('.testimonials__navigation');
+		var bottom = 0;
+		options['loadMore'] = true;
 
 		// checks to see if the URL is passing queries to filter testimonials
 		// categories options added from module-taxonomy.php
 		if (urlParams.termID || urlParams.category) {
 			options.term = urlParams.category ? (categories.find( category => category.slug === urlParams.category)) : (categories.find( category => category.id === parseInt(urlParams.termID)));
 			// add active class with located term
-			$('.testimonials__navigation').find("[data-term='" + options.term.id + "']").addClass('active');
-		}
-		if (urlParams.postID) {
-			// if category name is passed searches through categories options added from module-taxonomy.php
+			$('.testimonials__navigation').find("[value='" + options.term.id + "']").addClass('active');
+		} else if (urlParams.postID) {
 			options['postID'] = isNaN(parseInt(urlParams.postID)) ? 0 : parseInt(urlParams.postID);
-			term_ajax_get(options);
-		}
-		else if (urlParams.individual) {
-			options['name'] = helper.slugify(urlParams.individual);
-		}
-		else {
-			// fall back if query was not set or categories didn't load
-			$('.view-all').trigger('click').addClass('active');
+			options.loadMore = false;
+		} else if (urlParams.individual) {
+			options['name'] = helpers.slugify(urlParams.individual);
+			options.loadMore = false;
+		} else {
+			$('.view-all').addClass('active')
 		}
 
 		term_ajax_get(options);
 
-		var getIndividual = urlParams.individual || urlParams.postID ? true : false;
-		// if (!getIndividual) {
-		// 	$('#testimonials__bottom').bind('inview', function (event, visible) {
-		// 		if (visible === true) {
-		// 			options.page++;
-		// 			term_ajax_get(options);
-		// 		}
-		// 	});
-		// }
-
-		$('.testimonials__navigation').bind('inview', function (event, visible) {
+		$filters.bind('inview', function (event, visible) {
 			if (visible === true) {
 				$totop.removeClass('visible');
 			} else {
@@ -190,32 +175,58 @@ $(document).ready(function() {
 			$('html, body').animate({scrollTop: 0}, 800);
 		});
 
-		$('.testimonials__navigation').find('button').click(function() {
-			$(this).addClass('active').siblings().removeClass('active');
-			options.termID = $(this).data('term');
-			options.page = 0;
-			// $('.testimonials__wrapper').empty();
-			term_ajax_get(options);
-		});
+		function getBottom () {
+			// on delay to give page time to load
+			setTimeout (function() {
+				bottom = $list.position().top + $list.outerHeight(true);
+			}, 500)
+		}
 
-		var loadMore = _.isEmpty(urlParams.postID)
-		// loadMore = _.isEmpty(urlParams.name) \;
-console.log(loadMore)
-		if (loadMore) {
-			console.log('working')
-			$bottom.bind('inview', function (event, visible) {
-				if (visible === true) {
-					options.page++;
-					term_ajax_get(options);
-					event.stopPropagation();
-				}
+		if (options.loadMore) {
+			var last_known_scroll_position = 0;
+
+			function doSomething(scroll_pos) {
+				if ($('.loading:visible').length > 0) return
+			  // do something with the scroll position
+				options['page'] = options.page + 1;
+				term_ajax_get(options);
+				getBottom()
+			}
+			window.addEventListener('scroll', function(e) {
+				last_known_scroll_position = window.scrollY;
+			  if (bottom < last_known_scroll_position) {
+			    window.requestAnimationFrame(function() {
+			      doSomething(last_known_scroll_position);
+			    });
+			  }
 			});
 		}
+
+		function resetOptions (options) {
+			// var options = options || {};
+			options['page'] = 0;
+			options['name'] = null;
+			options['postID'] = null;
+			options['loadMore'] = true;
+			return options;
+		}
+
+		$filters.find('button').click(function() {
+			$(this).addClass('active').siblings().removeClass('active');
+			resetOptions(options)
+			options['term'] = categories.find( category => category.id === parseInt($(this).val()));
+			options['page'] = 0;
+			term_ajax_get(options);
+
+			getBottom()
+		});
+
 	}
 });
 
-function filterOptions (filterButtonContainer, options, slug) {
+function filterOptions (filterButtonContainer, options, initClicks) {
 	var $catFilters = $(filterButtonContainer);
+	if (options.tag) var slug = options.tag.slug
 
 	if ($catFilters.length === 0) return;
 	var $buttons = $catFilters.find('button');
@@ -226,32 +237,39 @@ function filterOptions (filterButtonContainer, options, slug) {
 		$buttons.each(function() {
 			var $this = $(this);
 
-			if ($this.hasClass('current')) $this.removeClass('current');
-
 			if (slug) {
 				if (helpers.slugify($this.val()) === slug) {
 					$this.addClass('current');
 					if ($selectedTopic.length > 0) $selectedTopic.text('Filtered By ' + $this.text());
-					$this.addClass('current')
 				}
 			} else {
 				$selectedTopic.text('Select a Topic');
 			}
 
-			$this.not('.current').on('click', function(e) {
-				e.preventDefault();
-				options.page = 0;
-				options.tag = {
-					name: $this.text(),
-					slug: helpers.slugify($this.val()),
-				};
-				term_ajax_get(options, true);
-			})
+			if (initClicks) {
+				$this.not('.current').on('click', function(e) {
+					e.preventDefault();
+					$(this).addClass('current').siblings().removeClass('current');
+					options.page = 0;
+					options.tag = {
+						name: $this.text(),
+						slug: helpers.slugify($this.val()),
+					};
+					term_ajax_get(options, true);
+					// update topic message
+					if ($selectedTopic.length > 0) {
+						if ($this.val()) {
+							$selectedTopic.text('Filtered By ' + $this.text());
+						} else {
+							$selectedTopic.text('Select a Topic');
+						}
+					}
+				})
+			}
 		})
 	}
 	if ($selectedTopic.is(':hidden')) $selectedTopic.show();
 }
-
 
 function buildPager (currentPage, totalPages) {
 	var currentPage = parseInt(currentPage) + 1;
@@ -278,7 +296,6 @@ function buildPager (currentPage, totalPages) {
 		// replacing 0 index
 		var page = range[i] - 1;
 		// convert to words on first or last
-		console.log(currentPage - idealRange + 1)
 		if (range[i] === 1 && idealRange < (currentPage - (idealRange + 1))) {
 			pageTitle = 'Newer';
 		} else if (range[i] === totalPages && totalPages > (currentPage + idealRange + 1)) {

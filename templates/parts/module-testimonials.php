@@ -16,12 +16,12 @@
 		<div class="testimonials__navigation">
 			<button class="view-all" data-term="view-all">View All</button>
 			<?php foreach ($terms as $term) : ?>
-				<button data-term="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></button>
+				<button value="<?php echo $term->term_id; ?>" data-slug="<?php echo $term->slug; ?>"><?php echo $term->name; ?></button>
 			<?php endforeach; ?>
 		</div>
 
 		<div class="testimonials__background" <?php if ($image) : ?>style="background-image: url(<?php echo $image['url']; ?>);" <?php endif; ?>>
-			<div class="testimonials__inner">
+			<div id="testimonial_content" class="testimonials__inner">
 				<div class="testimonials__wrapper js-popout-has-buttons"></div>
 
 				<div class="loading">
