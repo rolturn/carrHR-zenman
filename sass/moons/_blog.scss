@@ -107,7 +107,7 @@
 		}
 	}
 }
-.single-torso{
+.single-torso {
 	&__post {
 		position: relative;
 		width: 50%;
@@ -204,14 +204,14 @@
 		position: relative;
 	}
 
-	&__content {
-		padding: 40px 0;
-		width: 70%;
-		float: left;
-		@include bp(900px){
-			width: 100%;
-		}
-	}
+	// &__content {
+	// 	padding: 40px 0;
+	// 	width: 70%;
+	// 	float: left;
+	// 	@include bp(900px){
+	// 		width: 100%;
+	// 	}
+	// }
 
 	&__social {
 		ul{
@@ -265,6 +265,7 @@
 		h1 {
 			font-size: 32px;
 			color: $color-1;
+			// padding-right: 20px;
 		}
 	}
 
@@ -296,53 +297,73 @@
 			}
 		}
 	}
-	&__related{
-		width: 30%;
-		float: left;
-		padding-left: 4em;
-		padding-top: 70px;
-		@include bp(900px){
-			display: none;
-		}
-		.blog-sticky__post{
-			width: 100%;
-			padding: $pad;
-		}
-		.blog-sticky__image{
-			height: emCalc(200px);
-		}
-		.blog-sticky__text{
-			right: $pad !important;
-			left: $pad !important;
-		}
+
+// 	&__related{
+// 		width: 30%;
+// 		float: left;
+// 		padding-left: 4em;
+// 		padding-top: 70px;
+// 		@include bp(900px){
+// 			display: none;
+// 		}
+// 		.blog-sticky__post{
+// 			width: 100%;
+// 			padding: $pad;
+// 		}
+// 		.blog-sticky__image{
+// 			height: emCalc(200px);
+// 		}
+// 		.blog-sticky__text{
+// 			right: $pad !important;
+// 			left: $pad !important;
+// 		}
+// 	}
+// 	&__related-title {
+// 		display: block;
+//
+// 		h3 {
+// 			font-size: 20px;
+// 			font-family: $fam-heading;
+// 			text-transform: uppercase;
+// 			font-weight: normal;
+// 			color: $color-1;
+// 			text-align: center;
+// 			position: relative;
+// 			margin: 0 0 30px;
+// 			padding-bottom: 20px;
+//
+// 			&:after {
+// 				content: '';
+// 				position: absolute;
+// 				bottom: 0;
+// 				left: 50%;
+// 				width: 100px;
+// 				margin-left: -50px;
+// 				height: 2px;
+// 				background-color: $color-2;
+// 			}
+// 		}
+// 	}
+}
+
+.post {
+	&.main-content.has-aside {
+		grid-gap: $gap--huge;
 	}
-	&__related-title {
-		display: block;
+	&__related {
+		margin-top: 80px;
 
 		h3 {
-			font-size: 20px;
-			font-family: $fam-heading;
-			text-transform: uppercase;
-			font-weight: normal;
-			color: $color-1;
-			text-align: center;
-			position: relative;
-			margin: 0 0 30px;
-			padding-bottom: 20px;
-
+			text-align: left;
 			&:after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				width: 100px;
-				margin-left: -50px;
-				height: 2px;
-				background-color: $color-2;
+				left: 0;
+				margin-left: 0
 			}
 		}
 	}
+
 }
+
 .pagination-block{
 	clear: both;
 	text-align: center;

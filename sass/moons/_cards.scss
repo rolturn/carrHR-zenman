@@ -25,6 +25,7 @@
 .card {
   position: relative;
   color: $color-1;
+  display: block;
   h1 {
     margin: 1em 0;
     font-size: 1.3em;
@@ -121,5 +122,22 @@
     text-align: center;
     color: $color-2;
     text-transform: uppercase;
+  }
+
+  &__alt {
+    margin-bottom: 3em;
+
+    h1 {
+      // font-weight: 300;
+      font-size: 1em;
+      line-height: 1.4em;
+    }
+
+    article {
+      margin-bottom: 1em;
+    }
+    .more {
+      position: relative;
+    }
   }
 }
