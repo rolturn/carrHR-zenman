@@ -181,6 +181,10 @@
 
 .loading{
 	height: 12rem;
+	display: none;
+	&.active {
+		display: block;
+	}
 }
 
 .loader,

@@ -1,16 +1,17 @@
 var helpers = (function () {
 
   var pushLocation = function (updatedObj, updatedHrefObj, callback) {
-    console.log(updatedObj)
     if (updatedObj.pushed === true) return false
     var pathname = window.location.pathname;
     var obj = _.cloneDeep(updatedObj)
     var queryString = Object.keys(updatedHrefObj).map(function(key) {
         return key + '=' + updatedHrefObj[key]
     }).join('&');
-    var updatedPath = pathname + '?' + queryString;
-    obj['pushed'] = true;
-    window.history.pushState(JSON.stringify(obj), updatedPath, updatedPath);
+    if (queryString) {
+      var updatedPath = pathname + '?' + queryString;
+      obj['pushed'] = true;
+      window.history.pushState(JSON.stringify(obj), updatedPath, updatedPath);
+    }
 
     window.onpopstate = function(e){
       if(e.state){

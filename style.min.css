@@ -510,7 +510,7 @@ h1.section-header__left{margin-bottom:1em}.category-description{font-size:1.5em;
 .testimonials__single.has-image .testimonials__text{margin:20px 2.5%;width:55vw;height:auto}
 .testimonials__single.has-image.right .testimonials__text{margin-left:0}.testimonials__single.has-image.left .testimonials__text{margin-right:0}
 .testimonials .play-button{left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
-.loading{height:12rem}.loader,.loader:before,.loader:after{background:#cf671a;-webkit-animation:load1 1s infinite ease-in-out;animation:load1 1s infinite ease-in-out;width:1em;height:4em}
+.loading{height:12rem;display:none}.loading.active{display:block}.loader,.loader:before,.loader:after{background:#cf671a;-webkit-animation:load1 1s infinite ease-in-out;animation:load1 1s infinite ease-in-out;width:1em;height:4em}
 .loader{color:#cf671a;text-indent:-9999em;margin:88px auto;position:relative;font-size:11px;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-animation-delay:-0.16s;animation-delay:-0.16s}
 .loader:before,.loader:after{position:absolute;top:0;content:''}
 .loader:before{left:-1.5em;-webkit-animation-delay:-0.32s;animation-delay:-0.32s}
