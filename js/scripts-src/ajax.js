@@ -24,13 +24,13 @@ var term_ajax_get = function(options, animate, callback) {
 	var action = options.action || null;
 	var type = options.type || null;
 
+	$loader.addClass('active');
+
 	if (type !== 'infiniteScroll') {
 		// reset pager with each load;
 		$wrapper.html('');
 		$pager.html('');
 	}
-
-	$loader.addClass('active');
 
 	$.ajax({
 		type: 'POST',
@@ -205,7 +205,7 @@ $(document).ready(function() {
 
 function getBottom () {
 	var $list = $('.testimonials__inner');
-	return $list.position().top + $list.outerHeight(true) - 300;
+	return $list.position().top + $list.outerHeight(true) - 600;
 }
 
 function filterTestOptions(filterButtonList, options, init) {

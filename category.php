@@ -54,7 +54,7 @@ $category = get_category(get_query_var('cat'),false);
 			<div class="content">
 				<!-- Ajax will add list of links here -->
 			</div><!-- /.content -->
-			<div class="loading" style="display: none;">
+			<div class="loading">
 				<div class="loader">Loading...</div>
 			</div>
 			<div id="pagination" class="filters button-list pager"></div><!-- /#pagination -->
