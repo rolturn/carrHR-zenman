@@ -125,8 +125,11 @@
 			.mwi-first-name,
 			.mwi-last-name,
 			.mwi-phone,
+			.mwi-email,
 			.mwi-jobTitle,
-			.mwi-accountNumber {
+			.mwi-accountNumber,
+			.testphone,
+			.testemail {
 				width: calc(50% - 25px / 2);
 
 				@include bp(500px) {
@@ -137,11 +140,15 @@
 					width: 100%;
 				}
 			}
-			.practice {
+			.practice,
+			.mwi-first-name,
+			.mwi-phone,
+			.mwi-jobTitle {
 				margin-right: 25px;
 			}
 
 			.address,
+			.mwi-practice,
 			.comments {
 				width: 100%;
 			}
