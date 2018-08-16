@@ -121,7 +121,12 @@
 			}
 
 			.practice,
-			.interest {
+			.interest,
+			.mwi-first-name,
+			.mwi-last-name,
+			.mwi-phone,
+			.mwi-jobTitle,
+			.mwi-accountNumber {
 				width: calc(50% - 25px / 2);
 
 				@include bp(500px) {
