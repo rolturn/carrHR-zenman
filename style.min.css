@@ -175,7 +175,7 @@ p{padding-bottom:0;margin-top:0;margin-bottom:1em}[class*="torso--sidebar"] [cla
 [class*="__inner"]{max-width:1230px;margin:0 auto;clear:both;padding:0 20px}
 .main-content.has-aside{display:grid;grid-template-columns:auto 250px;grid-gap:2.8125rem}
 .main-content.has-aside__right aside{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
-.alignnone,img.alignnone{margin:5px 20px 20px 0}.aligncenter,img.aligncenter{text-align:center;display:block;margin:5px auto 5px auto}
+.alignnone,img.alignnone{margin:5px 20px 20px 0;width:100% !important}.aligncenter,img.aligncenter{text-align:center;display:block;margin:5px auto 5px auto}
 .alignright,img.alignright{float:right;margin:5px 0 20px 20px}.alignleft,img.alignleft{float:left;margin:5px 20px 20px 0}
 .wp-caption{clear:both;max-width:96%;padding:5px 3px 10px;text-align:center;background:#fff;border:1px solid #f0f0f0}
 .wp-caption img{height:auto;max-width:98.5%;width:auto;margin:0;padding:0;border:0 none}
