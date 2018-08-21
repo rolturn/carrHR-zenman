@@ -21,20 +21,37 @@
 					<?php while ( have_rows('add_a_resource') ) : the_row();
 						$background_image = get_sub_field('background_image');
 						$link = get_sub_field('link');
+						$text = get_sub_field('text');
+						$subtext = get_sub_field('subtext');
+						// setting defaults since there are so many pages that already have Educational Resources set. These defaults maybe overwritten by by entering text into the field.
+						if (empty($subtext)) {
+							switch ($text) {
+								case "Blog":
+									$subtext = "get better equipped to make informed decisions";
+									break;
+								case "FAQ":
+									$subtext = "get quick answers to the questions we get regularly";
+									break;
+							}
+						}
 						?>
 
 						<a class="resources__single" href="<?php echo $link; ?>" style="background: url(<?php echo $background_image['url']; ?>)no-repeat center center; background-size: cover;">
 
 							<div class="resources__overlay">
-								<h4>
-									<?php
-										$thecontent = get_sub_field('text');
-										$getlength = strlen($thecontent);
-										$thelength = 56;
-										echo substr($thecontent, 0, $thelength);
-										if ($getlength > $thelength){echo "...";}
-									?>
-								</h4>
+								<hgroup>
+									<h4>
+										<?php
+											$textlength = strlen($text);
+											$textlength = 56;
+											echo substr($text, 0, $textlength);
+											if ($textlength > $textlength){echo "...";}
+										?>
+									</h4>
+									<h5 class="subtext">
+										<?php echo $subtext; ?>
+									</h5>
+								</hgroup>
 							</div>
 
 						</a>
