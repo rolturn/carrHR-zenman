@@ -11,9 +11,9 @@ $heading = get_sub_field('slide_headline');
 			     	<div class="slider__inner">
 						<div class="slider__text orientation-<?php echo get_sub_field('orientation_of_text'); ?>">
 
-							<div class="slider__prev">
+							<!-- <div class="slider__prev">
 								<a href="javascript:void(0);" class="previous">❮</a>
-							</div>
+							</div> -->
 							<div class="slider__text-box">
 								<div class="slider__text-content">
 									<?php if ($heading){echo '<h3>'.$heading.'</h3>';} ?>
@@ -21,9 +21,9 @@ $heading = get_sub_field('slide_headline');
 								</div>
 							</div>
 
-							<div class="slider__next">
+							<!-- <div class="slider__next">
 								<a href="javascript:void(0);" class="next">❯</a>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
