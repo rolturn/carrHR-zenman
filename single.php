@@ -53,7 +53,6 @@ if ($series_count > 1) {
       <?php else: ?>
         <section class="hero-none"></section>
       <?php endif;
-      d($post);
 
       ?>
       <div class="post-single__inner">
