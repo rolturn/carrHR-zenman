@@ -27,10 +27,10 @@
 						if (empty($subtext)) {
 							switch ($text) {
 								case "Blog":
-									$subtext = "get better equipped to make informed decisions";
+									$subtext = "Industry leading healthcare real estate content";
 									break;
 								case "FAQ":
-									$subtext = "get quick answers to the questions we get regularly";
+									$subtext = "Quick answers to health real estate questions";
 									break;
 							}
 						}

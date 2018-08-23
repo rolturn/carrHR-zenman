@@ -140,4 +140,13 @@
       position: relative;
     }
   }
+
+  &.current {
+    cursor: default;
+    .more {
+      border-color: $color-1;
+      background-color: $color-1;
+      color: #fff;
+    }
+  }
 }
