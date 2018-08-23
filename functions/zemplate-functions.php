@@ -139,6 +139,24 @@ function excerpt($limit) {
     $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
     return $excerpt;
 }
+function excerpt_with_strong($limit) {
+    $excerpt = get_the_excerpt();
+    $excerpt = explode(' ', $excerpt, $limit);
+    if (count($excerpt)>=$limit) {
+        array_pop($excerpt);
+        $excerpt = implode(" ",$excerpt).'…';
+    } else {
+        $excerpt = implode(" ",$excerpt);
+    }
+    if (preg_match('/[\?|\.|\!]/', $excerpt)) {
+      $excerpt = "<strong>" . preg_replace('/[\?|\.|\!]/', "$0</strong>", $excerpt, 1);
+    } else {
+      $excerpt = "<strong>" . $excerpt . "</strong>";
+    }
+    $excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+
+    return $excerpt;
+}
 function content($limit) {
     $content = explode(' ', get_the_content(), $limit);
     if (count($content)>=$limit) {

@@ -52,14 +52,15 @@
       &.caret-circle-down-after {
         &:after {
           position: absolute;
+          font-size: 1em;
           right: 10px;
           top: 50%;
           font-family: "Font Awesome 5 Pro";
-          font-weight: 900;
+          font-weight: 500;
           content: "\f32d";
           text-align: right;
           display: inline-block;
-          transition: all 500ms;
+          transition: all 200ms;
           transform: translateY(-50%) rotate(180deg);
           line-height: 1;
         }

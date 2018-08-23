@@ -8,14 +8,37 @@
  */
 
 get_header();
-$related = get_posts(
-  array(
-    'category__in' => wp_get_post_categories($post->ID),
-    'numberposts' => 3,
-    'post__not_in' => array($post->ID)
+
+$tax_group = 'blog_series';
+$post_term = get_the_terms($post, $tax_group)[0];
+
+$args = array (
+  // 'post__not_in' => array($post->ID),
+  'order' => 'ASC',
+  'tax_query' =>   array (
+    array (
+      'taxonomy' => $post_term->taxonomy,
+      'field' => 'term_id',
+      'terms' => $post_term->term_id,
     )
-  );
-// $related = '';
+  )
+);
+
+$currentID = $post->ID;
+
+$series_posts = get_posts( $args );
+$series_count = count($series_posts);
+if ($series_count > 1) {
+  $other_series_posts = $series_posts;
+  $other_posts_count = 3;
+  $blog_id = 26;
+  $blog_page_url = get_category_link( $blog_id );
+
+  // if ($series_count > $other_posts_count) {
+  //   $other_series_posts = array_slice($series_posts, 0, $other_posts_count);
+  //   $additional_posts_link = $blog_page_url . '?id=' . $post_term->term_id . '&page=0';
+  // }
+}
 
 ?>
 
@@ -29,9 +52,12 @@ $related = get_posts(
         </div>
       <?php else: ?>
         <section class="hero-none"></section>
-      <?php endif; ?>
+      <?php endif;
+      d($post);
+
+      ?>
       <div class="post-single__inner">
-        <div class="main-content post<?php !empty($related) ? print ' has-aside has-aside__right' : ''; ?>">
+        <div class="main-content post<?php (isset($other_series_posts) && !empty($other_series_posts)) ? print ' has-aside has-aside__right' : ''; ?>">
 
           <div class="post__article">
             <div class="post-single__title">
@@ -46,23 +72,34 @@ $related = get_posts(
               <?php the_content(); ?>
             </div>
           </div>
-          <?php if ( $related ){ ?>
+          <?php if ( $other_series_posts ): ?>
           <aside class="post__related">
 
               <div class="post-single__related-title">
-                <h3>Related Posts</h3>
+                <h3>The <?php echo $post_term->name; ?> Series</h3>
               </div>
 
               <div class="post-single__related-container">
-                <?php foreach( $related as $post ) {
-                setup_postdata($post); ?>
+                <?php foreach( $other_series_posts as $post ) {
+                setup_postdata($post);
+                $post->isCurrent = false;
+                if ($post->ID === $currentID) {
+                  $post->isCurrent = true;
+                }
+                ?>
                 <?php get_template_part( 'templates/parts/blog', 'excerpt-alt' ); ?>
-                <?php } ?>
+                <?php }
+                  wp_reset_postdata();
+                 ?>
               </div>
+              <?php if (isset($additional_posts_link) && !empty($additional_posts_link)): ?>
+                <a href="<?php echo $additional_posts_link; ?>" class="more">See All Blogs from this Series.</a>
+              <?php
+                endif;
+              ?>
           </aside>
-          <?php }
-          wp_reset_postdata();
-          ?>
+
+        <?php endif; ?>
 
         </div>
       </div>

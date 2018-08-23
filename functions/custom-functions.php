@@ -1,17 +1,5 @@
 <?php
 
-function debug ($data) {
-    echo "<script>\r\n//<![CDATA[\r\nif(!console){var console={log:function(){}}}";
-    $output = explode("\n", print_r($data, true));
-    foreach ($output as $line) {
-        if (trim($line)) {
-            $line = addslashes($line);
-            echo "console.log(\"{$line}\");";
-        }
-    }
-    echo "\r\n//]]>\r\n</script>";
-}
-
 /*
  * @package WordPress
  * @subpackage Zemplate
@@ -497,16 +485,24 @@ function prefix_load_term_posts () {
 add_action( 'wp_ajax_nopriv_load-filter3', 'ajax_load_posts' );
 add_action( 'wp_ajax_load-filter3', 'ajax_load_posts' );
 function ajax_load_posts () {
-  $term_id = $_POST[ 'term' ];
+
+  $term_id = intval($_POST[ 'term' ]);
   $tag = $_POST[ 'tag' ];
+  $tax = $_POST[ 'tax' ];
 	$post_id = $_POST[ 'post_id' ];
   $posts_per_page = $_POST[ 'postsPerPage' ];
 	$name = $_POST[ 'name' ];
   $category_name = $_POST[ 'categoryName' ];
+  // $tax_id = $_POST[ 'taxID' ];
 	$paged = esc_attr( $_POST['page'] );
 
+
 	$tax_query =  array(
-		'taxonomy' => 'category',
+    array(
+  		'taxonomy' => 'blog_series',
+      'field' => 'term_id',
+      'terms' => $term_id,
+    )
 	);
 
 	$postOffset = $paged * $posts_per_page;
@@ -521,7 +517,9 @@ function ajax_load_posts () {
     'post_status' => 'publish'
 	);
 
-	$args['tax_query'] = $tax_query;
+  if (!empty($term_id)) {
+    $args['tax_query'] = $tax_query;
+  }
 
 	global $post;
   $wp_query = null;

@@ -15,20 +15,25 @@ get_header();
 
 $blog_id = 3719;
 
-$tags = get_tags();
-$tag_html = '<nav class="post_tags">';
-$tag_html .= "<button>All</button>";
-foreach ( $tags as $tag ) {
-	$tag_link = get_tag_link( $tag->term_id );
-	$tag_html .= "<button value='{$tag->name}'>{$tag->name}</button>";
+$tax = "blog_series";
+
+$tags = get_terms(
+	array (
+		'taxonomy' => $tax,
+	)
+);
+
+if (!empty($tags)) {
+	$tag_html = '<nav class="post_tags">';
+	$tag_html .= "<button>All</button>";
+	foreach ( $tags as $tag ) {
+		$tag_link = get_tag_link( $tag->term_id );
+		$tag_html .= "<button value='{$tag->term_id}' data-slug='{$tag->name}' data-taxonomy='{$tag->taxonomy}'>{$tag->name}</button>";
+	}
+	$tag_html .= '</nav>';
 }
-$tag_html .= '</nav>';
 
 $category = get_category(get_query_var('cat'),false);
-
-// $category = get_category(get_query_var('cat'),false);
-// // https://stackoverflow.com/questions/38985334/year-and-month-in-wordpress-archive-list
-// wp_custom_archive($args, $category->slug);
 
 ?>
 
@@ -45,7 +50,7 @@ $category = get_category(get_query_var('cat'),false);
 		<?php if (!empty($tags)): ?>
 		<aside>
 			<div id="category-filters" class="filters dropdown tags">
-			  <div class="trigger selected-topic caret-circle-down-after" style="display: none;">Select a Topic</div><!-- /.trigger -->
+			  <div class="trigger selected-topic caret-circle-down-after" style="display: none;">Select a Series</div><!-- /.trigger -->
 			  <?php echo $tag_html;  ?>
 			</div><!-- /#category-filters -->
 		</aside>

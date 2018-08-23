@@ -20,7 +20,7 @@ $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
       <h1><?php the_title(); ?></h1>
 
       <div class="card__content">
-        <?php echo excerpt(20); ?>
+        <?php echo excerpt_with_strong(20); ?>
       </div> <!-- /.card__content -->
     </div>
   </article>

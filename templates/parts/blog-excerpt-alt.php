@@ -2,9 +2,11 @@
 $label_text = get_field('label_text') ? get_field('label_text') : false;
 $label_color = get_field('label_color') ? get_field('label_color') : false;
 $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
+
 ?>
 
-<a class="card card__post card__alt" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
+
+<a class="card card__post card__alt<?php (isset($post->isCurrent) && !empty($post->isCurrent)) ? print ' current' : false; ?>" href="<?php (isset($post->isCurrent) && empty($post->isCurrent)) ? the_permalink() : print '#'; ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
   <article>
     <div class="card__image__container <?php echo ' card__image__container__'.$label_color_class_ext; ?>">
       <?php if ( has_post_thumbnail() ) : ?>
@@ -20,5 +22,5 @@ $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
       <h1><?php the_title(); ?></h1>
     </div>
   </article>
-  <div class="more">Read More</div><!-- /.read-more -->
+  <div class="more"><?php (isset($post->isCurrent) && !empty($post->isCurrent)) ? print 'Current' : print 'Read More'; ?></div><!-- /.read-more -->
 </a> <!-- //card__post -->

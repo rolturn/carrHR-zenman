@@ -268,6 +268,7 @@ var term_ajax_get = function(options, animate, callback) {
 
 			if (tag.slug !== null) urlUpdateObj['tag'] = tag.slug;
 			if (term.slug !== null) urlUpdateObj['category'] = term.slug;
+			if (term.id !== null) urlUpdateObj['id'] = term.id;
 			if (postID !== null) urlUpdateObj['postID'] = postID;
 			if (name !== null) urlUpdateObj['name'] = name;
 			urlUpdateObj['page'] = page;
@@ -323,6 +324,7 @@ $(document).ready(function() {
 
 		options.page = urlParams.page !== 'undefined' ? urlParams.page : 0;
 		if (urlParams.tag) options.tag['slug'] = urlParams.tag;
+		if (urlParams.id) options.term['id'] = urlParams.id;
 
 		term_ajax_get(options);
 		filterOptions('#category-filters', options, true)
@@ -440,6 +442,7 @@ function filterTestOptions(filterButtonList, options, init) {
 function filterOptions (filterButtonContainer, options, initClicks) {
 	var $catFilters = $(filterButtonContainer);
 	if (options.tag) var slug = options.tag.slug
+	if (options.term) var slug = options.term.id
 
 	if ($catFilters.length === 0) return;
 	var $buttons = $catFilters.find('button');
@@ -453,10 +456,10 @@ function filterOptions (filterButtonContainer, options, initClicks) {
 			if (slug) {
 				if (helpers.slugify($this.val()) === slug) {
 					$this.addClass('current').siblings().removeClass('current');
-					if ($selectedTopic.length > 0) $selectedTopic.text('Filtered By ' + $this.text());
+					if ($selectedTopic.length > 0) $selectedTopic.text($this.text());
 				}
 			} else {
-				$selectedTopic.text('Select a Topic');
+				$selectedTopic.text('Select a Series');
 			}
 
 			if (initClicks) {
@@ -464,16 +467,18 @@ function filterOptions (filterButtonContainer, options, initClicks) {
 					e.preventDefault();
 					if ($this.hasClass('current')) return false;
 					options.page = 0;
-					options.tag = {
+					options.tax = $this.attr('data-taxonoomy');
+					options.term = {
 						name: $this.text(),
-						slug: helpers.slugify($this.val()),
+						id: $this.val(),
+						// slug: helpers.slugify($this.text()),
 					};
 					term_ajax_get(options, true);
 					$this.addClass('current').siblings().removeClass('current');
 					// update topic message
 					if ($selectedTopic.length > 0) {
 						if ($this.val()) {
-							$selectedTopic.text('Filtered By ' + $this.text());
+							$selectedTopic.text($this.text());
 						} else {
 							$selectedTopic.text('Select a Topic');
 						}
