@@ -30,7 +30,7 @@
 									$subtext = "Industry leading healthcare real estate content";
 									break;
 								case "FAQ":
-									$subtext = "Quick answers to health real estate questions";
+									$subtext = "Quick answers to healthcare real estate questions";
 									break;
 							}
 						}
