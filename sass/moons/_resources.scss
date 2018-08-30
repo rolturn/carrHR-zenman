@@ -26,13 +26,14 @@
 	}
 
 	&__all {
+		margin: 0 auto;
 		margin-top: -20px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
 		position: relative;
 		z-index: 3;
-    width: 100%;
+    width: 80%;
 
 		@include bp(600px) {
 			width: 100%;
@@ -47,9 +48,13 @@
 		margin: 1.65em 0;
 		transition: all 400ms ease;
 
-		&:nth-child(2n) {
-			margin-right: 0;
+		@include bp($interstellar) {
+			flex: 0 0 100%;
 		}
+
+		// &:nth-child(2n) {
+		// 	margin-right: 0;
+		// }
 
 		// @include bp(1140px) {
 		// 	flex-basis: 45%;
