@@ -13,11 +13,13 @@
 			'hide_empty' => false,
 		) ); ?>
 
-		<div class="testimonials__navigation">
-			<button class="view-all" data-term="view-all">View All</button>
-			<?php foreach ($terms as $term) : ?>
-				<button value="<?php echo $term->term_id; ?>" data-slug="<?php echo $term->slug; ?>"><?php echo $term->name; ?></button>
-			<?php endforeach; ?>
+		<div class="testimonials__navigation__inner">
+			<div class="testimonials__navigation">
+				<button class="view-all" data-term="view-all">View All</button>
+				<?php foreach ($terms as $term) : ?>
+					<button value="<?php echo $term->term_id; ?>" data-slug="<?php echo $term->slug; ?>"><?php echo $term->name; ?></button>
+				<?php endforeach; ?>
+			</div><!-- /.testimonials__navigation -->
 		</div>
 
 		<div class="testimonials__background" <?php if ($image) : ?>style="background-image: url(<?php echo $image['url']; ?>);" <?php endif; ?>>

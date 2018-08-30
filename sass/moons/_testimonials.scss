@@ -19,17 +19,17 @@
 		padding: 0 0 40px;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		max-width: 1230px;
-		margin: 0 auto;
-		text-align: center;
+		justify-content: space-between;
+		// max-width: 1230px;
+		// margin: 0 auto;
+		// text-align: center;
 	}
 
 	button {
 		border: 2px solid $color-2;
 		background-color: transparent;
 		text-transform: uppercase;
-		font-size: 20px;
+		font-size: 19px;
 		padding: 20px 15px;
 		color: $color-1;
 		font-weight: 600;
@@ -44,6 +44,13 @@
 			border-color: $color-1;
 			background-color: $color-1;
 			color: $white;
+		}
+
+		&:first-of-type {
+			margin-left: 0;
+		}
+		&:last-of-type {
+			margin-right: 0;
 		}
 
 	}

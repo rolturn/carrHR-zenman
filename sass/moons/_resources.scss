@@ -89,6 +89,7 @@
 			}
 
 			h4 {
+				margin-top: 0;
 				backface-visibility: hidden; // stop blink from occurring on hover of siblings
 				transition: opacity 0.3s;
 				position: relative;
@@ -125,7 +126,7 @@
 		position: relative;
 
 		hgroup {
-			padding: 40px 20px 20px;
+			padding: 20px;
 			color: $color-1;
 			font-family: $fam-body;
 			font-size: 2.5em;

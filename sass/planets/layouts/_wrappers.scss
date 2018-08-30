@@ -2,10 +2,15 @@
     ::Wrappers
 \*------------------------------------*/
 [class*="__inner"] {
-  max-width: 1230px;
+  position: relative;
+  max-width: $max-width;
   margin: 0 auto;
   clear: both;
-  padding: 0 20px;
+  // padding: 0 20px;
+  padding: 0 10vh;
+  @include bp($interstellar) {
+    padding: 0 10vw;
+  }
 }
 
 .main-content {

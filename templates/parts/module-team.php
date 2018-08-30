@@ -6,7 +6,7 @@ if(get_sub_field('title')){
 	$_brokers .= '<h2 class="section-header">'. get_sub_field('title') .'</h2>';
 }
 
-$_brokers .= '<div class="brokers__broker-group brokers__inner">';
+$_brokers .= '<div class="brokers__broker-group">';
 
 if(have_rows('team')){
 	while(have_rows('team')) : the_row();
@@ -28,6 +28,6 @@ $_brokers .= '</div>';
 
 ?>
 
-<section class="module-brokers brokers brokers-team">
+<section class="module-brokers brokers brokers-team brokers-team__inner">
 	<?php echo $_brokers; ?>
 </section>

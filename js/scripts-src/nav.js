@@ -5,6 +5,7 @@ jQuery(function($){
     var didScroll;
     var lastScrollTop = 0;
     var delta = 1;
+    var logoWidth = $('.head-nav__logo').outerWidth();
     var navbarHeight = $('.main-head__nav').outerHeight();
 
     $(window).scroll(function(event){

@@ -563,7 +563,7 @@ function twocolumn_content_layout($lr, $lines){
 	}
 
 	if ($lr === 'left'){
-		$wrapper_classes = 'two-column-content__wrapper';
+		$wrapper_classes = 'two-column-content__inner two-column-content__wrapper';
 		if ($lines) {
 			$wrapper_classes .= ' js-line-animation';
 			if ($content_type === 'text' || $content_type === 'slider'){ // go the other way

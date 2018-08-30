@@ -28,15 +28,16 @@
 
 	&__broker-group {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
+	  flex-wrap: wrap;
+	  justify-content: center;
+		margin: 0 -2rem;
 	}
 
 	&__broker {
-		flex: 1;
-		padding: 1.5em 3em;
-		min-width: 100%;
-		max-width: 100%;
+		flex: 0 0 33.333333%;
+	  color: white;
+	  padding: 2rem;
+	  // margin: 10px;
 		text-align: left;
 		transition: opacity 300ms, transform 300ms 200ms, max-width 100ms 400ms, flex 100ms 400ms;
 
@@ -49,10 +50,10 @@
 			max-width: 0;
 			// transition: opacity 300ms, transform 150ms 100ms, max-width 1ms 300ms, flex 1ms 300ms;
 		}
-    @include bp($min: 500px) {
-      min-width: 50%;
-      max-width: 50%;
-    }
+    // @include bp($min: 500px) {
+    //   min-width: 50%;
+    //   max-width: 50%;
+    // }
 	}
 }
 
@@ -145,11 +146,11 @@
 }
 
 @media (min-width: 800px){
-	.brokers__broker {
-		padding: 1.5em 3em;
-		min-width: 33.333%;
-		max-width: 33.333%;
-	}
+	// .brokers__broker {
+	// 	padding: 1.5em 3em;
+	// 	min-width: 33.333%;
+	// 	max-width: 33.333%;
+	// }
 
 	#js-broker-filter{
     padding: 1em 0 2em 1em;
@@ -159,11 +160,11 @@
     }
   }
 }
-@media (min-width: 992px){
-	#js-broker-filter{
-    padding: 1em 0 2em 3em;
-    li {
-      flex: 0 0 20%;
-    }
-  }
-}
+// @media (min-width: 992px){
+// 	#js-broker-filter{
+//     padding: 1em 0 2em 3em;
+//     li {
+//       flex: 0 0 20%;
+//     }
+//   }
+// }
