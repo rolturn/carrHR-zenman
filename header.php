@@ -63,14 +63,16 @@
                         <a class="head-nav__logo" href="<?php bloginfo('url'); ?>" title="Carr Home page">
                             <img src="<?php echo get_bloginfo('template_url'); ?>/images/logo-color.png" alt="">
                         </a>
-                        <a id="mobile-telephone" href="tel:<?php the_field('global_phone_number', 'option') ?>" class="head-nav__phone">Phone</a>
-                        <div class="hamburger-helper">
-                            <div class="hamburger" id="hamburger-6">
-                              <span class="line"></span>
-                              <span class="line"></span>
-                              <span class="line"></span>
-                            </div>
-                        </div>
+                        <div class="head-nav__buttons">
+                          <a id="mobile-telephone" href="tel:<?php the_field('global_phone_number', 'option') ?>" class="head-nav__phone"><span>Phone</span></a>
+                          <div class="hamburger-helper">
+                              <div class="hamburger" id="hamburger-6">
+                                <span class="line"></span>
+                                <span class="line"></span>
+                                <span class="line"></span>
+                              </div>
+                          </div>
+                        </div><!-- /.head-nav-buttons -->
                     </div>
                     <div class="head-nav__navigation mobile-dropdown" id="head-nav__mobile">
                         <ul class="head-nav__utility">

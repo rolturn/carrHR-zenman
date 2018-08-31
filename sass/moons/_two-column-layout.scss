@@ -24,7 +24,7 @@
 
 	&:nth-child(even) {
 		.two-column-content__wrapper {
-			@include bp (900px) {
+			@include bp ($solarsystem) {
 				flex-direction: column-reverse;
 			}
 		}
@@ -38,7 +38,7 @@
 		display: flex;
 		align-items: flex-start;
 
-		@include bp (900px) {
+		@include bp ($solarsystem) {
 			flex-wrap: wrap;
 		}
 
@@ -76,7 +76,7 @@
       height: 1px;
       background-color: $color-3;
 
-      @include bp (900px) {
+      @include bp ($solarsystem) {
         background-color: transparent;
       }
     }
@@ -85,7 +85,7 @@
 		.right-column-content__text {
 			max-width: 575px;
 
-			@include bp (900px) {
+			@include bp ($solarsystem) {
 				max-width: 100%;
 			}
 		}
@@ -127,7 +127,7 @@
 				width: 1px;
 				background-color: $color-3;
 
-				@include bp (900px) {
+				@include bp ($solarsystem) {
 					background-color: transparent;
 				}
 			}
@@ -142,7 +142,7 @@
 				width: 60px;
 				background-color: $color-3;
 
-				@include bp (900px) {
+				@include bp ($solarsystem) {
 					background-color: transparent;
 				}
 			}
@@ -188,7 +188,7 @@
       height: 1px;
       background-color: $color-3;
 
-      @include bp (900px) {
+      @include bp ($solarsystem) {
         background-color: transparent;
       }
     }
@@ -197,7 +197,7 @@
 		.right-column-content__text {
 			max-width: 575px;
 
-			@include bp (900px) {
+			@include bp ($solarsystem) {
 				max-width: 100%;
 			}
 		}
@@ -235,7 +235,7 @@
 				width: 1px;
 				background-color: $color-3;
 
-				@include bp (900px) {
+				@include bp ($solarsystem) {
 					background-color: transparent;
 				}
 
@@ -251,7 +251,7 @@
         width: 60px;
 				background-color: $color-3;
 
-				@include bp (900px) {
+				@include bp ($solarsystem) {
 					background-color: transparent;
 				}
 			}
@@ -308,7 +308,7 @@
 		height: 120px;
 		width: 120px;
 
-		@include bp(900px) {
+		@include bp($solarsystem) {
 			height: 50px;
 			width: 50px;
 		}
@@ -329,16 +329,16 @@
 	padding: 60px 60px 30px;
 	background-size: cover;
 
-	@include bp (900px) {
+	@include bp ($solarsystem) {
 		width: 100%;
-		padding: 30px 20px;
+		padding: 30px 0;
 	}
 
 	&__with-lines {
 		width: 49.9%;
 		width: calc(50% - 1px);
 
-		@include bp (900px) {
+		@include bp ($solarsystem) {
 			width: 100%;
 		}
 	}
@@ -374,7 +374,7 @@
 			}
 		}
 
-		@include bp (900px) {
+		@include bp ($solarsystem) {
 			max-width: 100%;
 		}
 
@@ -410,7 +410,7 @@
 			border: 1px solid rgba($white, .5);
 		}
 
-		@include bp (900px) {
+		@include bp ($solarsystem) {
 			max-width: 100%;
 		}
 	}
@@ -470,7 +470,7 @@
 	}
 
 	.orient-play {
-		@include bp(900px) {
+		@include bp($solarsystem) {
 			width: 100%;
 			max-width: none;
 			height: 100%;
@@ -486,7 +486,7 @@
 		max-width: 575px;
 		margin-left: auto;
 
-		@include bp (900px) {
+		@include bp ($solarsystem) {
 			max-width: 100%;
 		}
 	}
