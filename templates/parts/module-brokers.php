@@ -20,7 +20,7 @@ if(have_rows('brokers_list')){
 						$_brokers .= '<div class="brokers__region '. create_slug(get_sub_field('title')) .'"><h2 class="brokers__title">'. get_sub_field('title') .'</h2>';
 			}
 
-			$_brokers .= '<div class="brokers__broker-group brokers__inner">';
+			$_brokers .= '<div class="brokers__broker-group">';
 
 			foreach($brokers as $post){ // variable must be called $post
 				setup_postdata($post);
@@ -77,6 +77,6 @@ echo $_filters;
 
 ?>
 
-<section class="module-brokers brokers">
+<section class="module-brokers brokers brokers__inner">
 	<?php echo $_brokers; ?>
 </section>

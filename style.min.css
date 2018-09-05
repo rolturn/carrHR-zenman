@@ -175,7 +175,7 @@ h3{font-size:1.45em;font-weight:normal;margin:0 0 25px 0;padding-bottom:20px;pos
 .blog-torso__sidebar a{color:#003773;position:relative;text-transform:uppercase;font-size:1.5em;letter-spacing:-.01em;font-weight:400}
 p{padding-bottom:0;margin-top:0;margin-bottom:1em}[class*="torso--sidebar"] [class*="torso__content"]{padding-left:.9375rem;padding-right:.9375rem;width:66.6666666667%;float:left}
 [class*="torso--sidebar"] [class*="torso__sidebar"]{padding-left:.9375rem;padding-right:.9375rem;width:33.3333333333%;float:left}
-[class*="__inner"]{position:relative;max-width:1230px;margin:0 auto;clear:both;padding:0 10vh}
+[class*="__inner"]{position:relative;max-width:1430px;margin:0 auto;clear:both;padding:0 10vh}
 .main-content.has-aside{display:grid;grid-template-columns:auto 250px;grid-gap:2.8125rem}
 .main-content.has-aside__right aside{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
 .alignnone,img.alignnone{margin:5px 20px 20px 0}.aligncenter,img.aligncenter{text-align:center;display:block;margin:5px auto 5px auto}
@@ -183,7 +183,7 @@ p{padding-bottom:0;margin-top:0;margin-bottom:1em}[class*="torso--sidebar"] [cla
 .wp-caption{-webkit-box-sizing:border-box;box-sizing:border-box;clear:both;padding:10px;text-align:center;background:#fff;border:1px solid #f0f0f0}
 .wp-caption *{-webkit-box-sizing:border-box;box-sizing:border-box}.wp-caption img{height:auto;max-width:100%;width:100%;margin:0;padding:0;border:0 none}
 .wp-caption .wp-caption-text{margin:0 auto;width:80%;padding:0 4px 5px;font-size:11px;line-height:17px}
-.wp-caption.alignright{width:50% !important;margin:5px 0 20px 20px}.wp-caption.alignleft{width:50% !important;margin:5px 20px 20px 0}
+.wp-caption.alignright{width:75% !important;margin:5px 0 20px 20px}.wp-caption.alignleft{width:75% !important;margin:5px 20px 20px 0}
 .wp-caption.alignnone,.wp-caption.aligncenter{margin:5px 20px 20px 0;width:100% !important}
 .accordion{background-color:#fff;padding:0 0 60px}.accordion .accordion-active h4{color:#003773}
 .accordion .accordion-active h4:after{-webkit-transform:rotate(45deg) translate(-50%,-50%);transform:rotate(45deg) translate(-50%,-50%)}
@@ -622,7 +622,8 @@ h1.section-header__left{margin-bottom:1em}.category-description{font-size:1.5em;
 .module-testimonial-slider__text-content{padding:2em 3em}}@media only screen and (min-width:901px){.form.column-count-one .wpcf7 .phone,.form.column-count-one .wpcf7 .exp-date,.form.column-count-one .wpcf7 .zip,.form.width-large .wpcf7 .phone,.form.width-large .wpcf7 .exp-date,.form.width-large .wpcf7 .zip{margin-right:0}
 }@media(min-width:1200px){.module-testimonial-slider__text-content{padding:2em 4em}
 }@media only screen and (max-width:1140px){.head-nav__desktop .head-nav__navigation li a{font-size:13px}
-.resources__cta-higher{-webkit-transform:translateY(0);transform:translateY(0)}}@media only screen and (max-width:1100px){.bulleted-list.column-count-two .bulleted-list__wrapper.bulleted-list__narrow{margin:0 6% 0 11%}
+.wp-caption.alignright,.wp-caption.alignleft{width:50% !important}.resources__cta-higher{-webkit-transform:translateY(0);transform:translateY(0)}
+}@media only screen and (max-width:1100px){.bulleted-list.column-count-two .bulleted-list__wrapper.bulleted-list__narrow{margin:0 6% 0 11%}
 }@media only screen and (max-width:1024px){h1{font-size:40px}h2{font-size:34px}blockquote{margin-left:15px}
 .wp-caption.alignright,.wp-caption.alignleft{width:100% !important}.single-torso__text{width:60%}
 .bulleted-list.column-count-four .bulleted-list__single{width:47.5%}.bulleted-list.column-count-four .bulleted-list__single:nth-child(3n-1),.bulleted-list.column-count-four .bulleted-list__single:nth-child(3n-2){margin-right:0}
