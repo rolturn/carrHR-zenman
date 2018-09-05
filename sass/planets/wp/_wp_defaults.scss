@@ -35,15 +35,19 @@ img.alignleft {
     ::Captions
 \*------------------------------------*/
 .wp-caption {
+  box-sizing: border-box;
 	clear: both;
-  padding: 5px 3px 10px;
+  padding: 10px;
   text-align: center;
 	background: #fff;
   border: 1px solid #f0f0f0;
+  * {
+    box-sizing: border-box;
+  }
 	img{
 	    height: auto;
-	    max-width: 98.5%;
-	    width: auto;
+	    max-width: 100%;
+	    width: 100%;
 	    margin: 0;
 	    padding: 0;
 	    border: 0 none;
@@ -55,14 +59,23 @@ img.alignleft {
 	    font-size: 11px;
 	    line-height: 17px;
 	}
-	&.alignright{
-	    margin: 5px 0 20px 20px;
+	&.alignright {
+    width: 50% !important;
+    margin: 5px 0 20px 20px;
 	}
 	&.alignleft {
-	    margin: 5px 20px 20px 0;
+    width: 50% !important;
+    margin: 5px 20px 20px 0;
 	}
-	&.alignnone {
+	&.alignnone,
+  &.aligncenter {
 	    margin: 5px 20px 20px 0;
       width: 100% !important;
 	}
+  @include bp($solarsystem) {
+    &.alignright,
+    &.alignleft {
+      width: 100% !important;
+    }
+  }
 }
