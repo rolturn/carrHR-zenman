@@ -7,7 +7,11 @@
  * @since Zemplate 3.0
  */
 
-get_header(); ?>
+get_header();
+header('HTTP/1.1 301 Moved Permanently');
+header('Location: '.get_bloginfo('url'));
+exit();
+?>
 
     <main class="main-torso page-torso">
 
