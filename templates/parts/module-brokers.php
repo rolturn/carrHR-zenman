@@ -17,7 +17,9 @@ if(have_rows('brokers_list')){
 
 		if($brokers){
 			if(get_sub_field('title')){
-						$_brokers .= '<div class="brokers__region '. create_slug(get_sub_field('title')) .'"><h2 class="brokers__title">'. get_sub_field('title') .'</h2>';
+						$_brokers .= '<div class="brokers__region '. create_slug(get_sub_field('title')) .'">';
+						$_brokers .= '<div class="full-width bg-color"></div>';
+						$_brokers .= '<h2 class="brokers__title">'. get_sub_field('title') .'</h2>';
 			}
 
 			$_brokers .= '<div class="brokers__broker-group">';
@@ -62,8 +64,8 @@ if(have_rows('brokers_list')){
 }
 
 if ($terms){
-	$_filters .= '<section class="broker-filter">';
-		$_filters .= '<ul id="js-broker-filter" class="broker-filter__inner">';
+	$_filters .= '<section class="broker-filter broker-filter__inner">';
+		$_filters .= '<ul id="js-broker-filter">';
 			$_filters .= '<li><input id="v-all" name="vertical" value="all" type="radio" checked><label for="v-all">All</label></li>';
 			asort($terms);
 			foreach($terms as $t_slug => $t_name){

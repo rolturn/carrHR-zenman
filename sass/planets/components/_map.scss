@@ -123,14 +123,14 @@ input[name=vertical] {
 			border-radius: 50%;
 		}
 		&:before {
-			top: 0;
+			top: 4px;
 			left: 16px;
 			width: 16px;
 			height: 16px;
 			border: 1px solid $color-2;
 		}
 		&:after {
-			top: 4px;
+			top: 8px;
 			left: 20px;
 			width: 8px;
 			height: 8px;
