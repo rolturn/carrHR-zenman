@@ -69,135 +69,137 @@ endif;
 	// add the map on the parent page, not on the subpages
 		if ( is_page( 'commercial-real-estate-agent' )):
 	?>
+	<div class="broker-map__inner">
+		<div class="broker-map">
+			<div class="google-embedded-map broker-map__map" id="carr-broker-map"></div>
+			<a id="brokers-state-link" class="button"></a>
+			<script>
+				var brokersFetched = [],
+					infoWindow,
+					activeInfoWindowVerticals,
+					verticalCount = <?php echo count(get_terms('vertical')); ?>,
+					map,
+					marker,
+					markers = [],
+					stateZoom,
+					stateBounds = [],
+					stateShapes = [],
+					hoverColor = '<?php echo $map_overlay_hover; ?>',
+					postURL = '<?php echo get_bloginfo('template_url'); ?>/functions/fetch-brokers-by-state.php',
+					styles = [
+							{
+								featureType: 'administrative',
+								elementType: 'labels.text.fill',
+								stylers: [{color: '#444444'}]
+							},
+							{
+								featureType: "landscape",
+								elementType: "all",
+								stylers: [{color: "#f2f2f2"}]
+							},
+							{
+								featureType: "landscape.natural",
+								elementType: "all",
+								stylers: [{visibility: "simplified"}]
+							},
+							{
+								featureType: "poi",
+								elementType: "all",
+								stylers: [{visibility: "off"}]
+							},
+							{
+								featureType: "road",
+								elementType: "all",
+								stylers: [{visibility: "off"}]
+							},
+							{
+								featureType: "transit",
+								elementType: "all",
+								stylers: [{visibility: "off"}]
+							},
+							{
+								featureType: "water",
+								elementType: "geometry.fill",
+								stylers: [{color: "#ccd7e3"}]
+							}
+						];
 
-	<div class="broker-map">
-		<div class="google-embedded-map broker-map__map" id="carr-broker-map"></div>
-		<a id="brokers-state-link" class="button"></a>
-		<script>
-			var brokersFetched = [],
-				infoWindow,
-				activeInfoWindowVerticals,
-				verticalCount = <?php echo count(get_terms('vertical')); ?>,
-				map,
-				marker,
-				markers = [],
-				stateZoom,
-				stateBounds = [],
-				stateShapes = [],
-				hoverColor = '<?php echo $map_overlay_hover; ?>',
-				postURL = '<?php echo get_bloginfo('template_url'); ?>/functions/fetch-brokers-by-state.php',
-				styles = [
-						{
-							featureType: 'administrative',
-							elementType: 'labels.text.fill',
-							stylers: [{color: '#444444'}]
-						},
-						{
-							featureType: "landscape",
-							elementType: "all",
-							stylers: [{color: "#f2f2f2"}]
-						},
-						{
-							featureType: "landscape.natural",
-							elementType: "all",
-							stylers: [{visibility: "simplified"}]
-						},
-						{
-							featureType: "poi",
-							elementType: "all",
-							stylers: [{visibility: "off"}]
-						},
-						{
-							featureType: "road",
-							elementType: "all",
-							stylers: [{visibility: "off"}]
-						},
-						{
-							featureType: "transit",
-							elementType: "all",
-							stylers: [{visibility: "off"}]
-						},
-						{
-							featureType: "water",
-							elementType: "geometry.fill",
-							stylers: [{color: "#ccd7e3"}]
+				function initMap() {
+					if (window.innerWidth < 801) { return false; }
+
+					map = new google.maps.Map(document.getElementById('carr-broker-map'), {
+						mapTypeId: 'roadmap',
+						gestureHandling: 'auto',
+						styles: styles,
+						mapTypeControl: false,
+						streetViewControl: false,
+						fullscreenControl: false,
+						center: new google.maps.LatLng(37.5, -96),
+						zoom: 4.5,
+						maxZoom: 14,
+						zoomControl: true,
+						zoomControlOptions: {
+							position: google.maps.ControlPosition.TOP_LEFT
 						}
-					];
+					});
 
-			function initMap() {
-				if (window.innerWidth < 801) { return false; }
+					/**
+					 *  Loads all states with in US in single loadGeoJson file then removes states without broker coverage
+					 *  modified to this because server couldn't handle loading all files before loading
+					 *
+					 *  JSON Source: https://github.com/johan/world.geo.json/tree/master/countries/USA
+					 *  Docs: https://developers.google.com/maps/documentation/javascript/datalayer#load_geojson
+					 */
+					map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json', {}, function (feature) {
+						var i = 0;
+						do {
+							if (!statesWithBrokerCoverage[feature[i].j.slice(-2)]) {
+								map.data.remove(feature[i]);
+							}
+							i++;
+						} while (feature[i]);
+					});
 
-				map = new google.maps.Map(document.getElementById('carr-broker-map'), {
-					mapTypeId: 'roadmap',
-					gestureHandling: 'auto',
-					styles: styles,
-					mapTypeControl: false,
-					streetViewControl: false,
-					fullscreenControl: false,
-					center: new google.maps.LatLng(37.5, -96),
-					zoom: 4.5,
-					maxZoom: 14,
-					zoomControl: true,
-					zoomControlOptions: {
-						position: google.maps.ControlPosition.TOP_LEFT
-					}
-				});
+					map.data.setStyle({
+						fillColor: '<?php echo $map_overlay_default; ?>',
+						fillOpacity: <?php echo $map_overlay_opacity; ?>,
+						strokeColor: '<?php echo $map_stroke_color; ?>',
+						strokeWeight: <?php echo $map_stroke_width; ?>
+					});
 
-				/**
-				 *  Loads all states with in US in single loadGeoJson file then removes states without broker coverage
-				 *  modified to this because server couldn't handle loading all files before loading
-				 *
-				 *  JSON Source: https://github.com/johan/world.geo.json/tree/master/countries/USA
-				 *  Docs: https://developers.google.com/maps/documentation/javascript/datalayer#load_geojson
-				 */
-				map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json', {}, function (feature) {
-					var i = 0;
-					do {
-						if (!statesWithBrokerCoverage[feature[i].j.slice(-2)]) {
-							map.data.remove(feature[i]);
-						}
-						i++;
-					} while (feature[i]);
-				});
+					/**
+					 *  For each state polygon on the map, determine the outer lat/lng coordinates and create
+					 *  a new "bounds" property for each. This allows tracking of clicks within a rectangular
+					 *  bounding box that is drawn around each state.
+					 */
+					google.maps.event.addListener(map.data, 'addfeature', function (e) {
+						stateShapes[e.feature.j.slice(-2)] = e.feature;
+					});
 
-				map.data.setStyle({
-					fillColor: '<?php echo $map_overlay_default; ?>',
-					fillOpacity: <?php echo $map_overlay_opacity; ?>,
-					strokeColor: '<?php echo $map_stroke_color; ?>',
-					strokeWeight: <?php echo $map_stroke_width; ?>
-				});
+					/**
+					 *  Listen for click events on each state polygon
+					 */
+					google.maps.event.addListener(map.data, 'click', function (e) {
+						zoomToState(e.feature.j.slice(-2));
+					});
 
-				/**
-				 *  For each state polygon on the map, determine the outer lat/lng coordinates and create
-				 *  a new "bounds" property for each. This allows tracking of clicks within a rectangular
-				 *  bounding box that is drawn around each state.
-				 */
-				google.maps.event.addListener(map.data, 'addfeature', function (e) {
-					stateShapes[e.feature.j.slice(-2)] = e.feature;
-				});
+					/**
+					 *  Apply mouse hover effects to individual state polygons
+					 */
+					map.data.addListener('mouseover', function (e) {
+						map.data.revertStyle();
+						map.data.overrideStyle(e.feature, { fillColor: hoverColor });
+					});
+					map.data.addListener('mouseout', function (e) {
+						map.data.revertStyle();
+						map.data.overrideStyle(e.feature, { fillColor: '<?php echo $map_overlay_default; ?>' });
+					});
+				}
+			</script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDVilPsOL1nTf9yfV0EMDKS_Het5H0rHU&callback=initMap" type="text/javascript"></script>
+		</div>
 
-				/**
-				 *  Listen for click events on each state polygon
-				 */
-				google.maps.event.addListener(map.data, 'click', function (e) {
-					zoomToState(e.feature.j.slice(-2));
-				});
-
-				/**
-				 *  Apply mouse hover effects to individual state polygons
-				 */
-				map.data.addListener('mouseover', function (e) {
-					map.data.revertStyle();
-					map.data.overrideStyle(e.feature, { fillColor: hoverColor });
-				});
-				map.data.addListener('mouseout', function (e) {
-					map.data.revertStyle();
-					map.data.overrideStyle(e.feature, { fillColor: '<?php echo $map_overlay_default; ?>' });
-				});
-			}
-		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDVilPsOL1nTf9yfV0EMDKS_Het5H0rHU&callback=initMap" type="text/javascript"></script>
-	</div>
+	</div><!-- /.broker-map__inner -->
 	<?php endif; ?>
 <?php else: ?>
 	<h4>There are no brokers in the database!</h4>

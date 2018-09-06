@@ -148,7 +148,7 @@ footer .menu .menu-item-49{pointer-events:none}.footer__logo{text-align:center;p
 #head-nav__phone a{margin:2em auto}.page-find-a-broker h1{color:#003773;font-size:20px;font-weight:300;letter-spacing:1px;margin-top:48px;padding-bottom:24px;position:relative;text-align:center;text-transform:uppercase}
 .page-find-a-broker h1:after{background:#cf671a;bottom:0;content:"";height:2px;left:50%;margin-left:-55px;position:absolute;width:110px}
 .broker-dropdown{text-align:center;padding:1.5em 1em !important}.broker-dropdown select{-webkit-appearance:none;background:#f9f9f9 url("images/dropdown-arrow.svg") center right no-repeat;border-color:#9c9c9c;border-radius:0;color:#4e4e4e;display:inline-block;height:36px;min-width:200px;font-size:14px;margin-left:1em}
-.broker-dropdown label{font-size:20px;text-transform:uppercase;color:#cf671a}.broker-map{border:3px solid #003773;overflow:hidden;position:relative;max-width:1140px;margin:0 auto 3em;-webkit-box-shadow:0 3px 0 #cf671a;box-shadow:0 3px 0 #cf671a}
+.broker-dropdown label{font-size:20px;text-transform:uppercase;color:#cf671a}.broker-map{border:3px solid #003773;overflow:hidden;position:relative;margin:0 auto 3em;-webkit-box-shadow:0 3px 0 #cf671a;box-shadow:0 3px 0 #cf671a}
 .broker-map__map{height:0;padding-bottom:59.26%}.broker-map .cluster{color:#003773}
 .broker-verticals{background:#fff;-webkit-box-shadow:0 0 16px rgba(0,0,0,0.25);box-shadow:0 0 16px rgba(0,0,0,0.25);display:none;position:absolute;right:1em;top:1em;padding-bottom:16px}
 .broker-verticals h4{font-size:20px;background-color:#003773;color:#fff;padding:16px;margin:0 0 16px;text-align:center}
