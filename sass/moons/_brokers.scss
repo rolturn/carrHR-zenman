@@ -113,7 +113,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding: 1em 3em 2em 3em;
+	padding: 3em 0;
 
 	li {
 		flex: 1 0 50%;
@@ -124,6 +124,14 @@
 		&:before {
 			display: none;
 		}
+	}
+
+	@include bp($min: $mobile) {
+		padding: 1em 0 2em 1em;
+    li {
+      flex: 0 0 23%;
+      padding: 0;
+    }
 	}
 }
 
@@ -144,27 +152,3 @@
 		}
 	}
 }
-
-@media (min-width: 800px){
-	// .brokers__broker {
-	// 	padding: 1.5em 3em;
-	// 	min-width: 33.333%;
-	// 	max-width: 33.333%;
-	// }
-
-	#js-broker-filter{
-    padding: 1em 0 2em 1em;
-    li {
-      flex: 0 0 23%;
-      padding: 0;
-    }
-  }
-}
-// @media (min-width: 992px){
-// 	#js-broker-filter{
-//     padding: 1em 0 2em 3em;
-//     li {
-//       flex: 0 0 20%;
-//     }
-//   }
-// }

@@ -179,7 +179,7 @@
 			color: $white;
 			text-align: left;
 		}
-		@include bp($solarsystem){
+		@include bp($tablet){
 			width: 60%;
 		}
 	}

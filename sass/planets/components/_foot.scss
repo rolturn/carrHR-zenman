@@ -82,7 +82,7 @@ footer .menu {
 			margin: 0 10px;
 			position:relative;
 
-			@include bp($planetary){
+			@include bp($s-mobile){
 				margin: 0 5px;
 			}
 

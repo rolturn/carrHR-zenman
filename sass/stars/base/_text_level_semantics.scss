@@ -13,19 +13,19 @@
 /*implement:*/%h1, %h2, %h3, %h4, %h5, %h6 { @extend %h-all; }
 %h1{
 	font-size: 45px;
-	@include bp($solarsystem){
+	@include bp($tablet){
 		font-size: 40px;
 	}
-	@include bp($planetary){
+	@include bp($s-mobile){
 		font-size: 34px;
 	}
 }
 %h2 {
 	font-size: 40px;
-	@include bp($solarsystem){
+	@include bp($tablet){
 		font-size: 34px;
 	}
-	@include bp($planetary){
+	@include bp($s-mobile){
 		font-size: 27px;
 	}
 }
@@ -55,7 +55,7 @@
 	font-size: 26px;
 	color: $color-2;
 	font-weight: 300;
-	@include bp($planetary){
+	@include bp($s-mobile){
 		font-size: 20px;
 	}
 }
@@ -129,7 +129,7 @@ blockquote {
 	margin: 0;
 	font-weight: normal;
 	font-style: italic;
-	@include bp($solarsystem){
+	@include bp($tablet){
 		margin-left: 15px;
 	}
 	&:before {

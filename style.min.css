@@ -212,7 +212,7 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .broker__image{position:relative;line-height:0}.broker__image:before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(255,255,255,0.5)}
 .broker__phone,.broker__email,.broker__title,.broker__license{display:block;padding-top:.3em;color:#cf671a;font-size:16px}
 .broker__license{color:#003773}.broker__title{color:#003773;font-weight:600}.broker__verticals{margin-top:.4em;color:#003773;font-size:1em;font-size:16px;font-weight:600}
-#js-broker-filter{list-style-type:none;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:1em 3em 2em 3em}
+#js-broker-filter{list-style-type:none;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:3em 0}
 #js-broker-filter li{-webkit-box-flex:1;-ms-flex:1 0 50%;flex:1 0 50%;padding:0 0 0 3em;font-size:20px;line-height:1.2}
 #js-broker-filter li:before{display:none}.state-broker-page .one-column-content__heading{background:#003773;font-size:2.2em;font-weight:300}
 .state-broker-page .one-column-content__heading:after{display:none}.state-broker-page .one-column-content__heading h2{color:#fff;padding:30px;font-size:40px}
@@ -615,7 +615,7 @@ h1.section-header__left{margin-bottom:1em}.category-description{font-size:1.5em;
 .links__single img{margin-right:.75em}}@media only screen and (min-width:576px){.module-testimonial-slider{padding:9em 0}
 .module-testimonial-slider__text-content{padding:2em;background-color:rgba(0,0,0,0.7);border:10px solid #000;-webkit-box-shadow:0 0 0 1px #fff inset;box-shadow:0 0 0 1px #fff inset}
 }@media(min-width:576px){.module-testimonial-slider__inner{width:80%}}@media only screen and (min-width:768px){.module-testimonial-slider__prev{display:block}
-.module-testimonial-slider__next{display:block}}@media(min-width:800px){#js-broker-filter{padding:1em 0 2em 1em}
+.module-testimonial-slider__next{display:block}}@media only screen and (min-width:800px){#js-broker-filter{padding:1em 0 2em 1em}
 #js-broker-filter li{-webkit-box-flex:0;-ms-flex:0 0 23%;flex:0 0 23%;padding:0}}
 @media only screen and (min-width:900px){.events .slick-slide,.events__wrapper,.events__slide{min-height:600px}
 .image-gallery .slick-current{max-height:416px}}@media(min-width:900px){.module-testimonial-slider__inner{max-width:800px}

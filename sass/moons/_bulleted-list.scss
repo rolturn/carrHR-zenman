@@ -99,7 +99,7 @@
 			&:nth-child(2n-1) {
 				margin-right: 5%;
 			}
-			@include bp($planetary){
+			@include bp($s-mobile){
 				width: 100%;
 				margin-right: 0;
 			}
@@ -112,7 +112,7 @@
 				font-size: 18px;
 				font-family: $fam-heading;
 
-				@include bp($planetary){
+				@include bp($s-mobile){
 					font-size: 16px;
 				}
 			}
@@ -149,7 +149,7 @@
 				}
 			}
 
-			@include bp($planetary){
+			@include bp($s-mobile){
 				width: 100%;
 				&:nth-child(2n-1) {
 					margin-right: 0;
@@ -167,7 +167,7 @@
 			&:nth-child(4n-3) {
 				margin-right: 4%;
 			}
-			@include bp($solarsystem){
+			@include bp($tablet){
 				width: 47.5%;
 				&:nth-child(3n-1),
 				&:nth-child(3n-2) {
@@ -177,7 +177,7 @@
 					margin-right: 5%;
 				}
 			}
-			@include bp($planetary){
+			@include bp($s-mobile){
 				width: 100%;
 			}
 		}

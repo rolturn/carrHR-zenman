@@ -59,7 +59,7 @@
 		line-height: 1.2;
 		margin-top: 15px;
 
-		@include bp ($interstellar) {
+		@include bp ($mobile) {
 			font-size: 22px;
 		}
 	}
@@ -110,7 +110,7 @@
 			transform: scale(1.1);
 		}
 	}
-	@include bp($interstellar){
+	@include bp($mobile){
 		min-height: 350px;
 	}
 }
@@ -133,7 +133,7 @@
 	&.stick{
 		position: fixed;
 		top: 150px;
-		@include bp($planetary){
+		@include bp($s-mobile){
 			top: auto;
 			bottom: 0;
 			width: 100%;
@@ -148,7 +148,7 @@
 .nav--show {
 	& + .hero {
 		#hero-cta.stick {
-			@include bp($planetary){
+			@include bp($s-mobile){
 				transform: translateY(0);
 			}
 		}

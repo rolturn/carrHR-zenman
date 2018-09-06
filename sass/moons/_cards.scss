@@ -5,7 +5,7 @@
     grid-gap: $gap--big;
     // align-content: space-between;
 
-    @include bp($planetary) {
+    @include bp($s-mobile) {
       grid-template-columns: auto;
     }
   }

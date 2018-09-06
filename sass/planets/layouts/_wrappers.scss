@@ -8,7 +8,7 @@
   clear: both;
   // padding: 0 20px;
   padding: 0 10vh;
-  @include bp($interstellar) {
+  @include bp($mobile) {
     padding: 0 10vw;
   }
 }
@@ -23,7 +23,7 @@
         order: 1;
       }
     }
-    @include bp($interstellar) {
+    @include bp($mobile) {
       grid-template-columns: auto;
       &__right {
         aside {

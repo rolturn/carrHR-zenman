@@ -185,7 +185,7 @@
         font-size: 15px;
         font-weight: 600;
         transition: color 400ms;
-        @include bp($galaxy) {
+        @include bp($desk) {
           font-size: 13px;
         }
       }

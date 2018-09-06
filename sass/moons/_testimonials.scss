@@ -3,7 +3,7 @@
 	position: relative;
 
 	&__inner {
-		@include bp($planetary){
+		@include bp($s-mobile){
 			padding: 10px;
 		}
 	}
@@ -78,7 +78,7 @@
 		z-index: 2;
 		min-height: emCalc(100px);
 
-		@include bp($planetary){
+		@include bp($s-mobile){
 			padding: 10px 30px;
 
 		}
@@ -87,7 +87,7 @@
 			color: $white;
 			font-size: 23px;
 
-			@include bp($planetary){
+			@include bp($s-mobile){
 				font-size: 18px;
 			}
 
@@ -149,7 +149,7 @@
 				img {
 					width: 100%;
 				}
-				@include bp($planetary){
+				@include bp($s-mobile){
 					width: 50%;
 					margin:0;
 				}
@@ -158,14 +158,14 @@
 				margin: 20px 2.5%;
 				width: 55vw;
 				height: auto;
-				@include bp($planetary){
+				@include bp($s-mobile){
 					width: 50%;
 				}
 			}
 			&.right{
 				.testimonials__text {
 					margin-left: 0;
-					@include bp($planetary){
+					@include bp($s-mobile){
 						margin: 20px 0 20px -20px;
 					}
 				}
@@ -173,7 +173,7 @@
 			&.left{
 				.testimonials__text {
 					margin-right: 0;
-					@include bp($planetary){
+					@include bp($s-mobile){
 						margin: 20px -20px 20px 0;
 					}
 				}

@@ -11,37 +11,37 @@
 // extends
 %--margin-top {
     margin-top: $gap--big;
-    @include bp($solarsystem){
+    @include bp($tablet){
         margin-top: $gap--baby*.65;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         margin-top: $gap--baby*.55;
     }
 }
 %--margin-bottom {
     margin-bottom: $gap--big;
-    @include bp($solarsystem){
+    @include bp($tablet){
         margin-bottom: $gap--baby*.65;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         margin-bottom: $gap--baby*.55;
     }
 }
 %--padding-bottom {
     padding-bottom: $gap--baby;
-    @include bp($solarsystem){
+    @include bp($tablet){
         padding-bottom: $gap--big*.65;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         padding-bottom: $gap--big*.55;
     }
 }
 %--padding-top {
     padding-top: $gap--baby;
-    @include bp($solarsystem){
+    @include bp($tablet){
         padding-top: $gap--big*.65;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         padding-top: $gap--big*.55;
     }
 }
@@ -49,11 +49,11 @@
 %--small-side-padding {
     padding-left: $gap*3.5;
     padding-right: $gap*3.5;
-    @include bp($interstellar){
+    @include bp($mobile){
         padding-left: $gap*2;
         padding-right: $gap*2;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         padding-left: 0;
         padding-right: 0;
     }
@@ -61,15 +61,15 @@
 %--large-side-padding {
     padding-left: $gap*12;
     padding-right: $gap*12;
-    @include bp($solarsystem){
+    @include bp($tablet){
         padding-left: $gap*5;
         padding-right: $gap*5;
     }
-    @include bp($interstellar){
+    @include bp($mobile){
         padding-left: $gap*2;
         padding-right: $gap*2;
     }
-    @include bp($planetary){
+    @include bp($s-mobile){
         padding-left: 0;
         padding-right: 0;
     }

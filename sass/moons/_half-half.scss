@@ -18,7 +18,7 @@
 	&:before { // text bg
 		background-color: $color-1;
 		z-index: 1;
-		@include bp($planetary){
+		@include bp($s-mobile){
 			opacity: .8;
 		}
 	}
@@ -40,7 +40,7 @@
 		}
 		&:before,
 		&:after {
-			@include bp($planetary){
+			@include bp($s-mobile){
 				left: 0;
 				right: 0;
 			}
@@ -61,7 +61,7 @@
 		}
 		&:before,
 		&:after {
-			@include bp($planetary){
+			@include bp($s-mobile){
 				left: 0;
 				right: 0;
 			}
@@ -88,7 +88,7 @@
 		display: flex;
 		align-items: center;
 		min-height: 444px;
-		@include bp($planetary){
+		@include bp($s-mobile){
 			width: 100%;
 		}
 	}

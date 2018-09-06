@@ -58,11 +58,11 @@
 	border: 3px solid $color-1;
 	overflow: hidden;
 	position: relative;
-	max-width: $galaxy;
+	max-width: $desk;
 	margin: 0 auto 3em;
 	box-shadow: 0 3px 0 $color-2;
 
-	@include bp($max: $interstellar) {
+	@include bp($max: $mobile) {
 		display: none;
 	}
 
