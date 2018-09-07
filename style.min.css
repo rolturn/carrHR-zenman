@@ -95,7 +95,7 @@ footer .menu .menu-item-49{pointer-events:none}.footer__logo{text-align:center;p
 100%{-webkit-transform:scale(0);transform:scale(0)}}.main-head{position:relative}
 .main-head--no-hero:before{content:"";display:block;height:130px}
 .main-head__nav{width:100%;position:fixed;top:0;left:0;z-index:9990;-webkit-transition:top 400ms;transition:top 400ms}
-.head-nav__desktop{background-color:rgba(255,255,255,0.9);display:block;-webkit-box-shadow:0 0 26px -6px rgba(0,0,0,0.75);box-shadow:0 0 26px -6px rgba(0,0,0,0.75)}
+body:not(.is-active) .main-head__nav.nav--hidden{top:-125px}.head-nav__desktop{background-color:rgba(255,255,255,0.9);display:block;-webkit-box-shadow:0 0 26px -6px rgba(0,0,0,0.75);box-shadow:0 0 26px -6px rgba(0,0,0,0.75)}
 .head-nav__desktop .head-nav__inner{display:grid;grid-template-columns:135px 1fr;grid-gap:30px;position:relative}
 .head-nav__desktop .head-nav__logo{margin:auto 0}.head-nav__desktop .head-nav__logo a{display:block;line-height:0}
 .head-nav__desktop .head-nav__logo svg{width:100%;height:30px;fill:#003773}.head-nav__desktop .head-nav__navigation{display:grid;justify-items:end}

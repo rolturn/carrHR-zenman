@@ -18,9 +18,9 @@
     z-index: 9990;
     transition: top 400ms;
 
-    // body:not(.is-active) &.nav--hidden {
-    //   top: -125px;
-    // }
+    body:not(.is-active) &.nav--hidden {
+      top: -125px;
+    }
   }
 }
 .head-nav__desktop {
@@ -182,7 +182,7 @@
         text-transform: uppercase;
         font-family: $fam-heading;
         color: $color-1;
-        
+
         font-weight: 600;
         transition: color 400ms;
         @include bp($desk) {
