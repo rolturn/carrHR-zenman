@@ -44,13 +44,13 @@
 		display: flex;
 	  flex-wrap: wrap;
 	  justify-content: center;
-		margin: 0 -2rem;
+		margin: 0 -1.5rem;
 	}
 
 	&__broker {
-		flex: 0 0 33.333333%;
+		flex: 0 0 25%;
 	  color: white;
-	  padding: 2rem;
+	  padding: 1.5rem;
 	  // margin: 10px;
 		text-align: left;
 		transition: opacity 300ms, transform 300ms 200ms, max-width 100ms 400ms, flex 100ms 400ms;
@@ -114,7 +114,7 @@
 		display: block;
 		padding-top: .3em;
 		color: $color-2;
-		font-size: 16px;
+		font-size: 1.14em;
 	}
   &__license {
     color: $color-1;
@@ -128,7 +128,7 @@
 		margin-top: .4em;
 		color: $color-1;
 		font-size: 1em;
-		font-size: 16px;
+		font-size: 1.14em;
 		font-weight: 600;
 	}
 }
@@ -143,7 +143,7 @@
 	li {
 		flex: 0 0 25%;
 		padding: 0;
-		font-size: 20px;
+		font-size: 1.4em;
     line-height: 1.2;
 
 		&:before {
@@ -181,7 +181,7 @@
 		h2 {
 			color: $white;
 			padding: 30px;
-			font-size: 40px;
+			font-size: 2.85em;
 		}
 	}
 }

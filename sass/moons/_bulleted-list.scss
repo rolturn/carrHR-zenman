@@ -109,11 +109,11 @@
 				padding-left: 10px;
 			}
 			.bulleted-list__title {
-				font-size: 18px;
+				font-size: 1.3em;
 				font-family: $fam-heading;
 
 				@include bp($s-mobile){
-					font-size: 16px;
+					font-size: 1.14em;
 				}
 			}
 		}

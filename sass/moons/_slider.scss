@@ -42,7 +42,7 @@
 		blockquote {
 			font-style: normal;
 			margin-left: 0;
-			font-size: 24px;
+			font-size: 1.7em;
 
 			&:before {
 				display: none;
@@ -51,12 +51,12 @@
 
 		h3 {
 			color: $white;
-			font-size: 30px;
+			font-size: 2.14em;
 		}
 		h4 {
 			color: $white;
 			text-align: right;
-			font-size: 24px;
+			font-size: 1.7em;
 		}
 
 		@include bp(900px) {
@@ -106,7 +106,7 @@
 			&:after {
 				content: $icon-chevron_left;
 				font-family: $fam-icon;
-				font-size: 16px;
+				font-size: 1.14em;
 				line-height: 1;
 				position: absolute;
 				left: 48%;
@@ -146,7 +146,7 @@
 			&:after {
 				content: $icon-chevron_right;
 				font-family: $fam-icon;
-				font-size: 16px;
+				font-size: 1.14em;
 				line-height: 1;
 				position: absolute;
 				left: 52%;

@@ -12,25 +12,25 @@
 }
 /*implement:*/%h1, %h2, %h3, %h4, %h5, %h6 { @extend %h-all; }
 %h1{
-	font-size: 45px;
+	font-size: 3.2em;
 	@include bp($tablet){
-		font-size: 40px;
+		font-size: 2.85em;
 	}
 	@include bp($s-mobile){
-		font-size: 34px;
+		font-size: 2.43em;
 	}
 }
 %h2 {
-	font-size: 40px;
+	font-size: 2.85em;
 	@include bp($tablet){
-		font-size: 34px;
+		font-size: 2.43em;
 	}
 	@include bp($s-mobile){
-		font-size: 27px;
+		font-size: 1.93em;
 	}
 }
 %h3 {
-	font-size: 20px;
+	font-size: 1.4em;
 	font-family: $fam-heading;
 	text-transform: uppercase;
 	font-weight: normal;
@@ -52,18 +52,18 @@
 	}
 }
 %h4 {
-	font-size: 26px;
+	font-size: 1.87em;
 	color: $color-2;
 	font-weight: 300;
 	@include bp($s-mobile){
-		font-size: 20px;
+		font-size: 1.4em;
 	}
 }
 %h5 {
-	font-size: 12px;
+	font-size: .9em;
 }
 %h6 {
-	font-size: 10px;
+	font-size: .7em;
 }
 /*implement:*/h1{@extend %h1;}h2{@extend %h2;}h3{@extend %h3;}h4{@extend %h4;}h5{@extend %h5;}h6{@extend %h6;}
 abbr[title] {
@@ -118,7 +118,7 @@ ul {
 li {
 	padding: 0 0 0 15px;
 	margin: 0;
-	font-size: 17px;
+	font-size: 1.2em;
 	line-height: 1.5;
 	position: relative;
 	color: $color-1;
@@ -142,7 +142,7 @@ blockquote {
 		left: -30px;
 		width: 20px;
 		height: 20px;
-		font-size: 40px;
+		font-size: 2.85em;
 		line-height: .9;
 		color: $white;
 	}
@@ -151,7 +151,7 @@ ol li {
   color: #000;
 }
 // h4d { // what is this?
-// 	font-size: 18px;
+// 	font-size: 1.3em;
 // 	color: $color-1;
 // 	font-family: $fam-heading;
 // 	padding-left: 10px;
@@ -160,7 +160,7 @@ ol li {
 // 		content: '●';
 // 		position: absolute;
 // 		left: 0;
-// 		font-size: 30px;
+// 		font-size: 2.14em;
 // 		line-height: 0.65;
 // 	}
 // }

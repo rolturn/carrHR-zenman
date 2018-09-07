@@ -182,11 +182,11 @@
         text-transform: uppercase;
         font-family: $fam-heading;
         color: $color-1;
-        font-size: 15px;
+        
         font-weight: 600;
         transition: color 400ms;
         @include bp($desk) {
-          font-size: 13px;
+          font-size: .9em;
         }
       }
     }
@@ -431,7 +431,7 @@
           position: absolute;
           right: 0;
           top: 4px;
-          font-size: 30px;
+          font-size: 2.14em;
           color: $color-2;
           padding-left: 15px;
         }
@@ -466,7 +466,7 @@
 
     a {
       color: $white;
-      font-size: 25px;
+      font-size: 1.79em;
       font-family: $fam-body;
       display: block;
       padding: 7px 0;

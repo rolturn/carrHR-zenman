@@ -45,7 +45,7 @@
 	}
 
 	p {
-		font-size: 17px;
+		font-size: 1.2em;
     font-weight: 300;
 		font-family: $fam-body;
 	}
@@ -53,14 +53,14 @@
 	blockquote {
 		p {
 			color: $color-1;
-			font-size: 30px;
+			font-size: 2.14em;
 			@include bp($s-mobile){
-				font-size: 20px;
+				font-size: 1.4em;
 			}
 		}
 
 		cite {
-			font-size: 17px;
+			font-size: 1.2em;
 			font-style: normal;
 		}
 	}
@@ -295,7 +295,7 @@
 			display: inline-block;
 			text-align: left;
 			color: $black;
-			font-size: 17px;
+			font-size: 1.2em;
 
 			&:before {
 				line-height: 1;
@@ -357,7 +357,7 @@
 		h2,
 		blockquote {
 			color: $color-1;
-			font-size: 60px;
+			font-size: 4.3em;
 			font-weight: bold;
 			font-style: normal;
 		}
@@ -368,7 +368,7 @@
 			}
 			em {
 				display: block;
-				font-size: 20px;
+				font-size: 1.4em;
 				font-style: normal;
 				font-weight: normal;
 			}

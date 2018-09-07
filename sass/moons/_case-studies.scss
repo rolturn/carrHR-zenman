@@ -15,7 +15,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		font-size: 16px;
+		font-size: 1.14em;
 
 		@include bp(770px) {
 			justify-content: left;
@@ -40,7 +40,7 @@
 		h5 {
 			position: relative;
 			padding-right: 1.3em;
-			font-size: 16px;
+			font-size: 1.14em;
 			padding-left: 10px;
 			font-family: $fam-body;
 			color: $color-1;

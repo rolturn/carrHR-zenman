@@ -8,7 +8,7 @@
 	}
 	&__inner {
 		& > h1 { // main page heading
-			font-size: 20px;
+			font-size: 1.4em;
 			font-family: $fam-heading;
 			text-transform: uppercase;
 			font-weight: normal;
@@ -263,7 +263,7 @@
 		padding: 10px 0 5px;
 
 		h1 {
-			font-size: 32px;
+			font-size: 2.3em;
 			color: $color-1;
 			// padding-right: 20px;
 		}
@@ -274,7 +274,7 @@
 
 		h5 {
 			color: $color-2;
-			font-size: 16px;
+			font-size: 1.14em;
 		}
 	}
 
@@ -284,7 +284,7 @@
 
 		p {
 			padding: 10px 0;
-			font-size: 15px;
+
 			line-height: 1.5;
 			font-family: $fam-body;
 		}
@@ -322,7 +322,7 @@
 // 		display: block;
 //
 // 		h3 {
-// 			font-size: 20px;
+// 			font-size: 1.4em;
 // 			font-family: $fam-heading;
 // 			text-transform: uppercase;
 // 			font-weight: normal;

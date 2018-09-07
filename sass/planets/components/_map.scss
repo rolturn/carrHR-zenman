@@ -4,7 +4,7 @@
 .page-find-a-broker {
 	h1 {
 		color: $color-1;
-		font-size: 20px;
+		font-size: 1.4em;
 		font-weight: 300;
 		letter-spacing: 1px;
 		margin-top: 48px;
@@ -44,12 +44,12 @@
 	display: inline-block;
 	height: 36px;
 	min-width: 200px;
-	font-size: 14px;
+
 	margin-left: 1em;
 }
 
 .broker-dropdown label {
-	font-size: 20px;
+	font-size: 1.4em;
 	text-transform: uppercase;
 	color: $color-2;
 }
@@ -86,7 +86,7 @@
 	padding-bottom: 16px;
 
 	h4 {
-		font-size: 20px;
+		font-size: 1.4em;
 		background-color: $color-1;
 		color: #fff;
 		padding: 16px;
@@ -189,7 +189,7 @@ input[name=vertical] {
 	}
 
 	&__subtitle {
-		font-size: 16px;
+		font-size: 1.14em;
 		margin-top: 16px;
 		padding-top: 16px;
 		position: relative;
@@ -205,7 +205,7 @@ input[name=vertical] {
 	}
 
 	&__title {
-		font-size: 22px;
+		font-size: 1.57em;
 		margin: 0;
 		text-transform: uppercase;
 		hyphens: auto;

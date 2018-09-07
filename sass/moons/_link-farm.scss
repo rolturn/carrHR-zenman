@@ -51,7 +51,7 @@
 		padding-left: 1em;
 		transition: color 300ms;
 		font-family: $fam-body;
-		font-size: 18px;
+		font-size: 1.3em;
 
 		@include bp(900px) {
 			flex-basis: 50%;
@@ -61,7 +61,7 @@
 			flex-basis: 100%;
 		}
 		@include bp($min: 400px) {
-      font-size: 20px;
+      font-size: 1.4em;
       padding: .75em .5em;
 		}
 
