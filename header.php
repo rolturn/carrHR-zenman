@@ -74,7 +74,7 @@
                           </div>
                         </div><!-- /.head-nav-buttons -->
                     </div>
-                    <div class="head-nav__navigation mobile-dropdown" id="head-nav__mobile">
+                    <div class="head-nav__navigation mobile-dropdown head-nav__navigation__inner" id="head-nav__mobile">
                         <ul class="head-nav__utility">
                           <li>
                             <a href="<?php echo get_the_permalink(143); ?>" title="Find an Agent" class="broker">Find an Agent</a>
