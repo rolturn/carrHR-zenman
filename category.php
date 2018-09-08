@@ -46,7 +46,7 @@ $category = get_category(get_query_var('cat'),false);
 	</div>
 	<?php endif; ?>
 
-	<div class="main-content<?php !empty($tags) ? print' has-aside has-aside__right' : false; ?>">
+	<div class="main-content<?php !empty($tags) ? print' has-aside has-aside__large has-aside__right' : false; ?>">
 		<?php if (!empty($tags)): ?>
 		<aside>
 			<div id="category-filters" class="filters dropdown tags">

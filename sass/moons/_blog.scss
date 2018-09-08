@@ -262,10 +262,21 @@
 	&__title {
 		padding: 10px 0 5px;
 
+		hgroup {
+			margin-top: 70px;
+		}
+
 		h1 {
 			font-size: 2.3em;
 			color: $color-1;
+			margin-top: 0;
 			// padding-right: 20px;
+		}
+
+		h2 {
+			color: $color-2;
+			text-transform: uppercase;
+			font-weight: 300;
 		}
 	}
 

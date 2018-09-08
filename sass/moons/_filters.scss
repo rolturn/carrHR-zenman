@@ -25,7 +25,8 @@
       display: block;
       width: 100%;
       text-align: left;
-      line-height: 1.1em;
+      line-height: 1.4em;
+      font-size: 1.2em;
       border: none;
       background-image: none;
       background-color: transparent;
@@ -43,12 +44,11 @@
       position: relative;
       display: block;
       // background-color: $color-1;
-      line-height: 1.1em;
+      line-height: 1.4em;
       border: 1px solid $color-1;
-      font-size: 1.1em;
+      font-size: 1.2em;
       padding: 15px 40px 15px 15px;
       border-radius: 4px;
-      text-transform: uppercase;
       &.caret-circle-down-after {
         &:after {
           position: absolute;

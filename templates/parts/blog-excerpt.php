@@ -2,10 +2,17 @@
 $label_text = get_field('label_text') ? get_field('label_text') : false;
 $label_color = get_field('label_color') ? get_field('label_color') : false;
 $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
+
+$series = get_the_terms( $post->id, 'blog_series');
+$series_title = !empty($series) ? $series[0]->name : false;
+
 ?>
 
 <a class="card card__post" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
   <article>
+    <?php if($series_title): ?>
+      <h2><?php echo $series_title; ?></h2>
+    <?php endif; ?>
     <div class="card__image__container <?php echo ' card__image__container__'.$label_color_class_ext; ?>">
       <?php if ( has_post_thumbnail() ) : ?>
         <?php $bg_img = get_the_post_thumbnail_url($post_obj->ID); ?>
@@ -17,10 +24,12 @@ $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
     </div>
 
     <div class="card__text">
-      <h1><?php the_title(); ?></h1>
+      <hgroup>
+        <h1><?php the_title(); ?></h1>
+      </hgroup>
 
       <div class="card__content">
-        <?php echo excerpt_with_strong(20); ?>
+        <?php echo excerpt(30); ?>
       </div> <!-- /.card__content -->
     </div>
   </article>

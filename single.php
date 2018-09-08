@@ -60,7 +60,10 @@ if ($series_count > 1) {
 
           <div class="post__article">
             <div class="post-single__title">
-              <h1><?php echo the_title(); ?></h1>
+              <hgroup>
+                <h2><?php echo $post_term->name; ?></h2>
+                <h1><?php echo the_title(); ?></h1>
+              </hgroup>
             </div>
 
             <div class="post-single__social">
@@ -75,7 +78,7 @@ if ($series_count > 1) {
           <aside class="post__related">
 
               <div class="post-single__related-title">
-                <h3>The <?php echo $post_term->name; ?> Series</h3>
+                <h3>Other Blogs From Series</h3>
               </div>
 
               <div class="post-single__related-container">

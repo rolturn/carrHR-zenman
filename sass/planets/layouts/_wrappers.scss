@@ -18,6 +18,9 @@
     display: grid;
     grid-template-columns: auto 250px;
     grid-gap: $gap--big;
+    &__large {
+      grid-template-columns: auto 300px;
+    }
     &__right {
       aside {
         order: 1;

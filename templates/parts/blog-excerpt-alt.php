@@ -19,7 +19,9 @@ $label_color_class_ext = $label_text ? 'color-'.$label_color['value'] : '';
     </div>
 
     <div class="card__text">
-      <h1><?php the_title(); ?></h1>
+      <hgroup>
+        <h1><?php the_title(); ?></h1>
+      </hgroup>
     </div>
   </article>
   <div class="more"><?php (isset($post->isCurrent) && !empty($post->isCurrent)) ? print 'Current' : print 'Read More'; ?></div><!-- /.read-more -->

@@ -283,9 +283,9 @@ function filterOptions (filterButtonContainer, options, initClicks) {
 					// update topic message
 					if ($selectedTopic.length > 0) {
 						if ($this.val()) {
-							$selectedTopic.text($this.text());
+							// $selectedTopic.text($this.text());
 						} else {
-							$selectedTopic.text('Select a Topic');
+							$selectedTopic.text('Select a Series');
 						}
 					}
 				})
