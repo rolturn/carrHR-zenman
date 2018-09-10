@@ -38,9 +38,9 @@
 	padding: 0 0 40px 0;
 	margin: 0 2.5% 0 8%;
 
-	@include bp(900px) {
-		margin-left:0;
-	}
+	// @include bp(900px) {
+	// 	margin-left:0;
+	// }
 
 	&__single {
 		text-align: left;
@@ -53,11 +53,11 @@
 		font-family: $fam-body;
 		font-size: 1.3em;
 
-		@include bp(900px) {
+		@include bp($tablet) {
 			flex-basis: 50%;
 		}
 
-		@include bp(700px) {
+		@include bp($mobile) {
 			flex-basis: 100%;
 		}
 		@include bp($min: 400px) {

@@ -22,10 +22,10 @@ $series_title = !empty($series) ? $series[0]->name : false;
 
     <div class="card__text">
       <hgroup>
+        <h1><?php the_title(); ?></h1>
         <?php if(!empty($series)): ?>
           <h2><?php echo $series_title; ?></h2>
         <?php endif; ?>
-        <h1><?php the_title(); ?></h1>
       </hgroup>
 
       <div class="card__content">

@@ -21,16 +21,19 @@
       padding-bottom: 3em;
     }
 
-		@media (min-width: 576px){
+		@include bp ($min: $tablet) {
+			max-width: $mobile;
+		}
+		@include bp($min: $mobile){
 			width: 80%;
 		}
-		@media (min-width: 900px){
-			max-width: 800px;
-		}
+		// @media (min-width: 900px){
+		// 	max-width: 800px;
+		// }
 	}
 
 	&__text-content {
-		font-size: 1.4em;
+		font-size: 1.2em;
 		color: $white;
     @include bp($min: 576px) {
       padding: 2em;

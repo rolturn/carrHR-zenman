@@ -200,6 +200,12 @@
 }
 
 .post-single {
+
+	p {
+		font-size: 1.3em;
+		line-height: 1.6;
+	}
+
 	&__container {
 		position: relative;
 	}

@@ -61,8 +61,8 @@ if ($series_count > 1) {
           <div class="post__article">
             <div class="post-single__title">
               <hgroup>
-                <h2><?php echo $post_term->name; ?></h2>
                 <h1><?php echo the_title(); ?></h1>
+                <h2><?php echo $post_term->name; ?></h2>
               </hgroup>
             </div>
 
