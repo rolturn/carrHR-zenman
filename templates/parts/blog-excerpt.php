@@ -10,9 +10,6 @@ $series_title = !empty($series) ? $series[0]->name : false;
 
 <a class="card card__post" href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
   <article>
-    <?php if($series_title): ?>
-      <h2><?php echo $series_title; ?></h2>
-    <?php endif; ?>
     <div class="card__image__container <?php echo ' card__image__container__'.$label_color_class_ext; ?>">
       <?php if ( has_post_thumbnail() ) : ?>
         <?php $bg_img = get_the_post_thumbnail_url($post_obj->ID); ?>
@@ -25,6 +22,9 @@ $series_title = !empty($series) ? $series[0]->name : false;
 
     <div class="card__text">
       <hgroup>
+        <?php if(!empty($series)): ?>
+          <h2><?php echo $series_title; ?></h2>
+        <?php endif; ?>
         <h1><?php the_title(); ?></h1>
       </hgroup>
 
