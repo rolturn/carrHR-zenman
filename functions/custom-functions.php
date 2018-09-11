@@ -234,6 +234,13 @@ show_admin_bar( false );
 /*------------------------------------*\
 	::Image sizes
 \*------------------------------------*/
+
+add_action('init', 'ework_remove_image_sizes');
+
+function ework_remove_image_sizes() {
+	remove_image_size('custom');
+}
+
 if ( function_exists( 'fly_add_image_size' ) ) {
 	fly_add_image_size( 'animated-lines', 568, 410, true );
 	fly_add_image_size( 'thumb', 80, 80, true );
@@ -871,3 +878,36 @@ function wp_custom_archive($args = '', $category = '') {
   else
     return $output;
 }
+
+// Callback function to filter the MCE settings
+function my_mce_before_init_insert_formats( $init_array ) {
+	// Define the style_formats array
+	$style_formats = array(
+		// Each array child is a format with it's own settings
+		array(
+			'title' => '.translation',
+			'block' => 'blockquote',
+			'classes' => 'translation',
+			'wrapper' => true,
+		),
+		array(
+			'title' => 'some-option',
+			'block' => 'div',
+			'classes' => 'some-option',
+			'wrapper' => true,
+		),
+		array(
+			'title' => 'Image-Horizontal Quarter',
+			'block' => 'div',
+			'classes' => 'image-horizontal-quarter',
+			'wrapper' => true,
+		),
+	);
+	// Insert the array, JSON ENCODED, into 'style_formats'
+	$init_array['style_formats'] = json_encode( $style_formats );
+
+	return $init_array;
+
+}
+// Attach callback to 'tiny_mce_before_init'
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
