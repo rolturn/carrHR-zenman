@@ -202,8 +202,14 @@
 .post-single {
 
 	p {
-		font-size: 1.3em;
+		margin: 0 0 1.5em 0;
+		padding: 0;
+		text-align: justify;
+		font-size: 1.4em;
 		line-height: 1.6;
+		&:last-of-type {
+			margin-bottom: 0;
+		}
 	}
 
 	&__container {
@@ -299,13 +305,6 @@
 	&__text {
 		padding: 40px 0;
 		font-family: $fam-body;
-
-		p {
-			padding: 10px 0;
-
-			line-height: 1.5;
-			font-family: $fam-body;
-		}
 
 		a {
 			color: $color-2;
