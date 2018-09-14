@@ -22,7 +22,7 @@
     }
 
 		@include bp ($min: $tablet) {
-			max-width: $mobile;
+			max-width: $mobile + 100;
 		}
 		@include bp($min: $mobile){
 			width: 80%;
@@ -33,7 +33,7 @@
 	}
 
 	&__text-content {
-		font-size: 1.2em;
+		// font-size: 1em;
 		color: $white;
     @include bp($min: 576px) {
       padding: 2em;
@@ -52,8 +52,9 @@
 	}
 
 	&__quotes {
-		height: 10em;
+		// height: 10em;
 		position: relative;
+		// font-size: .8em;
 
 		div {
 			position: absolute;
@@ -70,10 +71,9 @@
 	blockquote{
 		font-style: normal;
 		font-weight: 300;
-		font-size: 1.5rem;
+		font-size: 1.5em;
 		text-align: justify;
 		margin: 0;
-		font-size: 1.7em;
 
 		&:before {
 			display: none;
@@ -81,12 +81,12 @@
 	}
 	cite {
 		display: block;
-		font-size: 1.5rem;
+		font-size: 1.5em;
 		font-style: normal;
 		text-align: right;
 	}
 	h3 {
-		font-size: 2.14em;
+		font-size: 2em;
 		color: $white;
 		&:after {
 			position: static;

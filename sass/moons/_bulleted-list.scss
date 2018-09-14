@@ -10,6 +10,9 @@
 		font-weight: 600;
 	}
 
+	li {
+	}
+
 	&__wrapper {
 		display: flex;
 		align-items: stretch;
@@ -21,6 +24,7 @@
 
 	&__single {
 		margin-bottom: 30px;
+		font-size: 1.4em;
 	}
 	&__icon {
 		list-style: none;

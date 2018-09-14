@@ -63,9 +63,9 @@ if (get_sub_field('add_a_button')){
 	// if post parent is the find a broker page
 	if ( get_post_field( 'post_parent' ) === 143 ){
 		echo '<div class="one-column-content state-broker-page"><h2>'.get_sub_field('heading').'</h2></div>';
-		echo '<div class="one-column-content__inner">';
+		echo '<div class="one-column-content__inner narrow">';
 	} else {
-		echo '<div class="one-column-content__inner">';
+		echo '<div class="one-column-content__inner narrow">';
 
 		if($heading) {echo $heading;}
 	}

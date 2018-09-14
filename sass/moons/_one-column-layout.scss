@@ -136,8 +136,13 @@
 		text-align: center;
 	}
 	&--larger {
-		font-size: 1.64em;
-		font-weight: bold;
+		font-size: 1.4em;
+		font-weight: 400;
+		// padding: 0 2.5rem;
+
+		.button {
+			font-size: .9em;
+		}
 	}
 	&--extra-pad{
 		padding: 40px 0;
@@ -163,7 +168,6 @@
 
 	&__text {
 		position: relative;
-		// max-width: 1024px;
 		margin-left: auto;
 		margin-right: auto;
 	}

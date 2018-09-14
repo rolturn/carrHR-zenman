@@ -8,6 +8,11 @@
   clear: both;
   // padding: 0 20px;
   padding: 0 10vw;
+
+  &.narrow {
+    max-width: $max-width - 200;
+  }
+
   @include bp($mobile) {
     padding: 0 10vw;
   }

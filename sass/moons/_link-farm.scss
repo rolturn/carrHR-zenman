@@ -11,9 +11,10 @@
 			padding: 10px;
 
 			.link-farm__border {
-        padding: 40px 0;
+        // padding: 40px 0;
+				padding-bottom: 30px;
         @include bp($min: 500px) {
-					padding: 40px 0 80px 0;
+					// padding: 40px 0 80px 0;
         }
 			}
 		}
@@ -35,7 +36,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	padding: 0 0 40px 0;
+	padding: 0;
 	margin: 0 2.5% 0 8%;
 
 	// @include bp(900px) {

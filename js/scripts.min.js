@@ -942,6 +942,7 @@ var slider = function() {
 		autoplay: true,
 		autoplaySpeed: 4000,
 		asNavFor: '.js-slide-nav',
+		variableWidth: false,
 	});
 	$('.js-slide-nav').slick({
 		slidesToShow: navAmount,
@@ -955,6 +956,9 @@ var slider = function() {
 	$('.slider__next').on('click', function(){
 		$('.js-slide-content').slick("slickNext");
 	});
+	if ($('.slider__slide-nav.see-all-container').length > 0) {
+		$('.slider__slide-nav.see-all-container').detach().appendTo('.js-slide-nav .slick-track');
+	}
 };
 
 var TestimonialSlider = function() {

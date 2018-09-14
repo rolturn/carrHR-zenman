@@ -275,6 +275,10 @@ function get_svg_data($url) {
 
 
 
+add_filter('wpcf7_autop_or_not', '__return_false');
+
+
+
 /*------------------------------------*\
 	::SVG Upload through Media
 \*------------------------------------*/
@@ -888,7 +892,7 @@ function wp_custom_archive($args = '', $category = '') {
 }
 
 // Callback function to filter the MCE settings
-function my_mce_before_init_insert_formats( $init_array ) {
+function eworks_init_insert_formats( $init_array ) {
 	// Define the style_formats array
 	$style_formats = array(
 		// Each array child is a format with it's own settings
@@ -918,4 +922,4 @@ function my_mce_before_init_insert_formats( $init_array ) {
 
 }
 // Attach callback to 'tiny_mce_before_init'
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' );
+add_filter( 'tiny_mce_before_init', 'eworks_init_insert_formats' );

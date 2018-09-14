@@ -6,15 +6,15 @@
 	$add_background_image = get_sub_field('add_background_image');
 	$background_image = get_sub_field('background_image');
 	$column_count = get_sub_field('column_count');
-	$width = get_sub_field('width');
+	// $width = get_sub_field('width');
 	$form_shortcode = get_sub_field('form_shortcode');
 	$headerClasses = ' class="section-header';
 	$headerClasses .= $header_size ? ' '.$header_size : false;
 	$headerClasses .= '"';
 ?>
 
-<section class="module-form form column-count-<?php echo $column_count; ?> <?php if ($column_count === 'one') : ?>width-<?php echo $width; ?><?php endif; ?>" style="<?php if ($add_background_image) : ?>background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;<?php endif; ?>">
-	<div class="form__inner">
+<section class="module-form form column-count-<?php echo $column_count; ?>" style="<?php if ($add_background_image) : ?>background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;<?php endif; ?>">
+	<div class="form__inner narrow">
 		<?php if ($title) : ?>
 			<div class="form__title">
 				<?php if ($is_page_header) : ?>
