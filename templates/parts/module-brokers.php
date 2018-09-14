@@ -1,11 +1,5 @@
 <?php
 
-function create_slug($string){
-	$trimmed = trim($string);
-	$slug = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $trimmed));
-	return $slug;
-}
-
 $terms = array();
 $_filters = $_brokers = '';
 
