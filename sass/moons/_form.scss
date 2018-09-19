@@ -2,6 +2,99 @@
 	position: relative;
 	overflow: hidden;
 
+	.wpcf7-form {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		grid-gap: 25px;
+
+		&> .wpcf7-form-control-wrap {
+			grid-column: auto / span 12;
+		}
+
+		&> .col-quarter {
+			grid-column: auto / span 3;
+		}
+
+		&> .col-three-quarter {
+			grid-column: auto / span 9;
+		}
+
+		&> .col-third {
+			grid-column: auto / span 4;
+		}
+
+		&> .col-two-third {
+			grid-column: auto / span 8;
+		}
+
+		&> .col-half {
+			grid-column: auto / span 6;
+		}
+
+		&> .col-full {
+			grid-column: auto / span 12;
+		}
+
+		&> .wpcf7-recaptcha {
+			grid-column: auto / span 9;
+		}
+
+		&> .wpcf7-submit {
+			grid-column: auto / span 3;
+			// grid-column-end: 13;
+		}
+
+		&> .wpcf7-recaptcha {
+			grid-column: auto / span 9;
+		}
+
+		@include bp ($max: $tablet) {
+
+			&> .col-quarter-mobile {
+				grid-column: auto / span 3;
+			}
+
+			&> .col-three-quarter-mobile {
+				grid-column: auto / span 9;
+			}
+
+			&> .col-third-mobile {
+				grid-column: auto / span 4;
+			}
+
+			&> .col-two-third-mobile {
+				grid-column: auto / span 8;
+			}
+
+			&> .col-half-mobile {
+				grid-column: auto / span 6;
+			}
+
+			&> .col-full-mobile {
+				grid-column: auto / span 12;
+			}
+
+			&> .wpcf7-submit {
+				grid-column: auto / span 6;
+			}
+
+		}
+
+		@include bp ($mobile) {
+			&> .wpcf7-recaptcha,
+			&> .wpcf7-submit,
+			&> .col-quarter-mobile,
+			&> .col-three-quarter-mobile,
+			&> .col-third-mobile,
+			&> .col-two-third-mobile,
+			&> .col-half-mobile,
+			&> .col-full-mobile {
+				grid-column: auto / span 12;
+			}
+		}
+
+	}
+
 	&[style*="background"]{
 		color: $white;
 		&:after {
@@ -31,11 +124,15 @@
 		}
 	}
 
+	&> span {
+		display: inline;
+	}
+
 	.wpcf7 {
 
-		.wpcf7-form-control-wrap {
-			width: 100%;
-		}
+		// .wpcf7-form-control-wrap {
+		// 	width: 100%;
+		// }
 
 		input,
 		textarea,
@@ -45,6 +142,9 @@
 			font-size: 1.14em;
 			color: $color-1;
 			background-color: #F7F9F8;
+			// margin-bottom: 1em;
+			width: 100%;
+			box-sizing: border-box;
 
 			&::placeholder {
 				color: darken($color-3, 20%);
@@ -55,233 +155,254 @@
 		}
 
 		select {
-			height: 34px;
+			// height: 34px;
 			-webkit-appearance: none;
   			-webkit-border-radius: 0px;
-  			padding: 0 12px;
+  			// padding: 0 12px;
 		}
 
-		input[type="submit"] {
-			@extend %button;
-			display: inline-block;
-			width: auto;
-		}
-	}
-
-	&.column-count-one,
-	&.width-large {
-		margin: 0 auto;
-		padding-bottom: 20px;
-		padding-top: 0;
-
-		// .form__inner {
-		// 	max-width: 870px;
+		// .wpcf7-form-control-wrap {
+		// 	grid-column: auto / span 6;
+		//
+		// 	&> div,
+		// 	iframe {
+		// 		width: auto !important;
+		// 	}
 		// }
 
-		.wpcf7 {
-			.first-name,
-			.last-name,
-			.phone,
-			.email,
-			.city,
-			.zip,
-			.sq-feet,
-			.payment,
-			.exp-date {
-				display: block;
-				float: left;
-				width: calc(33.33% - 50px / 3);
-				margin-right: 25px;
 
-				@include bp(900px) {
-					margin-right: 25px;
-					width: calc(50% - 25px / 2);
-				}
-
-				@include bp(500px) {
-					width: 100%;
-				}
-			}
-			// last in row at desktop
-			.phone,
-			.exp-date,
-			.zip {
-				@include bp($min: 901px){
-					margin-right: 0;
-				}
-			}
-			// last in row at mobile
-			.last-name,
-			.email,
-			.zip,
-			.exp-date {
-				@include bp(900px){
-					margin-right: 0;
-				}
-			}
-
-			.practice,
-			.interest,
-			.mwi-first-name,
-			.mwi-last-name,
-			.mwi-phone,
-			.mwi-email,
-			.mwi-jobTitle,
-			.mwi-accountNumber,
-			.testphone,
-			.testemail {
-				width: calc(50% - 25px / 2);
-
-				@include bp(500px) {
-					width: 100%;
-				}
-
-				select {
-					width: 100%;
-				}
-			}
-			.practice,
-			.mwi-first-name,
-			.mwi-phone,
-			.mwi-jobTitle {
-				margin-right: 25px;
-			}
-
-			.address,
-			.mwi-practice,
-			.comments {
-				width: 100%;
-			}
-		}
-		.wpcf7-form-control-wrap {
-			display: block;
-			float: left;
+		input[type="submit"] {
+			// @extend %button;
+			display: inline-block;
 			width: 100%;
-			margin-bottom: 25px;
-		}
-		input[type="submit"] {
-			display: block;
-			float: left;
-			margin: 0;
 		}
 	}
 
-	&.width-small {
-		.form__one-column,
-		.form__inner {
-			max-width: 600px;
-			margin: 0 auto;
-		}
+	// &.column-count-one,
+	// &.width-large {
+	// 	margin: 0 auto;
+	// 	padding-bottom: 20px;
+	// 	padding-top: 0;
+	//
+	// 	// .form__inner {
+	// 	// 	max-width: 870px;
+	// 	// }
+	//
+	// 	.wpcf7 {
+	// 		.first-name,
+	// 		.last-name,
+	// 		.phone,
+	// 		.email,
+	// 		.city,
+	// 		.zip,
+	// 		.sq-feet,
+	// 		.payment,
+	// 		.exp-date {
+	// 			display: block;
+	// 			float: left;
+	// 			width: calc(33.33% - 50px / 3);
+	// 			margin-right: 25px;
+	//
+	// 			@include bp(900px) {
+	// 				margin-right: 25px;
+	// 				width: calc(50% - 25px / 2);
+	// 			}
+	//
+	// 			@include bp(500px) {
+	// 				width: 100%;
+	// 			}
+	// 		}
+	// 		// last in row at desktop
+	// 		.phone,
+	// 		.exp-date,
+	// 		.zip {
+	// 			@include bp($min: 901px){
+	// 				margin-right: 0;
+	// 			}
+	// 		}
+	// 		// last in row at mobile
+	// 		.last-name,
+	// 		.email,
+	// 		.zip,
+	// 		.exp-date {
+	// 			@include bp(900px){
+	// 				margin-right: 0;
+	// 			}
+	// 		}
+	//
+	// 		.practice,
+	// 		.interest,
+	// 		.mwi-first-name,
+	// 		.mwi-last-name,
+	// 		.mwi-phone,
+	// 		.mwi-email,
+	// 		.mwi-jobTitle,
+	// 		.mwi-accountNumber,
+	// 		.testphone,
+	// 		.testemail {
+	// 			width: calc(50% - 25px / 2);
+	//
+	// 			@include bp(500px) {
+	// 				width: 100%;
+	// 			}
+	//
+	// 			select {
+	// 				width: 100%;
+	// 			}
+	// 		}
+	// 		.practice,
+	// 		.mwi-first-name,
+	// 		.mwi-phone,
+	// 		.mwi-jobTitle {
+	// 			margin-right: 25px;
+	// 		}
+	//
+	// 		.address,
+	// 		.mwi-practice,
+	// 		.comments {
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// 	.wpcf7-form-control-wrap {
+	// 		display: block;
+	// 		float: left;
+	// 		width: 100%;
+	// 		margin-bottom: 25px;
+	// 	}
+	// 	input[type="submit"] {
+	// 		display: block;
+	// 		float: left;
+	// 		margin: 0;
+	// 	}
+	// }
 
-		.wpcf7 {
-			.first-name,
-			.last-name,
-      .email,
-      .phone {
-				display: block;
-				float: left;
-				width: calc(50% - 25px / 2);
-				padding: 0;
+	// &.width-small {
+	// 	.form__one-column,
+	// 	.form__inner {
+	// 		max-width: 600px;
+	// 		margin: 0 auto;
+	// 	}
+	//
+	// 	.wpcf7 {
+	// 		.first-name,
+	// 		.last-name,
+  //     .email,
+  //     .phone {
+	// 			display: block;
+	// 			float: left;
+	// 			width: calc(50% - 25px / 2);
+	// 			padding: 0;
+	//
+	// 			@include bp(500px) {
+	// 				width: 100%;
+	// 			}
+	// 		}
+	// 		.last-name {
+	// 			margin-right: 0;
+	// 		}
+	// 		.first-name {
+	// 			margin-right: 25px;
+	// 		}
+	//
+	// 		.message {
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// 	input[type="submit"] {
+	// 		float: none;
+	// 	}
+	// }
+	//
+	// &.column-count-two {
+	// 	padding-top: 20px;
+	//
+	// 	.form__two-column {
+	// 		display: flex;
+	// 		align-items: flex-end;
+	//
+	// 		@include bp(900px) {
+	// 			flex-wrap: wrap;
+	// 		}
+	// 	}
+	//
+	// 	.form__left-column {
+	// 		width: 50%;
+	// 		padding: 0 40px 20px 0;
+	//
+	// 		iframe {
+	// 			width: 100%;
+	// 			max-width: 100%;
+	// 		}
+	//
+	// 		@include bp(900px) {
+	// 			width: 100%;
+	// 			padding: 0;
+	// 		}
+	// 	}
+	//
+	// 	.form__right-column {
+	// 		width: 50%;
+	// 		background-color: $color-1;
+	// 		padding: 20px;
+	//
+	//
+	// 		@include bp(900px) {
+	// 			margin-top: 15px;
+	// 			width: 100%;
+	// 		}
+	// 	}
+	//
+	// 	.form__icon-wrap {
+	// 		position: relative;
+	// 		display: block;
+	// 		svg {
+	// 			position: absolute;
+	// 			z-index: 10;
+	// 			width: 18px;
+	// 			height: 18px;
+	// 			fill: $color-1;
+	// 			left: 7px;
+	// 		    top: 8px;
+	// 		}
+	// 	}
+	//
+	// 	.wpcf7 {
+	// 		.first-name,
+	// 		.last-name,
+	// 		.email,
+	// 		.phone {
+	// 			width: 100%;
+	// 			position: relative;
+	//
+	// 			input {
+	// 				padding-left: 30px;
+	// 			}
+	//
+	// 		}
+	// 		.wpcf7-form-control-wrap {
+	// 			display: block;
+	// 			padding-bottom: 25px;
+	// 		}
+	// 		input[type="submit"]{
+	// 			@extend %button--light;
+	// 		}
+	// 		input:not([type="submit"]) {
+	// 			width: 100%;
+	// 		}
+	// 		p {
+	// 			width: 100%;
+	// 		}
+	// 	}
+	// }
+}
 
-				@include bp(500px) {
-					width: 100%;
-				}
-			}
-			.last-name {
-				margin-right: 0;
-			}
-			.first-name {
-				margin-right: 25px;
-			}
-
-			.message {
-				width: 100%;
-			}
-		}
-		input[type="submit"] {
-			float: none;
-		}
-	}
-
-	&.column-count-two {
-		padding-top: 20px;
-
-		.form__two-column {
-			display: flex;
-			align-items: flex-end;
-
-			@include bp(900px) {
-				flex-wrap: wrap;
-			}
-		}
-
-		.form__left-column {
-			width: 50%;
-			padding: 0 40px 20px 0;
-
-			iframe {
-				width: 100%;
-				max-width: 100%;
-			}
-
-			@include bp(900px) {
-				width: 100%;
-				padding: 0;
-			}
-		}
-
-		.form__right-column {
-			width: 50%;
-			background-color: $color-1;
-			padding: 20px;
-
-
-			@include bp(900px) {
-				margin-top: 15px;
-				width: 100%;
-			}
-		}
-
-		.form__icon-wrap {
-			position: relative;
-			display: block;
-			svg {
-				position: absolute;
-				z-index: 10;
-				width: 18px;
-				height: 18px;
-				fill: $color-1;
-				left: 7px;
-			    top: 8px;
-			}
-		}
-
-		.wpcf7 {
-			.first-name,
-			.last-name,
-			.email,
-			.phone {
-				width: 100%;
-				position: relative;
-
-				input {
-					padding-left: 30px;
-				}
-
-			}
-			.wpcf7-form-control-wrap {
-				display: block;
-				padding-bottom: 25px;
-			}
-			input[type="submit"]{
-				@extend %button--light;
-			}
-			input:not([type="submit"]) {
-				width: 100%;
-			}
-			p {
-				width: 100%;
-			}
-		}
-	}
+.g-recaptcha {
+  transform-origin: left top;
+  -webkit-transform-origin: left top;
+	// &> div {
+	// 	width: 100% !important;
+	// }
+	// iframe {
+	// 	width: 100%;
+	// }
 }
