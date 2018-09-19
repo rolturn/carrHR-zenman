@@ -762,6 +762,38 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_5952b9ca397ba",
+                            "label": "Width",
+                            "name": "width",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_5952b946397b9",
+                                        "operator": "==",
+                                        "value": "one"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "large": "Large",
+                                "small": "Small"
+                            },
+                            "allow_null": 1,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
+                        {
                             "key": "field_5ad50e7e844ff",
                             "label": "Is Page Header?",
                             "name": "is_page_header",
@@ -844,38 +876,6 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 1
-                        },
-                        {
-                            "key": "field_5952b9ca397ba",
-                            "label": "Width",
-                            "name": "width",
-                            "type": "radio",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_5952b946397b9",
-                                        "operator": "==",
-                                        "value": "one"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "50",
-                                "class": "",
-                                "id": ""
-                            },
-                            "choices": {
-                                "large": "Large",
-                                "small": "Small"
-                            },
-                            "allow_null": 0,
-                            "other_choice": 0,
-                            "save_other_choice": 0,
-                            "default_value": "",
-                            "layout": "vertical",
-                            "return_format": "value"
                         },
                         {
                             "key": "field_5952b946397b9",
@@ -1288,6 +1288,55 @@
                     "label": "Bulleted List",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5ba2ae5414b2f",
+                            "label": "Width",
+                            "name": "width",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "large": "Large",
+                                "small": "Small"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
+                        {
+                            "key": "field_5ba2ae557442a",
+                            "label": "Width",
+                            "name": "",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "maxlength": "",
+                            "layout": "vertical",
+                            "choices": [],
+                            "other_choice": 0,
+                            "save_other_choice": 0,
+                            "allow_null": 0,
+                            "return_format": "value"
+                        },
                         {
                             "key": "field_5952770fcacbe",
                             "label": "How many columns?",
@@ -2167,51 +2216,6 @@
                             "maxlength": ""
                         },
                         {
-                            "key": "field_5b995fcfb6d0c",
-                            "label": "See All Link",
-                            "name": "see_all_link",
-                            "type": "page_link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [],
-                            "taxonomy": [],
-                            "allow_null": 1,
-                            "allow_archives": 1,
-                            "multiple": 0
-                        },
-                        {
-                            "key": "field_5b9961943212d",
-                            "label": "See All Text",
-                            "name": "see_all_text",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_5b995fcfb6d0c",
-                                        "operator": "!=empty"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "maxlength": ""
-                        },
-                        {
                             "key": "field_5941925b6bf73",
                             "label": "Add a Slide",
                             "name": "add_a_slide",
@@ -2421,6 +2425,30 @@
                     "label": "1 Column Content",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5ba29e67c7a03",
+                            "label": "Width",
+                            "name": "width",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "large": "Large",
+                                "small": "Small"
+                            },
+                            "allow_null": 1,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
                         {
                             "key": "field_5ad4de143fe16",
                             "label": "Is Page Header?",
@@ -2733,6 +2761,30 @@
                     "label": "2 Column Content",
                     "display": "block",
                     "sub_fields": [
+                        {
+                            "key": "field_5ba29ee3c7a04",
+                            "label": "Width",
+                            "name": "width",
+                            "type": "radio",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "large": "Large",
+                                "small": "Small"
+                            },
+                            "allow_null": 0,
+                            "other_choice": 0,
+                            "default_value": "",
+                            "layout": "vertical",
+                            "return_format": "value",
+                            "save_other_choice": 0
+                        },
                         {
                             "key": "field_5ad4df50c1ed2",
                             "label": "Is Page Header?",
@@ -3651,5 +3703,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1536851072
+    "modified": 1537388444
 }

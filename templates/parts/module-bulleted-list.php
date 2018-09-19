@@ -6,6 +6,9 @@ $class = '';
 if(get_sub_field('font_size')){
 	$class = ' bulleted-list__single--larger';
 }
+
+$content_width = !empty(get_sub_field('width')) ? ' width-' . get_sub_field('width') : ' width-small';
+
 // adjustment for BulletList on Start-ups page
 // if first bullet item is changed then this will no longer work.
 $special = (get_sub_field('add_a_list_item') && get_sub_field('add_a_list_item')[0]['title'] === 'Demographic research and due diligence') ? true : false;
@@ -13,7 +16,7 @@ $special = (get_sub_field('add_a_list_item') && get_sub_field('add_a_list_item')
 
 <section class="module-bulleted-list bulleted-list column-count-<?php echo $column_count; echo ($add_background_color ? ' bulleted-list--bg-light' : ''); ?>">
 
-	<div class="bulleted-list__inner">
+	<div class="bulleted-list__inner<?php print $content_width; ?>">
 
 		<?php if( have_rows('add_a_list_item') ): ?>
 

@@ -57,7 +57,7 @@ if(have_rows('brokers_list')){
 	endwhile;
 }
 
-if ($terms){
+if ($terms && 1 == 2){
 	$_filters .= '<section class="broker-filter broker-filter__inner">';
 		$_filters .= '<ul id="js-broker-filter">';
 			$_filters .= '<li><input id="v-all" name="vertical" value="all" type="radio" checked><label for="v-all">All</label></li>';

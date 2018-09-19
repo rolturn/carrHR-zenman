@@ -11,7 +11,7 @@
 	&__region {
 		position: relative;
 		z-index: 0;
-		&:nth-of-type(odd) {
+		&:nth-of-type(even) {
 			.full-width {
 				z-index: -1;
 				position: absolute;
