@@ -14,7 +14,7 @@
 ?>
 
 <section class="module-form form column-count-<?php echo $column_count; ?>" style="<?php if ($add_background_image) : ?>background: url(<?php echo $background_image['url']; ?>) no-repeat center center; background-size: cover;<?php endif; ?>">
-	<div class="form__inner<?php print $content_width; ?>">
+	<div class="form__inner width-small>
 		<?php if ($title) : ?>
 			<div class="form__title">
 				<?php if ($is_page_header) : ?>
