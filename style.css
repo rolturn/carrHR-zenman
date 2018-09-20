@@ -1085,7 +1085,7 @@ a.more:hover { background-color: #FFFFFF; color: #003773; }
 
 .bulleted-list.column-count-two .bulleted-list__single p { color: #000000; font-weight: normal; padding-left: 10px; }
 
-.bulleted-list.column-count-two .bulleted-list__single .bulleted-list__title { font-size: 1.3em; font-family: "montserrat", sans-serif; }
+.bulleted-list.column-count-two .bulleted-list__single .bulleted-list__title { font-size: 1.1em; font-family: "montserrat", sans-serif; }
 
 @media only screen and (max-width: 520px) { .bulleted-list.column-count-two .bulleted-list__single .bulleted-list__title { font-size: 1.14em; } }
 
