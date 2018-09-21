@@ -446,6 +446,8 @@ a.more:hover{background-color:#fff;color:#003773}.pagination-block{clear:both;te
 .link-farm--dark .link-farm__wrapper.has-background-color{background-color:rgba(255,255,255,0.7)}
 .link-farm--dark .link-farm__wrapper.has-background-color .link-farm__border{border:1px solid rgba(0,0,0,0.5)}
 .one-column-content{position:relative;overflow:hidden}.one-column-content.state-broker-page h1,.one-column-content.state-broker-page h2{color:#fff;font-size:2.5em;font-weight:400;letter-spacing:0;padding:20px;background-color:#003773;margin-top:0}
+.one-column-content h1.medium{color:#fff;font-size:2.5em;font-weight:400;letter-spacing:0;padding:20px;background-color:#003773;margin-top:0;margin-bottom:0}
+.one-column-content h1.medium:after{width:0;height:0;background-color:transparent}
 .one-column-content--light,.one-column-content--light h1,.one-column-content--light h2,.one-column-content--light h3,.one-column-content--light h4,.one-column-content--light h5,.one-column-content--light h6{color:#fff}
 .one-column-content--dark h1,.one-column-content--dark h2,.one-column-content--dark h3,.one-column-content--dark h4,.one-column-content--dark h5,.one-column-content--dark h6{color:#003773}
 .one-column-content--orange{color:#cf671a}.one-column-content--center{text-align:center}
