@@ -150,8 +150,8 @@ body:not(.is-active) .main-head__nav.nav--hidden{top:-125px}.head-nav__desktop{b
 .page-find-a-broker h1:after{background:#cf671a;bottom:0;content:"";height:2px;left:50%;margin-left:-55px;position:absolute;width:110px}
 .broker-dropdown{text-align:center;padding:1.5em 1em !important}.broker-dropdown select{-webkit-appearance:none;background:#f9f9f9 url("images/dropdown-arrow.svg") center right no-repeat;border-color:#9c9c9c;border-radius:0;color:#4e4e4e;display:inline-block;min-width:200px;margin-left:1em}
 .broker-dropdown label{font-size:1.4em;text-transform:uppercase;color:#cf671a}.broker-map{border:3px solid #003773;overflow:hidden;position:relative;margin:0 auto 3em}
-.broker-map__map{height:0;padding-bottom:59.26%}.broker-map .cluster{color:#003773}
-.broker-verticals{background:#fff;-webkit-box-shadow:0 0 16px rgba(0,0,0,0.25);box-shadow:0 0 16px rgba(0,0,0,0.25);display:none;position:absolute;right:1em;top:1em;padding-bottom:16px}
+.broker-map__map{height:0;padding-bottom:59.26%;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;-webkit-transform:perspective(auto) translateZ(-30vw) scale(1.4);transform:perspective(auto) translateZ(-30vw) scale(1.4);-webkit-perspective:1000;perspective:1000}
+.broker-map .cluster{color:#003773}.broker-verticals{background:#fff;-webkit-box-shadow:0 0 16px rgba(0,0,0,0.25);box-shadow:0 0 16px rgba(0,0,0,0.25);display:none;position:absolute;right:1em;top:1em;padding-bottom:16px}
 .broker-verticals h4{font-size:1.4em;background-color:#003773;color:#fff;padding:16px;margin:0 0 16px;text-align:center}
 input[name=vertical]{display:none}input[name=vertical]:checked+label{color:#cf671a}
 input[name=vertical]:checked+label:after{opacity:1}input[name=vertical]+label{position:relative;display:block;padding:0 16px 0 40px;margin:8px 0;color:#003773;cursor:pointer}

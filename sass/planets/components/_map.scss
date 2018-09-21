@@ -69,9 +69,9 @@
 		height: 0;
 		// padding-bottom: 66.666%;
 		padding-bottom: 59.26%;
-		// transform-style:preserve-3d;
-		// transform:perspective(auto) translateZ(-30vw) scale(1.4);
-		// perspective:1000;
+		transform-style:preserve-3d;
+		transform:perspective(auto) translateZ(-30vw) scale(1.4);
+		perspective:1000;
 	}
 
 	.cluster {
