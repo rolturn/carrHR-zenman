@@ -717,7 +717,6 @@ var filterBrokers = function(){
 
 	$filters.on('change', function(evt){
 		var chosen = evt.target.value;
-		console.log(chosen);
 
 		$brokers.addClass('hidden');
 
