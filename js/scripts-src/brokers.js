@@ -16,6 +16,7 @@ if ($brokerContactContainer.length > 0) {
 		$.each($contactsInfo, function() {
 			var contactString = $(this).attr('data-contact-info');
 			$(this).hover(function() {
+				$(this).siblings().removeClass('active');
 				$(this).addClass('active');
 				$contactReveal.addClass('active');
 				$contactReveal.html(contactString);

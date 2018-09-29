@@ -17,14 +17,16 @@ if(have_rows('team')){
 			$_brokers .= '<h5 class="broker__title">'.get_sub_field('title').'</h5>';
 			$_brokers .= '<div class="contact-info-container">';
 			if(get_sub_field('phone_number')){
-				$_brokers .= '<a href="tel:'.get_sub_field('phone_number').'" class="contact-info broker__phone" data-contact-info="'.get_sub_field('phone_number').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_sub_field('phone_number').'</span></a>';
+				$_brokers .= '<a href="tel:'.get_sub_field('phone_number').'" class="contact-info broker__phone active" data-contact-info="'.get_sub_field('phone_number').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_sub_field('phone_number').'</span></a>';
 			}
 			if(get_sub_field('email_address')){
 				$broker_email = antispambot( 'mailto:'.get_sub_field('email_address') );
 				$broker_email_display = antispambot( get_sub_field('email_address') );
 				$_brokers .= '<a href="'.$broker_email.'" class="contact-info broker__email" data-contact-info="'.$broker_email_display.'"><i class="fas fa-envelope"></i><span class="hidden">'.$broker_email_display.'</span></a>';
 			}
-			$_brokers .= '<div class="contact-info-reveal">'.get_sub_field('phone_number').'</div>';
+			if (get_sub_field('phone_number')) {
+				$_brokers .= '<div class="contact-info-reveal">'.get_sub_field('phone_number').'</div>';
+			}
 			$_brokers .= '</div> <!-- /.contact-info-container -->';
 		$_brokers .= '</div>';
 	endwhile;

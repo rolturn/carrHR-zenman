@@ -37,7 +37,7 @@ if(have_rows('brokers_list')){
 					}
 					$_brokers .= '<div class="contact-info-container">';
 					if(get_field('broker_phone')){
-						$_brokers .= '<a href="tel:'.get_field('broker_phone').'" class="contact-info broker__phone" data-contact-info="'.get_field('broker_phone').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_field('broker_phone').'</span></a>';
+						$_brokers .= '<a href="tel:'.get_field('broker_phone').'" class="contact-info broker__phone active" data-contact-info="'.get_field('broker_phone').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_field('broker_phone').'</span></a>';
 					}
 					if(get_field('broker_email')){
 						$broker_email = antispambot( 'mailto:'.get_field('broker_email') );
