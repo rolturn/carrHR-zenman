@@ -1,3 +1,24 @@
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes grow-in {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 /*------------------------------------*\
 	::Brokers Pages
 \*------------------------------------*/
@@ -75,6 +96,20 @@
 		img {
 			width: 100%;
 		}
+
+		.contact-info-container {
+		}
+		.contact-info-reveal {
+			color: $color-1;
+			background-color: $color-5;
+			padding: 5px;
+			font-size: 1.2em;
+			// transform: scaleY(0);
+			&.active {
+			  // transform-origin: top;
+			  // animation: grow-in cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s forwards;
+			}
+		}
     // @include bp($min: 500px) {
     //   min-width: 50%;
     //   max-width: 50%;
@@ -112,9 +147,47 @@
 	&__title,
   &__license {
 		display: block;
-		padding-top: .3em;
 		color: $color-2;
-		font-size: 1.14em;
+		font-size: 1.25em;
+
+		.hidden {
+			font-size: 0;
+		}
+
+	}
+
+	&__phone,
+	&__email {
+		display: inline-block;
+		width: 40px;
+		// line-height: 1;
+		// height: 30px;
+		i {
+			font-size: 2em;
+			line-height: 1;
+			// padding: .5em .25em 0;
+			width: 40px;
+			height: 30px;
+			position: relative;
+			&:before {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+		&.active {
+			background-color: $color-5;
+			border-radius: 3px 3px 0 0;
+		}
+		.hidden {
+			display: none;
+		}
+	}
+	&__phone {
+		i {
+			font-size: 1.8em;
+		}
 	}
   &__license {
     color: $color-1;

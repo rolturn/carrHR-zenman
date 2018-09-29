@@ -708,6 +708,24 @@ if ($brokerRegions.length > 0 && helpers.findParam('region')) {
 	primary.clone().prependTo('section.brokers')
 }
 
+var $brokerContactContainer = $('.contact-info-container');
+if ($brokerContactContainer.length > 0) {
+	$.each($brokerContactContainer, function() {
+		var $contactContainer = $(this);
+		var $contactsInfo = $contactContainer.find('.contact-info');
+		var $contactReveal = $contactContainer.find('.contact-info-reveal');
+
+		$.each($contactsInfo, function() {
+			var contactString = $(this).attr('data-contact-info');
+			$(this).hover(function() {
+				$(this).addClass('active');
+				$contactReveal.addClass('active');
+				$contactReveal.html(contactString);
+			})
+		});
+	});
+}
+
 /*------------------------------------*\
     ::Broker Filter
 \*------------------------------------*/

@@ -35,12 +35,17 @@ if(have_rows('brokers_list')){
 					if(get_field('license_number')){
 						$_brokers .= '<div class="broker__license">'.get_field('license_number').'</div>';
 					}
+					$_brokers .= '<div class="contact-info-container">';
 					if(get_field('broker_phone')){
-						$_brokers .= '<a href="tel:'.get_field('broker_phone').'" class="broker__phone">'.get_field('broker_phone').'</a>';
+						$_brokers .= '<a href="tel:'.get_field('broker_phone').'" class="contact-info broker__phone" data-contact-info="'.get_field('broker_phone').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_field('broker_phone').'</span></a>';
 					}
 					if(get_field('broker_email')){
-						$_brokers .= '<a href="mailto:'.get_field('broker_email').'" class="broker__email">'.get_field('broker_email').'</a>';
+						$broker_email = antispambot( 'mailto:'.get_field('broker_email') );
+						$broker_email_display = antispambot( get_field('broker_email') );
+						$_brokers .= '<a href="'.$broker_email.'" class="contact-info broker__email" data-contact-info="'.$broker_email_display.'"><i class="fas fa-envelope"></i><span class="hidden">'.$broker_email_display.'</span></a>';
 					}
+					$_brokers .= '<div class="contact-info-reveal">'.get_field('broker_phone').'</div>';
+					$_brokers .= '</div> <!-- /.contact-info-container -->';
 					if (count($to_filter) === $_verticals_count){
 						$_verticals = 'All Healthcare Industries';
 					} else {

@@ -203,17 +203,26 @@ to{-webkit-transform:translate(0,0);transform:translate(0,0);opacity:1}}.half-ha
 .half-half--text-left li,.half-half--text-left a{color:#fff}.half-half--image-left:before{left:50%;right:0}
 .half-half--image-left:after{left:0;right:50%}.half-half--image-left .half-half__text{float:right}
 .half-half__inner{position:relative;z-index:10;overflow:hidden}.half-half__text{position:relative;z-index:10;width:50%;color:#fff;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;min-height:444px}
-.half-half__title h3{color:#fff}.half-half__frame{padding:3.5vw}.brokers{text-align:center}
-.brokers h1,.brokers h2,.brokers h3{text-transform:uppercase}.brokers__region{position:relative;z-index:0}
-.brokers__region:nth-of-type(even) .full-width{z-index:-1;position:absolute;top:0;bottom:0;left:50%;right:50%;margin-right:-50vw;margin-left:-50vw}
+.half-half__title h3{color:#fff}.half-half__frame{padding:3.5vw}@-webkit-keyframes fade-in-right{from{opacity:0;-webkit-transform:translateX(-15px);transform:translateX(-15px)}
+to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@keyframes fade-in-right{from{opacity:0;-webkit-transform:translateX(-15px);transform:translateX(-15px)}
+to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0)}}@-webkit-keyframes grow-in{from{-webkit-transform:scaleY(0);transform:scaleY(0)}
+to{-webkit-transform:scaleY(1);transform:scaleY(1)}}@keyframes grow-in{from{-webkit-transform:scaleY(0);transform:scaleY(0)}
+to{-webkit-transform:scaleY(1);transform:scaleY(1)}}.brokers{text-align:center}.brokers h1,.brokers h2,.brokers h3{text-transform:uppercase}
+.brokers__region{position:relative;z-index:0}.brokers__region:nth-of-type(even) .full-width{z-index:-1;position:absolute;top:0;bottom:0;left:50%;right:50%;margin-right:-50vw;margin-left:-50vw}
 .brokers__region:nth-of-type(even) .full-width.bg-color{background-color:#f9f9f9}
 .brokers__title{display:inline-block;margin:35px auto;background:#003773;padding:20px 30px;color:#fff}
 .brokers__title:after{display:none}.brokers__broker-group{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:0 -1.5rem}
 .brokers__broker{-webkit-box-flex:0;-ms-flex:0 0 25.1%;flex:0 0 25.1%;color:white;padding:1.5rem;text-align:left;-webkit-transition:opacity 300ms,max-width 100ms 400ms,-webkit-transform 300ms 200ms,-webkit-box-flex 100ms 400ms;transition:opacity 300ms,max-width 100ms 400ms,-webkit-transform 300ms 200ms,-webkit-box-flex 100ms 400ms;transition:opacity 300ms,transform 300ms 200ms,max-width 100ms 400ms,flex 100ms 400ms;transition:opacity 300ms,transform 300ms 200ms,max-width 100ms 400ms,flex 100ms 400ms,-webkit-transform 300ms 200ms,-webkit-box-flex 100ms 400ms,-ms-flex 100ms 400ms}
 .brokers__broker.hidden{opacity:0;-webkit-transform:scale(0);transform:scale(0);-webkit-box-flex:0;-ms-flex:0;flex:0;padding:0;min-width:0;max-width:0}
-.brokers__broker img{width:100%}.broker__name{margin-top:.33em;padding-bottom:.33em;color:#003773;font-size:2em;font-weight:400;border-bottom:1px solid #dedede}
+.brokers__broker img{width:100%}.brokers__broker .contact-info-reveal{color:#003773;background-color:#f3f3f3;padding:5px;font-size:1.2em}
+.broker__name{margin-top:.33em;padding-bottom:.33em;color:#003773;font-size:2em;font-weight:400;border-bottom:1px solid #dedede}
 .broker__image{position:relative;line-height:0}.broker__image:before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid rgba(255,255,255,0.5)}
-.broker__phone,.broker__email,.broker__title,.broker__license{display:block;padding-top:.3em;color:#cf671a;font-size:1.14em}
+.broker__phone,.broker__email,.broker__title,.broker__license{display:block;color:#cf671a;font-size:1.25em}
+.broker__phone .hidden,.broker__email .hidden,.broker__title .hidden,.broker__license .hidden{font-size:0}
+.broker__phone,.broker__email{display:inline-block;width:40px}.broker__phone i,.broker__email i{font-size:2em;line-height:1;width:40px;height:30px;position:relative}
+.broker__phone i:before,.broker__email i:before{position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.broker__phone.active,.broker__email.active{background-color:#f3f3f3;border-radius:3px 3px 0 0}
+.broker__phone .hidden,.broker__email .hidden{display:none}.broker__phone i{font-size:1.8em}
 .broker__license{color:#003773}.broker__title{color:#003773;font-weight:600}.broker__verticals{margin-top:.4em;color:#003773;font-size:1em;font-size:1.14em;font-weight:600}
 #js-broker-filter{list-style-type:none;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:3em 0}
 #js-broker-filter li{-webkit-box-flex:0;-ms-flex:0 0 25%;flex:0 0 25%;padding:0;font-size:1.4em;line-height:1.2}
