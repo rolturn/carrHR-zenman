@@ -221,7 +221,7 @@ to{-webkit-transform:scaleY(1);transform:scaleY(1)}}.brokers{text-align:center}.
 .broker__phone .hidden,.broker__email .hidden,.broker__title .hidden,.broker__license .hidden{font-size:0}
 .broker__phone,.broker__email{display:inline-block;width:40px}.broker__phone i,.broker__email i{font-size:2em;line-height:1;width:40px;height:30px;position:relative}
 .broker__phone i:before,.broker__email i:before{position:absolute;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
-.broker__phone.active,.broker__email.active{background-color:#f3f3f3;border-radius:3px 3px 0 0}
+.broker__phone.active,.broker__email.active{color:#003773;background-color:#f3f3f3;border-radius:3px 3px 0 0}
 .broker__phone .hidden,.broker__email .hidden{display:none}.broker__phone i{font-size:1.8em}
 .broker__license{color:#003773}.broker__title{color:#003773;font-weight:600}.broker__verticals{margin-top:.4em;color:#003773;font-size:1em;font-size:1.14em;font-weight:600}
 #js-broker-filter{list-style-type:none;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding:3em 0}
