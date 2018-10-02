@@ -17,7 +17,7 @@ if(have_rows('team')){
 			$_brokers .= '<h5 class="broker__title">'.get_sub_field('title').'</h5>';
 			$_brokers .= '<div class="contact-info-container">';
 			if(get_sub_field('phone_number')){
-				$_brokers .= '<a href="tel:'.get_sub_field('phone_number').'" class="contact-info broker__phone active" data-contact-info="'.get_sub_field('phone_number').'"><i class="fas fa-phone-office"></i><span class="hidden">'.get_sub_field('phone_number').'</span></a>';
+				$_brokers .= '<a href="tel:'.get_sub_field('phone_number').'" class="contact-info broker__phone active" data-contact-info="'.get_sub_field('phone_number').'"><i class="fas fa-phone"></i><span class="hidden">'.get_sub_field('phone_number').'</span></a>';
 			}
 			if(get_sub_field('email_address')){
 				$broker_email = antispambot( 'mailto:'.get_sub_field('email_address') );
