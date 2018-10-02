@@ -36,7 +36,11 @@
 	}
 
 	&__text-content {
-		padding: 30px 45px 45px;
+		padding: 30px 45px 37px;
+
+		.content {
+			min-height: 161px;
+		}
 
 		blockquote {
 			font-style: normal;

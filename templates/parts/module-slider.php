@@ -27,7 +27,9 @@ $see_all_text = !empty(get_sub_field('see_all_text')) ? get_sub_field('see_all_t
 							<div class="slider__text-box">
 								<div class="slider__text-content">
 									<?php if ($heading){echo '<h3>'.$heading.'</h3>';} ?>
-									<?php the_sub_field('text'); ?>
+									<div class="content">
+										<?php the_sub_field('text'); ?>
+									</div><!-- /.content -->
 								</div>
 							</div>
 
