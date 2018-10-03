@@ -8,7 +8,7 @@ $heading = get_sub_field('slide_headline');
 <section class="module-testimonial-slider" <?php if ($image) : ?>style="background: url(<?php echo $image['url']; ?>) no-repeat center center; background-size: cover;" <?php endif; ?>>
 	<?php if( have_rows('add_a_testimonial_slide') ): ?>
 
-		<span class="module-testimonial-slider__nav module-testimonial-slider__prev">❮</span>
+		<!-- <span class="module-testimonial-slider__nav module-testimonial-slider__prev">❮</span> -->
 
 		<div class="module-testimonial-slider__inner">
 
@@ -33,7 +33,7 @@ $heading = get_sub_field('slide_headline');
 
 		</div>
 
-		<span class="module-testimonial-slider__nav module-testimonial-slider__next">❯</span>
+		<!-- <span class="module-testimonial-slider__nav module-testimonial-slider__next">❯</span> -->
 
 	<?php endif; ?>
 </section>
