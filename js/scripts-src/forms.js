@@ -20,6 +20,17 @@
 
 })(jQuery)
 
+// var wpcf7Elm = document.querySelector( '.wpcf7' );
+//
+// wpcf7Elm.addEventListener( 'wpcf7submit', function( event ) {
+//     alert( "Fire!" );
+//     console.log(event);
+// }, false );
+// wpcf7Elm.addEventListener( 'wpcf7invalid', function( event ) {
+//     alert( "Fire invalid!" );
+//     console.log(event);
+// }, false );
+
 // Resize reCAPTCHA to fit width of container
 // Since it has a fixed width, we're scaling
 // using CSS3 transforms

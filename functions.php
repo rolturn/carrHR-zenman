@@ -1,4 +1,8 @@
 <?php
+
+function console($data) {
+  echo '</script>console.log('. json_encode($data) .');</script>';
+}
 /*
  * @package WordPress
  * @subpackage Zemplate
@@ -49,4 +53,30 @@ foreach (glob(get_template_directory().'/functions/post-types/*.php', GLOB_NOSOR
  */
 foreach (glob(get_template_directory().'/functions/modules/*.php', GLOB_NOSORT) as $filename){
     require_once $filename;
+}
+
+
+/*
+ *
+ *
+ */
+
+add_filter("shortcode_atts_wpcf7", function ($out, $pairs, $atts, $shortcode) {
+  foreach (["send-to"] as $a) {
+    $out[$a] = (isset($atts[$a])) ? $atts[$a] : '';
+  }
+  return $out;
+}, 10, 4);
+
+add_action('wpcf7_before_send_mail', 'ew_wpcf7_extend', 10, 2);
+function ew_wpcf7_extend($contact_form) {
+  $submission = WPCF7_Submission::get_instance();
+  $posted_data = $submission->get_posted_data();
+  $email = (!empty($posted_data["send-to"])) ? $posted_data["send-to"] : '';
+  $mail = $contact_form->prop('mail') ;
+  $mail['recipient'] .= !empty($mail['recipient']) ? ', '.$email : $email;
+  $contact_form->set_properties(array(
+   "mail" => $mail,
+  ));
+  return $contact_form;
 }
