@@ -153,7 +153,7 @@ endif;
 					map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json', {}, function (feature) {
 						var i = 0;
 						do {
-							if (!statesWithBrokerCoverage[feature[i].j.slice(-2)]) {
+							if (!statesWithBrokerCoverage[feature[i].m.slice(-2)]) {
 								map.data.remove(feature[i]);
 							}
 							i++;
@@ -173,14 +173,15 @@ endif;
 					 *  bounding box that is drawn around each state.
 					 */
 					google.maps.event.addListener(map.data, 'addfeature', function (e) {
-						stateShapes[e.feature.j.slice(-2)] = e.feature;
+						// console.log(e.feature);
+						stateShapes[e.feature.m.slice(-2)] = e.feature;
 					});
 
 					/**
 					 *  Listen for click events on each state polygon
 					 */
 					google.maps.event.addListener(map.data, 'click', function (e) {
-						zoomToState(e.feature.j.slice(-2));
+						zoomToState(e.feature.m.slice(-2));
 					});
 
 					/**

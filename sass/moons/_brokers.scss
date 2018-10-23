@@ -62,24 +62,41 @@
 	}
 
 	&__broker-group {
-		display: flex;
-	  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+		// display: grid;
+    // grid-template-columns: repeat(auto-fit, 25.1%);
+    // grid-template-columns: 25%;
+    // grid-auto-columns: 25%;
+    // grid-auto-flow: column;
 	  justify-content: center;
 		margin: 0 -1.5rem;
+    // @include bp($tablet) {
+    //   grid-template-columns: repeat(auto-fit, 50%);
+    // }
+    // @include bp($s-mobile) {
+    //   grid-template-columns: repeat(auto-fit, 100%);
+    // }
+
+
 	}
 
 	&__broker {
-		flex: 0 0 25.1%;
 	  color: white;
+    width: 25.1%;
 	  padding: 1.5rem;
+  	flex: 0 0 25.1%;
 	  // margin: 10px;
+    // margin: 0 auto;
 		text-align: left;
 		transition: opacity 300ms, transform 300ms 200ms, max-width 100ms 400ms, flex 100ms 400ms;
 
 		@include bp($tablet) {
+      width: 50%;
 			flex: 0 0 50%;
 		}
 		@include bp($s-mobile) {
+      width: 100%;
 			flex: 1 0 100%;
 		}
 
@@ -104,6 +121,7 @@
 			background-color: $color-5;
 			padding: 5px;
 			font-size: 1.2em;
+      overflow: hidden;
 			// transform: scaleY(0);
 			&.active {
 			  // transform-origin: top;
