@@ -124,6 +124,10 @@ endif;
 							}
 						];
 
+				function getStateAbbr(featureID) {
+					return featureID.replace('USA-', '');
+				}
+
 				function initMap() {
 					if (window.innerWidth < 801) { return false; }
 
@@ -153,7 +157,7 @@ endif;
 					map.data.loadGeoJson('<?php echo get_bloginfo('template_url'); ?>/json/US.geo.json', {}, function (feature) {
 						var i = 0;
 						do {
-							if (!statesWithBrokerCoverage[feature[i].m.slice(-2)]) {
+							if (!statesWithBrokerCoverage[getStateAbbr(feature[i].getId())]) {
 								map.data.remove(feature[i]);
 							}
 							i++;
@@ -173,15 +177,14 @@ endif;
 					 *  bounding box that is drawn around each state.
 					 */
 					google.maps.event.addListener(map.data, 'addfeature', function (e) {
-						// console.log(e.feature);
-						stateShapes[e.feature.m.slice(-2)] = e.feature;
+						stateShapes[getStateAbbr(e.feature.getId())] = e.feature;
 					});
 
 					/**
 					 *  Listen for click events on each state polygon
 					 */
 					google.maps.event.addListener(map.data, 'click', function (e) {
-						zoomToState(e.feature.m.slice(-2));
+						zoomToState(getStateAbbr(e.feature.getId()));
 					});
 
 					/**
