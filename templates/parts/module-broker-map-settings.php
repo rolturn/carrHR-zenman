@@ -125,7 +125,7 @@ endif;
 						];
 
 				function getStateAbbr(featureID) {
-					return featureID.replace('USA-', '');
+					return ( 'string' === typeof featureID && featureID.indexOf('USA-') !== -1) ? featureID.replace('USA-', '') : featureID;
 				}
 
 				function initMap() {
