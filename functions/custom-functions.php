@@ -650,7 +650,7 @@ function twocolumn_content_video($lr, $heading = ''){
 		echo '<div class="'. $lr .'-column-content__video">';
 			echo '<div class="'. $lr .'-column-content__video-background" style="background: url(https://img.youtube.com/vi/'. $video_url .'/hqdefault.jpg) no-repeat center center; background-size: cover;"></div>';
 			echo '<div class="orient-play">';
-				echo '<div class="play-button js-popout-play-button"><i class="fa fa-play-circle" aria-hidden="true"></i>';
+				echo '<div class="play-button js-popout-play-button"><i class="fa fa-play-circle" aria-hidden="true"></i></div>';
 				echo '<div class="js-youtube-popout popout-content">';
 					echo '<div class="youtube-container">';
 						echo '<div id="'. uniqid('video-') .'" class="ytvideo fix-embed-container" data-videoid="'. $video_url .'" data-autoplay="false" data-loop="false" data-mute="false"></div>';

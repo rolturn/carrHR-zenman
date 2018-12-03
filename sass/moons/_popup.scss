@@ -1,20 +1,23 @@
 /*------------------------------------*\
     ::Popout
 \*------------------------------------*/
+
 .play-button {
 	position: absolute;
 	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	cursor: pointer;
-	width: 80px;
-	border-radius: 100%;
+	// width: 80px;
+	border-radius: 50%;
+	border: 1px solid $color-5;
 
-	img {
-		border: 1px solid $white;
-		border-radius: 100%;
-	}
 	i {
-		font-size: 8em;
+		font-size: 7em;
 		color: $color-2;
+		&:hover {
+			color: lighten($color-2, 50%);
+		}
 	}
 }
 .popout-content {
