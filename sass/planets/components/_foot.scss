@@ -44,7 +44,7 @@ footer .menu {
 		a {
 			color: $white;
 			font-family: $fam-body;
-			
+
 			line-height: 1.1;
 		}
 	}
@@ -64,8 +64,14 @@ footer .menu {
 
 .footer {
 	&__logo {
-		text-align: center;
 		padding-bottom: 10px;
+
+		a {
+			display: block;
+			margin: 0 auto;
+			max-width: 187px;
+			width: 100%;
+		}
 	}
 
 	&__social {

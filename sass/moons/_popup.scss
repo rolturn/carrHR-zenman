@@ -12,6 +12,10 @@
 		border: 1px solid $white;
 		border-radius: 100%;
 	}
+	i {
+		font-size: 8em;
+		color: $color-2;
+	}
 }
 .popout-content {
 	.youtube-container {
@@ -76,4 +80,3 @@
 	    top: 0;
 	}
 }
-

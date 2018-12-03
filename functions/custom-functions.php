@@ -435,7 +435,8 @@ function prefix_load_term_posts () {
 						<div class="testimonial__image"></div>
 						<div class="orient-play">
 							<div class="play-button js-popout-play-button">
-								<img class="actual-play-button" src="<?php echo get_template_directory_uri(); ?>/images/play-button-video.png" alt="Play Button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+
 							</div>
 
 							<div class="js-youtube-popout popout-content">
@@ -478,7 +479,8 @@ function prefix_load_term_posts () {
 						<div class="testimonial__image"></div>
 						<div class="orient-play">
 							<div class="play-button js-popout-play-button">
-								<img class="actual-play-button" src="<?php echo get_template_directory_uri(); ?>/images/play-button-video.png" alt="Play Button">
+                <i class="fa fa-play-circle" aria-hidden="true"></i>
+
 							</div>
 
 							<div class="js-youtube-popout popout-content">
@@ -648,7 +650,7 @@ function twocolumn_content_video($lr, $heading = ''){
 		echo '<div class="'. $lr .'-column-content__video">';
 			echo '<div class="'. $lr .'-column-content__video-background" style="background: url(https://img.youtube.com/vi/'. $video_url .'/hqdefault.jpg) no-repeat center center; background-size: cover;"></div>';
 			echo '<div class="orient-play">';
-				echo '<div class="play-button js-popout-play-button"><img class="actual-play-button" src="'. get_template_directory_uri() .'/images/play-button-video.png" alt="Play Button"></div>';
+				echo '<div class="play-button js-popout-play-button"><i class="fa fa-play-circle" aria-hidden="true"></i>';
 				echo '<div class="js-youtube-popout popout-content">';
 					echo '<div class="youtube-container">';
 						echo '<div id="'. uniqid('video-') .'" class="ytvideo fix-embed-container" data-videoid="'. $video_url .'" data-autoplay="false" data-loop="false" data-mute="false"></div>';

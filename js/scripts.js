@@ -1030,6 +1030,7 @@ var popout = function(){
         var $this = $(this);
         var $content = $this.siblings('.js-youtube-popout');
         $popup.addClass('active');
+        console.log($content);
         $popup.html($content.clone());
     });
     $('.js-popout-has-buttons').on('click', '.js-popout-play-button', function() {

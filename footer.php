@@ -14,7 +14,7 @@
         <div class="main-foot__nav">
             <div class="nav__inner">
                 <div class="footer__logo">
-                    <a href="<?php bloginfo('url'); ?>" title="Carr Homepage"><img src="<?php echo get_bloginfo('template_url'); ?>/images/logo.png" alt=""></a>
+                    <a href="<?php bloginfo('url'); ?>" title="Carr Homepage"><img src="<?php echo get_bloginfo('template_url'); ?>/images/logo_carr_corporate_rev.svg" alt=""></a>
                 </div>
                 <div class="footer__social">
                     <?php

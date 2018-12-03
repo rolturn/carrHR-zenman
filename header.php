@@ -37,7 +37,7 @@
                 <div class="head-nav__inner">
                     <div class="head-nav__logo">
                         <a href="<?php bloginfo('url'); ?>" title="Carr Home page">
-                            <img src="<?php echo get_bloginfo('template_url'); ?>/images/logo-color.png" alt="">
+                            <img src="<?php echo get_bloginfo('template_url'); ?>/images/logo_carr_healthcare.svg" alt="">
                         </a>
                     </div>
                     <div class="head-nav__navigation">
