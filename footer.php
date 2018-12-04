@@ -28,20 +28,6 @@
                             "target" => false,
                           ),
                           array(
-                            "title" => "Facebook",
-                            "path" => "Facebook_Icon.svg",
-                            "fa" => "fab fa-facebook-f",
-                            "field" => "facebook_link_footer",
-                            "target" => "_blank",
-                          ),
-                          array(
-                            "title" => "Twitter",
-                            "path" => "Twitter_Icon.svg",
-                            "fa" => "fab fa-twitter",
-                            "field" => "twitter_link_footer",
-                            "target" => "_blank",
-                          ),
-                          array(
                             "title" => "LinkedIn",
                             "path" => "LinkedIn_Icon.svg",
                             "fa" => "fab fa-linkedin-in",
@@ -53,6 +39,20 @@
                             "path" => "Instagram_Icon.svg",
                             "fa" => "fab fa-instagram",
                             "field" => "instagram_link_footer",
+                            "target" => "_blank",
+                          ),
+                          array(
+                            "title" => "Facebook",
+                            "path" => "Facebook_Icon.svg",
+                            "fa" => "fab fa-facebook-f",
+                            "field" => "facebook_link_footer",
+                            "target" => "_blank",
+                          ),
+                          array(
+                            "title" => "Twitter",
+                            "path" => "Twitter_Icon.svg",
+                            "fa" => "fab fa-twitter",
+                            "field" => "twitter_link_footer",
                             "target" => "_blank",
                           ),
                           array(
