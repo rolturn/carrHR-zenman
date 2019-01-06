@@ -359,6 +359,7 @@ function hex2rgba($color, $opacity = false) {
 add_action( 'wp_ajax_nopriv_load-filter2', 'prefix_load_term_posts' );
 add_action( 'wp_ajax_load-filter2', 'prefix_load_term_posts' );
 function prefix_load_term_posts () {
+  $response = array();
   	$term_id = $_POST[ 'term' ];
   	$post_id = $_POST[ 'postID' ];
   	$name = $_POST[ 'name' ];
@@ -404,6 +405,7 @@ function prefix_load_term_posts () {
 
   	global $post;
   	$loop = get_posts( $args );
+
   	// $icon = get_attached_file(593); // quote svg (must be injected rather than loaded for ajax)
   	ob_start ();
 
@@ -504,16 +506,15 @@ function prefix_load_term_posts () {
 	<?php
 	wp_reset_postdata();
 
-	$response['output'] = ob_get_contents();
-	ob_end_flush();
-	ob_end_clean();
-  echo json_encode($response);
-	die(1);
+  $response['output'] = ob_get_clean();
+  echo wp_json_encode($response);
+	die;
 }
 
 add_action( 'wp_ajax_nopriv_load-filter3', 'ajax_load_posts' );
 add_action( 'wp_ajax_load-filter3', 'ajax_load_posts' );
 function ajax_load_posts () {
+  $response = array();
 
   $term_id = intval($_POST[ 'term' ]);
   $tag = $_POST[ 'tag' ];
@@ -567,13 +568,11 @@ function ajax_load_posts () {
 
   wp_reset_postdata();
 
-  $response['output'] = ob_get_contents();
+  $response['output'] = ob_get_clean();
   $response['total_posts'] = $wp_query->found_posts;
   $response['total_pages'] = $response['total_posts'] / $posts_per_page;
-  ob_end_flush();
-  ob_end_clean();
-  echo json_encode($response);
-  die(1);
+  echo wp_json_encode($response);
+  die;
 }
 
 function twocolumn_content_layout($lr, $lines){

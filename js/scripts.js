@@ -285,14 +285,13 @@ var term_ajax_get = function(options, animate, callback) {
 			'name' : name,
 		},
 		success: function(response) {
-
 			var res = JSON.parse(response);
 			var totalPages = res['total_pages'] ? Math.ceil(parseFloat(res['total_pages'])) : 0;
 
 			if (page > 0 && type === 'infiniteScroll'){
-				$wrapper.append(res['output']);
+				$wrapper.append(res.output);
 			} else {
-				$wrapper.html(res['output']);
+				$wrapper.html(res.output);
 			}
 
 			if (totalPages > 1) {

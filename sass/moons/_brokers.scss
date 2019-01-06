@@ -120,7 +120,7 @@
 			color: $color-1;
 			background-color: $color-5;
 			padding: 5px;
-			font-size: 1.2em;
+			font-size: 1.4em;
       overflow: hidden;
 			// transform: scaleY(0);
 			&.active {
@@ -219,6 +219,7 @@
 
 	&__verticals {
 		margin-top: .4em;
+    margin-left: 5px;
 		color: $color-1;
 		font-size: 1em;
 		font-size: 1.14em;
