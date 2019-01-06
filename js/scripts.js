@@ -600,7 +600,6 @@ var handleStateDropdownSelection = function () {
 
 
 var zoomToState = function (stateAbbr) {
-	console.log(stateAbbr);
 	if (!stateShapes.hasOwnProperty(stateAbbr)){return false;}
 
 	map.data.revertStyle();
