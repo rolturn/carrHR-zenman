@@ -34,12 +34,12 @@ function load_js_files() {
 	if(!is_admin()){
 		wp_deregister_script('jquery');
 		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js', false, '1.10.1', true);
-		wp_register_script('lodash-alt', 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js', false, '4.17.10', true);
-		wp_register_script('scripts', get_template_directory_uri().'/js/scripts.min.js', array('jquery', 'lodash-alt'), '1.0', true);
+		wp_register_script('lod', 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js', false, '4.17.10', true);
+		wp_register_script('scripts', get_template_directory_uri().'/js/scripts.min.js', array('jquery', 'lod'), '1.0', true);
 
 		//Get in line!
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'lodash-alt' );
+		wp_enqueue_script( 'lod' );
 		wp_enqueue_script( 'scripts' );
 		//If necessary, page specific enqueues
 		// if ( is_page() ) {
