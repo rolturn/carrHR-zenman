@@ -932,3 +932,27 @@ function eworks_init_insert_formats( $init_array ) {
 }
 // Attach callback to 'tiny_mce_before_init'
 add_filter( 'tiny_mce_before_init', 'eworks_init_insert_formats' );
+
+
+function ew_register_cf7_js() {
+  // Dequeue cf5 and recaptcha scripts, preventing them from loading everywhere
+  add_filter( 'wpcf7_load_js', '__return_false' ); // Might as well use their filter
+  wp_dequeue_script( 'google-recaptcha' );
+
+  // If current post has cf7 shortcode, enqueue!
+  global $post;
+
+  if (get_field('modules', $post->ID)) {
+    $modules = get_field('modules', $post->ID);
+    foreach($modules as $field) {
+      if ($field['acf_fc_layout'] === "form") {
+        if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
+            wpcf7_enqueue_scripts();
+            wp_enqueue_script( 'google-recaptcha' );
+        }
+        break;
+      }
+    }
+  }
+}
+add_action( 'wp_enqueue_scripts', 'ew_register_cf7_js' );
