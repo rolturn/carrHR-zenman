@@ -21,7 +21,7 @@ $rgba = hex2rgba($color, 0.8);
 <section class="hero">
 	<?php if ($add_text_to_hero) : ?>
 		<div class="hero-text">
-			<div class="hero__background hero-text__background<?php echo (get_field('use_parallax_effect', $GLOBALS['page_id_to_use']) ? ' _hero-image__background--fixed' : ''); ?> js-scale" style="background-image: url(<?php echo $hero_image; ?>)"></div>
+			<div class="hero__background hero-text__background<?php echo (get_field('use_parallax_effect', $GLOBALS['page_id_to_use']) ? ' hero-image__background--fixed' : ''); ?> js-scale" style="background-image: url(<?php echo $hero_image; ?>)"></div>
 			<?php if( have_rows('add_line_of_hero_text') ):?>
 				<div class="hero-text__inner">
 				    <?php while ( have_rows('add_line_of_hero_text') ) : the_row();

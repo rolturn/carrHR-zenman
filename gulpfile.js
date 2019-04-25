@@ -44,6 +44,7 @@ var reload = browserSync.reload
 var autoprefixer = require('gulp-autoprefixer') // Autoprefixing magic
 var minifycss = require('gulp-uglifycss')
 var filter = require('gulp-filter')
+var template = require('gulp-template')
 var uglify = require('gulp-uglify-es').default
 var imagemin = require('gulp-imagemin')
 var newer = require('gulp-newer')
@@ -51,7 +52,7 @@ var rename = require('gulp-rename')
 var concat = require('gulp-concat')
 var notify = require('gulp-notify')
 var gcmq = require('gulp-group-css-media-queries')
-var runSequence = require('gulp-run-sequence')
+var runSequence = require('run-sequence').use(gulp);
 var sass = require('gulp-sass')
 var plugins = require('gulp-load-plugins')({ camelize: true })
 var ignore = require('gulp-ignore') // Helps with ignoring files and directories in our run tasks
@@ -60,6 +61,7 @@ var zip = require('gulp-zip') // Using to zip up our packaged theme into a tasty
 var plumber = require('gulp-plumber') // Helps prevent stream crashing on errors
 var cache = require('gulp-cache')
 var sourcemaps = require('gulp-sourcemaps')
+var clean = require('gulp-clean')
 
 // npm install --save-dev gulp browser-sync gulp-autoprefixer gulp-uglifycss gulp-filter gulp-uglify gulp-imagemin gulp-newer gulp-rename gulp-concat gulp-notify gulp-combine-media-queries gulp-run-sequence gulp-sass gulp-load-plugins gulp-ignore gulp-rimraf gulp-zip gulp-plumber gulp-cache gulp-sourcemaps
 
@@ -79,6 +81,7 @@ gulp.task('browser-sync', function() {
 
 		// Read here http://www.browsersync.io/docs/options/
 		proxy: project.url,
+    port: 3025,
 
 		// Tunnel the Browsersync server through a random Public URL
 		// tunnel: true,
@@ -105,29 +108,26 @@ gulp.task('styles', function () {
 		.pipe(sass({
 			errLogToConsole: true,
 			//outputStyle: 'compressed',
-			outputStyle: 'compact',
+			// outputStyle: 'compact',
 			// outputStyle: 'nested',
-			// outputStyle: 'expanded',
+			outputStyle: 'expanded',
 			precision: 10
 		}))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
 		.pipe(sourcemaps.write({includeContent: false}))
 		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(autoprefixer({
-            browsers: ['last 2 versions'],
-            cascade: false
-        }))
 		.pipe(sourcemaps.write('./'))
 		.pipe(plumber.stop())
 		.pipe(gulp.dest('./'))
-		.pipe(filter('**/*.css')) // Filtering stream to only css files
+		.pipe(filter('*.css')) // Filtering stream to only css files
 		.pipe(gcmq()) // Combines Media Queries
 		.pipe(reload({stream:true})) // Inject Styles when style file is created
+    .pipe(minifycss({ maxLineLen: 80 }))
 		.pipe(rename({ suffix: '.min' }))
-		.pipe(minifycss({
-			maxLineLen: 80
-		}))
 		.pipe(gulp.dest('./'))
-		.pipe(reload({stream:true})) // Inject Styles when min style file is created
 		.pipe(notify({ message: 'Styles task complete', onLast: true }))
 });
 
@@ -139,15 +139,15 @@ gulp.task('styles', function () {
 */
 gulp.task('vendorsJs', function() {
 	return 	gulp.src(['./js/vendor/*.js', project.bower+'**/*.js'])
-				.pipe(concat('vendors.js'))
-				.pipe(gulp.dest('./js/'))
-				.pipe(rename( {
-					basename: "vendors",
-					suffix: '.min'
-				}))
-				.pipe(uglify())
-				.pipe(gulp.dest('./js/'))
-				.pipe(notify({ message: 'Vendor scripts task complete', onLast: true }));
+		.pipe(concat('vendors.js'))
+		.pipe(gulp.dest('./js/'))
+		.pipe(rename( {
+			basename: "vendors",
+			suffix: '.min'
+		}))
+		.pipe(uglify())
+		.pipe(gulp.dest('./js/'))
+		.pipe(notify({ message: 'Vendor scripts task complete', onLast: true }));
 });
 
 
@@ -156,12 +156,11 @@ gulp.task('vendorsJs', function() {
  *
  * Look at src/js and concatenate those files, send them to assets/js where we then minimize the concatenated file.
 */
-
 gulp.task('scriptsJs', function() {
 	return gulp.src('js/scripts-src/*.js')
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest('js'))
-			.pipe(rename({
+		.pipe(rename({
 			basename: "scripts",
 			suffix: '.min'
 		}))
@@ -171,6 +170,14 @@ gulp.task('scriptsJs', function() {
 		.pipe(notify({ message: 'Custom scripts task complete', onLast: true }));
 });
 
+gulp.task('bustCache', function() {
+  const stamp = '3.'+Math.floor(Date.now() / 1000);
+  return gulp.src('functions/cache-buster.tmp')
+    .pipe(template({version: stamp}))
+    .pipe(rename({ extname: ".php" }))
+    .pipe(gulp.dest('./functions'))
+    .pipe(notify({ message: 'Updated cache buster stamp to '+stamp, onLast: true }));
+});
 
 /**
  * Images
@@ -178,25 +185,22 @@ gulp.task('scriptsJs', function() {
  * Look at src/images, optimize the images and send them to the appropriate place
 */
 gulp.task('images', function() {
-
 // Add the newer pipe to pass through newer images only
 	return 	gulp.src(['./images/raw/**/*.{png,jpg,gif}'])
-				.pipe(newer('./images/'))
-				.pipe(rimraf({ force: true }))
-				.pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
-				.pipe(gulp.dest('./images/'))
-				.pipe( notify( { message: 'Images task complete', onLast: true } ) );
+		.pipe(newer('./images/'))
+		.pipe(rimraf({ force: true }))
+		.pipe(imagemin({ optimizationLevel: 7, progressive: true, interlaced: true }))
+		.pipe(gulp.dest('./images/'))
+		.pipe( notify( { message: 'Images task complete', onLast: true } ) );
 });
 
 
-/**
- * Clean gulp cache
- */
- gulp.task('clear', function () {
-   cache.clearAll();
- });
-
-
+  /**
+   * Clean gulp cache
+   */
+ // gulp.task('clear', function () {
+ //   cache.clearAll();
+ // });
  /**
   * Clean tasks for zip
   *
@@ -204,18 +208,18 @@ gulp.task('images', function() {
   * clearing out unoptimized image files in zip as those will have been moved and optimized
  */
 
- gulp.task('cleanup', function() {
- 	return 	gulp.src(['./bower_components', '**/.sass-cache','**/.DS_Store'], { read: false }) // much faster
-		 		.pipe(ignore('node_modules/**')) //Example of a directory to ignore
-		 		.pipe(rimraf({ force: true }))
-		 		// .pipe(notify({ message: 'Clean task complete', onLast: true }));
- });
- gulp.task('cleanupFinal', function() {
- 	return 	gulp.src(['./bower_components','**/.sass-cache','**/.DS_Store'], { read: false }) // much faster
-		 		.pipe(ignore('node_modules/**')) //Example of a directory to ignore
-		 		.pipe(rimraf({ force: true }))
-		 		// .pipe(notify({ message: 'Clean task complete', onLast: true }));
- });
+ // gulp.task('cleanup', function() {
+ // 	return 	gulp.src(['./bower_components', '**/.sass-cache','**/.DS_Store'], { read: false }) // much faster
+	//  		.pipe(ignore('node_modules/**')) //Example of a directory to ignore
+	//  		.pipe(rimraf({ force: true }))
+	//  		// .pipe(notify({ message: 'Clean task complete', onLast: true }));
+ // });
+ // gulp.task('cleanupFinal', function() {
+ // 	return 	gulp.src(['./bower_components','**/.sass-cache','**/.DS_Store'], { read: false }) // much faster
+	//  		.pipe(ignore('node_modules/**')) //Example of a directory to ignore
+	//  		.pipe(rimraf({ force: true }))
+	//  		// .pipe(notify({ message: 'Clean task complete', onLast: true }));
+ // });
 
  /**
   * Build task that moves essential theme files for production-ready sites
@@ -224,36 +228,36 @@ gulp.task('images', function() {
   * buildImages copies all the images from img folder in assets while ignoring images inside raw folder if any
   */
 
-  gulp.task('buildFiles', function() {
-  	return 	gulp.src(project.buildInclude)
- 		 		.pipe(gulp.dest(project.build))
- 		 		.pipe(notify({ message: 'Copy from buildFiles complete', onLast: true }));
-  });
+  // gulp.task('buildFiles', function() {
+  // 	return 	gulp.src(project.buildInclude)
+	//  		.pipe(gulp.dest(project.build))
+	//  		.pipe(notify({ message: 'Copy from buildFiles complete', onLast: true }));
+  // });
 
 
-/**
-* Images
-*
-* Look at src/images, optimize the images and send them to the appropriate place
-*/
-gulp.task('buildImages', function() {
-	return 	gulp.src(['images/**/*', '!images/raw/**'])
-		 		.pipe(gulp.dest(project.build+'/images/'))
-		 		.pipe(plugins.notify({ message: 'Images copied to buildTheme folder', onLast: true }));
-});
+  /**
+  * Images
+  *
+  * Look at src/images, optimize the images and send them to the appropriate place
+  */
+  // gulp.task('buildImages', function() {
+  // 	return 	gulp.src(['images/**/*', '!images/raw/**'])
+	//  		.pipe(gulp.dest(project.build+'/images/'))
+	//  		.pipe(plugins.notify({ message: 'Images copied to buildTheme folder', onLast: true }));
+  // });
 
  /**
   * Zipping build directory for distribution
   *
   * Taking the build folder, which has been cleaned, containing optimized files and zipping it up to send out as an installable theme
  */
- gulp.task('buildZip', function () {
- 	// return 	gulp.src([build+'/**/', './.jshintrc','./.bowerrc','./.gitignore' ])
- 	return 	gulp.src(project.build+'/**/')
-		 		.pipe(zip(project.name+'.zip'))
-		 		.pipe(gulp.dest('./'))
-		 		.pipe(notify({ message: 'Zip task complete', onLast: true }));
- });
+ // gulp.task('buildZip', function () {
+ // 	// return 	gulp.src([build+'/**/', './.jshintrc','./.bowerrc','./.gitignore' ])
+ // 	return 	gulp.src(project.build+'/**/')
+ // 		.pipe(zip(project.name+'.zip'))
+ // 		.pipe(gulp.dest('./'))
+ // 		.pipe(notify({ message: 'Zip task complete', onLast: true }));
+ // });
 
 
  // ==== TASKS ==== //
@@ -263,17 +267,16 @@ gulp.task('buildImages', function() {
   * Compiles styles, fires-up browser sync, watches js and php files. Note browser sync task watches php files
   *
  */
-
  // Package Distributable Theme
- gulp.task('build', function(cb) {
- 	runSequence('styles', 'cleanup', 'vendorsJs', 'scriptsJs',  'buildFiles', 'buildImages', 'buildZip','cleanupFinal', cb);
- });
-
+ // gulp.task('build', function(cb) {
+ // 	runSequence('styles', 'cleanup', 'vendorsJs', 'scriptsJs',  'buildFiles', 'buildImages', 'buildZip','cleanupFinal', cb);
+ // });
 
  // Watch Task
- gulp.task('default', ['styles', 'vendorsJs', 'scriptsJs', 'images', 'browser-sync'], function () {
- 	gulp.watch('./images/raw/**/*', ['images']);
- 	gulp.watch('./sass/**/*.scss', ['styles']);
- 	gulp.watch('./js/**/*.js', ['scriptsJs']);
+ gulp.task('default', ['styles', 'vendorsJs', 'images', 'scriptsJs', 'bustCache', 'browser-sync'], watchList);
 
- });
+function watchList () {
+  // gulp.watch('./images/raw/**/*', ['images']);
+ 	gulp.watch('./sass/**/*.scss', ['styles', 'bustCache']);
+ 	gulp.watch('./js/**/*.js', ['scriptsJs', 'bustCache']);
+}

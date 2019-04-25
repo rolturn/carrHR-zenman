@@ -1,7 +1,7 @@
 var activateAnimation = function() {
 	$(".js-line-animation, .js-ease, .js-from-left, .js-scale").each(function(){
 		var $this = $(this);
-		// $this.addClass('active');
+		$this.addClass('active');
 		$this.bind('inview', function (event, visible) {
 			var $that = $(this);
 			if (visible === true && !$that.hasClass('active')) {

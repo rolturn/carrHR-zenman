@@ -3,6 +3,22 @@
 function console($data) {
   echo '</script>console.log('. json_encode($data) .');</script>';
 }
+
+/*
+ * @package WordPress
+ * @subpackage Zemplate
+ * @since Zemplate 1.0
+ */
+
+ /*
+  * Require any custom functions you'd like to add to this theme.
+  *
+  * This is where you should add any custom functions specific
+  * to the current theme.
+  */
+ require_once('functions/cache-buster.php');
+
+
 /*
  * @package WordPress
  * @subpackage Zemplate

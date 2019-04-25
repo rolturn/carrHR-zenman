@@ -1,6 +1,6 @@
 .hero {
 	line-height: 0;
-  max-height: 90vh;
+  max-height: 50vh;
   overflow: hidden;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .hero-text {
-	min-height: 90vh;
+	min-height: 50vh;
 	width: 100%;
 	border-bottom: 4px solid $color-1;
 	display: flex;
@@ -22,10 +22,11 @@
 	overflow: hidden;
 	line-height: 1.4;
 
+
 	&__background {
 		position: absolute;
 		width: 100%;
-		height: 90vh;
+		height: 50vh;
 		top: 0;
 		left: 0;
 		transition: all 2s ease;
@@ -114,6 +115,7 @@
 		min-height: 350px;
 	}
 }
+
 #hero-cta{
 	position: absolute;
 	z-index: 10;

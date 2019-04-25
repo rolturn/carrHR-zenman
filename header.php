@@ -41,10 +41,18 @@
                         </a>
                     </div>
                     <div class="head-nav__navigation">
-                        <div class="head-nav__utility">
-                            <a href="<?php bloginfo('url'); ?>/lease-or-purchase-evaluation/" class="lease" title="Lease or Purchase Evaluation">Lease or Purchase Evaluation</a>
-                            <a href="<?php echo get_the_permalink(143); ?>" title="Find an Agent" class="broker">Find an Agent</a>
-                        </div>
+                        <ul class="head-nav__utility">
+                          <li id="menu-item-4347" class="icon icon--globe menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-has-children menu-item-4347">
+                            <a href="https://carr.us/"><i class="fal fa-globe"></i>CARR.US</a>
+                          <ul class="sub-menu">
+                          	<li id="menu-item-4393" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4393"><a href="https://carr.us/commercial-real-estate/">Commercial</a></li>
+                          	<li id="menu-item-4394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4394"><a href="<?php bloginfo('url'); ?>">Healthcare</a></li>
+                          	<li id="menu-item-4395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4395"><a href="https://carr.us/senior-housing-real-estate/">Senior Housing</a></li>
+                          </ul>
+                          </li>
+                          <li id="menu-item-4348" class="icon icon--eval menu-item menu-item-type-post_type menu-item-object-page menu-item-4348"><a href="<?php echo get_the_permalink(408); ?>" class="lease" title="Lease or Purchase Evaluation">Lease or Purchase Evaluation</a></li>
+                          <li id="menu-item-4349" class="icon icon--map-marker senior-housing hide menu-item menu-item-type-post_type menu-item-object-page menu-item-4349"><a href="<?php echo get_the_permalink(143); ?>" title="Find an Agent" class="broker">Find an Agent</a></li>
+                        </ul>
                         <?php
                             $attr = array(
                                 'theme_location'  => 'head-menu',
@@ -75,14 +83,29 @@
                         </div><!-- /.head-nav-buttons -->
                     </div>
                     <div class="head-nav__navigation mobile-dropdown head-nav__navigation__inner" id="head-nav__mobile">
-                        <ul class="head-nav__utility">
+                      <nav class="head-nav__utility">
+                        <ul class="menu">
+                          <li id="menu-item-4347" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-has-children menu-item-4347">
+                            <a href="https://carr.us/"><i class="fal fa-globe"></i> CARR.US</a>
+                          <ul class="sub-menu">
+                            <li id="menu-item-4393" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4393"><a href="https://carr.us/commercial-real-estate/">Commercial</a></li>
+                            <li id="menu-item-4394" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4394"><a href="<?php bloginfo('url'); ?>">Healthcare</a></li>
+                            <li id="menu-item-4395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-4395"><a href="https://carr.us/senior-housing-real-estate/">Senior Housing</a></li>
+                          </ul>
+                          </li>
+                          <li id="menu-item-4348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4348"><a href="<?php echo get_the_permalink(408); ?>" class="lease" title="Lease or Purchase Evaluation">Lease or Purchase Evaluation</a></li>
+                          <li id="menu-item-4349" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4349"><a href="<?php echo get_the_permalink(143); ?>" title="Find an Agent" class="broker">Find an Agent</a></li>
+                        </ul>
+                      </nav>
+                      <!-- /.head-nav__menu -->
+                        <!-- <ul class="head-nav__utility">
                           <li>
                             <a href="<?php echo get_the_permalink(143); ?>" title="Find an Agent" class="broker">Find an Agent</a>
                           </li>
                           <li>
                             <a href="<?php echo get_the_permalink(408); ?>" title="Lease or Purchase Evaluation" class="eval">Lease or Purchase Evaluation</a>
                           </li>
-                        </ul>
+                        </ul> -->
                         <?php
                             $attr = array(
                                 'theme_location'  => 'head-menu',
